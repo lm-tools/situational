@@ -20,7 +20,7 @@ class Client(object):
             "height": height,
         })
         response = requests.get(url, params=params)
-        return Image(response.content, response.headers.get("content-type"))
+        return Image(response.raw, response.headers.get("content-type"))
 
     def _params(self, extra={}):
         params = {
@@ -31,8 +31,8 @@ class Client(object):
 
 
 class Image(object):
-    def __init__(self, data, mime_type):
-        self.data = data
+    def __init__(self, file, mime_type):
+        self.file = file
         self.mime_type = mime_type
 
 
@@ -42,5 +42,5 @@ class FakeClient(object):
             os.path.dirname(__file__),
             'mapumental_dummy_map_N41AA.png',
             )
-        image_data = open(image_path, 'rb').read()
-        return Image(image_data, 'image/png')
+        image_file = open(image_path, 'rb')
+        return Image(image_file, 'image/png')
