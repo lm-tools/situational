@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{{ postcode }}
+{{location}}
+<h1>{{place_name.Name}}</h1>
+
+<h2>(this will be mapumental):</h2>
+<img src="https://maps.googleapis.com/maps/api/staticmap?center={{location.wgs84_lat}} {{location.wgs84_lon}}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:H|{{location.wgs84_lat}},{{location.wgs84_lon}}"></img>
+
+{% endblock content %}
