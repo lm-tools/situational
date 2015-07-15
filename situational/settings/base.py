@@ -23,8 +23,8 @@ DATABASES = {
         'NAME': 'situational',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -123,7 +123,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 )
 
-PROJECT_APPS = ()
+PROJECT_APPS = (
+    'report',
+)
 
 INSTALLED_APPS += PROJECT_APPS
 
