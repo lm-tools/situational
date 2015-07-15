@@ -125,6 +125,7 @@ INSTALLED_APPS = (
 
 PROJECT_APPS = (
     'report',
+    'travel_times',
 )
 
 INSTALLED_APPS += PROJECT_APPS
@@ -161,6 +162,9 @@ LOGGING = {
 
 # EMAILS
 
+# MAPUMENTAL
+from travel_times import mapumental
+MAPUMENTAL_CLIENT = mapumental.FakeClient
 
 # .local.py overrides all the common settings.
 try:
