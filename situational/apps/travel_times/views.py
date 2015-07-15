@@ -17,4 +17,4 @@ class MapView(View):
         repo = TravelTimesMapRepository()
         travel_map = repo.get(postcode, width, height)
 
-        return HttpResponse(travel_map.image_data, travel_map.mime_type)
+        return HttpResponse(travel_map.read_image(), travel_map.mime_type)
