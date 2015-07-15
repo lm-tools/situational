@@ -24,8 +24,7 @@
 <h1>{{place_name.Name}}</h1>
 <h2>Travel time</h2>
 
-<small>(this will be mapumental):</small><br>
-<img src="https://maps.googleapis.com/maps/api/staticmap?center={{location.wgs84_lat}} {{location.wgs84_lon}}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:H|{{location.wgs84_lat}},{{location.wgs84_lon}}"></img>
+<img src="{% url "travel_times:map" postcode=postcode %}"></img>
 
 <h2>Top employers and sectors</h2>
 
