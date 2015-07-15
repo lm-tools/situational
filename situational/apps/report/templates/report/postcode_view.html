@@ -2,11 +2,19 @@
 
 {% block content %}
 
+
+<h1>Labour market report</h1>
+<p>
+    This tool will generate a personalised report
+    to help you discuss your options with your 
+    work coach.
+</p>
 <form method=post>
     {% csrf_token %}
     {{form}}
-    <button type=submit></button>
+    <button type="submit">Get started</button>
 </form>
+
 
 
 

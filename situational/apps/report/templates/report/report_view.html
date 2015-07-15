@@ -1,12 +1,32 @@
 {% extends "base.html" %}
 
+{% block nav %}
+  <div class="fixed">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">Your labour market report</a></h1>
+        </li>
+      </ul>
+      <ul>
+        <li class="action">
+          <a href="#" class="button success right">
+            Email a copy
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+{% endblock nav %}
+
 {% block content %}
 
-{{ postcode }}
-{{location}}
 <h1>{{place_name.Name}}</h1>
+<h2>Travel time</h2>
 
-<h2>(this will be mapumental):</h2>
+<small>(this will be mapumental):</small><br>
 <img src="https://maps.googleapis.com/maps/api/staticmap?center={{location.wgs84_lat}} {{location.wgs84_lon}}&zoom=13&size=600x300&maptype=roadmap&markers=color:blue|label:H|{{location.wgs84_lat}},{{location.wgs84_lon}}"></img>
+
+<h2>Top employers and sectors</h2>
 
 {% endblock content %}
