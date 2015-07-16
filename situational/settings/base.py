@@ -1,4 +1,5 @@
 import sys
+from os import environ
 from os.path import join, abspath, dirname
 
 # PATH vars
@@ -164,7 +165,10 @@ LOGGING = {
 
 # MAPUMENTAL
 from travel_times import mapumental
-MAPUMENTAL_CLIENT = mapumental.FakeClient
+if environ.get('ENABLE_MAPUMENTAL'):
+    MAPUMENTAL_CLIENT = mapumental.Client
+else:
+    MAPUMENTAL_CLIENT = mapumental.FakeClient
 
 # .local.py overrides all the common settings.
 try:
