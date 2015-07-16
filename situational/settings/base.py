@@ -164,6 +164,8 @@ LOGGING = {
 # EMAILS
 
 # MAPUMENTAL
+MAPUMENTAL_API_KEY = environ.get('MAPUMENTAL_API_KEY')
+
 from travel_times import mapumental
 if environ.get('ENABLE_MAPUMENTAL'):
     MAPUMENTAL_CLIENT = mapumental.Client
