@@ -1,6 +1,8 @@
 {
   "name":"situational",
   "scripts":{},
-  "env":{},
+  "env":{
+      "DJANGO_SETTINGS_MODULE": "situational.settings.heroku"
+  },
   "addons":[]
 }
