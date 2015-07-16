@@ -1,3 +1,4 @@
+from io import BytesIO
 import os
 
 import requests
@@ -20,7 +21,8 @@ class Client(object):
             "height": height,
         })
         response = requests.get(url, params=params)
-        return Image(response.raw, response.headers.get("content-type"))
+        image_data_io = BytesIO(response.content)
+        return Image(image_data_io, response.headers.get("content-type"))
 
     def _params(self, extra={}):
         params = {
