@@ -14,7 +14,8 @@ class TravelTimesMap(models.Model):
     image = models.ImageField(
         width_field='actual_width',
         height_field='actual_height',
-        null=True
+        null=True,
+        upload_to='travel_times_maps',
         )
     actual_width = models.IntegerField(null=True)
     actual_height = models.IntegerField(null=True)
