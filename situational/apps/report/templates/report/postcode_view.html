@@ -6,16 +6,20 @@
 <h1>Labour market report</h1>
 <p>
     This tool will generate a personalised report
-    to help you discuss your options with your 
+    to help you discuss your options with your
     work coach.
 </p>
 <form method=post>
     {% csrf_token %}
-    {{form}}
+    <div {% if form.subject.errors %}class="error"{% endif %}>
+        <label>
+            Postcode
+            {{ form.postcode }}
+        </label>
+        {% for error in form.postcode.errors %}
+            <small class="error">{{ error|escape }}</small>
+        {% endfor %}
+    </div>
     <button type="submit">Get started</button>
 </form>
-
-
-
-
 {% endblock content %}
