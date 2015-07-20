@@ -28,4 +28,11 @@
 
 <h2>Top employers and sectors</h2>
 
+<h3>Top Sectors</h3>
+<ol>
+    {% for category in top_categories %}
+        <li>{{ category.category }} ({{ category.count }})</li>
+    {% endfor %}
+</ol>
+
 {% endblock content %}

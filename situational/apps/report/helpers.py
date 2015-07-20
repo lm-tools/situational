@@ -5,6 +5,7 @@ from urllib.request import urlopen
 import requests
 
 from django.core.cache import cache
+from django.conf import settings
 
 from report import constants
 
@@ -52,3 +53,12 @@ def place_name_from_location(wgs84_lat, wgs84_lon):
     results = csv.DictReader(io.TextIOWrapper(urlopen(url)))
     for result in results:
         return result
+
+def top_categories_for_postcode(postcode):
+    base_url = settings.JOBS_API_BASE_URL
+    url = "{0}/api/top_categories?postcode={1}".format(
+        base_url,
+        postcode,
+    )
+
+    return requests.get(url).json()
