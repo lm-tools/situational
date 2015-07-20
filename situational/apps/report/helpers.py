@@ -62,3 +62,21 @@ def top_categories_for_postcode(postcode):
     )
 
     return requests.get(url).json()
+
+def latest_jobs_for_postcode(postcode):
+    base_url = settings.JOBS_API_BASE_URL
+    url = "{0}/api/jobadverts?postcode={1}".format(
+        base_url,
+        postcode,
+    )
+
+    return requests.get(url).json()
+
+def top_companies_for_postcode(postcode):
+    base_url = settings.JOBS_API_BASE_URL
+    url = "{0}/api/top_companies?postcode={1}".format(
+        base_url,
+        postcode,
+    )
+
+    return requests.get(url).json()
