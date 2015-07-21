@@ -29,4 +29,10 @@ class ReportView(TemplateView):
         context['location'] = helpers.geocode(context['postcode'])
         context['place_name'] = \
             helpers.place_name_from_location(**context['location'])
+        context['top_categories'] = \
+            helpers.top_categories_for_postcode(context['postcode'])
+        context['top_companies'] = \
+            helpers.top_companies_for_postcode(context['postcode'])
+        context['latest_jobs'] = \
+            helpers.latest_jobs_for_postcode(context['postcode'])
         return context

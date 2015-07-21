@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load human_times %}
 
 {% block nav %}
   <div class="fixed">
@@ -27,5 +28,26 @@
 <img src="{% url "travel_times:map" postcode=postcode %}"></img>
 
 <h2>Top employers and sectors</h2>
+
+<h3>Top Sectors</h3>
+<ol>
+    {% for category in top_categories %}
+        <li>{{ category.category }} ({{ category.count }})</li>
+    {% endfor %}
+</ol>
+
+<h3>Latest Jobs</h3>
+<ol>
+    {% for job in latest_jobs %}
+        <li>{{ job.title|title }} (about {{ job.travelling_time|human_time }} away)</li>
+    {% endfor %}
+</ol>
+
+<h3>Top Companies</h3>
+<ol>
+    {% for company in top_companies %}
+        <li>{{ company.company_name }}</li>
+    {% endfor %}
+</ol>
 
 {% endblock content %}

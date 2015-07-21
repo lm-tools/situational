@@ -115,13 +115,14 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.humanize',
+    'django.contrib.messages',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.admin',
     'storages'
 )
 
@@ -163,6 +164,9 @@ LOGGING = {
 
 
 # EMAILS
+
+# Jobs API
+JOBS_API_BASE_URL = "https://lm-tools-jobs-api.herokuapp.com"
 
 # MAPUMENTAL
 MAPUMENTAL_API_KEY = environ.get('MAPUMENTAL_API_KEY')
