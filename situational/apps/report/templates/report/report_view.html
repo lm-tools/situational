@@ -22,32 +22,49 @@
 
 {% block content %}
 
-<h1>{{place_name.Name}}</h1>
-<h2>Travel time</h2>
+<ul class="tabs vertical" data-tab>
+  <li class="tab-title active"><a href="#map">Travel time</a></li>
+  <li class="tab-title"><a href="#job-summary">Jobs summary</a></li>
+</ul>
 
-<img src="{% url "travel_times:map" postcode=postcode %}"></img>
+<div class="tabs-content">
+  <div class="content active" id="map">
+    <div class="row">
+      <div class="columns large-11">
+        {# <h1>{{place_name.Name}}</h1> #}
 
-<h2>Top employers and sectors</h2>
+        {# <img src="{% url "travel_times:map" postcode=postcode %}"></img> #}
+        <img src="http://situational.herokuapp.com/travel_times/postcode/SE228DJ/image"></img>
+      </div>
+    </div>
+  </div>
+  <div class="content" id="job-summary">
+    <div class="row">
+      <div class="columns large-11">
 
-<h3>Top Sectors</h3>
-<ol>
-    {% for category in top_categories %}
-        <li>{{ category.category }} ({{ category.count }})</li>
-    {% endfor %}
-</ol>
+        <h3>Top Sectors</h3>
+        <ol>
+          {% for category in top_categories %}
+            <li>{{ category.category }} ({{ category.count }})</li>
+          {% endfor %}
+        </ol>
 
-<h3>Latest Jobs</h3>
-<ol>
-    {% for job in latest_jobs %}
-        <li>{{ job.title|title }} (about {{ job.travelling_time|human_time }} away)</li>
-    {% endfor %}
-</ol>
+        <h3>Latest Jobs</h3>
+        <ol>
+          {% for job in latest_jobs %}
+            <li>{{ job.title|title }} (about {{ job.travelling_time|human_time }} away)</li>
+          {% endfor %}
+        </ol>
 
-<h3>Top Companies</h3>
-<ol>
-    {% for company in top_companies %}
-        <li>{{ company.company_name }}</li>
-    {% endfor %}
-</ol>
+        <h3>Top Companies</h3>
+        <ol>
+          {% for company in top_companies %}
+            <li>{{ company.company_name }}</li>
+          {% endfor %}
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock content %}
