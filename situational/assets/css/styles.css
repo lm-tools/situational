@@ -1,5 +1,5 @@
-body {
-  margin-top:50px;
+#start {
+    padding-top:50px;
 }
 
 label {
@@ -18,4 +18,8 @@ footer {
   bottom:0;
   left:0;
   right:0;
+}
+
+.vertical.tabs {
+    height:100%;
 }
