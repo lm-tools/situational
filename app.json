@@ -4,5 +4,7 @@
   "env":{
       "DJANGO_SETTINGS_MODULE": "situational.settings.heroku"
   },
-  "addons":[]
+   "addons":[
+    "heroku-postgresql:hobby-dev"
+  ]
 }
