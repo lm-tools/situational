@@ -97,6 +97,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'basicauth.basic_auth_middleware.BasicAuthMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -104,6 +105,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
+BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
 
 ROOT_URLCONF = 'situational.urls'
 
@@ -129,6 +133,7 @@ INSTALLED_APPS = (
 PROJECT_APPS = (
     'report',
     'travel_times',
+    'basicauth',
 )
 
 INSTALLED_APPS += PROJECT_APPS
