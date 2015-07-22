@@ -1,6 +1,7 @@
 import sys
 from os import environ
 from os.path import join, abspath, dirname
+from django.core.exceptions import ImproperlyConfigured
 
 # PATH vars
 
@@ -96,6 +97,12 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
+BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
+BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
+BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED') == 'True'
+if BASICAUTH_DISABLED == False and not all((BASICAUTH_USERNAME, BASICAUTH_PASSWORD)):
+    raise ImproperlyConfigured("Please specify a HTTP username and password")
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -104,6 +111,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+if not BASICAUTH_DISABLED:
+    MIDDLEWARE_CLASSES = tuple(['basicauth.basic_auth_middleware.BasicAuthMiddleware']+list(MIDDLEWARE_CLASSES))
 
 ROOT_URLCONF = 'situational.urls'
 
@@ -129,6 +138,7 @@ INSTALLED_APPS = (
 PROJECT_APPS = (
     'report',
     'travel_times',
+    'basicauth',
 )
 
 INSTALLED_APPS += PROJECT_APPS
