@@ -1,6 +1,7 @@
 import sys
 from os import environ
 from os.path import join, abspath, dirname
+from django.core.exceptions import ImproperlyConfigured
 
 # PATH vars
 
@@ -108,6 +109,8 @@ MIDDLEWARE_CLASSES = (
 
 BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
 BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
+if BASICAUTH_USERNAME == None or BASICAUTH_PASSWORD == None:
+    raise ImproperlyConfigured("Please specify a HTTP username and password")
 BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED') == 'True'
 
 ROOT_URLCONF = 'situational.urls'
