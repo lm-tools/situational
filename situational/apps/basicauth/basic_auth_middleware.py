@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.conf import settings
 
+
 class BasicAuthMiddleware(object):
 
 
@@ -13,8 +14,6 @@ class BasicAuthMiddleware(object):
 
     def process_request(self,request):
         import base64
-        if settings.BASICAUTH_DISABLED == True:
-            return None
         if not 'HTTP_AUTHORIZATION' in request.META:
             return self.unauthed()
         else:
