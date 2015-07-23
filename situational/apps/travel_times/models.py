@@ -25,50 +25,31 @@ class TravelTimesMap(models.Model):
         self.image.open()
         return self.image.read()
 
-    class Meta:
-        unique_together = (
-            ('postcode', 'width', 'height'),
-            )
 
-
-class TravelTimesMapRepository(object):
-    def get(self, postcode, width, height):
-        travel_times_map, _created = TravelTimesMap.objects.get_or_create(
-            postcode=postcode,
-            width=width,
-            height=height,
-            )
-
-        if not travel_times_map.image:
-            populator = TravelTimesMapPopulator()
-            travel_times_map = populator.populate(travel_times_map)
-
-        return travel_times_map
-
-
-class TravelTimesMapPopulator(object):
-    def __init__(self, client=None):
-        if not client:
-            client = getattr(settings, 'MAPUMENTAL_CLIENT', mapumental.Client)
+    def download_image(self):
+        client = getattr(settings, 'MAPUMENTAL_CLIENT', mapumental.Client)
         self.client = client()
-        self.depart_at = '0800'
-        self.arrive_before = '0930'
+        depart_at = getattr(settings, 'MAPUMENTAL_DEPART_AT', '0800')
+        arrive_before = getattr(
+            settings, 'MAPUMENTAL_ARRIVE_BEFORE', '0930')
 
-    def populate(self, map):
-        image = self.client.get(
-            map.postcode,
-            map.width,
-            map.height,
-            self.depart_at,
-            self.arrive_before,
-            )
+        image = client.get(
+            self.postcode,
+            self.width,
+            self.height,
+            depart_at,
+            arrive_before,
+        )
 
-        map.mime_type = image.mime_type
-        map.image.save(
-            "%s-w%s-h%s" % (map.postcode, map.width, map.height),
+        self.mime_type = image.mime_type
+        self.image.save(
+            "%s-w%s-h%s" % (self.postcode, self.width, self.height),
             File(image.file),
             False,
             )
-        map.save()
+        self.save()
 
-        return map
+    class Meta:
+        unique_together = (
+            ('postcode', 'width', 'height'),
+        )

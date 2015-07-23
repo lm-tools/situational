@@ -1,8 +1,7 @@
 from django.http import HttpResponse
 from django.views.generic import View
 
-from travel_times.models import TravelTimesMapRepository
-
+from .models import TravelTimesMap
 
 class MapView(View):
     default_width = '1200'
@@ -14,7 +13,10 @@ class MapView(View):
         width = request.GET.get('width', self.default_width)
         height = request.GET.get('height', self.default_height)
 
-        repo = TravelTimesMapRepository()
-        travel_map = repo.get(postcode, width, height)
+        travel_map, _created = TravelTimesMap.objects.get_or_create(
+            postcode=postcode,
+            width=width,
+            height=height,
+        )
 
         return HttpResponse(travel_map.read_image(), travel_map.mime_type)
