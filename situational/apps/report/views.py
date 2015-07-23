@@ -5,6 +5,7 @@ from django.views.generic import FormView
 
 from report import helpers
 from report import forms
+from report import models
 
 
 class PostcodeLookupView(FormView):
@@ -22,7 +23,21 @@ class PostcodeLookupView(FormView):
 
 
 class ReportView(TemplateView):
-    template_name = "report/report_view.html"
+    def get(self, request, *args, **kwargs):
+        report = models.Report(kwargs['postcode'])
+
+        if report.is_populated:
+            status_code = 200
+            self.template_name = "report/report_view.html"
+        else:
+            report.populate_async()
+            status_code = 202
+            self.template_name = "report/report_pending.html"
+
+        response = super().get(request, *args, **kwargs)
+        response.status_code = status_code
+
+        return response
 
     def get_context_data(self, **kwargs):
         context = kwargs
