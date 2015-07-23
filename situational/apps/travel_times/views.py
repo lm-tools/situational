@@ -18,5 +18,7 @@ class MapView(View):
             width=width,
             height=height,
         )
+        if not travel_map.has_image:
+            travel_map.download_image()
 
         return HttpResponse(travel_map.read_image(), travel_map.mime_type)

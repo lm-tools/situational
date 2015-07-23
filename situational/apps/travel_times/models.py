@@ -25,6 +25,9 @@ class TravelTimesMap(models.Model):
         self.image.open()
         return self.image.read()
 
+    @property
+    def has_image(self):
+        return bool(self.image)
 
     def download_image(self):
         client = getattr(settings, 'MAPUMENTAL_CLIENT', mapumental.Client)
