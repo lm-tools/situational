@@ -17,7 +17,7 @@ class Report():
                 postcode=self.postcode,
                 width=MapView.default_width,
                 height=MapView.default_height,
-                )
+            )
             self._travel_times_map = travel_times_map
         return self._travel_times_map
 

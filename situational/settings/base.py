@@ -3,11 +3,18 @@ from os import environ
 from os.path import join, abspath, dirname
 from django.core.exceptions import ImproperlyConfigured
 
-# PATH vars
 
-here = lambda *x: join(abspath(dirname(__file__)), *x)
+# PATH vars
+def here(x):
+    return join(abspath(dirname(__file__)), *x)
+
+
 PROJECT_ROOT = here("..")
-root = lambda *x: join(abspath(PROJECT_ROOT), *x)
+
+
+def root(x):
+    return join(abspath(PROJECT_ROOT), *x)
+
 
 sys.path.insert(0, root('apps'))
 
@@ -115,8 +122,9 @@ MIDDLEWARE_CLASSES = (
 )
 if not BASICAUTH_DISABLED:
     MIDDLEWARE_CLASSES = tuple(
-        ['basicauth.basic_auth_middleware.BasicAuthMiddleware']
-        + list(MIDDLEWARE_CLASSES)
+        [
+            'basicauth.basic_auth_middleware.BasicAuthMiddleware',
+        ] + list(MIDDLEWARE_CLASSES)
     )
 
 ROOT_URLCONF = 'situational.urls'

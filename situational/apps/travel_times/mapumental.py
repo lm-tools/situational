@@ -43,6 +43,6 @@ class FakeClient(object):
         image_path = os.path.join(
             os.path.dirname(__file__),
             'mapumental_dummy_map_N41AA.png',
-            )
+        )
         image_file = open(image_path, 'rb')
         return Image(image_file, 'image/png')
