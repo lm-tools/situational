@@ -15,4 +15,3 @@ class TestCelery(TestCase):
         download_map_image(test_map)
         test_map.refresh_from_db()
         self.assertTrue(test_map.image)
-

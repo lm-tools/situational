@@ -3,6 +3,7 @@ from django.views.generic import View
 
 from .models import TravelTimesMap
 
+
 class MapView(View):
     default_width = '1200'
     default_height = '1200'

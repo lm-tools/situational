@@ -100,7 +100,9 @@ TEMPLATE_LOADERS = (
 BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
 BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
 BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED') == 'True'
-if BASICAUTH_DISABLED == False and not all((BASICAUTH_USERNAME, BASICAUTH_PASSWORD)):
+
+if BASICAUTH_DISABLED is False \
+        and all((BASICAUTH_USERNAME, BASICAUTH_PASSWORD)) is False:
     raise ImproperlyConfigured("Please specify a HTTP username and password")
 
 MIDDLEWARE_CLASSES = (
@@ -112,7 +114,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 if not BASICAUTH_DISABLED:
-    MIDDLEWARE_CLASSES = tuple(['basicauth.basic_auth_middleware.BasicAuthMiddleware']+list(MIDDLEWARE_CLASSES))
+    MIDDLEWARE_CLASSES = tuple(
+        ['basicauth.basic_auth_middleware.BasicAuthMiddleware']
+        + list(MIDDLEWARE_CLASSES)
+    )
 
 ROOT_URLCONF = 'situational.urls'
 
@@ -177,7 +182,8 @@ LOGGING = {
 # EMAILS
 
 # Jobs API
-JOBS_API_BASE_URL = environ.get('JOBS_API_BASE_URL', 'https://lmt-jobs-api.herokuapp.com')
+JOBS_API_BASE_URL = environ.get('JOBS_API_BASE_URL',
+                                'https://lmt-jobs-api.herokuapp.com')
 
 # MAPUMENTAL
 MAPUMENTAL_API_KEY = environ.get('MAPUMENTAL_API_KEY')
