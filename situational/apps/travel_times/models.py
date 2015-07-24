@@ -16,7 +16,7 @@ class TravelTimesMap(models.Model):
         height_field='actual_height',
         null=True,
         upload_to='travel_times_maps',
-        )
+    )
     actual_width = models.IntegerField(null=True)
     actual_height = models.IntegerField(null=True)
     mime_type = models.CharField(max_length=255, null=True)
@@ -49,7 +49,7 @@ class TravelTimesMap(models.Model):
             "%s-w%s-h%s" % (self.postcode, self.width, self.height),
             File(image.file),
             False,
-            )
+        )
         self.save()
 
     class Meta:
