@@ -196,6 +196,9 @@ JOBS_API_BASE_URL = environ.get('JOBS_API_BASE_URL',
 # MAPUMENTAL
 MAPUMENTAL_API_KEY = environ.get('MAPUMENTAL_API_KEY')
 
+BROKER_URL = environ.get('REDISTOGO_URL',
+                         'redis://localhost:6379/0')
+
 from travel_times import mapumental
 if environ.get('ENABLE_MAPUMENTAL'):
     MAPUMENTAL_CLIENT = mapumental.Client
