@@ -5,14 +5,14 @@ from django.core.exceptions import ImproperlyConfigured
 
 
 # PATH vars
-def here(x):
+def here(*x):
     return join(abspath(dirname(__file__)), *x)
 
 
 PROJECT_ROOT = here("..")
 
 
-def root(x):
+def root(*x):
     return join(abspath(PROJECT_ROOT), *x)
 
 
