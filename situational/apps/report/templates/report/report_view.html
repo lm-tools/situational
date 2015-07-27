@@ -21,7 +21,6 @@
 {% endblock nav %}
 
 {% block content %}
-
 <ul class="tabs vertical" data-tab>
   <li class="tab-title active"><a href="#map">Travel time</a></li>
   <li class="tab-title"><a href="#job-summary">Jobs summary</a></li>
@@ -31,7 +30,7 @@
   <div class="content active" id="map">
     <div class="row">
       <div class="columns large-11 small-9">
-        {# <h1>{{place_name.Name}}</h1> #}
+        {# <h1>{{ report.place_name.Name }}</h1> #}
         <img src="{% url "travel_times:map" postcode=postcode %}"></img>
       </div>
     </div>
@@ -42,21 +41,21 @@
 
         <h3>Top Sectors</h3>
         <ol>
-          {% for category in top_categories %}
+          {% for category in report.top_categories %}
             <li>{{ category.category }} ({{ category.count }})</li>
           {% endfor %}
         </ol>
 
         <h3>Latest Jobs</h3>
         <ol>
-          {% for job in latest_jobs %}
+          {% for job in report.latest_jobs %}
             <li>{{ job.title|title }}</li>
           {% endfor %}
         </ol>
 
         <h3>Top Companies</h3>
         <ol>
-          {% for company in top_companies %}
+          {% for company in report.top_companies %}
             <li>{{ company.company_name }}</li>
           {% endfor %}
         </ol>
@@ -66,3 +65,5 @@
 </div>
 
 {% endblock content %}
+
+
