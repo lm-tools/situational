@@ -5,6 +5,7 @@
       "DJANGO_SETTINGS_MODULE": "situational.settings.heroku"
   },
    "addons":[
-    "heroku-postgresql:hobby-dev"
+    "heroku-postgresql:hobby-dev",
+    "redistogo:nano"
   ]
 }
