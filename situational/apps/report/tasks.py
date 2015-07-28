@@ -3,7 +3,8 @@ from django.db import transaction
 from celery import shared_task
 from celery.utils.log import get_task_logger
 
-from travel_times.tasks import download_map_image
+from travel_times.models import TravelTimesMap
+from travel_times.views import MapView
 
 from report import helpers
 
@@ -13,8 +14,6 @@ logger = get_task_logger(__name__)
 @shared_task
 def populate_report(report):
     logger.debug("Populating a new report")
-    if not report.get_travel_times_map().has_image:
-        download_map_image.delay(report.travel_times_map)
 
     if not report.location_json:
         logger.debug("No Location JSON yet, getting it form MaPit")
@@ -22,10 +21,25 @@ def populate_report(report):
         report.save(update_fields=['location_json'])
 
     logger.debug("Running all the sub tasks")
+    travel_times_map.delay(report)
     place_name.delay(report)
     top_categories.delay(report)
     top_companies.delay(report)
     latest_jobs.delay(report)
+
+
+@shared_task
+def travel_times_map(report):
+    logger.debug("Getting travel times map")
+    travel_times_map, _created = TravelTimesMap.objects.get_or_create(
+        postcode=report.postcode,
+        width=MapView.default_width,
+        height=MapView.default_height,
+    )
+    if not travel_times_map.has_image:
+        travel_times_map.download_image()
+    report.travel_times_map = travel_times_map
+    report.save(update_fields=['travel_times_map'])
 
 
 @shared_task

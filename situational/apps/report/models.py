@@ -4,8 +4,6 @@ from jsonfield import JSONField
 from model_utils.models import TimeStampedModel
 
 from travel_times.models import TravelTimesMap
-from travel_times.views import MapView
-from travel_times.tasks import download_map_image
 
 from report import tasks
 
@@ -26,22 +24,11 @@ class Report(TimeStampedModel):
             self.save()
             tasks.populate_report.delay(self)
 
-    def get_travel_times_map(self):
-        if not self.travel_times_map:
-            travel_times_map, _created = TravelTimesMap.objects.get_or_create(
-                postcode=self.postcode,
-                width=MapView.default_width,
-                height=MapView.default_height,
-            )
-            self.travel_times_map = travel_times_map
-            self.save()
-        return self.travel_times_map
-
     @property
     def is_populated(self):
         self.refresh_from_db()
         all_populated = all((
-            self.get_travel_times_map().has_image,
+            self.travel_times_map and self.travel_times_map.has_image,
             self.place_name,
             self.location_json,
             self.top_categories != '',
