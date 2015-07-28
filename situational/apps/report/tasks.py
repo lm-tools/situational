@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.db import transaction
 
 from celery import chord, shared_task
 from celery.utils.log import get_task_logger
+from redlock import Redlock
 
 from travel_times.models import TravelTimesMap
 from travel_times.views import MapView
@@ -9,18 +11,18 @@ from travel_times.views import MapView
 from report import helpers
 
 logger = get_task_logger(__name__)
+population_timeout = settings.REPORT_POPULATION_TIMEOUT
+dlm = Redlock([settings.REDIS_URL])  # Distibuted Lock Manager
 
 
 @shared_task
 def populate_report(report):
-    if report.is_populating:
+    lock = dlm.lock("populate-report-%s" % report.postcode, population_timeout)
+    if not lock:
         logger.debug("Report '%s' is already populating" % report.postcode)
         return
 
     logger.debug("Populating report '%s'" % report.postcode)
-
-    report.is_populating = True
-    report.save(update_fields=['is_populating'])
 
     if not report.location_json:
         logger.debug("No Location JSON yet, getting it form MaPit")
@@ -35,14 +37,16 @@ def populate_report(report):
         top_companies.si(report),
         latest_jobs.si(report),
     )
-    chord(sub_tasks, release_lock.si(report)).delay()
+    callback = release_lock.si(report.postcode, lock)
+    for task in sub_tasks + (callback,):
+        task.set(expires=population_timeout)
+    chord(sub_tasks, callback).delay()
 
 
 @shared_task
-def release_lock(report):
-    logger.debug("Releasing lock for report '%s'" % report.postcode)
-    report.is_populating = False
-    report.save(update_fields=['is_populating'])
+def release_lock(postcode, lock):
+    logger.debug("Releasing lock for report '%s'" % postcode)
+    dlm.unlock(lock)
 
 
 @shared_task

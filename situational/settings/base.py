@@ -205,8 +205,12 @@ if environ.get('ENABLE_MAPUMENTAL'):
 else:
     MAPUMENTAL_CLIENT = mapumental.FakeClient
 
-# CELERY
-CELERY_RESULT_BACKEND = environ.get('CELERY_RESULT_BACKEND', 'redis://')
+# REDIS
+REDIS_URL = environ.get('REDIS_URL', 'redis://')
+
+# REPORT POPULATION
+REPORT_POPULATION_TIMEOUT = int(environ.get('REPORT_POPULATION_TIMEOUT', 5000))
+
 
 # .local.py overrides all the common settings.
 try:
