@@ -29,7 +29,7 @@ class Report(TimeStampedModel):
         all_populated = all((
             self.travel_times_map and self.travel_times_map.has_image,
             self.place_name,
-            self.location_json,
+            self.location_json != '',
             self.top_categories != '',
             self.top_companies != '',
             self.latest_jobs != '',
