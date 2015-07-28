@@ -7,6 +7,6 @@ class TestReportModel(TestCase):
     def test_get_item(self):
         r = Report(postcode='SW1A 1AA')
         r.save()
-        # r['location'] = "foo"
-        r.populate_async()
+        r.populate_async()  # celery runs tasks synchronously for tests
+        r.refresh_from_db()
         self.assertTrue(r.is_populated)

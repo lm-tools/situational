@@ -26,7 +26,6 @@ class Report(TimeStampedModel):
 
     @property
     def is_populated(self):
-        self.refresh_from_db()
         all_populated = all((
             self.travel_times_map and self.travel_times_map.has_image,
             self.place_name,
