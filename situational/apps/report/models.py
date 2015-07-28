@@ -19,14 +19,11 @@ class Report(TimeStampedModel):
     is_populating = models.BooleanField(default=False)
 
     def populate_async(self):
-        if not self.is_populating:
-            self.is_populating = True
-            self.save()
-            tasks.populate_report.delay(self)
+        tasks.populate_report.delay(self)
 
     @property
     def is_populated(self):
-        all_populated = all((
+        return all((
             self.travel_times_map and self.travel_times_map.has_image,
             self.place_name,
             self.location_json != '',
@@ -34,8 +31,3 @@ class Report(TimeStampedModel):
             self.top_companies != '',
             self.latest_jobs != '',
         ))
-
-        if all_populated and self.is_populating:
-            self.is_populating = False
-            self.save()
-        return all_populated

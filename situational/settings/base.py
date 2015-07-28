@@ -205,6 +205,9 @@ if environ.get('ENABLE_MAPUMENTAL'):
 else:
     MAPUMENTAL_CLIENT = mapumental.FakeClient
 
+# CELERY
+CELERY_RESULT_BACKEND = environ.get('CELERY_RESULT_BACKEND', 'redis://')
+
 # .local.py overrides all the common settings.
 try:
     from .local import *

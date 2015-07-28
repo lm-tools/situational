@@ -1,6 +1,6 @@
 from django.db import transaction
 
-from celery import shared_task
+from celery import chord, shared_task
 from celery.utils.log import get_task_logger
 
 from travel_times.models import TravelTimesMap
@@ -13,7 +13,14 @@ logger = get_task_logger(__name__)
 
 @shared_task
 def populate_report(report):
-    logger.debug("Populating a new report")
+    if report.is_populating:
+        logger.debug("Report '%s' is already populating" % report.postcode)
+        return
+
+    logger.debug("Populating report '%s'" % report.postcode)
+
+    report.is_populating = True
+    report.save(update_fields=['is_populating'])
 
     if not report.location_json:
         logger.debug("No Location JSON yet, getting it form MaPit")
@@ -21,11 +28,21 @@ def populate_report(report):
         report.save(update_fields=['location_json'])
 
     logger.debug("Running all the sub tasks")
-    travel_times_map.delay(report)
-    place_name.delay(report)
-    top_categories.delay(report)
-    top_companies.delay(report)
-    latest_jobs.delay(report)
+    sub_tasks = (
+        travel_times_map.si(report),
+        place_name.si(report),
+        top_categories.si(report),
+        top_companies.si(report),
+        latest_jobs.si(report),
+    )
+    chord(sub_tasks, release_lock.si(report)).delay()
+
+
+@shared_task
+def release_lock(report):
+    logger.debug("Releasing lock for report '%s'" % report.postcode)
+    report.is_populating = False
+    report.save(update_fields=['is_populating'])
 
 
 @shared_task
