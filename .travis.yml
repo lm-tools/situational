@@ -11,3 +11,5 @@ cache:
   directories:
     - /home/travis/virtualenv
     - $HOME/.pip-cache/
+services:
+  - redis-server
