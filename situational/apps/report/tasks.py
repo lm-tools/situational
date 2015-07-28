@@ -19,14 +19,13 @@ def populate_report(report):
     if not report.location_json:
         logger.debug("No Location JSON yet, getting it form MaPit")
         report.location_json = helpers.geocode(report.postcode)
-        report.save()
-        populate_report.delay(report)
-    else:
-        logger.debug("Running all the sub tasks")
-        place_name.delay(report)
-        top_categories.delay(report)
-        top_companies.delay(report)
-        latest_jobs.delay(report)
+        report.save(update_fields=['location_json'])
+
+    logger.debug("Running all the sub tasks")
+    place_name.delay(report)
+    top_categories.delay(report)
+    top_companies.delay(report)
+    latest_jobs.delay(report)
 
 
 @shared_task
