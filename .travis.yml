@@ -5,8 +5,7 @@ python:
   - "3.4"
 install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache
 script:
-  - pep8 . --exclude=migrations --ignore=E402
-  - python manage.py test
+  - ./build.sh
 cache:
   directories:
     - /home/travis/virtualenv
