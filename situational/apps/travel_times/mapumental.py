@@ -10,16 +10,17 @@ class Client(object):
     def __init__(self):
         self.api_key = settings.MAPUMENTAL_API_KEY
 
-    def get(self, postcode, width, height, depart_at, arrive_before):
+    def get(self, postcode, width, height, depart_at, max_travel_time):
         url = 'https://api.mapumental.com/static_map/'
         params = self._params({
             "postcodes": postcode,
             "direction": "depart_after",
             "time": depart_at,
-            "limit_time": arrive_before,
+            "max_travel_time": max_travel_time,
             "width": width,
             "height": height,
             "print_styles": "yes",
+            "band_minutes": round(max_travel_time / 5),
         })
         response = requests.get(url, params=params)
         image_data_io = BytesIO(response.content)

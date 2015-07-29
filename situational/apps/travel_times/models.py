@@ -40,7 +40,7 @@ class TravelTimesMap(models.Model):
             self.width,
             self.height,
             constants.DEPART_AT,
-            constants.ARRIVE_BEFORE,
+            constants.MAX_TRAVEL_TIME,
         )
 
         self.mime_type = image.mime_type
