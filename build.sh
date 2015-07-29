@@ -6,4 +6,4 @@ echo "Running tests..."
 python manage.py test
 
 echo "Running pep8..."
-pep8 . --exclude=migrations --ignore=E402
+pep8 .
