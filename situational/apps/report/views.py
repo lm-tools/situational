@@ -24,13 +24,15 @@ class PostcodeLookupView(FormView):
 
 class ReportView(TemplateView):
     def get(self, request, *args, **kwargs):
-        report = models.Report(kwargs['postcode'])
+        self.report, _created = models.Report.objects.get_or_create(
+            postcode=kwargs['postcode']
+        )
 
-        if report.is_populated:
+        if self.report.is_populated:
             status_code = 200
             self.template_name = "report/report_view.html"
         else:
-            report.populate_async()
+            self.report.populate_async()
             status_code = 202
             self.template_name = "report/report_pending.html"
 
@@ -41,13 +43,5 @@ class ReportView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = kwargs
-        context['location'] = helpers.geocode(context['postcode'])
-        context['place_name'] = \
-            helpers.place_name_from_location(**context['location'])
-        context['top_categories'] = \
-            helpers.top_categories_for_postcode(context['postcode'])
-        context['top_companies'] = \
-            helpers.top_companies_for_postcode(context['postcode'])
-        context['latest_jobs'] = \
-            helpers.latest_jobs_for_postcode(context['postcode'])
+        context['report'] = self.report
         return context

@@ -6,6 +6,6 @@
   },
    "addons":[
     "heroku-postgresql:hobby-dev",
-    "redistogo:nano"
+    "rediscloud:30"
   ]
 }

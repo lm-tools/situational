@@ -1,26 +1,33 @@
+from django.db import models
+
+from jsonfield import JSONField
+from model_utils.models import TimeStampedModel
+
 from travel_times.models import TravelTimesMap
-from travel_times.views import MapView
-from travel_times.tasks import download_map_image
+
+from report import tasks
 
 
-class Report():
-    def __init__(self, postcode):
-        self.postcode = postcode
+class Report(TimeStampedModel):
+    postcode = models.CharField(blank=False, null=False, max_length=14)
+    place_name = models.CharField(blank=True, max_length=255)
+    location_json = JSONField()
+    top_categories = JSONField()
+    top_companies = JSONField()
+    latest_jobs = JSONField()
+    travel_times_map = models.ForeignKey(TravelTimesMap, null=True)
+    is_populating = models.BooleanField(default=False)
 
     def populate_async(self):
-        download_map_image.delay(self.travel_times_map)
-
-    @property
-    def travel_times_map(self):
-        if not hasattr(self, '_travel_times_map'):
-            travel_times_map, _created = TravelTimesMap.objects.get_or_create(
-                postcode=self.postcode,
-                width=MapView.default_width,
-                height=MapView.default_height,
-            )
-            self._travel_times_map = travel_times_map
-        return self._travel_times_map
+        tasks.populate_report.delay(self)
 
     @property
     def is_populated(self):
-        return self.travel_times_map.has_image
+        return all((
+            self.travel_times_map and self.travel_times_map.has_image,
+            self.place_name,
+            self.location_json != '',
+            self.top_categories != '',
+            self.top_companies != '',
+            self.latest_jobs != '',
+        ))

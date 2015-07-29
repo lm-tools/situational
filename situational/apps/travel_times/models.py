@@ -8,7 +8,8 @@ from travel_times import mapumental
 class TravelTimesMap(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    postcode = models.CharField(blank=False, max_length=10, null=False)
+    postcode = models.CharField(
+        blank=False, max_length=10, null=False, db_index=True)
     width = models.IntegerField(blank=False, null=False)
     height = models.IntegerField(blank=False, null=False)
     image = models.ImageField(
