@@ -17,12 +17,12 @@ dlm = Redlock([settings.REDIS_URL])  # Distibuted Lock Manager
 
 @shared_task
 def populate_report(report):
-    lock = dlm.lock("populate-report-%s" % report.postcode, population_timeout)
+    lock = dlm.lock("populate-report-{}".format(report.pk), population_timeout)
     if not lock:
         logger.debug("Report '%s' is already populating" % report.postcode)
         return
 
-    logger.debug("Populating report '%s'" % report.postcode)
+    logger.debug("Populating report '{}'".format(report.postcode))
 
     if not report.location_json:
         logger.debug("No Location JSON yet, getting it form MaPit")
@@ -37,15 +37,15 @@ def populate_report(report):
         top_companies.si(report),
         latest_jobs.si(report),
     )
-    callback = release_lock.si(report.postcode, lock)
+    callback = release_lock.si(report.pk, lock)
     for task in sub_tasks + (callback,):
         task.set(expires=population_timeout)
     chord(sub_tasks, callback).delay()
 
 
 @shared_task
-def release_lock(postcode, lock):
-    logger.debug("Releasing lock for report '%s'" % postcode)
+def release_lock(identifier, lock):
+    logger.debug("Releasing lock for report '{}'".format(identifier))
     dlm.unlock(lock)
 
 
