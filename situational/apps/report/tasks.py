@@ -6,7 +6,7 @@ from celery.utils.log import get_task_logger
 from redlock import Redlock
 
 from travel_times.models import TravelTimesMap
-from travel_times.views import MapView
+from travel_times import constants
 
 from report import helpers
 
@@ -54,8 +54,8 @@ def travel_times_map(report):
     logger.debug("Getting travel times map")
     travel_times_map, _created = TravelTimesMap.objects.get_or_create(
         postcode=report.postcode,
-        width=MapView.default_width,
-        height=MapView.default_height,
+        width=constants.MAP_WIDTH,
+        height=constants.MAP_HEIGHT,
     )
     if not travel_times_map.has_image:
         travel_times_map.download_image()
