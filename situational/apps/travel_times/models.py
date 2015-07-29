@@ -2,6 +2,7 @@ from django.core.files import File
 from django.conf import settings
 from django.db import models
 
+from travel_times import constants
 from travel_times import mapumental
 
 
@@ -32,17 +33,14 @@ class TravelTimesMap(models.Model):
 
     def download_image(self):
         client = getattr(settings, 'MAPUMENTAL_CLIENT', mapumental.Client)
-        self.client = client()
-        depart_at = getattr(settings, 'MAPUMENTAL_DEPART_AT', '0800')
-        arrive_before = getattr(
-            settings, 'MAPUMENTAL_ARRIVE_BEFORE', '0930')
+        client = client()
 
         image = client.get(
             self.postcode,
             self.width,
             self.height,
-            depart_at,
-            arrive_before,
+            constants.DEPART_AT,
+            constants.ARRIVE_BEFORE,
         )
 
         self.mime_type = image.mime_type
