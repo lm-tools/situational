@@ -19,6 +19,7 @@ class Client(object):
             "limit_time": arrive_before,
             "width": width,
             "height": height,
+            "print_styles": "yes",
         })
         response = requests.get(url, params=params)
         image_data_io = BytesIO(response.content)
