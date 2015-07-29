@@ -23,7 +23,7 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 AWS_S3_HOST = os.environ['AWS_S3_HOST']
 
-REDIS_URL = os.environ['REDISTOGO_URL']
+REDIS_URL = os.environ['REDISCLOUD_URL']
 
 LOGGING = {
     'version': 1,
