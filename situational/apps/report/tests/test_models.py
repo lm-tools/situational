@@ -8,16 +8,15 @@ from report.models import Report
 from travel_times.models import TravelTimesMap
 
 
-class TestReportModel(TestCase):
-    def test_population(self):
-        r = Report(postcode='SW1A 1AA')
-        r.save()
-        r.populate_async()  # celery runs tasks synchronously for tests
-        r.refresh_from_db()
-        self.assertTrue(r.is_populated)
+class ReportBuilderMixin():
+    all_field_names = (
+        'location_json',
+        'top_categories',
+        'top_companies',
+        'latest_jobs',
+        'travel_times_map',
+    )
 
-
-class TestReportIsPopulated(TestCase):
     def _dummy_travel_times_map(self):
         travel_times_map, created = TravelTimesMap.objects.get_or_create(
             postcode='SW1A 1AA',
@@ -46,6 +45,17 @@ class TestReportIsPopulated(TestCase):
             del populated_fields[field]
         return Report(**populated_fields)
 
+
+class TestReportModel(TestCase):
+    def test_population(self):
+        r = Report(postcode='SW1A 1AA')
+        r.save()
+        r.populate_async()  # celery runs tasks synchronously for tests
+        r.refresh_from_db()
+        self.assertTrue(r.is_populated)
+
+
+class TestReportIsPopulated(ReportBuilderMixin, TestCase):
     def test_new_reports_are_considered_unpopulated(self):
         self.assertFalse(Report().is_populated)
 
@@ -53,11 +63,7 @@ class TestReportIsPopulated(TestCase):
         self.assertTrue(self._populated_report().is_populated)
 
     def test_reports_with_missing_fields_are_considered_unpopulated(self):
-        for field in ('location_json',
-                      'top_categories',
-                      'top_companies',
-                      'latest_jobs',
-                      'travel_times_map'):
+        for field in (self.all_field_names):
             with self.subTest(field=field):
                 report = self._populated_report(without=[field])
                 self.assertFalse(report.is_populated)
