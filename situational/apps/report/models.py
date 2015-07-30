@@ -10,7 +10,6 @@ from report import tasks
 
 class Report(TimeStampedModel):
     postcode = models.CharField(blank=False, null=False, max_length=14)
-    place_name = models.CharField(blank=True, max_length=255)
     location_json = JSONField()
     top_categories = JSONField()
     top_companies = JSONField()
@@ -25,7 +24,6 @@ class Report(TimeStampedModel):
     def is_populated(self):
         return all((
             self.travel_times_map and self.travel_times_map.has_image,
-            self.place_name,
             self.location_json != '',
             self.top_categories != '',
             self.top_companies != '',
