@@ -9,14 +9,6 @@ from travel_times.models import TravelTimesMap
 
 
 class ReportBuilderMixin():
-    all_field_names = (
-        'location_json',
-        'top_categories',
-        'top_companies',
-        'latest_jobs',
-        'travel_times_map',
-    )
-
     def _dummy_travel_times_map(self):
         travel_times_map, created = TravelTimesMap.objects.get_or_create(
             postcode='SW1A 1AA',
@@ -63,7 +55,7 @@ class TestReportIsPopulated(ReportBuilderMixin, TestCase):
         self.assertTrue(self._populated_report().is_populated)
 
     def test_reports_with_missing_fields_are_considered_unpopulated(self):
-        for field in (self.all_field_names):
+        for field in (Report.RESULT_FIELDS):
             with self.subTest(field=field):
                 report = self._populated_report(without=[field])
                 self.assertFalse(report.is_populated)
@@ -72,3 +64,17 @@ class TestReportIsPopulated(ReportBuilderMixin, TestCase):
         report = self._populated_report()
         report.travel_times_map.image = None
         self.assertFalse(report.is_populated)
+
+
+class TestReportPopulatedResultFields(ReportBuilderMixin, TestCase):
+    def test_all_result_fields_populated(self):
+        report = self._populated_report()
+        self.assertCountEqual(
+            report.populated_result_fields, Report.RESULT_FIELDS
+        )
+
+    def test_each_result_field_not_populated(self):
+        for field in Report.RESULT_FIELDS:
+            with self.subTest(field=field):
+                report = self._populated_report(without=[field])
+                self.assertNotIn(field, report.populated_result_fields)
