@@ -35,7 +35,6 @@ class TestReportIsPopulated(TestCase):
 
         return Report(
             postcode='SW1A 1AA',
-            place_name='Covent Garden',
             location_json='{"wgs84_lon": -0.141, "wgs84_lat": 51.501}',
             top_categories='[{"category": "Testing Jobs", "count": 165}]',
             top_companies='[{"company_name": "The Test Group"}]',
@@ -53,11 +52,6 @@ class TestReportIsPopulated(TestCase):
 
     def test_reports_with_all_contents_present_are_considered_populated(self):
         self.assertTrue(self._populated_report().is_populated)
-
-    def test_reports_without_place_name_are_considered_unpopulated(self):
-        self.assertFalse(
-            self._populated_report_without('place_name').is_populated
-        )
 
     def test_reports_without_location_json_are_considered_unpopulated(self):
         self.assertFalse(

@@ -32,7 +32,6 @@ def populate_report(report):
     logger.debug("Running all the sub tasks")
     sub_tasks = (
         travel_times_map.si(report),
-        place_name.si(report),
         top_categories.si(report),
         top_companies.si(report),
         latest_jobs.si(report),
@@ -61,17 +60,6 @@ def travel_times_map(report):
         travel_times_map.download_image()
     report.travel_times_map = travel_times_map
     report.save(update_fields=['travel_times_map'])
-
-
-@shared_task
-def place_name(report):
-    logger.debug("Getting place name")
-    report.place_name = helpers.place_name_from_location(
-        report.location_json['wgs84_lat'],
-        report.location_json['wgs84_lon'],
-    )['Name']
-    logger.debug("place_name set to {0}".format(report.place_name))
-    report.save(update_fields=['place_name'])
 
 
 @shared_task

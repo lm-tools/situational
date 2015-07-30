@@ -42,20 +42,6 @@ def geocode(postcode):
     return result
 
 
-def place_name_from_location(wgs84_lat, wgs84_lon):
-
-    url = base_url = constants.GAZE_URL
-    url += "?f=get_places_near;"
-    url += "lat={lat};lon={lon};number=100;distance=5".format(
-        lat=wgs84_lat,
-        lon=wgs84_lon,
-    )
-
-    results = csv.DictReader(io.TextIOWrapper(urlopen(url)))
-    for result in results:
-        return result
-
-
 def top_categories_for_postcode(postcode):
     base_url = settings.JOBS_API_BASE_URL
     url = "{0}/api/top_categories?postcode={1}".format(
