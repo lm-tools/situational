@@ -59,8 +59,10 @@ situational/settings/local.py
 situational/settings/production.py
 
 # collect static output directory
-situational/assets/
 situational/static/
+
+# media uploads
+situational/uploads
 
 .DS_Store
 

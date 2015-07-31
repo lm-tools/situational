@@ -2,6 +2,7 @@ from django import http
 from django.core.urlresolvers import reverse
 from django.views.generic import TemplateView
 from django.views.generic import FormView
+from django.views.generic import View
 
 from report import helpers
 from report import forms
@@ -45,3 +46,15 @@ class ReportView(TemplateView):
         context = kwargs
         context['report'] = self.report
         return context
+
+
+class ReportPopulatedResultFieldsView(View):
+    def get(self, request, *args, **kwargs):
+        try:
+            report = models.Report.objects.get(postcode=kwargs['postcode'])
+            return http.JsonResponse(
+                report.populated_result_fields,
+                safe=False
+            )
+        except models.Report.DoesNotExist:
+            return http.HttpResponseNotFound()

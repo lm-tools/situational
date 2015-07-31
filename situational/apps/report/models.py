@@ -17,15 +17,31 @@ class Report(TimeStampedModel):
     travel_times_map = models.ForeignKey(TravelTimesMap, null=True)
     is_populating = models.BooleanField(default=False)
 
+    RESULT_FIELDS = (
+        'location_json',
+        'top_categories',
+        'top_companies',
+        'latest_jobs',
+        'travel_times_map',
+    )
+
     def populate_async(self):
         tasks.populate_report.delay(self)
 
     @property
     def is_populated(self):
-        return all((
-            self.travel_times_map and self.travel_times_map.has_image,
-            self.location_json != '',
-            self.top_categories != '',
-            self.top_companies != '',
-            self.latest_jobs != '',
-        ))
+        return all(
+            self._is_result_field_populated(f) for f in self.RESULT_FIELDS
+        )
+
+    @property
+    def populated_result_fields(self):
+        return list(
+            f for f in self.RESULT_FIELDS if self._is_result_field_populated(f)
+        )
+
+    def _is_result_field_populated(self, field):
+        if field == 'travel_times_map':
+            return self.travel_times_map and self.travel_times_map.has_image
+        else:
+            return getattr(self, field) != ''

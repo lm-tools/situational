@@ -2,13 +2,28 @@
 {% load human_times %}
 
 {% block head %}
+<noscript>
   <meta http-equiv="refresh" content="2" />
+</noscript>
 {% endblock head %}
 
 {% block content %}
 <div class="row">
   <div class="columns large-11 small-9">
-    <p>Please wait while we generate your report...</p>
+    <h1>Please wait while we generate your report...</h1>
+    <ul>
+      <li>{% include "report/_result_field_pending.html" with field="location_json" message="Finding your postcode's location..." %}</li>
+      <li>{% include "report/_result_field_pending.html" with field="top_categories" message="Looking up top job categories..." %}</li>
+      <li>{% include "report/_result_field_pending.html" with field="top_companies" message="Looking up top employers..." %}</li>
+      <li>{% include "report/_result_field_pending.html" with field="latest_jobs" message="Finding latest jobs..." %}</li>
+      <li>{% include "report/_result_field_pending.html" with field="travel_times_map" message="Generating travel times map..." %}</li>
+    </ul>
   </div>
 </div>
 {% endblock content %}
+
+{% load staticfiles %}
+{% block javascript %}
+  {{ block.super }}
+  <script src="{% static 'js/report-pending.js' %}"></script>
+{% endblock %}
