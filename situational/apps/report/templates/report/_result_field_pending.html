@@ -1,0 +1,5 @@
+{% if field in report.populated_result_fields %}
+<span class='result-field result-field-populated'>{{ message }} Done</span>
+{% else %}
+<span class='result-field'>{{ message }}</span>
+{% endif %}
