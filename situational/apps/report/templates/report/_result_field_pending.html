@@ -1,5 +1,4 @@
-{% if field in report.populated_result_fields %}
-<span class='result-field result-field-populated'>{{ message }} Done</span>
-{% else %}
-<span class='result-field'>{{ message }}</span>
-{% endif %}
+<span data-result-field-name='{{ field }}'
+      class='result-field {% if field in report.populated_result_fields %}result-field--populated{% endif %}'>
+  {{ message }} <span class='result-field__done'>Done</span>
+</span>
