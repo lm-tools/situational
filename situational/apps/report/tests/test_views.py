@@ -1,10 +1,11 @@
 from unittest.mock import patch, PropertyMock
 
 from django.core.urlresolvers import reverse
-from django.test import TestCase
+
+from situational.testing import BaseCase
 
 
-class TestReportView(TestCase):
+class TestReportView(BaseCase):
 
     def test_get_with_populated_report(self):
         with patch('report.models.Report.is_populated',

@@ -1,0 +1,116 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: https://mapit.mysociety.org/postcode/SW1A%201AA
+  response:
+    body:
+      string: !!binary |
+        H4sIAABhslUC/8VX227iMBD9FSsv25W2lZ179o0iympL1e6iikeUEi9ECjaKHSFU9d93xgFKINxK
+        qvIA+DY+c3LmxH615mMVusMs1tZP4rEbjzJKw8jx3SAKwh/EGkmZJ2qhcNzqWtCjJjLXo0Ir6Hm1
+        Bg9t+PW9wItgbB7nCTRDz4/M2kKM0gw6bI+6bzhe7iYF9F3TG+YyLwx8Splt+8xhNkyZSaVHMuG4
+        X3/AWoS1Wrgtj5VOxRhh2hFAhK44h06DIqL4MX9n0Cv0EMegLYosg5ljLnge61SK4SQdT2CAmQBZ
+        NhTxlJsgiC9F9GUwgz95H8J5iOmXLBQn8h9py+lUCmUtE9X5AoexqRczPlzNf74nT3GepdAU2qpi
+        yeQcobxHWK+6XsXBxuDhyUIIBhg7J0vbO5wl25dlp8jljMdiC/uhRPcsOT/dznOZrmtT76xneiBb
+        E2szWQsfHW5GbeAhCgJrM/0BV3qaCqV5TigLt1Lv7OT+kCZJxkkvXsCCfjGD78dCzwpNWoCZXHUN
+        1ixVPPleT4pTw0pHjLNYJJvcPD5036XgNykFf58UelIkUpCWUnz6ki2OcrE1nxhgpwqhJuVeq29S
+        tm03aChhDFURQyFSPTRDlstcl1XE0IWNUAirxAoNDpjq40wcWvhRNrq9lgHnuGCyDdFhYn1dcdwB
+        5Eur4s4gZNSzPa8hVspg9bTAS9INHP8QLe0TCmWO4vh8z+hteIZdw866/s93DfszXYNcqQn87kv/
+        VPvolPYBR5Cm7ANC1emC0tt7A1UtZWIochzs23AYxpjv7pVOGwwCzhblyelE1l5kLgtAfQlNt49l
+        CbHQDmt4WlrmeRWEsSpErZhxbHP6cLeYQe+NdpghbcABlXC2hkbwXHSqCy5GF3lur9U2oPBYW0dN
+        KYezqFmfkGsk1P1TEZGHxeluU4UisitU9TX5jft82z6SHpMNMaf2i7QzMEgCGgZNvaJNrK8z3wbe
+        Sb27VUE1dlAzsWplE2xKhnnmBhPsVheU9q5JH+VqfbLP+Tgt539UKp3nvwaBuTA2xMrq8rlrM8zF
+        2nGiLSKwYGmFCDDdlCu81S1LA2CTDU0dpahyyzvBeE4UEd6u3wxQuHNPyusvCyLfY2//AQLeSJ+7
+        DwAA
+    headers:
+      Accept-Ranges: [bytes, bytes]
+      Access-Control-Allow-Origin: ['*']
+      Age: ['768949', '768949']
+      Cache-Control: [max-age=2419200]
+      Connection: [keep-alive]
+      Content-Encoding: [gzip]
+      Content-Length: ['858']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Sun, 02 Aug 2015 13:35:48 GMT']
+      Server: [nginx]
+      Vary: [Accept-Encoding]
+      x-url: [/postcode/SW1A%201AA]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: https://lmt-jobs-api.herokuapp.com/api/top_categories?postcode=SW1A%201AA
+  response:
+    body: {string: '[{"category":"Teaching Jobs","count":295},{"category":"IT Jobs","count":290},{"category":"Trade
+        & Construction Jobs","count":251},{"category":"Healthcare & Nursing Jobs","count":216},{"category":"Hospitality
+        & Catering Jobs","count":206}]'}
+    headers:
+      Allow: ['GET, HEAD, OPTIONS']
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      Date: ['Sun, 02 Aug 2015 13:35:50 GMT']
+      Server: [gunicorn/19.3.0]
+      Vary: ['Accept, Cookie']
+      Via: [1.1 vegur]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: https://lmt-jobs-api.herokuapp.com/api/top_companies?postcode=SW1A%201AA
+  response:
+    body: {string: '[{"company_name":"Headmasters"},{"company_name":"RUSH Hair and
+        Beauty"},{"company_name":"Virgin Active"},{"company_name":"Priory Group"},{"company_name":"Harrods"}]'}
+    headers:
+      Allow: ['GET, HEAD, OPTIONS']
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      Date: ['Sun, 02 Aug 2015 13:35:52 GMT']
+      Server: [gunicorn/19.3.0]
+      Vary: ['Accept, Cookie']
+      Via: [1.1 vegur]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: https://lmt-jobs-api.herokuapp.com/api/jobadverts?postcode=SW1A%201AA
+  response:
+    body: {string: '[{"created":"2015-08-02T13:45:06Z","company_name":null,"travelling_time":"-1","contract_time":null,"category":"Hospitality
+        & Catering Jobs","title":"Can you make serving fun?"},{"created":"2015-08-02T13:40:54Z","company_name":null,"travelling_time":"-1","contract_time":null,"category":"Other/General
+        Jobs","title":"Experienced life guard needed for immediate start on weekends"},{"created":"2015-08-02T13:37:32Z","company_name":null,"travelling_time":"-1","contract_time":null,"category":"Domestic
+        help & Cleaning Jobs","title":"HOUSEKEEPER and HANDYMAN COUPLE"},{"created":"2015-08-02T13:37:32Z","company_name":null,"travelling_time":"-1","contract_time":null,"category":"Domestic
+        help & Cleaning Jobs","title":"Housekeeper / Cleaner Required"},{"created":"2015-08-02T13:29:19Z","company_name":null,"travelling_time":"-1","contract_time":null,"category":"Other/General
+        Jobs","title":"Immediate Start Prestigious venue SIA Security Officer 7 days
+        1900 - 0000 2 month contract"}]'}
+    headers:
+      Allow: ['GET, HEAD, OPTIONS']
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      Date: ['Sun, 02 Aug 2015 13:35:53 GMT']
+      Server: [gunicorn/19.3.0]
+      Vary: ['Accept, Cookie']
+      Via: [1.1 vegur]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+version: 1
