@@ -13,12 +13,14 @@
   }
 
   function updateResultFields(populatedFields) {
+    var allFieldsPopulated = true;
     $resultFields.each(function () {
       var $this = $(this),
         isPopulated = (populatedFields.indexOf($this.data("resultFieldName")) != -1);
       $(this).toggleClass("result-field--populated", isPopulated);
+      allFieldsPopulated = allFieldsPopulated && isPopulated;
     });
-    if (populatedFields.length == resultFieldsLength) {
+    if (allFieldsPopulated) {
       window.clearInterval(updateIntervalId);
       window.location.reload();
     }
