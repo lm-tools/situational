@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<style>
+  .result_item {
+    clear:both;
+  }
+  .result_item+.result_item {
+    border-top:1px solid #000;
+  }
+
+  .result_item .switch {
+    margin:50px;
+  }
+
+  .removed * {
+    color:#DDD !important;
+  }
+
+</style>
+
+<form id="results" class="row" action="{% url "soc_code_info" %}">
+  <h1>Related job sectors</h1>
+  <p>Remove any sectors you don't think you're interested in</p>
+  {% for code,result in results.items %}
+    <div class="result_item">
+      <div  class="small-2 large-2 columns">
+        <div class=switch>
+          <input type="checkbox" name="{{ result.soc }}" id="{{ result.soc }}" checked>
+          <label for="{{ result.soc }}"></label>
+        </div>
+      </div>
+      <label for={{ result.soc }} class="small-10 large-10 columns">
+        <h2>{{ result.title }}</h2>
+        <p>{{ result.description }}</p>
+      </label>
+    </div>
+  {% empty %}
+  No results
+  {% endfor %}
+  <button type=submit class=button>More info on these sectors</button>
+</form>
+
+{% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script>
+
+    $('#results input[type=checkbox]').click(function() {
+        var $this = $(this);
+        $this.parents('.result_item').toggleClass('removed', !$this.is(':checked'));
+    });
+
+  </script>
+{% endblock javascript %}

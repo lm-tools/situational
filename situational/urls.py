@@ -12,4 +12,5 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'', include('report.urls')),
+    url(r'sectors/', include('sectors.urls')),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
