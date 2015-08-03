@@ -2,4 +2,13 @@
 
 {% block content %}
 <h1>New Confidence Report</h1>
+<form action="{% url 'confidence:show' %}" method="get">
+  <div>
+    {% include 'confidence/_radio_slider.html' with field=form.success_confidence %}
+  </div>
+  <div>
+    {% include 'confidence/_radio_slider.html' with field=form.search_confidence %}
+  </div>
+  <input type="submit" value="Submit" class="button" />
+</form>
 {% endblock content %}
