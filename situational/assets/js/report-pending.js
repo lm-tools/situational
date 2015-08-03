@@ -27,6 +27,6 @@
   }
 
   if (resultFieldsLength > 0) {
-    updateIntervalId = window.setInterval(updateResults, 200);
+    updateIntervalId = window.setInterval(updateResults, 250);
   }
 }(this, jQuery));
