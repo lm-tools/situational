@@ -47,7 +47,7 @@ LOGGING = {
         },
         'report.tasks': {  # debug logging of report tasks
             'handlers': ['console'],
-            'level': 'DEBUG',
+            'level': 'INFO',
             'propagate': True,
         },
     },
