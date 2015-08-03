@@ -1,0 +1,119 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: https://mapit.mysociety.org/postcode/SW1H0DJ
+  response:
+    body:
+      string: !!binary |
+        H4sIAPP4sFUC/8VX227iMBD9lSgv25W2lZ04JNk3ylKqlqrdRRWPKCVeiBRsFDtCqOq/74zDLRBu
+        JdryEPAl4zOHmTOed3s2UgEbpJG2f1oevWFhSMKGE3oBC6j3w7KHUmaxmitctzs2zKixzPQw1wpm
+        3u3+Uwu+G57vhbA2i7IYhoHXCM27uRgmKUw4HmEfuF6cJgXMXZMb6jo+cYOQBG7g+GHDhS1TqfRQ
+        xhzP6/XpvUV+PeCxPFI6ESOE6YQ+JTAVZTBpUIQEP+bnFGaFHuAajEWeprBzxAXPIp1IMRgnozEs
+        UAQYpelARBNujCC+BNEXxgz+eL2E+xDTvcwVt+RfqyUnEymUvXBUZ3NcxqGeT/lguf/10XqJsjSB
+        odB2GUsqZwhlbWH11vXSDg76Ty82QjDA6DleOt5hL+k+L9t5Jqc8ElvYDzm655Xz3W2/Fu5S4kHc
+        1ORuYWzTXRv/PDyOUEKY71J7k4A+V3qSCKV5ZhGHNLe8b++435Uz2NqN5vDs5VN4Pud6mmurCaCt
+        q44BmyaKx9+raXEreGmLURqJeJOd527HAGUOeFQTOcZWNTcOREnoh4e4OUrNUxLHKf8f3Dx11onS
+        qDNRGvsSpStFLIXVVIpP3tL5CWFS2m8ZYKemSYXL3WbPuOw4zK/JYTRVCoZcJHpglmxGGSsnSgcO
+        wkBYOpZrqA+JPs7EoRc/y0an2yzYgHpTFxtgqio1CLl9NFDVIlNMnLguzm0QRiltsL3Z0wJ/oZAU
+        ZfLE0HmTmcwB9SVBc/tsILks8IKaeDK2vk5D7gDypeJxtxaPKmVdCcH58lES17rlw7pSY/jep52n
+        6ki7KLo0cKpCYiEK59VctFUKiWWyuI65fbCtZEF12Q0TqwU4oD6cTc4QIlAnOudieJGqdJstA8on
+        gV9XyTW2vu46UkO6dIt0wbt+VbwUsnkWJ6u2oUJqO79LYuthKrLt+EGxdUq89bT1gOd8276nH5NX
+        y7QyF2lsf5lQtV1FjK1KhvxNdqhnOhh/N7sgtXfV5ygzq5t9xkdJsf+zrLRf/xgEpmGsiZVl87kr
+        M5RhmLjhFhEYm6REBNThhCvs6hZRALCtjZw7SlGpyztBeE5MMuyuPwxQ6LnHRftL/ZB57OMfDgRt
+        IrsPAAA=
+    headers:
+      Accept-Ranges: [bytes, bytes]
+      Access-Control-Allow-Origin: ['*']
+      Age: ['861137', '861137']
+      Cache-Control: [max-age=2419200]
+      Connection: [keep-alive]
+      Content-Encoding: [gzip]
+      Content-Length: ['860']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Sun, 02 Aug 2015 13:36:04 GMT']
+      Server: [nginx]
+      Vary: [Accept-Encoding]
+      x-url: [/postcode/SW1H0DJ]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: https://lmt-jobs-api.herokuapp.com/api/top_categories?postcode=SW1H0DJ
+  response:
+    body: {string: '[{"category":"IT Jobs","count":1000},{"category":"Legal Jobs","count":732},{"category":"Accounting
+        & Finance Jobs","count":641},{"category":"Engineering Jobs","count":467},{"category":"Other/General
+        Jobs","count":400}]'}
+    headers:
+      Allow: ['GET, HEAD, OPTIONS']
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      Date: ['Sun, 02 Aug 2015 13:36:06 GMT']
+      Server: [gunicorn/19.3.0]
+      Vary: ['Accept, Cookie']
+      Via: [1.1 vegur]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: https://lmt-jobs-api.herokuapp.com/api/top_companies?postcode=SW1H0DJ
+  response:
+    body: {string: '[{"company_name":"ASPIRE"},{"company_name":"Carillion"},{"company_name":"MacIntyre
+        Hudson"},{"company_name":"Lloyds Banking Group"},{"company_name":"Alzheimer''s
+        Society"}]'}
+    headers:
+      Allow: ['GET, HEAD, OPTIONS']
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      Date: ['Sun, 02 Aug 2015 13:36:08 GMT']
+      Server: [gunicorn/19.3.0]
+      Vary: ['Accept, Cookie']
+      Via: [1.1 vegur]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: https://lmt-jobs-api.herokuapp.com/api/jobadverts?postcode=SW1H0DJ
+  response:
+    body: {string: "[{\"created\":\"2015-08-02T14:11:39Z\",\"company_name\":null,\"travelling_time\":\"-1\",\"contract_time\":null,\"category\":\"Admin
+        Jobs\",\"title\":\"Consumer PR Account Manager for leading pleasure brands
+        \xA332k per annum depending on experience\"},{\"created\":\"2015-08-02T14:11:39Z\",\"company_name\":null,\"travelling_time\":\"-1\",\"contract_time\":null,\"category\":\"Admin
+        Jobs\",\"title\":\"PR Senior Account Manager - Luxury / Drinks / Lifestyle
+        \xA335-40k\"},{\"created\":\"2015-08-02T14:11:39Z\",\"company_name\":null,\"travelling_time\":\"-1\",\"contract_time\":null,\"category\":\"Admin
+        Jobs\",\"title\":\"Senior Account Manager - Luxury / Travel - \xA338-40k DoE\"},{\"created\":\"2015-08-02T14:11:38Z\",\"company_name\":null,\"travelling_time\":\"-1\",\"contract_time\":null,\"category\":\"PR,
+        Advertising & Marketing Jobs\",\"title\":\"PR Account Manager - Luxury Property
+        - \xA326-32k - London\"},{\"created\":\"2015-08-02T13:45:07Z\",\"company_name\":null,\"travelling_time\":\"-1\",\"contract_time\":null,\"category\":\"HR
+        & Recruitment Jobs\",\"title\":\"Trainee Chef\"}]"}
+    headers:
+      Allow: ['GET, HEAD, OPTIONS']
+      Connection: [keep-alive]
+      Content-Type: [application/json]
+      Date: ['Sun, 02 Aug 2015 13:36:09 GMT']
+      Server: [gunicorn/19.3.0]
+      Vary: ['Accept, Cookie']
+      Via: [1.1 vegur]
+      X-Frame-Options: [SAMEORIGIN]
+    status: {code: 200, message: OK}
+version: 1

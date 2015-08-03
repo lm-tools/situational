@@ -2,10 +2,10 @@ from base64 import b64decode
 from io import BytesIO
 
 from django.core.files import File
-from django.test import TestCase
 
 from report.models import Report
 from travel_times.models import TravelTimesMap
+from situational.testing import BaseCase
 
 
 class ReportBuilderMixin():
@@ -38,7 +38,7 @@ class ReportBuilderMixin():
         return Report(**populated_fields)
 
 
-class TestReportModel(TestCase):
+class TestReportModel(BaseCase):
     def test_population(self):
         r = Report(postcode='SW1A 1AA')
         r.save()
@@ -47,7 +47,7 @@ class TestReportModel(TestCase):
         self.assertTrue(r.is_populated)
 
 
-class TestReportIsPopulated(ReportBuilderMixin, TestCase):
+class TestReportIsPopulated(ReportBuilderMixin, BaseCase):
     def test_new_reports_are_considered_unpopulated(self):
         self.assertFalse(Report().is_populated)
 
@@ -66,7 +66,7 @@ class TestReportIsPopulated(ReportBuilderMixin, TestCase):
         self.assertFalse(report.is_populated)
 
 
-class TestReportPopulatedResultFields(ReportBuilderMixin, TestCase):
+class TestReportPopulatedResultFields(ReportBuilderMixin, BaseCase):
     def test_all_result_fields_populated(self):
         report = self._populated_report()
         self.assertCountEqual(
