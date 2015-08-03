@@ -151,6 +151,7 @@ INSTALLED_APPS = (
 
 PROJECT_APPS = (
     'basicauth',
+    'confidence',
     'report',
     'sectors',
     'travel_times',
