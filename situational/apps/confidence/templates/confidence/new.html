@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+  {{ block.super }}
+  <link href="{% static 'css/radios-to-slider.min.css' %}" rel="stylesheet">
+{% endblock head %}
 
 {% block content %}
 <h1>New Confidence Report</h1>
@@ -12,3 +18,9 @@
   <input type="submit" value="Submit" class="button" />
 </form>
 {% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script src="{% static 'js/vendor/jquery.radios-to-slider.min.js' %}"></script>
+  <script src="{% static 'js/radio-to-slider.js' %}"></script>
+{% endblock %}
