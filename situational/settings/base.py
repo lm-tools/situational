@@ -150,9 +150,10 @@ INSTALLED_APPS = (
 )
 
 PROJECT_APPS = (
-    'report',
-    'travel_times',
     'basicauth',
+    'report',
+    'sectors',
+    'travel_times',
 )
 
 INSTALLED_APPS += PROJECT_APPS
@@ -213,6 +214,10 @@ REPORT_POPULATION_TIMEOUT = int(
     environ.get('REPORT_POPULATION_TIMEOUT', 90000)
 )
 
+LMI_FOR_ALL_API_URL = environ.get(
+    'LMI_FOR_ALL_API_URL',
+    'http://api.lmiforall.org.uk/api/v1/'
+)
 
 # .local.py overrides all the common settings.
 try:

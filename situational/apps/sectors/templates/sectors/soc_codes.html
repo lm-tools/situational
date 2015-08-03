@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+
+{% block content %}
+
+<style>
+  section+section {
+    padding-top:2em;
+  }
+  section h2 {
+    border-bottom:1px solid #000;
+  }
+
+  .job_item .job_info {
+    border-left:3px solid #005EA5;
+    margin:0 0 2em 0;
+    padding-left:1em;
+  }
+
+</style>
+<section class="row">
+  <h2>Local area</h2>
+  <p>Based on UK Census data</p>
+
+  <div class="columns large-6">
+    <h3>Jobs in the area</h3>
+    <ul>
+    {% for job in jobs_breakdown %}
+      <li>{{ job.description }}</l>
+    {% endfor %}
+    </ul>
+  </div>
+
+  <div class="columns large-6">
+    <h3>Resident professions</h3>
+    <ul>
+    {% for job in resident_occupations %}
+      <li>{{ job.description|title }}</l>
+    {% endfor %}
+    </ul>
+  </div>
+</section>
+
+
+<section class="row">
+  <h2>Info on your selected jobs</h2>
+  {% for soc_code,soc_data in soc_code_data.items %}
+  <div class="columns large-12 job_item">
+      <h3>{{ soc_data.info.title }}</h3>
+      <div class="job_info">
+        <p>{{ soc_data.info.description }}</p>
+
+        <div class="row">
+          <div class="large-6 columns">
+            <h4>Normal hours worked per week: {{ soc_data.hours_worked }}</h4>
+            <h4>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</h4>
+          </div>
+
+          <div class="large-6 columns">
+            <h4>Typical qualifications required</h4>
+            <p>{{ soc_data.info.qualifications }}</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="large-6 columns">
+            <h4>Typical tasks</h4>
+            <ul>
+              {% for task in soc_data.info.tasks %}
+                <li>{{ task|capfirst }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="large-6 columns">
+            <h4>Useful search terms</h4>
+              <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  {% endfor %}
+</section>
+{% endblock content %}

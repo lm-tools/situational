@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<form method=get action="{% url "job_descriptions" %}" class="row">
+  {{ form }}
+  <button type="submit">Submit</button>
+</form>
+{% endblock content %}
