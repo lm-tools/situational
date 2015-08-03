@@ -3,7 +3,6 @@
 
 {% block content %}
 <form method=get action="{% url "job_descriptions" %}" class="row">
-  {# {% csrf_token %} #}
   {{ form }}
   <button type="submit">Submit</button>
 </form>

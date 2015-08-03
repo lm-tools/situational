@@ -11,7 +11,37 @@
   section h2 {
     border-bottom:1px solid #000;
   }
+
+  .job_item .job_info {
+    border-left:3px solid #005EA5;
+    margin:0 0 2em 0;
+    padding-left:1em;
+  }
+
 </style>
+<section class="row">
+  <h2>Local area</h2>
+  <p>Based on UK Census data</p>
+
+  <div class="columns large-6">
+    <h3>Jobs in the area</h3>
+    <ul>
+    {% for job in jobs_breakdown %}
+      <li>{{ job.description }}</l>
+    {% endfor %}
+    </ul>
+  </div>
+
+  <div class="columns large-6">
+    <h3>Resident professions</h3>
+    <ul>
+    {% for job in resident_occupations %}
+      <li>{{ job.description|title }}</l>
+    {% endfor %}
+    </ul>
+  </div>
+</section>
+
 
 {% for soc_code,soc_data in soc_code_data.items %}
 <section class="row">

@@ -1,11 +1,8 @@
 import json
 
 from django import forms
-from django.utils.safestring import mark_safe
-from django.utils.html import format_html
-from django.utils.encoding import force_text
-from django.forms.utils import flatatt
-from django.utils.datastructures import MultiValueDict
+
+from localflavor.gb.forms import GBPostcodeField
 
 
 class SectorSelectorWidget(forms.MultiWidget):
@@ -25,4 +22,5 @@ class SectorSelectorWidget(forms.MultiWidget):
 class SectorForm(forms.Form):
     SECTOR_INPUT_COUNT = 3
 
+    postcode = GBPostcodeField()
     sector = forms.CharField(widget=SectorSelectorWidget(SECTOR_INPUT_COUNT))

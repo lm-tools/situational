@@ -1,3 +1,5 @@
+from operator import itemgetter
+
 import requests
 
 from django.conf import settings
@@ -61,3 +63,21 @@ class LMIForAllClient(object):
                 'coarse': 'true'
             }
         )['series'][0]['estpay']
+
+    def jobs_breakdown(self, postcode):
+        breakdown = self.base_request('census/jobs_breakdown', {
+            'area': postcode
+        })
+        return sorted(
+            breakdown['jobsBreakdown'],
+            key=itemgetter('percentage'),
+            reverse=True)[:5]
+
+    def resident_occupations(self, postcode):
+        occupations = self.base_request('census/resident_occupations', {
+            'area': postcode
+        })
+        return sorted(
+            occupations['residentOccupations'],
+            key=itemgetter('percentage'),
+            reverse=True)[:5]

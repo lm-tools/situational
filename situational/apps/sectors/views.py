@@ -28,6 +28,7 @@ class JobDescriptionsView(TemplateView):
                 for result in results:
                     all_results[result['soc']] = result
         context['results'] = all_results
+        context['postcode'] = self.request.GET['postcode'].strip()
         return context
 
 
@@ -36,14 +37,23 @@ class SOCCodesView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = kwargs
+        postcode = self.request.GET['postcode']
+        lmi_client = LMIForAllClient()
+
+        context['jobs_breakdown'] = lmi_client.jobs_breakdown(postcode)
+        context['resident_occupations'] = \
+            lmi_client.resident_occupations(postcode)
+        context['postcode'] = postcode
         soc_code_data = {}
         for soc_code in self.request.GET.keys():
-            lmi_client = LMIForAllClient()
-            soc_code_data[soc_code] = {
-                'pay': lmi_client.pay(soc_code),
-                'hours_worked': lmi_client.hours_worked(soc_code),
-                'info': lmi_client.soc_code_info(soc_code)
-            }
+            if soc_code.startswith('soc_'):
+                soc_code = soc_code[4:]
+                soc_code_data[soc_code] = {
+                    'pay': lmi_client.pay(soc_code),
+                    'hours_worked': lmi_client.hours_worked(soc_code),
+                    'info': lmi_client.soc_code_info(soc_code),
+
+                }
 
         context['soc_code_data'] = soc_code_data
         return context
