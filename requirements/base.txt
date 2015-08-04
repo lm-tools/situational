@@ -24,3 +24,4 @@ jsonfield==1.0.3
 redlock-py==1.0.5
 django-postgrespool==0.3.0
 sqlalchemy==1.0.8
+django-pipeline==1.5.3
