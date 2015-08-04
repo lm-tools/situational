@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block body_class %}class="sectors"{% endblock body_class %}
+
+{% block content %}
+
+<div class="row">
+  <div class="columns small-8 small-centered large-centered start_page">
+    <h1>Explore job roles</h1>
+
+    <p>
+      Get information about job roles you are looking for, including
+      pay bands, average working hours, qualifications required and
+      related search terms.
+    </p>
+    <ul>
+        <li>takes approximately 5 minutes</li>
+        <li>choose up to 3 job types</li>
+    </ul>
+
+    <a href="{% url "sector_form" %}" class="button large">Start</a>
+  </div>
+
+</div>
+
+{% endblock content %}

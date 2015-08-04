@@ -16,20 +16,18 @@
   }
 
   .removed * {
-    color:#DDD !important;
+    color:#6F777B !important;
   }
-
 </style>
 
 <form id="results" class="row" action="{% url "soc_code_info" %}">
   <input type="hidden" name="postcode" value="{{ postcode }}" id="postcode">
-  <h1>Related job sectors</h1>
-  <p>Remove any sectors you don't think you're interested in</p>
+  <h1>Choose the matches that look relevant to you</h1>
   {% for code,result in results.items %}
-    <div class="result_item">
+    <div class="result_item removed">
       <div  class="small-2 large-2 columns">
         <div class=switch>
-          <input type="checkbox" name="soc_{{ result.soc }}" id="soc_{{ result.soc }}" checked>
+          <input type="checkbox" name="soc_{{ result.soc }}" id="soc_{{ result.soc }}" >
           <label for="soc_{{ result.soc }}"></label>
         </div>
       </div>
@@ -39,9 +37,9 @@
       </label>
     </div>
   {% empty %}
-  No results
+  Sorry, we couldn't find any results for those job roles
   {% endfor %}
-  <button type=submit class=button>More info on these sectors</button>
+  <button type=submit class=button>Next</button>
 </form>
 
 {% endblock content %}

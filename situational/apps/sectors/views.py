@@ -7,6 +7,10 @@ from .forms import SectorForm
 from .helpers import LMIForAllClient
 
 
+class SectorStartView(TemplateView):
+    template_name = 'sectors/sector_start.html'
+
+
 class SectorFromView(FormView):
     form_class = SectorForm
     template_name = 'sectors/sector_form.html'

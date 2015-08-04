@@ -18,7 +18,7 @@
         {% block head %}{% endblock head %}
     </head>
 
-    <body>
+    <body {% block body_class %}{% endblock body_class %}>
         {% block nav %}{% endblock nav %}
 
         {% block content %}{% endblock content %}

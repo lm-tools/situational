@@ -46,3 +46,40 @@ footer {
 
 /* end result-field                                 */
 /* ------------------------------------------------ */
+
+
+.start_page {
+    border:solid 1px #c2c2c2;
+    box-shadow: 1px 1px 1px #ccc;
+    margin-top:3em;
+    padding:10px 25px;
+}
+
+#sector_form {
+
+}
+
+.sectors {
+
+
+
+}
+
+
+/* Forms */
+form label {
+    font-size:19px;
+    font-weight:700;
+    line-height:1.3157894737;
+}
+
+form input[type=text] {
+    padding:4px;
+    border: 1px solid #bfc1c3;
+    background-color: #fff;
+    box-shadow: none;
+}
+
+form #id_postcode {
+    width: 50%;
+}
