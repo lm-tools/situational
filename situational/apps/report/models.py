@@ -9,7 +9,8 @@ from report import tasks
 
 
 class Report(TimeStampedModel):
-    postcode = models.CharField(blank=False, null=False, max_length=14)
+    postcode = models.CharField(
+        blank=False, null=False, max_length=14, db_index=True)
     location_json = JSONField()
     top_categories = JSONField()
     top_companies = JSONField()
