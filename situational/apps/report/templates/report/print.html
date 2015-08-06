@@ -1,4 +1,15 @@
-{% load base64 %}
-<h1>Your labour market report</h1>
-<h2>{{ report.postcode }}</h2>
-<p><img style="width: 100%" src="data:image/png;base64,{{ report.travel_times_map.image.file|b64encode_file }}"></p>
+{% load embedding %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Labour market report for {{ report.postcode }}</title>
+  {% embed_stylesheet "css/normalize.css" %}
+  {% embed_stylesheet "css/foundation.min.css" %}
+  {% embed_stylesheet "css/report-print.scss" %}
+</head>
+<body>
+  <h1>Your labour market report</h1>
+  <h2>{{ report.postcode }}</h2>
+  <p><img style="width: 100%" src="data:image/png;base64,{{ report.travel_times_map.image.file|b64encode_file }}"></p>
+</body>
+</html>
