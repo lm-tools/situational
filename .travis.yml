@@ -3,6 +3,9 @@ language: python
 env: RUNNER=travis
 python:
   - "3.4"
+before_install:
+  - gem install sass
+  - npm install yuglify
 install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache
 script:
   - ./build.sh
@@ -10,5 +13,6 @@ cache:
   directories:
     - /home/travis/virtualenv
     - $HOME/.pip-cache/
+    - node_modules
 services:
   - redis-server
