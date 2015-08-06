@@ -1,4 +1,5 @@
-{% load staticfiles %}<!DOCTYPE html>
+{% load staticfiles %}{% load pipeline %}<!DOCTYPE html>
+
 <html lang="en" ng-app>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -7,12 +8,8 @@
 
         <title>{% block title %}{% endblock title %}</title>
 
-        <link rel="icon" type="image/gif" href="{% static 'img/favicon.gif' %}">
-
         {% block css %}
-        <link href="{% static 'css/normalize.css' %}" rel="stylesheet">
-        <link href="{% static 'css/foundation.min.css' %}" rel="stylesheet">
-        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+        {% stylesheet 'main' %}
         {% endblock %}
 
         {% block head %}{% endblock head %}

@@ -93,7 +93,10 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
 )
+
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'CHANGE THIS!!!'
@@ -147,6 +150,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'storages',
     'djcelery',
+    'pipeline',
 )
 
 PROJECT_APPS = (
@@ -218,6 +222,25 @@ LMI_FOR_ALL_API_URL = environ.get(
     'LMI_FOR_ALL_API_URL',
     'http://api.lmiforall.org.uk/api/v1/'
 )
+
+PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
+PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
+PIPELINE_COMPILERS = (
+    'pipeline.compilers.sass.SASSCompiler',
+)
+PIPELINE_CSS = {
+    'main': {
+        'source_filenames': (
+            'css/normalize.css',
+            'css/foundation.css',
+            'css/styles.scss'
+        ),
+        'output_filename': 'css/main.min.css',
+        'extra_context': {
+            'media': 'screen,projection',
+        },
+    },
+}
 
 # .local.py overrides all the common settings.
 try:
