@@ -4,8 +4,8 @@ env: RUNNER=travis
 python:
   - "3.4"
 before_install:
-  - gem install sass
-  - npm install yuglify
+  - bundle install
+  - npm install
 install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache
 script:
   - ./build.sh

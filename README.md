@@ -6,6 +6,12 @@ Install python dependancies for your environment (local, production, etc):
 
 > pip install -r requirements/[env].txt
 
+Install asset pipeline dependancies:
+
+> bundle install
+
+> npm install
+
 For async task running, run a celery worker:
 
 > ./manage.py celery -A situational worker -l debug
