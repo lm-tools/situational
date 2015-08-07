@@ -15,7 +15,13 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-          <li class="active"><a href="#">Email a copy</a></li>
+          <li class="active">
+            <form action="{% url 'report_send' report.postcode %}" method="post">
+              {% csrf_token %}
+              <input type="text" name="email">
+              <input type="submit" class="button success right" value="Email a copy">
+            </form>
+          </li>
         </ul>
       </section>
     </nav>

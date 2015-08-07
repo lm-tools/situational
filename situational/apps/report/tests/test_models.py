@@ -1,6 +1,8 @@
 from base64 import b64decode
 from io import BytesIO
+from unittest.mock import patch
 
+from django.core import mail
 from django.core.files import File
 
 from report.models import Report
@@ -78,3 +80,19 @@ class TestReportPopulatedResultFields(ReportBuilderMixin, BaseCase):
             with self.subTest(field=field):
                 report = self._populated_report(without=[field])
                 self.assertNotIn(field, report.populated_result_fields)
+
+
+class TestReportSendTo(ReportBuilderMixin, BaseCase):
+    def test_send_pdf_to_eprovided_mail_address(self):
+        report = self._populated_report()
+        with patch.object(report, 'to_pdf') as to_pdf_mock:
+            to_pdf_mock.return_value = 'mock pdf content'
+            report.send_to('test-address@example.org')
+
+        self.assertEqual(len(mail.outbox), 1)  # sanity check
+        message = mail.outbox[0]
+
+        self.assertIn('test-address@example.org', message.to)
+        self.assertEqual(len(message.attachments), 1)
+        self.assertEqual(message.attachments[0][1], 'mock pdf content')
+        self.assertEqual(message.attachments[0][2], 'application/pdf')

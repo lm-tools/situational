@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.mail import EmailMessage
 from django.db import transaction
 
 from celery import chord, shared_task
@@ -84,3 +85,18 @@ def latest_jobs(report):
     report.latest_jobs = \
         helpers.latest_jobs_for_postcode(report.postcode)
     report.save(update_fields=['latest_jobs'])
+
+
+@shared_task
+def send_report(report, email):
+    logger.debug("Sending report {} to {}".format(report.id, email))
+    EmailMessage(
+        subject="Labour report for {}".format(report.postcode),
+        body="Attached please find your report.",
+        to=[email],
+        attachments=[
+            ("{}-report.pdf".format(report.postcode),
+             report.to_pdf(),
+             "application/pdf"),
+        ],
+    ).send()
