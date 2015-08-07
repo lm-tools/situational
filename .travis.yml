@@ -4,6 +4,9 @@ env: RUNNER=travis
 python:
   - "3.4"
 before_install:
+  - '[ -d .downloads ] || mkdir .downloads'
+  - (cd .downloads; [ -d prince-10r3-linux-generic-x86_64 ] || curl -s http://www.princexml.com/download/prince-10r3-linux-generic-x86_64.tar.gz | tar xzf -)
+  - echo $PWD | ./.downloads/prince-10r3-linux-generic-x86_64/install.sh
   - bundle install
   - npm install
 install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache
