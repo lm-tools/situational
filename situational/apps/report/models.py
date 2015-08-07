@@ -3,8 +3,8 @@ from django.db import models
 from jsonfield import JSONField
 from model_utils.models import TimeStampedModel
 
+import template_to_pdf
 from travel_times.models import TravelTimesMap
-
 from report import tasks
 
 
@@ -25,6 +25,10 @@ class Report(TimeStampedModel):
         'latest_jobs',
         'travel_times_map',
     )
+
+    def to_pdf(self):
+        template = template_to_pdf.Template('report/print.html')
+        return template.render({'report': self})
 
     def populate_async(self):
         tasks.populate_report.delay(self)

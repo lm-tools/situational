@@ -157,6 +157,7 @@ PROJECT_APPS = (
     'basicauth',
     'report',
     'sectors',
+    'template_to_pdf',
     'travel_times',
 )
 

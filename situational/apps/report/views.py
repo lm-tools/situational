@@ -1,5 +1,6 @@
 from django import http
 from django.core.urlresolvers import reverse
+from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.views.generic import View
@@ -46,6 +47,16 @@ class ReportView(TemplateView):
         context = kwargs
         context['report'] = self.report
         return context
+
+
+class ReportPDFView(View):
+    def get(self, request, *args, **kwargs):
+        postcode = kwargs['postcode']
+        report = get_object_or_404(models.Report, postcode=postcode)
+        response = http.HttpResponse(report.to_pdf(), 'application/pdf')
+        response['Content-Disposition'] = \
+            "filename={}-report.pdf".format(postcode)
+        return response
 
 
 class ReportPopulatedResultFieldsView(View):

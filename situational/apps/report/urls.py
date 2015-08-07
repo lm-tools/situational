@@ -9,6 +9,9 @@ urlpatterns = patterns(
         views.ReportPopulatedResultFieldsView.as_view(),
         name="report_populated_result_fields"),
 
+    url(r'report/(?P<postcode>[a-zA-Z0-9\s]+).pdf$',
+        views.ReportPDFView.as_view(), name="report_pdf"),
+
     url(r'report/(?P<postcode>[a-zA-Z0-9\s]+)$',
         views.ReportView.as_view(), name="report_view"),
 
