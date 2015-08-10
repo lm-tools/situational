@@ -1,9 +1,9 @@
-from django.test import TestCase
+from situational.testing import BaseCase
 
 from sectors.helpers import LMIForAllClient, LMIForAllException
 
 
-class TestLMIForAllClient(TestCase):
+class TestLMIForAllClient(BaseCase):
     WORKING_SOC_CODE = '5323'
     FAKE_SOC_CODE = '9999999'
 
