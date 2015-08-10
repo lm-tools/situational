@@ -1,15 +1,14 @@
 from django.conf import settings
-from django.core.mail import EmailMessage
 from django.db import transaction
 
 from celery import chord, shared_task
 from celery.utils.log import get_task_logger
 from redlock import Redlock
 
+from report import helpers
+from templated_email import send_templated_email
 from travel_times.models import TravelTimesMap
 from travel_times import constants
-
-from report import helpers
 
 logger = get_task_logger(__name__)
 population_timeout = settings.REPORT_POPULATION_TIMEOUT
@@ -90,13 +89,13 @@ def latest_jobs(report):
 @shared_task
 def send_report(report, email):
     logger.debug("Sending report {} to {}".format(report.id, email))
-    EmailMessage(
-        subject="Labour report for {}".format(report.postcode),
-        body="Attached please find your report.",
+    send_templated_email(
+        template_name="report/emails/send_report",
+        context={"report": report},
         to=[email],
         attachments=[
             ("{}-report.pdf".format(report.postcode),
              report.to_pdf(),
              "application/pdf"),
         ],
-    ).send()
+    )
