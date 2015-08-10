@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<form>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Your current circumstances</label>
+      <p>Check all that apply.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <fieldset>
+        <div class="large-6 medium-6 columns">
+          <input id="full_time" type="checkbox"><label for="full_time">Full time</label>
+        </div>
+        <div class="large-6 medium-6 columns">
+          <input id="part_time" type="checkbox"><label for="part_time">Part time</label>
+        </div>
+        <div class="large-6 medium-6 columns">
+          <input id="work_programme" type="checkbox"><label for="work_programme">Work programme</label>
+        </div>
+        <div class="large-6 medium-6 columns">
+          <input id="sick" type="checkbox"><label for="sick">Sick</label>
+        </div>
+        <div class="large-6 medium-6 columns">
+          <input id="caring" type="checkbox"><label for="caring">Caring</label>
+        </div>
+        <div class="large-6 medium-6 columns">
+          <input id="children" type="checkbox"><label for="children">Children</label>
+        </div>
+        <div class="large-6 medium-6 columns">
+          <input id="education" type="checkbox"><label for="education">Education</label>
+        </div>
+        <div class="large-6 medium-6 columns">
+          <input id="unemployed" type="checkbox"><label for="unemployed">Unemployed</label>
+        </div>
+        <div class="large-2 medium-2 columns">
+          <input id="other" type="checkbox"><label for="other">Other</label>
+        </div>
+        <div class="large-6 medium-6 pull-4 columns">
+          <input id="other_more" type="text">
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>For how long have you been in these circumstances?</label>
+    </div>
+    <div class="medium-12 columns">
+      <fieldset>
+        <div class="medium-6 columns">
+          <div class="row">
+            <input type="radio" name="duration" value="less_than_1" id="less_than_1"><label for="less_than_1">less than 1 month</label>
+          </div>
+          <div class="row">
+            <input type="radio" name="duration" value="1_to_3" id="1_to_3"><label for="1_to_3">1 to 3 months</label>
+          </div>
+          <div class="row">
+            <input type="radio" name="duration" value="3_to_6" id="3_to_6"><label for="3_to_6">3 to 6 months</label>
+          </div>
+          <div class="row">
+            <input type="radio" name="duration" value="6_to_9" id="6_to_9"><label for="6_to_9">6 to 9 months</label>
+          </div>
+        </div>
+        <div class="medium-6 columns">
+          <div class="row">
+            <input type="radio" name="duration" value="9_to_12" id="9_to_12"><label for="9_to_12">9 to 12 months</label>
+          </div>
+          <div class="row">
+            <input type="radio" name="duration" value="12_to_18" id="12_to_18"><label for="12_to_18">12 to 18 months</label>
+          </div>
+          <div class="row">
+            <input type="radio" name="duration" value="18_to_24" id="18_to_24"><label for="18_to_24">18 to 24 months</label>
+          </div>
+          <div class="row">
+            <input type="radio" name="duration" value="over_24" id="over_24"><label for="over_24">over 24 months</label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="large-12 columns">
+      <label>Description</label>
+      <p>Tell us more about this period of time.</p>
+      <textarea></textarea>
+    </div>
+  </div>
+</form>
+
+{% endblock content %}
