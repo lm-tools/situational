@@ -10,6 +10,6 @@
 <body>
   <h1>Your labour market report</h1>
   <h2>{{ report.postcode }}</h2>
-  <p><img style="width: 100%" src="data:image/png;base64,{{ report.travel_times_map.image.file|b64encode_file }}"></p>
+  <p><img style="width: 100%" src="{% dataurl report.travel_times_map.image mimetype=report.travel_times_map.mime_type %}"></p>
 </body>
 </html>
