@@ -2,42 +2,42 @@
 {% load human_times %}
 
 {% block nav %}
-  <div class="fixed">
+  <div class="contain-to-grid sticky">
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
           <h1><a href="#">Your labour market report</a></h1>
         </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
-      <ul>
-        <li class="action">
-          <a href="#" class="button success right">
-            Email a copy
-          </a>
-        </li>
-      </ul>
+
+      <section class="top-bar-section">
+        <!-- Right Nav Section -->
+        <ul class="right">
+          <li class="active"><a href="#">Email a copy</a></li>
+        </ul>
+      </section>
     </nav>
   </div>
+</div>
 {% endblock nav %}
 
 {% block content %}
-<ul class="tabs vertical" data-tab>
-  <li class="tab-title active"><a href="#map">Travel time</a></li>
-  <li class="tab-title"><a href="#job-summary">Jobs summary</a></li>
-</ul>
 
-<div class="tabs-content">
-  <div class="content active" id="map">
-    <div class="row">
-      <div class="columns large-11 small-9">
+<div class="row">
+  <div class="large-3 medium-3 columns">
+    <ul class="tabs" data-tab role="tablist">
+      <li class="tab-title active"><a href="#map">Travel time</a></li>
+      <li class="tab-title"><a href="#job-summary">Jobs summary</a></li>
+    </ul>
+  </div>
+  <div class="large-9 medium-9 columns">
+    <div class="tabs-content">
+      <div class="content active" id="map">
         <img src="{{ report.travel_times_map.image.url }}"></img>
       </div>
-    </div>
-  </div>
-  <div class="content" id="job-summary">
-    <div class="row">
-      <div class="columns large-11 small-9">
-
+      <div class="content" id="job-summary">
         <h3>Top Sectors</h3>
         <ol>
           {% for category in report.top_categories %}
@@ -64,5 +64,3 @@
 </div>
 
 {% endblock content %}
-
-
