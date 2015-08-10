@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, url
 
-from history import views
+from django.views.generic import TemplateView
 
 urlpatterns = patterns(
     '',
-    url(r'form', views.HistoryForm.as_view(),
+    url(r'form',
+        TemplateView.as_view(template_name='history/form.html'),
         name="form")
 )
