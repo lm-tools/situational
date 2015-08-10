@@ -1,3 +1,5 @@
+import mimetypes
+
 from django.core.files import File
 from django.conf import settings
 from django.db import models
@@ -44,8 +46,14 @@ class TravelTimesMap(models.Model):
         )
 
         self.mime_type = image.mime_type
+        filename = "{}-w{}-h{}.{}".format(
+            self.postcode,
+            self.width,
+            self.height,
+            mimetypes.guess_extension(self.mime_type)[0],
+        )
         self.image.save(
-            "%s-w%s-h%s" % (self.postcode, self.width, self.height),
+            filename,
             File(image.file),
             False,
         )
