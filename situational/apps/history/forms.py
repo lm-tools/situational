@@ -29,5 +29,5 @@ class HistoryDetailsForm(forms.Form):
     duration = forms.ChoiceField(
         choices=DURATION_CHOICES,
         widget=forms.RadioSelect())
-    other_more = forms.CharField()
-    description = forms.CharField()
+    other_more = forms.CharField(required=False)
+    description = forms.CharField(required=False)
