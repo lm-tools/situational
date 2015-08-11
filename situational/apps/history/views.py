@@ -26,6 +26,17 @@ class HistoryDetailsView(FormView):
             url = reverse('history:report')
         return http.HttpResponseRedirect(url)
 
+    def get_context_data(self, **kwargs):
+        context = kwargs
+
+        def remove_csrf_field(form_data):
+            form_data.pop("csrfmiddlewaretoken", None)
+            return form_data
+        form_data = [
+            remove_csrf_field(l) for l in self.request.session['forms']]
+        context['report'] = form_data
+        return context
+
 
 class HistoryReportView(TemplateView):
     def get(self, request, *args, **kwargs):
@@ -35,9 +46,11 @@ class HistoryReportView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = kwargs
+
         def remove_csrf_field(form_data):
             form_data.pop("csrfmiddlewaretoken", None)
             return form_data
-        form_data = [remove_csrf_field(l) for l in self.request.session['forms']]
+        form_data = [
+            remove_csrf_field(l) for l in self.request.session['forms']]
         context['report'] = form_data
         return context

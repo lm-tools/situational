@@ -10,6 +10,18 @@
         <small class="error">{{ error|escape }}</small>
     {% endfor %}
   </div>
+  <h1>Before:</h1>
+  <div class="row">
+    <div class="large-12 columns">
+      {% for entry in report %}
+        <ol>
+          {% for key, value in entry.items %}
+             <li> {{ key }}: {{ value }}</li>
+          {% endfor %}
+        </ol>
+      {% endfor %}
+    </div>
+  </div>
   <div class="row">
     <div class="large-12 columns">
       <h3>Your current circumstances</h3>
