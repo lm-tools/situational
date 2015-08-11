@@ -1,3 +1,26 @@
 .tabs .tab-title {
   width: 100%;
 }
+
+/* ------------------------------------------------ */
+/* result-field                                     */
+
+.result-field {
+  color: gray;
+
+}
+
+.result-field.result-field--populated {
+  color: green;
+}
+
+.result-field .result-field__done {
+  display: none;
+}
+
+.result-field.result-field--populated .result-field__done {
+  display: inline;
+}
+
+/* end result-field                                 */
+/* ------------------------------------------------ */
