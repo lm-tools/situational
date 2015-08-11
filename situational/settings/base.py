@@ -162,6 +162,9 @@ PROJECT_APPS = (
     'travel_times',
 )
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
+SESSION_COOKIE_HTTPONLY = True
+
 INSTALLED_APPS += PROJECT_APPS
 
 # A sample logging configuration. The only tangible logging

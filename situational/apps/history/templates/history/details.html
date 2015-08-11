@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method=post>
+  {% csrf_token %}
+  <hr/>
+  <div {% if form.subject.errors %}class="error"{% endif %}>
+    {% for error in form.postcode.errors %}
+        <small class="error">{{ error|escape }}</small>
+    {% endfor %}
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <h3>Your current circumstances</h3>
+      <p>Check all that apply.</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <fieldset>
+        {% for choice in form.circumstances %}
+        <div class="large-6 medium-6 columns">
+          {{choice.tag}}
+          <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
+        </div>
+        {% endfor %}
+        <div class="large-6 medium-6 pull-4 columns">
+          {{ form.other_more }}
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="large-12 columns">
+      <h3>For how long have you been in these circumstances?</h3>
+    </div>
+    <div class="medium-12 columns">
+      <fieldset>
+        <div class="medium-6 columns">
+          {% for choice in form.duration %}
+            {% if forloop.counter <= 4 %}
+              <div class="row">
+                {{choice.tag}}
+                <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="medium-6 columns">
+          {% for choice in form.duration %}
+            {% if forloop.counter > 4 %}
+                <div class="row">
+                  {{choice.tag}}
+                  <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
+                </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </fieldset>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="large-12 columns">
+      <h3>Description</h3>
+      <p>Tell us more about this period of time.</p>
+        {{ form.description }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <input type="submit" class="button" value="Continue >>">
+    </div>
+  </div>
+  <hr/>
+</form>
+
+{% endblock content %}
