@@ -1,1 +1,7 @@
-<h1>INSERT REPORT HERE</h1>
+{% for entry in report %}
+  <ol>
+    {% for key, value in entry.items %}
+       <li> {{ key }}: {{ value }}</li>
+    {% endfor %}
+  </ol>
+{% endfor %}
