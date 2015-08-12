@@ -1,4 +1,5 @@
 import base64
+import mimetypes
 import subprocess
 
 from django import template
@@ -8,10 +9,19 @@ from django.contrib.staticfiles.finders import find
 register = template.Library()
 
 
-def b64encode_file(file):
-    return base64.b64encode(file.read())
-
-register.filter('b64encode_file', b64encode_file)
+@register.simple_tag
+def dataurl(image_field, mimetype=None):
+    if not mimetype:
+        mimetype, _ = mimetypes.guess_type(image_field.name)
+    f = image_field.file
+    try:
+        f.open()
+        return "data:{};base64,{}".format(
+            mimetype,
+            str(base64.b64encode(f.read()), 'utf-8')
+        )
+    finally:
+        f.close()
 
 
 class StylesheetNotFoundException(Exception):

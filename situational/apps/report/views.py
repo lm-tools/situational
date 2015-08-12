@@ -59,6 +59,17 @@ class ReportPDFView(View):
         return response
 
 
+class ReportSendView(TemplateView):
+    template_name = 'report/report_send.html'
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST['email']
+        postcode = kwargs['postcode']
+        report = get_object_or_404(models.Report, postcode=postcode)
+        report.send_to(email)
+        return super().get(self, request, *args, **kwargs)
+
+
 class ReportPopulatedResultFieldsView(View):
     def get(self, request, *args, **kwargs):
         try:

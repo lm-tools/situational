@@ -26,6 +26,12 @@ AWS_S3_HOST = os.environ['AWS_S3_HOST']
 
 REDIS_URL = os.environ['REDISCLOUD_URL']
 
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ['SENDGRID_USERNAME']
+EMAIL_HOST_PASSWORD = os.environ['SENDGRID_PASSWORD']
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

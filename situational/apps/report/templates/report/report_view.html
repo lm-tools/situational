@@ -14,13 +14,24 @@
 
       <section class="top-bar-section">
         <!-- Right Nav Section -->
-        <ul class="right">
-          <li class="active"><a href="#">Email a copy</a></li>
+        <ul class="right row">
+          <li class="has-form small-12 column">
+            <form action="{% url 'report_send' report.postcode %}" method="post">
+              {% csrf_token %}
+              <div class="row collapse">
+                <div class="small-8 columns">
+                  <input type="text" name="email" placeholder="Email address">
+                </div>
+                <div class="small-4 columns">
+                  <input type="submit" class="button expand" value="Email a copy">
+                </div>
+              </div>
+            </form>
+          </li>
         </ul>
       </section>
     </nav>
   </div>
-</div>
 {% endblock nav %}
 
 {% block content %}

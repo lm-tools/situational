@@ -159,6 +159,7 @@ PROJECT_APPS = (
     'report',
     'sectors',
     'template_to_pdf',
+    'templated_email',
     'travel_times',
 )
 

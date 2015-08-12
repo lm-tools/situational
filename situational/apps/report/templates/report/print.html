@@ -10,6 +10,37 @@
 <body>
   <h1>Your labour market report</h1>
   <h2>{{ report.postcode }}</h2>
-  <p><img style="width: 100%" src="data:image/png;base64,{{ report.travel_times_map.image.file|b64encode_file }}"></p>
+
+  <section>
+    <h3>Travel times</h3>
+    <p><img style="width: 100%" src="{% dataurl report.travel_times_map.image mimetype=report.travel_times_map.mime_type %}"></p>
+  </section>
+
+  <section>
+    <div class="jobs-summary-row">
+      <h3>Top Sectors</h3>
+      <ol>
+        {% for category in report.top_categories %}
+          <li>{{ category.category }} ({{ category.count }})</li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div class="jobs-summary-row">
+      <h3>Latest Jobs</h3>
+      <ol>
+        {% for job in report.latest_jobs %}
+          <li>{{ job.title|title }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+    <div class="jobs-summary-row">
+      <h3>Top Companies</h3>
+      <ol>
+        {% for company in report.top_companies %}
+          <li>{{ company.company_name }}</li>
+        {% endfor %}
+      </ol>
+    </div>
+  </section>
 </body>
 </html>

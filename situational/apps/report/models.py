@@ -30,6 +30,9 @@ class Report(TimeStampedModel):
         template = template_to_pdf.Template('report/print.html')
         return template.render({'report': self})
 
+    def send_to(self, email):
+        tasks.send_report.delay(self, email)
+
     def populate_async(self):
         tasks.populate_report.delay(self)
 
