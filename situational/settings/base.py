@@ -116,6 +116,7 @@ if BASICAUTH_DISABLED is False \
     raise ImproperlyConfigured("Please specify a HTTP username and password")
 
 MIDDLEWARE_CLASSES = (
+    'log_request_id.middleware.RequestIDMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -168,35 +169,43 @@ SESSION_COOKIE_HTTPONLY = True
 
 INSTALLED_APPS += PROJECT_APPS
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See http://docs.djangoproject.com/en/dev/topics/logging for
-# more details on how to customize your logging configuration.
+# Log on standard out. Doing something with the logs is left up to the parent
+# process
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
+        'request_id': {
+            '()': 'log_request_id.filters.RequestIDFilter',
         }
+    },
+    'formatters': {
+        'standard': {
+            'format': '[%(levelname)s] [%(request_id)s] %(name)s: %(message)s',
+        },
     },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
-        }
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+        'console_with_request_id': {
+            'class': 'logging.StreamHandler',
+            'filters': ['request_id'],
+            'formatter': 'standard',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': environ.get('ROOT_LOG_LEVEL', 'INFO'),
     },
     'loggers': {
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': True,
+        'django': {
+            'handlers': ['console_with_request_id'],
+            'level': environ.get('DJANGO_LOG_LEVEL', 'INFO'),
+            'propagate': False,
         },
-    }
+    },
 }
-
 
 # EMAILS
 
