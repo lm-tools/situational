@@ -249,7 +249,7 @@ PIPELINE_CSS = {
     },
 }
 PIPELINE_YUGLIFY_BINARY = root('..', 'node_modules', '.bin', 'yuglify')
-PIPELINE_SASS_BINARY = root('..', 'bundler_bin', 'sass')
+PIPELINE_SASS_BINARY = root('..', 'bin', 'sass')
 
 # .local.py overrides all the common settings.
 try:
