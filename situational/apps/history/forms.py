@@ -40,7 +40,4 @@ class HistoryDetailsForm(forms.Form):
         if circumstances and "other" in circumstances and not other_more:
             description_missing = "Please enter a short description for other"
             self.add_error('circumstances', description_missing)
-        if circumstances and "other" not in circumstances and other_more:
-            select_other = "Please select 'other' if you enter a description"
-            self.add_error('circumstances', select_other)
         return cleaned_data

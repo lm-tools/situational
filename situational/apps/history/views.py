@@ -19,9 +19,10 @@ def format_history_entry(entry):
     if entry["description"][0]:
         description = "({0})".format(entry["description"][0])
     circumstance_data = entry["circumstances"]
+    if 'other' in circumstance_data:
+        circumstance_data.remove('other')
     if entry["other_more"][0]:
         circumstance_data += entry["other_more"]
-        circumstance_data.remove('other')
     formatted_circumstances = list(map(format_circumstance, circumstance_data))
     circumstances = ", ".join(formatted_circumstances)
     duration_dict = dict(forms.HistoryDetailsForm.DURATION_CHOICES)
