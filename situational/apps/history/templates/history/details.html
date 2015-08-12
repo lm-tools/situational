@@ -7,7 +7,7 @@
   <hr/>
   {% if history %}
   <div class="row">
-    <div class="large-12 columns">
+    <div class="columns">
       <h3>Previously:</h3>
       {% for entry in history %}
         <p> {{ entry }}</p>
@@ -17,13 +17,13 @@
   <hr/>
   {% endif %}
   <div class="row">
-    <div class="large-12 columns">
+    <div class="columns">
       <h3>{{ circumstance_title }}</h3>
       <p>Check all that apply.</p>
     </div>
   </div>
   <div class="row">
-    <div class="large-12 columns">
+    <div class="columns">
       <div {% if form.subject.errors %}class="error"{% endif %}>
         {% for error in form.circumstances.errors %}
             <small class="error">{{ error|escape }}</small>
@@ -31,12 +31,12 @@
       </div>
       <fieldset>
         {% for choice in form.circumstances %}
-        <div class="large-6 medium-6 columns">
+        <div class="medium-6 columns">
           {{choice.tag}}
           <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
         </div>
         {% endfor %}
-        <div class="large-6 medium-6 pull-4 columns">
+        <div class="medium-6 pull-4 columns">
           {{ form.other_more }}
         </div>
       </fieldset>
@@ -44,7 +44,7 @@
   </div>
   <hr/>
   <div class="row">
-    <div class="large-12 columns">
+    <div class="columns">
       <h3>For how long have you been in these circumstances?</h3>
     </div>
     <div class="medium-12 columns">
@@ -79,14 +79,14 @@
   </div>
   <hr/>
   <div class="row">
-    <div class="large-12 columns">
+    <div>
       <h3>Description</h3>
       <p>Tell us more about this period of time.</p>
         {{ form.description }}
     </div>
   </div>
   <div class="row">
-    <div class="large-12 columns">
+    <div>
       <input type="submit" class="button" value="Continue >>">
     </div>
   </div>
