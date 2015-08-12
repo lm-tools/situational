@@ -8,7 +8,7 @@ from history import forms
 
 
 def get_form_data_from_session(session):
-    form_data = session['forms']
+    form_data = session.get('forms', [])
     for form in form_data:
         form.pop("csrfmiddlewaretoken", None)
     return form_data
