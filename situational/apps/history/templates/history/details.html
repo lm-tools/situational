@@ -5,31 +5,30 @@
 <form method=post>
   {% csrf_token %}
   <hr/>
-  <div {% if form.subject.errors %}class="error"{% endif %}>
-    {% for error in form.postcode.errors %}
-        <small class="error">{{ error|escape }}</small>
-    {% endfor %}
-  </div>
-  <h1>Before:</h1>
+  {% if history %}
   <div class="row">
     <div class="large-12 columns">
-      {% for entry in report %}
-        <ol>
-          {% for key, value in entry.items %}
-             <li> {{ key }}: {{ value }}</li>
-          {% endfor %}
-        </ol>
+      <h3>Previously:</h3>
+      {% for entry in history %}
+        <p> {{ entry }}</p>
       {% endfor %}
     </div>
   </div>
+  <hr/>
+  {% endif %}
   <div class="row">
     <div class="large-12 columns">
-      <h3>Your current circumstances</h3>
+      <h3>{{ circumstance_title }}</h3>
       <p>Check all that apply.</p>
     </div>
   </div>
   <div class="row">
     <div class="large-12 columns">
+      <div {% if form.subject.errors %}class="error"{% endif %}>
+        {% for error in form.circumstances.errors %}
+            <small class="error">{{ error|escape }}</small>
+        {% endfor %}
+      </div>
       <fieldset>
         {% for choice in form.circumstances %}
         <div class="large-6 medium-6 columns">
@@ -49,6 +48,11 @@
       <h3>For how long have you been in these circumstances?</h3>
     </div>
     <div class="medium-12 columns">
+      <div {% if form.subject.errors %}class="error"{% endif %}>
+        {% for error in form.duration.errors %}
+            <small class="error">{{ error|escape }}</small>
+        {% endfor %}
+      </div>
       <fieldset>
         <div class="medium-6 columns">
           {% for choice in form.duration %}
