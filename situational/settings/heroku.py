@@ -11,6 +11,8 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+ALLOWED_HOSTS = ['.herokuapp.com']
+
 
 import dj_database_url
 DATABASES['default'] = dj_database_url.config()
