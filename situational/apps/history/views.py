@@ -44,9 +44,7 @@ class HistoryDetailsView(FormView):
     form_class = forms.HistoryDetailsForm
 
     def get(self, request, *args, **kwargs):
-        if 'forms' not in self.request.session:
-            self.request.session['forms'] = []
-        if len(self.request.session['forms']) >= 3:
+        if len(self.request.session.get('forms', [])) >= 3:
             url = reverse('history:report')
             return http.HttpResponseRedirect(url)
         else:
@@ -54,6 +52,8 @@ class HistoryDetailsView(FormView):
             return response
 
     def form_valid(self, form):
+        if 'forms' not in self.request.session:
+            self.request.session['forms'] = []
         self.request.session['forms'] += [dict(form.data.lists())]
         if len(self.request.session['forms']) < 3:
             url = reverse('history:details')
