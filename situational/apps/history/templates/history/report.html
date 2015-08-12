@@ -3,6 +3,17 @@
 {% block content %}
 
   <div class="row">
+    <form action="/history/clear_session" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div>
+          <input type="submit" class="button" value="Start again">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="row">
     <div class="large-6 columns small-centered">
       <div class="exp-timeline">
         <div class="container">

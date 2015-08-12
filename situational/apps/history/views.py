@@ -68,8 +68,10 @@ class HistoryDetailsView(FormView):
         if history_data:
             context['history'] = map(format_history_entry, history_data)
             context['circumstance_title'] = "Your circumstances previously"
+            context['percentage'] = len(history_data)*100/3
         else:
             context['circumstance_title'] = "Your current circumstances"
+            context['percentage'] = 0
         return context
 
 
@@ -89,3 +91,9 @@ class HistoryReportView(TemplateView):
         history_data = get_form_data_from_session(self.request.session)
         context['report'] = map(format_history_entry, history_data)
         return context
+
+class ClearSessionView(TemplateView):
+    def post(self, request, *args, **kwargs):
+        self.request.session['forms'] = []
+        url = reverse('history:details')
+        return http.HttpResponseRedirect(url)
