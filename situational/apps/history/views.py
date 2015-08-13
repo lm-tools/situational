@@ -14,48 +14,67 @@ def get_form_data_from_session(session):
         form.pop("csrfmiddlewaretoken", None)
     return form_data
 
+
 def format_timeline_data(history_data):
-    timeline_number_of_months = total_number_of_months(history_data)
+    nb_months = total_number_of_months(history_data)
     result = {}
-    result["years"] = timeline_years_dict(timeline_number_of_months)
-    result["timeline"] = circumstance_timeline(history_data, timeline_number_of_months)
+    result["years"] = timeline_years_dict(nb_months)
+    result["timeline"] = circumstance_timeline(history_data, nb_months)
     return result
+
 
 def total_number_of_months(history_data):
     result = 0
-    duration_length_dict = dict(forms.HistoryDetailsForm.DURATION_LENGTHS)
     for entry in history_data:
-        result += duration_length_dict[entry["duration"][0]]
+        result += length_in_months(entry)
     return result
 
-def circumstance_timeline(history_data, timeline_number_of_months):
+
+def circumstance_timeline(history_data, nb_months):
     result = {}
     unique_circumstances = []
     circumstances = []
     for entry in history_data:
         circumstances += format_circumstances(entry)
-    [unique_circumstances.append(item) for item in circumstances if item not in unique_circumstances]
+    unique_circumstances = unique_items_from_list(circumstances)
     for unique_circumstance in unique_circumstances:
         result[unique_circumstance] = []
         for entry in history_data:
-            duration_length_dict = dict(forms.HistoryDetailsForm.DURATION_LENGTHS)
-            duration = duration_length_dict[entry["duration"][0]]
+            duration = length_in_months(entry)
             active = unique_circumstance in format_circumstances(entry)
-            result[unique_circumstance] += [{"length": duration/timeline_number_of_months*100, "active": active}]
+            result[unique_circumstance] += [
+                {"length": duration / nb_months * 100, "active": active}
+            ]
     return result
 
-def timeline_years_dict(timeline_number_of_months):
+
+def length_in_months(entry):
+    duration_length_dict = dict(forms.HistoryDetailsForm.DURATION_LENGTHS)
+    duration = duration_length_dict[entry["duration"][0]]
+    return duration
+
+
+def unique_items_from_list(list_with_dups):
+    result = []
+    [result.append(i) for i in list_with_dups if i not in list_with_dups]
+    return result
+
+
+def timeline_years_dict(nb_of_months):
     years = []
     now = datetime.datetime.now()
     year = now.year
     number_of_months = 0
-    months_to_display = min(now.month, timeline_number_of_months)
-    while (number_of_months < timeline_number_of_months):
-        years += [{ "label": year, "width": months_to_display/timeline_number_of_months*100 }]
+    months_to_display = min(now.month, nb_of_months)
+    while (number_of_months < nb_of_months):
+        years += [
+            {"label": year, "width": months_to_display / nb_of_months * 100}
+        ]
         year -= 1
         number_of_months += months_to_display
-        months_to_display = min(12, timeline_number_of_months-number_of_months)
+        months_to_display = min(12, nb_of_months - number_of_months)
     return years
+
 
 def format_circumstances(entry):
     circumstance_data = entry["circumstances"][:]
@@ -66,9 +85,11 @@ def format_circumstances(entry):
     formatted_circumstances = list(map(format_circumstance, circumstance_data))
     return formatted_circumstances
 
+
 def format_circumstance(circumstance):
     circumstance_dict = dict(forms.HistoryDetailsForm.CIRCUMSTANCE_CHOICES)
     return circumstance_dict.get(circumstance, circumstance)
+
 
 def history_entry_as_string(entry):
     description = ""
