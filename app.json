@@ -6,6 +6,7 @@
     "AWS_S3_HOST"            :{"required":true},
     "AWS_SECRET_ACCESS_KEY"  :{"required":true},
     "AWS_STORAGE_BUCKET_NAME":{"required":true},
+    "DEFAULT_FROM_EMAIL"     :{"required":false},
     "DISABLE_COLLECTSTATIC"  :"1",
     "DJANGO_SECRET_KEY"      :{"required":true},
     "DJANGO_SETTINGS_MODULE" :"situational.settings.heroku",
@@ -17,8 +18,8 @@
   },
    "addons":[
     "heroku-postgresql:hobby-dev",
-    "rediscloud:30",
-    "sendgrid:starter",
+    "mailgun:starter",
+    "rediscloud:30"
   ],
   "buildpacks": [
     {
