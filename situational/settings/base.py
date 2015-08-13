@@ -210,6 +210,7 @@ LOGGING = {
 }
 
 # EMAILS
+DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
 
 # Jobs API
 JOBS_API_BASE_URL = environ.get('JOBS_API_BASE_URL',
