@@ -23,6 +23,16 @@ class HistoryDetailsForm(forms.Form):
         ('18_to_24', '18 to 24 months'),
         ('over_24', 'over 24 months')
     ]
+    DURATION_LENGTHS = [
+        ('less_than_1', 1),
+        ('1_to_3', 2),
+        ('3_to_6', 4.5),
+        ('6_to_9', 7.5),
+        ('9_to_12', 10.5),
+        ('12_to_18', 15),
+        ('18_to_24', 21),
+        ('over_24', 24)
+    ]
     circumstances = forms.MultipleChoiceField(
         widget=forms.CheckboxSelectMultiple,
         choices=CIRCUMSTANCE_CHOICES

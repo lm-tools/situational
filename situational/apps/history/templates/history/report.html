@@ -8,36 +8,24 @@
       <div class="exp-timeline">
         <div class="container">
           <ul class="items">
-            <li>
-              <h5>Work</h5>
-              <div class="active" style="width: 30%">
-                <div class="finish"></div>
-              </div>
-              <div class="inactive" style="width: 70%"></div>
-            </li>
-            <li>
-              <h5>Illness</h5>
-              <div class="inactive" style="width: 30%"></div>
-              <div class="active" style="width: 70%">
-                <div class="start"></div>
-              </div>
-            </li>
-            <li>
-              <h5>Childcare</h5>
-              <div class="inactive" style="width: 80%"></div>
-              <div class="active" style="width: 10%">
-                <div class="start"></div>
-                <div class="finish"></div>
-              </div>
-              <div class="inactive" style="width: 10%">
-              </div>
-            </li>
+            {% for circumstance, ranges in timeline.timeline.items %}
+              <li>
+                <h5>{{circumstance}}</h5>
+                {% for interval in ranges %}
+                  {% if interval.active %}
+                    <div class="active" style="width: {{interval.length}}%"></div>
+                  {% else %}
+                    <div class="inactive" style="width: {{interval.length}}%"></div>
+                  {% endif %}
+                {% endfor %}
+              </li>
+            {% endfor %}
           </ul>
         </div>
         <ul class="inline-list dates">
-          <li class="right-border" style="width:20%">2015</li>
-          <li class="right-border" style="width:40%">2014</li>
-          <li style="width:40%">2013</li>
+          {% for year in timeline.years %}
+            <li class="right-border" style="width:{{ year.width }}%">{{ year.label }}</li>
+          {% endfor %}
         </ul>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import datetime
 from django import http
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
@@ -13,26 +14,71 @@ def get_form_data_from_session(session):
         form.pop("csrfmiddlewaretoken", None)
     return form_data
 
+def format_timeline_data(history_data):
+    timeline_number_of_months = total_number_of_months(history_data)
+    result = {}
+    result["years"] = timeline_years_dict(timeline_number_of_months)
+    result["timeline"] = circumstance_timeline(history_data, timeline_number_of_months)
+    return result
 
-def format_history_entry(entry):
-    description = ""
-    if entry["description"][0]:
-        description = "({0})".format(entry["description"][0])
-    circumstance_data = entry["circumstances"]
+def total_number_of_months(history_data):
+    result = 0
+    duration_length_dict = dict(forms.HistoryDetailsForm.DURATION_LENGTHS)
+    for entry in history_data:
+        result += duration_length_dict[entry["duration"][0]]
+    return result
+
+def circumstance_timeline(history_data, timeline_number_of_months):
+    result = {}
+    unique_circumstances = []
+    circumstances = []
+    for entry in history_data:
+        circumstances += format_circumstances(entry)
+    [unique_circumstances.append(item) for item in circumstances if item not in unique_circumstances]
+    for unique_circumstance in unique_circumstances:
+        result[unique_circumstance] = []
+        for entry in history_data:
+            duration_length_dict = dict(forms.HistoryDetailsForm.DURATION_LENGTHS)
+            duration = duration_length_dict[entry["duration"][0]]
+            active = unique_circumstance in format_circumstances(entry)
+            result[unique_circumstance] += [{"length": duration/timeline_number_of_months*100, "active": active}]
+    return result
+
+def timeline_years_dict(timeline_number_of_months):
+    years = []
+    now = datetime.datetime.now()
+    year = now.year
+    number_of_months = 0
+    months_to_display = min(now.month, timeline_number_of_months)
+    while (number_of_months < timeline_number_of_months):
+        years += [{ "label": year, "width": months_to_display/timeline_number_of_months*100 }]
+        year -= 1
+        number_of_months += months_to_display
+        months_to_display = min(12, timeline_number_of_months-number_of_months)
+    return years
+
+def format_circumstances(entry):
+    circumstance_data = entry["circumstances"][:]
     if 'other' in circumstance_data:
         circumstance_data.remove('other')
     if entry["other_more"][0]:
         circumstance_data += entry["other_more"]
     formatted_circumstances = list(map(format_circumstance, circumstance_data))
-    circumstances = ", ".join(formatted_circumstances)
-    duration_dict = dict(forms.HistoryDetailsForm.DURATION_CHOICES)
-    duration = duration_dict[entry["duration"][0]]
-    return "For {0}: {1} {2}".format(duration, circumstances, description)
-
+    return formatted_circumstances
 
 def format_circumstance(circumstance):
     circumstance_dict = dict(forms.HistoryDetailsForm.CIRCUMSTANCE_CHOICES)
     return circumstance_dict.get(circumstance, circumstance)
+
+def history_entry_as_string(entry):
+    description = ""
+    if entry["description"][0]:
+        description = "({0})".format(entry["description"][0])
+    formatted_circumstances = format_circumstances(entry)
+    circumstances = ", ".join(formatted_circumstances)
+    duration_dict = dict(forms.HistoryDetailsForm.DURATION_CHOICES)
+    duration = duration_dict[entry["duration"][0]]
+    return "For {0}: {1} {2}".format(duration, circumstances, description)
 
 
 class HistoryDetailsView(FormView):
@@ -66,7 +112,7 @@ class HistoryDetailsView(FormView):
         context = kwargs
         history_data = get_form_data_from_session(self.request.session)
         if history_data:
-            context['history'] = map(format_history_entry, history_data)
+            context['history'] = map(history_entry_as_string, history_data)
             context['circumstance_title'] = "Your circumstances previously"
             context['percentage'] = len(history_data) * 100 / 3
         else:
@@ -89,7 +135,8 @@ class HistoryReportView(TemplateView):
     def get_context_data(self, **kwargs):
         context = kwargs
         history_data = get_form_data_from_session(self.request.session)
-        context['report'] = map(format_history_entry, history_data)
+        context['report'] = map(history_entry_as_string, history_data)
+        context['timeline'] = format_timeline_data(history_data)
         return context
 
 
