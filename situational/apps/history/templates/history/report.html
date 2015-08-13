@@ -55,7 +55,7 @@
   </div>
   <hr/>
   <div class="row">
-    <form action="/history/clear_session" method="post">
+    <form action="{% url 'history:clear_session' %}" method="post">
       {% csrf_token %}
       <div class="row">
         <div class="columns">
