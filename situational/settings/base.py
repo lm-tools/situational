@@ -239,7 +239,8 @@ PIPELINE_CSS = {
         'source_filenames': (
             'css/normalize.css',
             'css/foundation.css',
-            'css/styles.scss'
+            'css/styles.scss',
+            'css/timeline.scss'
         ),
         'output_filename': 'css/main.min.css',
         'extra_context': {

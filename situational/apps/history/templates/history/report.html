@@ -1,3 +1,68 @@
-{% for entry in report %}
-  <p>{{ entry }}</p>
-{% endfor %}
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="columns">
+      <h2>Timeline</h2>
+      <div class="exp-timeline">
+        <div class="container">
+          <ul class="items">
+            <li>
+              <h5>Work</h5>
+              <div class="active" style="width: 30%">
+                <div class="finish"></div>
+              </div>
+              <div class="inactive" style="width: 70%"></div>
+            </li>
+            <li>
+              <h5>Illness</h5>
+              <div class="inactive" style="width: 30%"></div>
+              <div class="active" style="width: 70%">
+                <div class="start"></div>
+              </div>
+            </li>
+            <li>
+              <h5>Childcare</h5>
+              <div class="inactive" style="width: 80%"></div>
+              <div class="active" style="width: 10%">
+                <div class="start"></div>
+                <div class="finish"></div>
+              </div>
+              <div class="inactive" style="width: 10%">
+              </div>
+            </li>
+          </ul>
+        </div>
+        <ul class="inline-list dates">
+          <li class="right-border" style="width:20%">2015</li>
+          <li class="right-border" style="width:40%">2014</li>
+          <li style="width:40%">2013</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="columns">
+      <h2>Summary</h2>
+      <ul>
+        {% for entry in report %}
+          <h4>{{ entry }}</h4>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <form action="/history/clear_session" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="columns">
+          <input type="submit" class="button" value="Start again">
+        </div>
+      </div>
+    </form>
+  </div>
+
+{% endblock %}
