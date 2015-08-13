@@ -4,3 +4,5 @@ from .base import *
 # This makes testing much easier.
 # http://docs.celeryproject.org/en/2.5/django/unit-testing.html
 TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
+
+LOGGING['root']['level'] = 'WARNING'
