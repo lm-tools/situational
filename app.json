@@ -6,7 +6,7 @@
     "AWS_S3_HOST"            :{"required":true},
     "AWS_SECRET_ACCESS_KEY"  :{"required":true},
     "AWS_STORAGE_BUCKET_NAME":{"required":true},
-    "DISABLE_COLLECTSTATIC"  :1,
+    "DISABLE_COLLECTSTATIC"  :"1",
     "DJANGO_SECRET_KEY"      :{"required":true},
     "DJANGO_SETTINGS_MODULE" :"situational.settings.heroku",
     "ENABLE_MAPUMENTAL"      :{"required":true},
