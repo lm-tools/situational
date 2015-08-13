@@ -3,6 +3,7 @@
 set -e
 
 export PATH=/app/.heroku/node/bin:$PATH
+export GEM_PATH=/app/vendor/bundle/ruby/1.9.1
 
 ./manage.py migrate --noinput
 ./manage.py collectstatic --noinput
