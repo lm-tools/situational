@@ -5,7 +5,7 @@
   <div class="row">
     <div class="columns large-8 large-centered">
       <h1>Enter location and job roles</h1>
-      <form method=get action="{% url "job_descriptions" %}" id="sector_form">
+      <form method=get action="{% url "sectors:job_descriptions" %}" id="sector_form">
         {{ form }}
         <p>
           (We'll try and match these against the official categories we have information about).

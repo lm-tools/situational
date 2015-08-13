@@ -20,7 +20,7 @@
   }
 </style>
 
-<form id="results" class="row" action="{% url "soc_code_info" %}">
+<form id="results" class="row" action="{% url "sectors:soc_code_info" %}">
   <input type="hidden" name="postcode" value="{{ postcode }}" id="postcode">
   <h1>Choose the matches that look relevant to you</h1>
   {% for code,result in results.items %}
