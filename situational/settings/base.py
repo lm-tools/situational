@@ -117,6 +117,7 @@ if BASICAUTH_DISABLED is False \
 
 MIDDLEWARE_CLASSES = (
     'log_request_id.middleware.RequestIDMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -166,6 +167,7 @@ PROJECT_APPS = (
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
 SESSION_COOKIE_HTTPONLY = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 INSTALLED_APPS += PROJECT_APPS
 

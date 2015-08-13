@@ -13,6 +13,15 @@ MANAGERS = ADMINS
 
 ALLOWED_HOSTS = ['.herokuapp.com']
 
+# Redirect any non-HTTP request to HTTPS
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Only allow sessions when serving the site over HTTPS
+SESSION_COOKIE_SECURE = True
+
+# Only send CSRF protection cookies when serving the site over HTTPS
+CSRF_COOKIE_SECURE = True
 
 # Use the X-Request=ID HTTP Header as the request ID
 LOG_REQUEST_ID_HEADER = "HTTP_X_REQUEST_ID"

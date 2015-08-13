@@ -12,6 +12,7 @@
     "ENABLE_MAPUMENTAL"      :{"required":true},
     "HTTP_PASSWORD"          :{"required":true},
     "HTTP_USERNAME"          :{"required":true},
+    "HTTPS"                  :"on",
     "MAPUMENTAL_API_KEY"     :{"required":true}
   },
    "addons":[
