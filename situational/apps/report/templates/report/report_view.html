@@ -20,45 +20,6 @@
     </div>
   </section>
 
-  <section>
-    <div class="columns small-centered">
-      <header>
-        <h3>Top Sectors</h3>
-      </header>
-      <ol>
-        {% for category in report.top_categories %}
-          <li>{{ category.category }} ({{ category.count }})</li>
-        {% endfor %}
-      </ol>
-    </div>
-  </section>
-
-  <section>
-    <div class="columns small-centered">
-      <header>
-        <h3>Latest Jobs</h3>
-      </header>
-      <ol>
-        {% for job in report.latest_jobs %}
-          <li>{{ job.title|title }}</li>
-        {% endfor %}
-      </ol>
-    </div>
-  </section>
-
-  <section>
-    <div class="columns small-centered">
-      <header>
-        <h3>Top Companies</h3>
-      </header>
-      <ol>
-        {% for company in report.top_companies %}
-          <li>{{ company.company_name }}</li>
-        {% endfor %}
-      </ol>
-    </div>
-  </section>
-
 </article>
 
 {% endblock content %}

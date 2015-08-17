@@ -32,9 +32,6 @@ def populate_report(report):
     logger.debug("Running all the sub tasks")
     sub_tasks = (
         travel_times_map.si(report),
-        top_categories.si(report),
-        top_companies.si(report),
-        latest_jobs.si(report),
     )
     callback = release_lock.si(report.pk, lock)
     for task in sub_tasks + (callback,):
