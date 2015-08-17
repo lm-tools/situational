@@ -1,29 +1,14 @@
 {% extends "base.html" %}
 {% load human_times %}
 
-{% block nav %}
-  <div class="contain-to-grid sticky">
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1>Understand where you could travel for work</h1>
-        </li>
-         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-    </nav>
-  </div>
-{% endblock nav %}
-
 {% block content %}
 
 <div class="row">
-  <div class="small-12 columns">
-    <h2>Email sent</h2>
-    <p>Your report will be emailed to you shortly.</p>
-    <p><a href="{% url 'report_view' postcode=postcode %}">Return to your report</a></p>
-    <p><a href="/">Generate a new report</a></p>
+  <div class="columns">
+    <div class="start-panel panel">
+      <h1>Your report has been sent</h1>
+      <p><a href="{% url 'report_view' postcode=postcode %}">Return to your report</a></p>
+    </div>
   </div>
 </div>
-
 {% endblock content %}

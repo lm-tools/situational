@@ -5,21 +5,43 @@
 
 {% block content %}
 
-<article class="report row">
-  <header class="report-header">
-    <h1>Understand where you could travel for work</h1>
-    <p>This report contains information to help you understand travel time and costs when you are looking for work.</p>
-  </header>
-
-  <section>
-    <div class="columns small-centered">
-      <header>
-        <h3>Travel times from {{ report.postcode }} on public transport</h3>
+<div class="row">
+  <div class="columns">
+    <article class="report clearfix">
+      <header class="report-header">
+        <h1>Understand where you could travel for work</h1>
+        <p>This report contains information to help you understand travel time and costs when you are looking for work.</p>
       </header>
-      <p><img src="{{ report.travel_times_map.image.url }}"></p>
-    </div>
-  </section>
 
-</article>
+      <section>
+        <div class="columns small-centered">
+          <header>
+            <h3>Travel times from {{ report.postcode }} on public transport</h3>
+          </header>
+          <p><img src="{{ report.travel_times_map.image.url }}"></p>
+        </div>
+      </section>
+
+      <footer>
+        <div class="columns">
+          <div class="panel">
+            <form action="{% url 'report_send' report.postcode %}" method="post">
+              <label for="email_address">Email yourself a copy of this report</label>
+              {% csrf_token %}
+              <div class="row collapse">
+                <div class="small-9 medium-10 columns">
+                  <input type="text" name="email" placeholder="Email address" id="email_address">
+                </div>
+                <div class="small-3 medium-2 columns">
+                  <input type="submit" class="button postfix" value="Send">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </div>
+</div>
 
 {% endblock content %}
