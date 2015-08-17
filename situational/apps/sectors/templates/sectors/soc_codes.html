@@ -1,104 +1,102 @@
 {% extends "base.html" %}
 {% load humanize %}
 
+{% block body_class %}class="has-report"{% endblock body_class %}
+
+{% block title %}Understand what sort of jobs you could do{% endblock title %}
 
 {% block content %}
 
-<style>
-  section+section {
-    padding-top:2em;
-  }
-  section h2 {
-    border-bottom:1px solid #000;
-  }
-
-  .job_item .job_info {
-    border-left:3px solid #005EA5;
-    margin:0 0 2em 0;
-    padding-left:1em;
-  }
-
-</style>
-
-{% block nav %}
-  <div class="fixed">
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a href="#">Job role results</a></h1>
-        </li>
-      </ul>
-      <ul>
-        <li class="action">
-          <a href="#" class="button success right">
-            Email a copy
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-{% endblock nav %}
-
-
 <div class="row">
-  <div class="columns large-12 large-centered small-centered">
-    {% for soc_code,soc_data in soc_code_data.items %}
-    <div class="columns large-12 job_item">
-        <h2>{{ soc_data.info.title }}</h2>
-        <div class="job_info">
-          <p>{{ soc_data.info.description }}</p>
+  <div class="columns">
+    <article class="report clearfix">
 
-          <div class="row">
-            <div class="large-6 columns">
-              <h4>Normal hours worked per week: {{ soc_data.hours_worked }}</h4>
-              <h4>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</h4>
+      <header>
+        <h1>Understand what sort of jobs you could do</h1>
+        <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
+        <aside>
+          <div class="columns">
+            <a href="{% url 'sectors:sector_start' %}">&#8592; start again</a>
+          </div>
+        </aside>
+      </header>
+
+      {% for soc_code,soc_data in soc_code_data.items %}
+
+        <section>
+          <div class="columns job_item">
+            <header>
+              <h2>{{ soc_data.info.title }}</h2>
+            </header>
+
+            <p>{{ soc_data.info.description }}</p>
+
+            <div class="row">
+              <div class="large-6 columns">
+                <h4>Typical pay and hours</h4>
+                <ul>
+                  <li>Normal hours worked per week: {{ soc_data.hours_worked }}</li>
+                  <li>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</li>
+                </ul>
+              </div>
+
+              <div class="large-6 columns">
+                <h4>Typical qualifications required</h4>
+                <p>{{ soc_data.info.qualifications }}</p>
+              </div>
             </div>
 
-            <div class="large-6 columns">
-              <h4>Typical qualifications required</h4>
-              <p>{{ soc_data.info.qualifications }}</p>
+            <div class="row">
+              <div class="large-6 columns">
+                <h4>Typical tasks</h4>
+                <ul>
+                  {% for task in soc_data.info.tasks %}
+                    <li>{{ task|capfirst }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+
+              <div class="large-6 columns">
+                <h4>Useful search terms</h4>
+                  <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
+              </div>
             </div>
           </div>
+        </section>
 
-          <div class="row">
-            <div class="large-6 columns">
-              <h4>Typical tasks</h4>
-              <ul>
-                {% for task in soc_data.info.tasks %}
-                  <li>{{ task|capfirst }}</li>
+      {% endfor %}
+
+      <section>
+        <div class="columns">
+          <div class="panel">
+            <header>
+              <h2>Local area - based on UK Census data</h2>
+            </header>
+            <div class="row">
+              <div class="columns large-6">
+                <h3>Jobs in the area</h3>
+                <ul>
+                {% for job in jobs_breakdown %}
+                  <li>{{ job.description }}</l>
                 {% endfor %}
-              </ul>
-            </div>
+                </ul>
+              </div>
 
-            <div class="large-6 columns">
-              <h4>Useful search terms</h4>
-                <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
+              <div class="columns large-6">
+                <h3>Resident professions</h3>
+                <ul>
+                {% for job in resident_occupations %}
+                  <li>{{ job.description|title }}</l>
+                {% endfor %}
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-   </div>
-    {% endfor %}
-    <h2>Local area - based on UK Census data</h2>
+      </section>
 
-    <div class="columns large-6">
-      <h3>Jobs in the area</h3>
-      <ul>
-      {% for job in jobs_breakdown %}
-        <li>{{ job.description }}</l>
-      {% endfor %}
-      </ul>
-    </div>
-
-    <div class="columns large-6">
-      <h3>Resident professions</h3>
-      <ul>
-      {% for job in resident_occupations %}
-        <li>{{ job.description|title }}</l>
-      {% endfor %}
-      </ul>
-    </div>
+    </article>
   </div>
-
 </div>
 
 
