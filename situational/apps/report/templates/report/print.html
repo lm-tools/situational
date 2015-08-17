@@ -2,45 +2,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Labour market report for {{ report.postcode }}</title>
+  <title>Understand where you could travel for work</title>
   {% embed_stylesheet "css/normalize.css" %}
   {% embed_stylesheet "css/foundation.min.css" %}
   {% embed_stylesheet "css/report-print.scss" %}
 </head>
 <body>
-  <h1>Your labour market report</h1>
-  <h2>{{ report.postcode }}</h2>
+<div class="row">
+  <div class="columns">
+    <article class="report clearfix">
+      <header>
+        <h1>Understand where you could travel for work</h1>
+        <p>This report contains information to help you understand travel time and costs when you are looking for work.</p>
+      </header>
 
-  <section>
-    <h3>Travel times</h3>
-    <p><img style="width: 100%" src="{% dataurl report.travel_times_map.image mimetype=report.travel_times_map.mime_type %}"></p>
-  </section>
+      <section>
+        <div class="columns small-centered">
+          <header>
+            <h3>Travel times from {{ report.postcode }} on public transport</h3>
+          </header>
+          <p><img src="{% dataurl report.travel_times_map.image mimetype=report.travel_times_map.mime_type %}"></p>
+        </div>
+      </section>
 
-  <section>
-    <div class="jobs-summary-row">
-      <h3>Top Sectors</h3>
-      <ol>
-        {% for category in report.top_categories %}
-          <li>{{ category.category }} ({{ category.count }})</li>
-        {% endfor %}
-      </ol>
-    </div>
-    <div class="jobs-summary-row">
-      <h3>Latest Jobs</h3>
-      <ol>
-        {% for job in report.latest_jobs %}
-          <li>{{ job.title|title }}</li>
-        {% endfor %}
-      </ol>
-    </div>
-    <div class="jobs-summary-row">
-      <h3>Top Companies</h3>
-      <ol>
-        {% for company in report.top_companies %}
-          <li>{{ company.company_name }}</li>
-        {% endfor %}
-      </ol>
-    </div>
-  </section>
+      <footer>
+        <p>Let us know if this is useful at <strong>feedback@lm-tools.com</strong></p>
+      </footer>
+    </article>
+  </div>
+</div>
+
 </body>
 </html>

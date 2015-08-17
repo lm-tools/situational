@@ -1,11 +1,5 @@
-section {
-  page-break-after: always;
-}
+@import 'styles.scss';
 
-ol {
-  list-style-position: inside;
-}
-
-.jobs-summary-row {
-  padding: 5mm;
+footer {
+  text-align: center;
 }
