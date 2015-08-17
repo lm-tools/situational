@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="{% url 'history:work_change_1' %}" method=post>
+<form method=post>
   {% csrf_token %}
   <div class="row">
     <h2>Current work</h2>

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form action="{% url 'history:summary' %}" method=post>
+<form method=post>
   {% csrf_token %}
   <div class="row">
     <h2>Other circumstances</h2>

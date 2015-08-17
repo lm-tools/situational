@@ -186,9 +186,10 @@ class CurrentWorkView(FormView):
     template_name = "history/current_work.html"
     form_class = forms.CurrentWorkStatusForm
 
-    def post(self, request, *args, **kwargs):
-        response = super().get(request, *args, **kwargs)
-        return response
+    def form_valid(self, form):
+        self.request.session['current_work'] += [dict(form.data.lists())]
+        url = reverse('history:TODO')
+        return http.HttpResponseRedirect(url)
 
 
 class WorkChangeOneView(FormView):
