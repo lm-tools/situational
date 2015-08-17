@@ -1,0 +1,30 @@
+body.has-report {
+  @media only screen and (min-width: 64.063em) { /* min-width 1025px, large screens */
+    background: #333333;
+    padding-top: 1%;
+  }
+}
+
+.report {
+  background: white;
+  margin-bottom: 1%;
+
+  > header {
+    text-align: center;
+    padding: 5%;
+    p {
+      color: #6F6F6F;
+    }
+  }
+
+  section {
+    header {
+      h2, h3 { color: #6F6F6F; }
+      text-align: center;
+      border-top: 1px solid #DFDFDF;
+      padding-top: 0.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
