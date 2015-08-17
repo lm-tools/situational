@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="{% url 'history:details' %}" method=get>
+  {% csrf_token %}
+  <div class="row">
+    <div>
+      <h2>START PAGE STRUCTURED HISTORY!</h2>
+
+      <h4>This tool collects information about you and your work history that will make your work coach meeting more useful and tailored to you.
+
+      <p>It should take around 15 minutes to complete.
+
+      <h4>You’ll be asked about:<h4>
+      <ul>
+        <li>your work or unemployment for the last 2 years</li>
+        <li>any training or education you’ve taken</li>
+      </ul>
+
+      <p>You’ll be able to print out or email your answers at the end to give to your work coach. Your answers will not be stored or saved.</p>
+
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <input type="submit" class="button" value="Next >>">
+    </div>
+  </div>
+  <hr/>
+</form>
+
+{% endblock content %}

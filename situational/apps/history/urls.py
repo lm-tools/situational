@@ -10,8 +10,10 @@ urlpatterns = patterns(
         name="clear_session"),
     url(r'current_work', views.CurrentWorkView.as_view(),
         name="current_work"),
-    url(r'start', views.HistoryStartView.as_view(),
-        name="start"),
+    url(r'start_text', views.HistoryStartView.as_view(),
+        name="start_text"),
+    url(r'start_structured', views.HistoryStartStructuredView.as_view(),
+        name="start_structured"),
     url(r'work_change_1', views.WorkChangeOneView.as_view(),
         name="work_change_1"),
     url(r'work_change_2', views.WorkChangeTwoView.as_view(),
@@ -20,6 +22,8 @@ urlpatterns = patterns(
         name="work_previous"),
     url(r'training_education', views.TrainingEducationView.as_view(),
         name="training_education"),
+    url(r'other_circumstances', views.OtherCircumstancesView.as_view(),
+        name="other_circumstances"),
     url(r'summary', views.SummaryView.as_view(),
         name="summary")
 )

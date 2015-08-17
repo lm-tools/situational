@@ -33,8 +33,8 @@ class HistoryDetailsForm(forms.Form):
         ('18_to_24', 21),
         ('over_24', 24)
     ]
-    circumstances = forms.MultipleChoiceField(
-        widget=forms.CheckboxSelectMultiple,
+    circumstances = forms.ChoiceField(
+        widget=forms.RadioSelect(),
         choices=CIRCUMSTANCE_CHOICES
     )
     duration = forms.ChoiceField(

@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<form action="{% url 'history:other_circumstances' %}" method=post>
+<form action="{% url 'history:summary' %}" method=post>
   {% csrf_token %}
   <div class="row">
     <div>
-      <h2>Training and education</h2>
+      <h2>Other circumstances</h2>
     </div>
   </div>
   <div class="row">

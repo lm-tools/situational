@@ -170,7 +170,14 @@ class ClearSessionView(TemplateView):
 
 class HistoryStartView(TemplateView):
     def get(self, request, *args, **kwargs):
-        self.template_name = "history/start.html"
+        self.template_name = "history/start_text.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class HistoryStartStructuredView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        self.template_name = "history/start_structured.html"
         response = super().get(request, *args, **kwargs)
         return response
 
@@ -206,6 +213,13 @@ class WorkPreviousView(TemplateView):
 class TrainingEducationView(TemplateView):
     def post(self, request, *args, **kwargs):
         self.template_name = "history/training_education.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class OtherCircumstancesView(TemplateView):
+    def post(self, request, *args, **kwargs):
+        self.template_name = "history/other_circumstances.html"
         response = super().get(request, *args, **kwargs)
         return response
 
