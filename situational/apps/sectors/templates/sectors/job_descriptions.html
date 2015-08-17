@@ -1,57 +1,48 @@
 {% extends "base.html" %}
 
+{% block title %}Understand what sort of jobs you could do{% endblock title %}
 
 {% block content %}
 
 <style>
-  .result_item {
-    clear:both;
+  .result-item {
+    border-top: 1px solid #DFDFDF;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
   }
-  .result_item+.result_item {
-    border-top:1px solid #000;
-  }
-
-  .result_item .switch {
-    margin:50px;
-  }
-
-  .removed * {
-    color:#6F777B !important;
+  .result-item h4 input {
+    margin-bottom: 0;
+    vertical-align: middle;
   }
 </style>
 
+<div class="row">
+  <div class="columns">
+    <h1>Select jobs you'd like to know more about</h1>
+  </div>
+</div>
 <form id="results" class="row" action="{% url "sectors:soc_code_info" %}">
   <input type="hidden" name="postcode" value="{{ postcode }}" id="postcode">
-  <h1>Choose the matches that look relevant to you</h1>
   {% for code,result in results.items %}
-    <div class="result_item removed">
-      <div  class="small-2 large-2 columns">
-        <div class=switch>
-          <input type="checkbox" name="soc_{{ result.soc }}" id="soc_{{ result.soc }}" >
-          <label for="soc_{{ result.soc }}"></label>
-        </div>
+    <div class="row collapse">
+      <div class="columns medium-10 large-9 result-item">
+        <label for="soc_{{ result.soc }}">
+          <h4><input type="checkbox" name="soc_{{ result.soc }}" id="soc_{{ result.soc }}"> {{ result.title }}</h4>
+          <p>{{ result.description }}</p>
+        </label>
       </div>
-      <label for=soc_{{ result.soc }} class="small-10 large-10 columns">
-        <h2>{{ result.title }}</h2>
-        <p>{{ result.description }}</p>
-      </label>
     </div>
   {% empty %}
-  Sorry, we couldn't find any results for those job roles
+  <div class="row">
+    <div class="columns">
+      <p>Sorry, we couldn't find any results for those job roles</p>
+    </div>
+  </div>
   {% endfor %}
-  <button type=submit class=button>Next</button>
+  <div class="row">
+    <div class="columns">
+      <button type=submit class=button>Next</button>
+    </div>
+  </div>
 </form>
-
 {% endblock content %}
-
-{% block javascript %}
-  {{ block.super }}
-  <script>
-
-    $('#results input[type=checkbox]').click(function() {
-        var $this = $(this);
-        $this.parents('.result_item').toggleClass('removed', !$this.is(':checked'));
-    });
-
-  </script>
-{% endblock javascript %}

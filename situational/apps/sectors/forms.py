@@ -28,8 +28,12 @@ class SectorSelectorWidget(forms.MultiWidget):
 class SectorForm(NoColonForm):
     SECTOR_INPUT_COUNT = 3
 
-    postcode = GBPostcodeField()
     sector = forms.CharField(
         widget=SectorSelectorWidget(SECTOR_INPUT_COUNT),
-        label="Job roles eg security, data entry, driver",
+        label="How would you describe the types of jobs you could do? "
+              "(eg security, data entry, driver)",
+    )
+
+    postcode = GBPostcodeField(
+        label="Your postcode"
     )
