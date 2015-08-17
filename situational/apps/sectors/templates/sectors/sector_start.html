@@ -1,24 +1,22 @@
 {% extends "base.html" %}
 
+{% block title %}Understand what sort of jobs you could do{% endblock title %}
+
 {% block body_class %}class="sectors"{% endblock body_class %}
 
 {% block content %}
 
 <div class="row">
-  <div class="columns small-8 small-centered large-centered start_page">
-    <h1>Explore job roles</h1>
+  <div class="columns small-10 small-centered start_page">
+    <div class="start-panel panel">
+      <h1>Understand what sort of jobs you could do</h1>
 
-    <p>
-      Get information about job roles you are looking for, including
-      pay bands, average working hours, qualifications required and
-      related search terms.
-    </p>
-    <ul>
-        <li>takes approximately 5 minutes</li>
-        <li>choose up to 3 job types</li>
-    </ul>
+      <p>Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online.</p>
 
-    <a href="{% url "sectors:sector_form" %}" class="button large">Start</a>
+      <p>Generate a report to share with your work coach so they know how to help you.</p>
+
+      <a href="{% url "sectors:sector_form" %}" class="button large">Start</a>
+    </div>
   </div>
 
 </div>
