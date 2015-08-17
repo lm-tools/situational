@@ -188,7 +188,7 @@ class CurrentWorkView(FormView):
 
     def form_valid(self, form):
         self.request.session['current_work'] += [dict(form.data.lists())]
-        url = reverse('history:TODO')
+        url = reverse('history:work_change_1')
         return http.HttpResponseRedirect(url)
 
 
@@ -196,49 +196,60 @@ class WorkChangeOneView(FormView):
     template_name = "history/work_change_1.html"
     form_class = forms.PreviousYearsForm
 
-    def post(self, request, *args, **kwargs):
-        response = super().get(request, *args, **kwargs)
-        return response
+    def form_valid(self, form):
+        self.request.session['work_2015'] += [dict(form.data.lists())]
+        url = reverse('history:work_change_2')
+        return http.HttpResponseRedirect(url)
 
 
 class WorkChangeTwoView(FormView):
     template_name = "history/work_change_2.html"
     form_class = forms.PreviousYearsForm
 
-    def post(self, request, *args, **kwargs):
-        response = super().get(request, *args, **kwargs)
-        return response
+    def form_valid(self, form):
+        self.request.session['work_2014'] += [dict(form.data.lists())]
+        # THAT IS NOT THE CORRECT CONDITION
+        work_1 = self.request.session['work_2015']
+        work_2 = self.request.session['work_2014']
+        if (work_1 == 'no' and work_2 == 'no'):
+            url = reverse('history:work_previous')
+        else:
+            url = reverse('history:training_education')
+        return http.HttpResponseRedirect(url)
 
 
 class WorkPreviousView(FormView):
     template_name = "history/work_previous.html"
     form_class = forms.OneTextFieldForm
 
-    def post(self, request, *args, **kwargs):
-        response = super().get(request, *args, **kwargs)
-        return response
+    def form_valid(self, form):
+        self.request.session['before_2014'] += [dict(form.data.lists())]
+        url = reverse('history:training_education')
+        return http.HttpResponseRedirect(url)
 
 
 class TrainingEducationView(FormView):
     template_name = "history/training_education.html"
     form_class = forms.TrainingEducationForm
 
-    def post(self, request, *args, **kwargs):
-        response = super().get(request, *args, **kwargs)
-        return response
+    def form_valid(self, form):
+        self.request.session['training_education'] += [dict(form.data.lists())]
+        url = reverse('history:other_circumstances')
+        return http.HttpResponseRedirect(url)
 
 
 class OtherCircumstancesView(FormView):
     template_name = "history/other_circumstances.html"
     form_class = forms.OneTextFieldForm
 
-    def post(self, request, *args, **kwargs):
-        response = super().get(request, *args, **kwargs)
-        return response
+    def form_valid(self, form):
+        self.request.session['other'] += [dict(form.data.lists())]
+        url = reverse('history:summary')
+        return http.HttpResponseRedirect(url)
 
 
 class SummaryView(TemplateView):
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         self.template_name = "history/summary.html"
         response = super().get(request, *args, **kwargs)
         return response
