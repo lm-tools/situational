@@ -19,10 +19,6 @@ class Report(TimeStampedModel):
     is_populating = models.BooleanField(default=False)
 
     RESULT_FIELDS = (
-        'location_json',
-        'top_categories',
-        'top_companies',
-        'latest_jobs',
         'travel_times_map',
     )
 
