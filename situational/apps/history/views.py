@@ -182,44 +182,56 @@ class HistoryStartStructuredView(TemplateView):
         return response
 
 
-class CurrentWorkView(TemplateView):
+class CurrentWorkView(FormView):
+    template_name = "history/current_work.html"
+    form_class = forms.CurrentWorkStatusForm
+
     def post(self, request, *args, **kwargs):
-        self.template_name = "history/current_work.html"
         response = super().get(request, *args, **kwargs)
         return response
 
 
-class WorkChangeOneView(TemplateView):
+class WorkChangeOneView(FormView):
+    template_name = "history/work_change_1.html"
+    form_class = forms.PreviousYearsForm
+
     def post(self, request, *args, **kwargs):
-        self.template_name = "history/work_change_1.html"
         response = super().get(request, *args, **kwargs)
         return response
 
 
-class WorkChangeTwoView(TemplateView):
+class WorkChangeTwoView(FormView):
+    template_name = "history/work_change_2.html"
+    form_class = forms.PreviousYearsForm
+
     def post(self, request, *args, **kwargs):
-        self.template_name = "history/work_change_2.html"
         response = super().get(request, *args, **kwargs)
         return response
 
 
-class WorkPreviousView(TemplateView):
+class WorkPreviousView(FormView):
+    template_name = "history/work_previous.html"
+    form_class = forms.OneTextFieldForm
+
     def post(self, request, *args, **kwargs):
-        self.template_name = "history/work_previous.html"
         response = super().get(request, *args, **kwargs)
         return response
 
 
-class TrainingEducationView(TemplateView):
+class TrainingEducationView(FormView):
+    template_name = "history/training_education.html"
+    form_class = forms.TrainingEducationForm
+
     def post(self, request, *args, **kwargs):
-        self.template_name = "history/training_education.html"
         response = super().get(request, *args, **kwargs)
         return response
 
 
-class OtherCircumstancesView(TemplateView):
+class OtherCircumstancesView(FormView):
+    template_name = "history/other_circumstances.html"
+    form_class = forms.OneTextFieldForm
+
     def post(self, request, *args, **kwargs):
-        self.template_name = "history/other_circumstances.html"
         response = super().get(request, *args, **kwargs)
         return response
 

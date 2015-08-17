@@ -5,8 +5,13 @@
 <form action="{% url 'history:summary' %}" method=post>
   {% csrf_token %}
   <div class="row">
-    <div>
-      <h2>Other circumstances</h2>
+    <h2>Other circumstances</h2>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <h4>Is there anything else your work coach should know to help understand your circumstances?</h4>
+      <p>Tell us more.</p>
+        {{ form.text }}
     </div>
   </div>
   <div class="row">

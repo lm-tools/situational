@@ -5,6 +5,7 @@ YES_NO_CHOICES = [
     ('no', 'No')
 ]
 
+
 class HistoryDetailsForm(forms.Form):
     CIRCUMSTANCE_CHOICES = [
         ("full_time", "Full time"),
@@ -57,8 +58,10 @@ class HistoryDetailsForm(forms.Form):
             self.add_error('circumstances', description_missing)
         return cleaned_data
 
+
 class OneTextFieldForm(forms.Form):
     text = forms.CharField(required=False)
+
 
 class CurrentWorkStatusForm(forms.Form):
     WORK_STATUS_CHOICES = [
@@ -74,12 +77,14 @@ class CurrentWorkStatusForm(forms.Form):
     )
     description = forms.CharField(required=False)
 
+
 class PreviousYearsForm(forms.Form):
     changes = forms.ChoiceField(
         choices=YES_NO_CHOICES,
         widget=forms.RadioSelect()
     )
     description = forms.CharField(required=False)
+
 
 class TrainingEducationForm(forms.Form):
     yes_or_no = forms.ChoiceField(

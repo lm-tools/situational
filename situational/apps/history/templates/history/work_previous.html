@@ -5,8 +5,13 @@
 <form action="{% url 'history:training_education' %}" method=post>
   {% csrf_token %}
   <div class="row">
-    <div>
-      <h2>Tell us more about < 2014</h2>
+    <h2>Tell us more about < 2014</h2>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <h3>Description</h3>
+      <p>Tell us more.</p>
+        {{ form.text }}
     </div>
   </div>
   <div class="row">

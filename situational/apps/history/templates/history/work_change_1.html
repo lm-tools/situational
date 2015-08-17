@@ -5,8 +5,31 @@
 <form action="{% url 'history:work_change_2' %}" method=post>
   {% csrf_token %}
   <div class="row">
-    <div>
-      <h2>Did your work status change in 2015?</h2>
+    <h2>Did your work status change in 2015?</h2>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <div {% if form.subject.errors %}class="error"{% endif %}>
+        {% for error in form.changes.errors %}
+          <small class="error">{{ error|escape }}</small>
+        {% endfor %}
+      </div>
+      <fieldset>
+        {% for choice in form.changes %}
+        <div class="medium-6 columns">
+          {{choice.tag}}
+          <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
+        </div>
+        {% endfor %}
+      </fieldset>
+    </div>
+  </div>
+  <p>Hide if above is no!</p>
+  <div class="row">
+    <div class="columns">
+      <h3>Description</h3>
+      <p>Tell us more.</p>
+        {{ form.description }}
     </div>
   </div>
   <div class="row">
