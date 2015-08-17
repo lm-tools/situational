@@ -187,7 +187,7 @@ class CurrentWorkView(FormView):
     form_class = forms.CurrentWorkStatusForm
 
     def form_valid(self, form):
-        self.request.session['current_work'] += [dict(form.data.lists())]
+        self.request.session['current_work'] = [dict(form.data.lists())]
         url = reverse('history:work_change_1')
         return http.HttpResponseRedirect(url)
 
@@ -197,7 +197,7 @@ class WorkChangeOneView(FormView):
     form_class = forms.PreviousYearsForm
 
     def form_valid(self, form):
-        self.request.session['work_2015'] += [dict(form.data.lists())]
+        self.request.session['work_2015'] = [dict(form.data.lists())]
         url = reverse('history:work_change_2')
         return http.HttpResponseRedirect(url)
 
@@ -207,7 +207,7 @@ class WorkChangeTwoView(FormView):
     form_class = forms.PreviousYearsForm
 
     def form_valid(self, form):
-        self.request.session['work_2014'] += [dict(form.data.lists())]
+        self.request.session['work_2014'] = [dict(form.data.lists())]
         # THAT IS NOT THE CORRECT CONDITION
         work_1 = self.request.session['work_2015']
         work_2 = self.request.session['work_2014']
@@ -223,7 +223,7 @@ class WorkPreviousView(FormView):
     form_class = forms.OneTextFieldForm
 
     def form_valid(self, form):
-        self.request.session['before_2014'] += [dict(form.data.lists())]
+        self.request.session['before_2014'] = [dict(form.data.lists())]
         url = reverse('history:training_education')
         return http.HttpResponseRedirect(url)
 
@@ -233,7 +233,7 @@ class TrainingEducationView(FormView):
     form_class = forms.TrainingEducationForm
 
     def form_valid(self, form):
-        self.request.session['training_education'] += [dict(form.data.lists())]
+        self.request.session['training_education'] = [dict(form.data.lists())]
         url = reverse('history:other_circumstances')
         return http.HttpResponseRedirect(url)
 
@@ -243,7 +243,7 @@ class OtherCircumstancesView(FormView):
     form_class = forms.OneTextFieldForm
 
     def form_valid(self, form):
-        self.request.session['other'] += [dict(form.data.lists())]
+        self.request.session['other'] = [dict(form.data.lists())]
         url = reverse('history:summary')
         return http.HttpResponseRedirect(url)
 
