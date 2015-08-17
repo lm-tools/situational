@@ -1,27 +1,35 @@
 {% extends "base.html" %}
 
+{% block title %}Understand where you could travel for work{% endblock title %}
+
 {% block content %}
-    <div id="start" class="row">
-        <div class="large-10 small-centered columns start_page">
-            <h1>Labour market report</h1>
+<div id="start" class="row">
+    <div class="large-10 small-centered columns start_page">
+        <div class="start-panel panel">
+            <h1>Understand where you could travel for work</h1>
             <p>
-                This tool will generate a personalised report
-                to help you discuss your options with your
-                work coach.
+                Enter a postcode to view a map of where you can travel to in 90 minutes on public transport. Generate a report to share with your work coach to help agree your commitments.
             </p>
             <form method=post>
                 {% csrf_token %}
-                <div {% if form.subject.errors %}class="error"{% endif %}>
-                    <label>
-                        Postcode
-                        {{ form.postcode }}
-                    </label>
-                    {% for error in form.postcode.errors %}
-                        <small class="error">{{ error|escape }}</small>
-                    {% endfor %}
+                <div class="row">
+                    <div class="columns small-8 medium-6 large-4 {% if form.subject.errors %}error{% endif %}">
+                        <label>
+                            Postcode
+                            {{ form.postcode }}
+                        </label>
+                        {% for error in form.postcode.errors %}
+                            <small class="error">{{ error|escape }}</small>
+                        {% endfor %}
+                    </div>
                 </div>
-                <button type="submit">Get started</button>
+                <div class="row">
+                    <div class="columns">
+                        <button type="submit">Get started</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
+</div>
 {% endblock content %}
