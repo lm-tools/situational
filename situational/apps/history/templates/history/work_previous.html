@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="{% url 'history:training_education' %}" method=post>
+  {% csrf_token %}
+  <div class="row">
+    <div>
+      <h2>Tell us more about < 2014</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div>
+      <input type="submit" class="button" value="Next >>">
+    </div>
+  </div>
+  <hr/>
+</form>
+
+{% endblock content %}

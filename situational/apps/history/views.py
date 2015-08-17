@@ -166,3 +166,52 @@ class ClearSessionView(TemplateView):
         self.request.session['forms'] = []
         url = reverse('history:details')
         return http.HttpResponseRedirect(url)
+
+
+class HistoryStartView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        self.template_name = "history/start.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class CurrentWorkView(TemplateView):
+    def post(self, request, *args, **kwargs):
+        self.template_name = "history/current_work.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class WorkChangeOneView(TemplateView):
+    def post(self, request, *args, **kwargs):
+        self.template_name = "history/work_change_1.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class WorkChangeTwoView(TemplateView):
+    def post(self, request, *args, **kwargs):
+        self.template_name = "history/work_change_2.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class WorkPreviousView(TemplateView):
+    def post(self, request, *args, **kwargs):
+        self.template_name = "history/work_previous.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class TrainingEducationView(TemplateView):
+    def post(self, request, *args, **kwargs):
+        self.template_name = "history/training_education.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class SummaryView(TemplateView):
+    def post(self, request, *args, **kwargs):
+        self.template_name = "history/summary.html"
+        response = super().get(request, *args, **kwargs)
+        return response
