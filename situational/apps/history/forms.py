@@ -1,5 +1,9 @@
 from django import forms
 
+YES_NO_CHOICES = [
+    ('yes', 'Yes'),
+    ('no', 'No')
+]
 
 class HistoryDetailsForm(forms.Form):
     CIRCUMSTANCE_CHOICES = [
@@ -39,7 +43,8 @@ class HistoryDetailsForm(forms.Form):
     )
     duration = forms.ChoiceField(
         choices=DURATION_CHOICES,
-        widget=forms.RadioSelect())
+        widget=forms.RadioSelect()
+    )
     other_more = forms.CharField(required=False)
     description = forms.CharField(required=False)
 
@@ -51,3 +56,35 @@ class HistoryDetailsForm(forms.Form):
             description_missing = "Please enter a short description for other"
             self.add_error('circumstances', description_missing)
         return cleaned_data
+
+class OneTextFieldForm(forms.Form):
+    text = forms.CharField(required=False)
+
+class CurrentWorkStatusForm(forms.Form):
+    WORK_STATUS_CHOICES = [
+        ('full_time', 'Full time'),
+        ('part_time', 'Part time'),
+        ('unemployed', 'Unemployed'),
+        ('off_sick', 'Off sick'),
+        ('work_programme', 'Work programme')
+    ]
+    status = forms.ChoiceField(
+        choices=WORK_STATUS_CHOICES,
+        widget=forms.RadioSelect()
+    )
+    description = forms.CharField(required=False)
+
+class PreviousYearsForm(forms.Form):
+    changes = forms.ChoiceField(
+        choices=YES_NO_CHOICES,
+        widget=forms.RadioSelect()
+    )
+    description = forms.CharField(required=False)
+
+class TrainingEducationForm(forms.Form):
+    yes_or_no = forms.ChoiceField(
+        choices=YES_NO_CHOICES,
+        widget=forms.RadioSelect()
+    )
+    current = forms.CharField(required=False)
+    previous = forms.CharField(required=False)
