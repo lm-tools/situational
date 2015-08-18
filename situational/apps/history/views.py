@@ -39,41 +39,54 @@ def format_summary(session):
 
 
 def format_before_data(before_data):
-    return before_data
+    result = {}
+    if before_data.get('text', None):
+        result["text"] = before_data["text"][0]
+    return result
 
 
 def format_other_circumstances(other_circumstances):
-    return other_circumstances
+    result = {}
+    if other_circumstances.get('text', None):
+        result["text"] = other_circumstances["text"][0]
+    return result
 
 
 def format_current_status(current):
-    return current
+    result = {}
+    if current.get('status', None):
+        result["status"] = format_circumstance(current['status'][0])
+    if current.get('description', None):
+        result["description"] = current["description"][0]
+    return result
 
 
 def format_training_data(training_education):
-    formatted = {}
+    result = {}
     current = training_education.get("yes_or_no", ["unknown"])[0]
     if current == "yes":
-        formatted["current"] = "You are currently in training or education."
+        result["current"] = "You are currently in training or education."
     elif current == "no":
-        formatted["current"] = "You are not currently in training or education."
+        result["current"] = "You are not currently in training or education."
     if training_education.get("current", None):
-        formatted["current_info"] = training_education.get("current")[0]
+        result["current_info"] = training_education.get("current")[0]
     if training_education.get("previous", None):
-        formatted["previous_info"] = training_education.get("previous")[0]
-    return formatted
+        result["previous_info"] = training_education.get("previous")[0]
+    return result
 
 
-def format_year_change_data(year_change,  year):
-    formatted = {}
+def format_year_change_data(year_change, year):
+    result = {}
     current = year_change.get("changes", ["unknown"])[0]
     if current == "yes":
-        formatted["current"] = "Your work status has changed in {0}.".format(year)
+        result["current"] = \
+            "Your work status has changed in {0}.".format(year)
     elif current == "no":
-        formatted["current"] = "Your work status has not changed in {0}.".format(year)
+        result["current"] = \
+            "Your work status has not changed in {0}.".format(year)
     if year_change.get("description", None):
-        formatted["description"] = year_change.get("description")[0]
-    return formatted
+        result["description"] = year_change.get("description")[0]
+    return result
 
 
 def remove_csrf_token(data):

@@ -18,7 +18,7 @@
       {% endif %}
       {% if summary.current.description %}
         <h3>Information about your current work status</h3>
-        <p>{{summary.current.description}}</p>
+        <p>{{summary.current.description|linebreaks}}</p>
       {% endif %}
 
 
@@ -30,7 +30,7 @@
       {% endif %}
       {% if summary.2015.description %}
         <h3>Information about your work status changes in 2015</h3>
-        <p>{{summary.2015.description}}</p>
+        <p>{{summary.2015.description|linebreaks}}</p>
       {% endif %}
 
       <h2>Work status changes in 2014</h2>
@@ -41,13 +41,13 @@
       {% endif %}
       {% if summary.2014.description %}
         <h3>Information about your work status changes in 2014</h3>
-        <p>{{summary.2014.description}}</p>
+        <p>{{summary.2014.description|linebreaks}}</p>
       {% endif %}
 
       {% if summary.before %}
         <h2>Work before 2014</h2>
         {% if summary.before.text %}
-          <p>{{ summary.before.text }}</p>
+          <p>{{ summary.before.text|linebreaks }}</p>
         {% else %}
           <p>You have not told us about your work status before 2014.</p>
         {% endif %}
@@ -62,16 +62,16 @@
       {% endif %}
       {% if summary.training.current_info %}
         <h3>Information about your current training and education</h3>
-        <p>{{summary.training.current_info}}</p>
+        <p>{{summary.training.current_info|linebreaks}}</p>
       {% endif %}
       {% if summary.training.previous_info %}
         <h3>Information about your previous training and education</h3>
-        <p>{{summary.training.previous_info}}</p>
+        <p>{{summary.training.previous_info|linebreaks}}</p>
       {% endif %}
 
       <h2>Other circumstances</h2>
       {% if summary.other.text %}
-        <p>{{ summary.other.text }}</p>
+        <p>{{ summary.other.text|linebreaks }}</p>
       {% else %}
         <p>You have not told us about any other circumstances you would like to tell your work coach.</p>
       {% endif %}
