@@ -1,11 +1,80 @@
 {% extends "base.html" %}
 
+{% block title %}Tell your work coach your history{% endblock title %}
+
+{% block body_class %}class="history"{% endblock body_class %}
+
 {% block content %}
 
   <div class="row">
     <div>
-      <h1>SUMMARY!</h1>
-      {{ summary }}
+      <h1>Tell your work coach your history</h1>
+      <h2>Current situation</h2>
+      <h3>Current work status</h3>
+      {% if summary.current.status %}
+        <p>{{ summary.current.status }}</p>
+      {% else %}
+        <p>You have not told us about your current work status.</p>
+      {% endif %}
+      {% if summary.current.description %}
+        <h3>Information about your current work status</h3>
+        <p>{{summary.current.description}}</p>
+      {% endif %}
+
+
+      <h2>Work status changes in 2015</h2>
+      {% if summary.2015.current %}
+        <p>{{ summary.2015.current }}</p>
+      {% else %}
+        <p>You have not told us about changes in your work status in 2015.</p>
+      {% endif %}
+      {% if summary.2015.description %}
+        <h3>Information about your work status changes in 2015</h3>
+        <p>{{summary.2015.description}}</p>
+      {% endif %}
+
+      <h2>Work status changes in 2014</h2>
+      {% if summary.2014.current %}
+        <p>{{ summary.2014.current }}</p>
+      {% else %}
+        <p>You have not told us about changes in your work status in 2014.</p>
+      {% endif %}
+      {% if summary.2014.description %}
+        <h3>Information about your work status changes in 2014</h3>
+        <p>{{summary.2014.description}}</p>
+      {% endif %}
+
+      {% if summary.before %}
+        <h2>Work before 2014</h2>
+        {% if summary.before.text %}
+          <p>{{ summary.before.text }}</p>
+        {% else %}
+          <p>You have not told us about your work status before 2014.</p>
+        {% endif %}
+      {% endif %}
+
+      <h2>Training and education</h2>
+      <h3>Currently</h3>
+      {% if summary.training.current %}
+        <p>{{ summary.training.current }}</p>
+      {% else %}
+        <p>You have not told us if you are currently in training or education.</p>
+      {% endif %}
+      {% if summary.training.current_info %}
+        <h3>Information about your current training and education</h3>
+        <p>{{summary.training.current_info}}</p>
+      {% endif %}
+      {% if summary.training.previous_info %}
+        <h3>Information about your previous training and education</h3>
+        <p>{{summary.training.previous_info}}</p>
+      {% endif %}
+
+      <h2>Other circumstances</h2>
+      {% if summary.other.text %}
+        <p>{{ summary.other.text }}</p>
+      {% else %}
+        <p>You have not told us about any other circumstances you would like to tell your work coach.</p>
+      {% endif %}
     </div>
   </div>
 
