@@ -109,11 +109,9 @@ TEMPLATE_LOADERS = (
 
 BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
 BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
-BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED') == 'True'
+if 'BASICAUTH_DISABLED' not in locals():
+    BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED') == 'True'
 
-if BASICAUTH_DISABLED is False \
-        and all((BASICAUTH_USERNAME, BASICAUTH_PASSWORD)) is False:
-    raise ImproperlyConfigured("Please specify a HTTP username and password")
 
 MIDDLEWARE_CLASSES = (
     'log_request_id.middleware.RequestIDMiddleware',
@@ -273,3 +271,9 @@ except ImportError:
 # importing test settings file if necessary (TODO chould be done better)
 if len(sys.argv) > 1 and 'test' in sys.argv[1]:
     from .testing import *
+
+# This check is at the end of this so that it can be overridden by environment
+# specific config
+if BASICAUTH_DISABLED is False \
+        and all((BASICAUTH_USERNAME, BASICAUTH_PASSWORD)) is False:
+    raise ImproperlyConfigured("Please specify a HTTP username and password")
