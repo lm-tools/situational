@@ -225,8 +225,8 @@ class WorkChangeTwoView(FormView):
 
     def form_valid(self, form):
         self.request.session['work_2014'] = dict(form.data.lists())
-        work_1 = self.request.session['work_2015']['changes'][0]
-        work_2 = self.request.session['work_2014']['changes'][0]
+        work_1 = self.request.session['work_2015'].get('changes', ['no'])[0]
+        work_2 = self.request.session['work_2014'].get('changes', ['no'])[0]
         if (work_1 == 'no' and work_2 == 'no'):
             url = reverse('history:work_previous')
         else:

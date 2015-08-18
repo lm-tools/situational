@@ -1,41 +1,43 @@
 {% extends "base.html" %}
 
+{% block title %}Tell your work coach your history{% endblock title %}
+
+{% block body_class %}class="history"{% endblock body_class %}
+
 {% block content %}
 
 <form method=post>
   {% csrf_token %}
   <div class="row">
-    <h2>Did your work status change in 2014?</h2>
+    <div class="medium-12 columns">
+      <h1>Work in 2014</h1>
+    </div>
   </div>
   <div class="row">
-    <div class="columns">
+    <div class="medium-6 columns">
+      <h3>Did your work status change in 2014?</h3>
       <div {% if form.subject.errors %}class="error"{% endif %}>
         {% for error in form.changes.errors %}
           <small class="error">{{ error|escape }}</small>
         {% endfor %}
       </div>
-      <fieldset>
         {% for choice in form.changes %}
-        <div class="medium-6 columns">
+        <div class="medium-12 columns">
           {{choice.tag}}
           <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
         </div>
         {% endfor %}
-      </fieldset>
     </div>
   </div>
   <div class="row">
-    <div class="columns">
+    <div class="medium-6 columns">
       <h3>Description</h3>
       <p>Tell us more.</p>
-        {{ form.description }}
+      {{ form.description }}
     </div>
   </div>
   <div class="row">
-    <p>TODO: hide description if change says no!</p>
-  </div>
-  <div class="row">
-    <div>
+    <div class="medium-6 columns">
       <input type="submit" class="button" value="Next >>">
     </div>
   </div>
