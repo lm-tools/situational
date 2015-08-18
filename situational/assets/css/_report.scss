@@ -1,8 +1,9 @@
 body.has-report {
-  @media only screen and (min-width: 64.063em) { /* min-width 1025px, large screens */
+  @media #{$large-up} {
     background: #333333;
     padding-top: 1%;
   }
+
 }
 
 .report {
@@ -11,15 +12,18 @@ body.has-report {
 
   > header {
     text-align: center;
-    padding: 5%;
+    margin: 10% 5% 5% 5%;
+    @media #{$medium-up} {
+      margin-top: 5%;
+    }
     p {
       color: #6F6F6F;
     }
     aside {
       font-size: 0.8em;
       position: absolute;
-      top: 0.2rem;
-      left: 0.5rem;
+      top: 0.2%;
+      left: 1%;
     }
   }
 
@@ -28,8 +32,16 @@ body.has-report {
       h2, h3 { color: #6F6F6F; }
       text-align: center;
       border-top: 1px solid #DFDFDF;
-      padding-top: 0.5rem;
-      margin-bottom: 1rem;
+      padding-top: 3%;
+      margin-bottom: 1%;
+      margin-top: 6%;
+      @media #{$medium-up} {
+        margin-top: 3%;
+        padding-top: 1%;
+      }
+      @media #{$large-up} {
+        margin-top: 0;
+      }
     }
     .panel {
       header {

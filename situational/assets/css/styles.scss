@@ -3,7 +3,10 @@
 @import '_report';
 
 .start-panel {
-  margin: 5%;
+  @media #{$medium-up} {
+    @include panel;
+    margin: 5%;
+  }
 }
 
 .top-bar-section ul {
