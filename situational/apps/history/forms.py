@@ -73,7 +73,8 @@ class CurrentWorkStatusForm(forms.Form):
     ]
     status = forms.ChoiceField(
         choices=WORK_STATUS_CHOICES,
-        widget=forms.RadioSelect()
+        widget=forms.RadioSelect(),
+        required=False
     )
     description = forms.CharField(required=False, widget=forms.Textarea)
 
@@ -81,7 +82,8 @@ class CurrentWorkStatusForm(forms.Form):
 class PreviousYearsForm(forms.Form):
     changes = forms.ChoiceField(
         choices=YES_NO_CHOICES,
-        widget=forms.RadioSelect()
+        widget=forms.RadioSelect(),
+        required=False
     )
     description = forms.CharField(required=False, widget=forms.Textarea)
 
@@ -89,7 +91,8 @@ class PreviousYearsForm(forms.Form):
 class TrainingEducationForm(forms.Form):
     yes_or_no = forms.ChoiceField(
         choices=YES_NO_CHOICES,
-        widget=forms.RadioSelect()
+        widget=forms.RadioSelect(),
+        required=False
     )
     current = forms.CharField(required=False, widget=forms.Textarea)
     previous = forms.CharField(required=False, widget=forms.Textarea)
