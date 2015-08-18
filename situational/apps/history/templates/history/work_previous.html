@@ -15,8 +15,12 @@
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <h3>Description</h3>
-      <p>Tell us more.</p>
+      <h3>Describe the changes to your work before 2014.</h3>
+      {% if employed %}
+        <p>How long have you been in work?</p>
+      {% else %}
+        <p>When were you last employed?</p>
+      {% endif %}
       {{ form.text }}
     </div>
   </div>

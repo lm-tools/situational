@@ -171,6 +171,15 @@ def format_circumstance(circumstance):
     return circumstance_dict.get(circumstance, circumstance)
 
 
+def get_employment_context(session):
+    current = session.get('current_work')
+    if current:
+        status = current.get('status', ['unknown'])[0]
+        return status in ['full_time', 'part_time', 'work_programme']
+    else:
+        False
+
+
 def history_entry_as_string(entry):
     description = ""
     if entry["description"][0]:
@@ -268,6 +277,7 @@ class CurrentWorkView(FormView):
 
     def form_valid(self, form):
         self.request.session['current_work'] = dict(form.data.lists())
+        is_working = get_employment_context(self.request.session)
         url = reverse('history:work_change_1')
         return http.HttpResponseRedirect(url)
 
@@ -280,6 +290,11 @@ class WorkChangeOneView(FormView):
         self.request.session['work_2015'] = dict(form.data.lists())
         url = reverse('history:work_change_2')
         return http.HttpResponseRedirect(url)
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['employed'] = get_employment_context(self.request.session)
+        return context
 
 
 class WorkChangeTwoView(FormView):
@@ -296,6 +311,11 @@ class WorkChangeTwoView(FormView):
             url = reverse('history:training_education')
         return http.HttpResponseRedirect(url)
 
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['employed'] = get_employment_context(self.request.session)
+        return context
+
 
 class WorkPreviousView(FormView):
     template_name = "history/work_previous.html"
@@ -306,6 +326,11 @@ class WorkPreviousView(FormView):
         url = reverse('history:training_education')
         return http.HttpResponseRedirect(url)
 
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['employed'] = get_employment_context(self.request.session)
+        return context
+
 
 class TrainingEducationView(FormView):
     template_name = "history/training_education.html"
@@ -315,6 +340,11 @@ class TrainingEducationView(FormView):
         self.request.session['training_education'] = dict(form.data.lists())
         url = reverse('history:other_circumstances')
         return http.HttpResponseRedirect(url)
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['employed'] = get_employment_context(self.request.session)
+        return context
 
 
 class OtherCircumstancesView(FormView):
