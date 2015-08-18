@@ -15,7 +15,7 @@
   </div>
   <div class="row">
     <div class="medium-6 columns">
-      <h3>What are you currently doing?</h3>
+      <h3>What is your current work status?</h3>
       <div {% if form.subject.errors %}class="error"{% endif %}>
         {% for error in form.status.errors %}
           <small class="error">{{ error|escape }}</small>
@@ -29,10 +29,21 @@
         {% endfor %}
     </div>
   </div>
-  <div class="row">
+  <div class="row description hide">
     <div class="medium-6 columns">
       <h3>Description</h3>
-      <p>Tell us more.</p>
+      <p class="question hide full_time part_time">
+        Describe your work situation, including job title, company, hours worked per week, and how long you have been working in this job.
+      </p>
+      <p class="question hide unemployed">
+        How long have you been unemployed?
+      </p>
+      <p class="question hide off_sick">
+        How long have you been off sick? Are you likely to be going back to work soon?
+      </p>
+      <p class="question hide work_programme">
+        Describe what work you are doing, including work programme provider and how long you have been in a work programme.
+      </p>
       {{ form.description }}
     </div>
   </div>
@@ -45,3 +56,17 @@
 </form>
 
 {% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('input[type=radio][name=status]').change(function() {
+      $(".description").removeClass("hide");
+      $(".question").addClass("hide");
+      $(".question."+this.value).removeClass("hide");
+    });
+  });
+</script>
+
+{% endblock %}
