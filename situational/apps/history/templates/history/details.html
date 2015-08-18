@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block title %}Tell your work coach your history{% endblock title %}
+
+{% block body_class %}class="history"{% endblock body_class %}
+
 {% block content %}
 
 <form method=post>
@@ -18,17 +22,7 @@
   {% endif %}
   <div class="row">
     <div class="columns">
-      <h3>Your progress</h3>
-      <div class="progress large-9 round">
-        <span class="meter" style="width: {{percentage}}%"></span>
-      </div>
-    </div>
-  </div>
-  <hr/>
-  <div class="row">
-    <div class="columns">
       <h3>{{ circumstance_title }}</h3>
-      <p>Check all that apply.</p>
     </div>
   </div>
   <div class="row">
