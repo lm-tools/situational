@@ -1,8 +1,9 @@
 body.has-report {
-  @media only screen and (min-width: 64.063em) { /* min-width 1025px, large screens */
+  @media #{$large-up} {
     background: #333333;
     padding-top: 1%;
   }
+
 }
 
 .report {
@@ -11,7 +12,10 @@ body.has-report {
 
   > header {
     text-align: center;
-    padding: 5%;
+    padding: 10% 5% 5% 5%;
+    @media #{$medium-up} {
+      padding-top: 5%;
+    }
     p {
       color: #6F6F6F;
     }
