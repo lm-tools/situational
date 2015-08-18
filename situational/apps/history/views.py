@@ -56,7 +56,7 @@ def length_in_months(entry):
 
 def unique_items_from_list(list_with_dups):
     result = []
-    [result.append(i) for i in list_with_dups if i not in list_with_dups]
+    [result.append(i) for i in list_with_dups if i not in result]
     return result
 
 

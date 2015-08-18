@@ -5,8 +5,39 @@
 <form method=post>
   {% csrf_token %}
   <div class="row">
-    <div>
-      <h2>Training and education</h2>
+    <h2>Training and education</h2>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <div {% if form.subject.errors %}class="error"{% endif %}>
+        {% for error in form.changes.errors %}
+          <small class="error">{{ error|escape }}</small>
+        {% endfor %}
+      </div>
+      {% for choice in form.changes %}
+      <div class="medium-6 columns">
+        {{choice.tag}}
+        <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <p>Hide if above is no!</p>
+  <div class="row">
+    <div class="columns">
+      <h3>Current</h3>
+      <p>Tell us more.</p>
+        {{ form.current }}
+    </div>
+  </div>
+  <script type="text/javascript">
+    $("onselect")
+  </script>
+  <div class="row">
+    <div class="columns">
+      <h3>Previous</h3>
+      <p>Tell us more.</p>
+        {{ form.previous }}
     </div>
   </div>
   <div class="row">
