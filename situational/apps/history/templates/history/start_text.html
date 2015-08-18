@@ -1,33 +1,33 @@
 {% extends "base.html" %}
 
+{% block title %}Tell your work coach your history{% endblock title %}
+
+{% block body_class %}class="history"{% endblock body_class %}
+
 {% block content %}
 
-<form action="{% url 'history:current_work' %}" method=get>
-  {% csrf_token %}
-  <div class="row">
-    <div>
-      <h2>START PAGE!</h2>
+<div class="row">
+  <div class="columns small-10 small-centered start_page">
+    <div class="start-panel panel">
+      <h1>Tell your work coach your history</h1>
 
-      <h4>This tool collects information about you and your work history that will make your work coach meeting more useful and tailored to you.
+      <p>This tool collects information about you and your work history that will make your work coach meeting more useful and tailored to you.</p>
 
       <p>It should take around 15 minutes to complete.
 
-      <h4>You’ll be asked about:<h4>
+      <p>You’ll be asked about:<p>
       <ul>
         <li>your work or unemployment for the last 2 years</li>
         <li>any training or education you’ve taken</li>
       </ul>
 
-      <p>You’ll be able to print out or email your answers at the end to give to your work coach. Your answers will not be stored or saved.</p>
+      <p>You’ll be able to print out or email your answers at the end to give to your work coach. </p>
+      <p>Your answers will not be stored or saved.</p>
 
+      <a href="{% url "history:current_work" %}" class="button large">Start</a>
     </div>
   </div>
-  <div class="row">
-    <div>
-      <input type="submit" class="button" value="Next >>">
-    </div>
-  </div>
-  <hr/>
-</form>
+
+</div>
 
 {% endblock content %}
