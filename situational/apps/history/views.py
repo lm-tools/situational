@@ -15,6 +15,23 @@ def get_form_data_from_session(session):
     return form_data
 
 
+def format_summary(session):
+    summary_keys = [
+        'work_2015',
+        'work_2015',
+        'training_education',
+        'other_circumstances'
+    ]
+    result = {key: remove_csrf_token(session.get(key)) for key in summary_keys}
+    return result
+
+
+def remove_csrf_token(data):
+    if data:
+        data.pop("csrfmiddlewaretoken", None)
+    return data
+
+
 def format_timeline_data(history_data):
     nb_months = total_number_of_months(history_data)
     result = {}
@@ -187,7 +204,7 @@ class CurrentWorkView(FormView):
     form_class = forms.CurrentWorkStatusForm
 
     def form_valid(self, form):
-        self.request.session['current_work'] = [dict(form.data.lists())]
+        self.request.session['current_work'] = dict(form.data.lists())
         url = reverse('history:work_change_1')
         return http.HttpResponseRedirect(url)
 
@@ -197,7 +214,7 @@ class WorkChangeOneView(FormView):
     form_class = forms.PreviousYearsForm
 
     def form_valid(self, form):
-        self.request.session['work_2015'] = [dict(form.data.lists())]
+        self.request.session['work_2015'] = dict(form.data.lists())
         url = reverse('history:work_change_2')
         return http.HttpResponseRedirect(url)
 
@@ -207,10 +224,9 @@ class WorkChangeTwoView(FormView):
     form_class = forms.PreviousYearsForm
 
     def form_valid(self, form):
-        self.request.session['work_2014'] = [dict(form.data.lists())]
-        # THAT IS NOT THE CORRECT CONDITION
-        work_1 = self.request.session['work_2015']
-        work_2 = self.request.session['work_2014']
+        self.request.session['work_2014'] = dict(form.data.lists())
+        work_1 = self.request.session['work_2015']['changes'][0]
+        work_2 = self.request.session['work_2014']['changes'][0]
         if (work_1 == 'no' and work_2 == 'no'):
             url = reverse('history:work_previous')
         else:
@@ -223,7 +239,7 @@ class WorkPreviousView(FormView):
     form_class = forms.OneTextFieldForm
 
     def form_valid(self, form):
-        self.request.session['before_2014'] = [dict(form.data.lists())]
+        self.request.session['before_2014'] = dict(form.data.lists())
         url = reverse('history:training_education')
         return http.HttpResponseRedirect(url)
 
@@ -233,7 +249,7 @@ class TrainingEducationView(FormView):
     form_class = forms.TrainingEducationForm
 
     def form_valid(self, form):
-        self.request.session['training_education'] = [dict(form.data.lists())]
+        self.request.session['training_education'] = dict(form.data.lists())
         url = reverse('history:other_circumstances')
         return http.HttpResponseRedirect(url)
 
@@ -243,7 +259,7 @@ class OtherCircumstancesView(FormView):
     form_class = forms.OneTextFieldForm
 
     def form_valid(self, form):
-        self.request.session['other'] = [dict(form.data.lists())]
+        self.request.session['other'] = dict(form.data.lists())
         url = reverse('history:summary')
         return http.HttpResponseRedirect(url)
 
@@ -253,3 +269,8 @@ class SummaryView(TemplateView):
         self.template_name = "history/summary.html"
         response = super().get(request, *args, **kwargs)
         return response
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['summary'] = format_summary(self.request.session)
+        return context

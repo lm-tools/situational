@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <div class="columns">
-      <div {% if form.subject.errors %}class="error"{% endif %}>
+      <div {% if form.yes_or_no.errors %}class="error"{% endif %}>
         {% for error in form.changes.errors %}
           <small class="error">{{ error|escape }}</small>
         {% endfor %}
@@ -24,13 +24,15 @@
       </fieldset>
     </div>
   </div>
-  <p>Hide if above is no!</p>
   <div class="row">
     <div class="columns">
       <h3>Description</h3>
       <p>Tell us more.</p>
         {{ form.description }}
     </div>
+  </div>
+  <div class="row">
+    <p>TODO: hide description if change says no!</p>
   </div>
   <div class="row">
     <div>

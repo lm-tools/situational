@@ -9,12 +9,13 @@
   </div>
   <div class="row">
     <div class="columns">
+      <h3>Currently training?</h3>
       <div {% if form.subject.errors %}class="error"{% endif %}>
-        {% for error in form.changes.errors %}
+        {% for error in form.yes_or_no.errors %}
           <small class="error">{{ error|escape }}</small>
         {% endfor %}
       </div>
-      {% for choice in form.changes %}
+      {% for choice in form.yes_or_no %}
       <div class="medium-6 columns">
         {{choice.tag}}
         <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
@@ -22,7 +23,6 @@
       {% endfor %}
     </div>
   </div>
-  <p>Hide if above is no!</p>
   <div class="row">
     <div class="columns">
       <h3>Current</h3>
