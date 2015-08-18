@@ -1,38 +1,41 @@
 {% extends "base.html" %}
 
+{% block title %}Understand what sort of jobs you could do{% endblock title %}
+
 {% block content %}
 
 <form method=post>
   {% csrf_token %}
   <div class="row">
-    <h2>Current work</h2>
+    <div class="medium-12 columns">
+      <h1>Current situation</h1>
+    </div>
   </div>
   <div class="row">
-    <div class="columns">
+    <div class="medium-6 columns">
+      <h3>What are you currently doing?</h3>
       <div {% if form.subject.errors %}class="error"{% endif %}>
         {% for error in form.status.errors %}
           <small class="error">{{ error|escape }}</small>
         {% endfor %}
       </div>
-      <fieldset>
         {% for choice in form.status %}
-        <div class="medium-6 columns">
+        <div class="medium-12 columns">
           {{choice.tag}}
           <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
         </div>
         {% endfor %}
-      </fieldset>
     </div>
   </div>
   <div class="row">
-    <div class="columns">
+    <div class="medium-6 columns">
       <h3>Description</h3>
       <p>Tell us more.</p>
-        {{ form.description }}
+      {{ form.description }}
     </div>
   </div>
   <div class="row">
-    <div>
+    <div class="medium-6 columns">
       <input type="submit" class="button" value="Next >>">
     </div>
   </div>

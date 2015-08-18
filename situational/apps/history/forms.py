@@ -47,7 +47,7 @@ class HistoryDetailsForm(forms.Form):
         widget=forms.RadioSelect()
     )
     other_more = forms.CharField(required=False)
-    description = forms.CharField(required=False)
+    description = forms.CharField(required=False, widget=forms.Textarea)
 
     def clean(self):
         cleaned_data = super(HistoryDetailsForm, self).clean()
@@ -60,7 +60,7 @@ class HistoryDetailsForm(forms.Form):
 
 
 class OneTextFieldForm(forms.Form):
-    text = forms.CharField(required=False)
+    text = forms.CharField(required=False, widget=forms.Textarea)
 
 
 class CurrentWorkStatusForm(forms.Form):
@@ -75,7 +75,7 @@ class CurrentWorkStatusForm(forms.Form):
         choices=WORK_STATUS_CHOICES,
         widget=forms.RadioSelect()
     )
-    description = forms.CharField(required=False)
+    description = forms.CharField(required=False, widget=forms.Textarea)
 
 
 class PreviousYearsForm(forms.Form):
@@ -83,7 +83,7 @@ class PreviousYearsForm(forms.Form):
         choices=YES_NO_CHOICES,
         widget=forms.RadioSelect()
     )
-    description = forms.CharField(required=False)
+    description = forms.CharField(required=False, widget=forms.Textarea)
 
 
 class TrainingEducationForm(forms.Form):
@@ -91,5 +91,5 @@ class TrainingEducationForm(forms.Form):
         choices=YES_NO_CHOICES,
         widget=forms.RadioSelect()
     )
-    current = forms.CharField(required=False)
-    previous = forms.CharField(required=False)
+    current = forms.CharField(required=False, widget=forms.Textarea)
+    previous = forms.CharField(required=False, widget=forms.Textarea)

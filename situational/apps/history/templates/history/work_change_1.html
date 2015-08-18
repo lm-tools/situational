@@ -9,7 +9,7 @@
   </div>
   <div class="row">
     <div class="columns">
-      <div {% if form.yes_or_no.errors %}class="error"{% endif %}>
+      <div {% if form.subject.errors %}class="error"{% endif %}>
         {% for error in form.changes.errors %}
           <small class="error">{{ error|escape }}</small>
         {% endfor %}
