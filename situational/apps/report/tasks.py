@@ -85,13 +85,15 @@ def latest_jobs(report):
 
 @shared_task
 def send_report(report, email):
+    subject = "Your travel time map report for {}".format(report.postcode)
     logger.debug("Sending report {} to {}".format(report.id, email))
     send_templated_email(
-        template_name="report/emails/send_report",
+        template_name="report/emails/travel_report",
         context={"report": report},
         to=[email],
+        subject=subject,
         attachments=[
-            ("{}-report.pdf".format(report.postcode),
+            ("travel-report-{}.pdf".format(report.postcode),
              report.to_pdf(),
              "application/pdf"),
         ],

@@ -95,11 +95,11 @@ class TestReportSendTo(ReportBuilderMixin, BaseCase):
         self.assertIn('test-address@example.org', message.to)
         self.assertEqual(len(message.attachments), 1)
         self.assertIn(
-            "Here is your report for {}".format(report.postcode),
+            "Your travel time map report for {}".format(report.postcode),
             message.body,
         )
         self.assertIn(
-            "Here is your report for {}".format(report.postcode),
+            "Your travel time map report for {}".format(report.postcode),
             message.alternatives[0][0],
         )
         self.assertEqual(message.attachments[0][1], 'mock pdf content')
