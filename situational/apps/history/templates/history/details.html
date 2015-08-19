@@ -27,7 +27,7 @@
   </div>
   <div class="row">
     <div class="columns">
-      <div {% if form.subject.errors %}class="error"{% endif %}>
+      <div {% if form.circumstances.errors %}class="error"{% endif %}>
         {% for error in form.circumstances.errors %}
             <small class="error">{{ error|escape }}</small>
         {% endfor %}
@@ -51,7 +51,7 @@
       <h3>For how long have you been in these circumstances?</h3>
     </div>
     <div class="medium-12 columns">
-      <div {% if form.subject.errors %}class="error"{% endif %}>
+      <div {% if form.duration.errors %}class="error"{% endif %}>
         {% for error in form.duration.errors %}
             <small class="error">{{ error|escape }}</small>
         {% endfor %}

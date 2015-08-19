@@ -13,7 +13,7 @@
             <form method=post>
                 {% csrf_token %}
                 <div class="row">
-                    <div class="columns small-8 medium-6 large-4 {% if form.subject.errors %}error{% endif %}">
+                    <div class="columns small-8 medium-6 large-4 {% if form.postcode.errors %}error{% endif %}">
                         <label>
                             Postcode
                             {{ form.postcode }}
