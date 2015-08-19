@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Tell your work coach your history{% endblock title %}
+
+{% block body_class %}class="history"{% endblock body_class %}
+
+{% block content %}
+
+<form method=post>
+  {% csrf_token %}
+  <div class="row">
+    <div class="medium-12 columns">
+      <h1>Work in 2015</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      {% if employed %}
+        <h3>Did your work status change in 2015?</h3>
+      {% else %}
+        <h3>Did you work during 2015?</h3>
+      {% endif %}
+      {% if employed %}
+        <p>For example, did you change job, go part time or full time or were unemployed for a period in 2015?</p>
+      {% endif %}
+      {% for choice in form.changes %}
+      <div class="medium-12 columns">
+        {{choice.tag}}
+        <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row description hide">
+    <div class="medium-6 columns">
+      <h3>Description</h3>
+      {% if employed %}
+        <p>Describe the changes to your work in 2015.</p>
+      {% else %}
+        <p>Describe your work in 2015, including job title, company, hours worked per week, and how long you have been working in this job.</p>
+      {% endif %}
+      {{ form.description }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <input type="submit" class="button" value="Next >>">
+    </div>
+  </div>
+  <hr/>
+</form>
+
+{% endblock content %}
+
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('input[type=radio][name=changes]').change(function() {
+      $(".description").toggleClass("hide", this.value == "no");
+    });
+  });
+</script>
+
+{% endblock %}

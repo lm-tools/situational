@@ -15,6 +15,86 @@ def get_form_data_from_session(session):
     return form_data
 
 
+def format_summary(session):
+    result = {}
+    current = session.get('current_work')
+    training_data = session.get('training_education')
+    data_2015 = session.get('work_2015')
+    data_2014 = session.get('work_2014')
+    before_2014 = session.get('before_2014')
+    other_circumstances = session.get('other')
+    if current:
+        result['current'] = format_current_status(current)
+    if training_data:
+        result['training'] = format_training_data(training_data)
+    if data_2015:
+        result['2015'] = format_year_change_data(data_2015, 2015)
+    if data_2014:
+        result['2014'] = format_year_change_data(data_2014, 2014)
+    if before_2014:
+        result['before'] = format_before_data(before_2014)
+    if other_circumstances:
+        result['other'] = format_other_circumstances(other_circumstances)
+    return result
+
+
+def format_before_data(before_data):
+    result = {}
+    if before_data.get('text', None):
+        result["text"] = before_data["text"][0]
+    return result
+
+
+def format_other_circumstances(other_circumstances):
+    result = {}
+    if other_circumstances.get('text', None):
+        result["text"] = other_circumstances["text"][0]
+    return result
+
+
+def format_current_status(current):
+    result = {}
+    if current.get('status', None):
+        result["status"] = format_circumstance(current['status'][0])
+    if current.get('description', None):
+        result["description"] = current["description"][0]
+    return result
+
+
+def format_training_data(training_education):
+    result = {}
+    current = training_education.get("yes_or_no", ["unknown"])[0]
+    if current == "yes":
+        result["current"] = "You are currently in training or education."
+    elif current == "no":
+        result["current"] = "You are not currently in training or education."
+    if training_education.get("current", None):
+        result["current_info"] = training_education.get("current")[0]
+    if training_education.get("previous", None):
+        result["previous_info"] = training_education.get("previous")[0]
+    return result
+
+
+def format_year_change_data(year_change, year):
+    result = {}
+    current = year_change.get("changes", ["unknown"])[0]
+    if current == "yes":
+        result["current"] = \
+            "Your work status has changed in {0}.".format(year)
+    elif current == "no":
+        result["current"] = \
+            "Your work status has not changed in {0}.".format(year)
+    if year_change.get("description", None):
+        result["description"] = year_change.get("description")[0]
+    return result
+
+
+def remove_csrf_token(data):
+    if data:
+        data.pop("csrfmiddlewaretoken", None)
+    return data
+
+
 def format_timeline_data(history_data):
     nb_months = total_number_of_months(history_data)
     result = {}
@@ -56,7 +136,7 @@ def length_in_months(entry):
 
 def unique_items_from_list(list_with_dups):
     result = []
-    [result.append(i) for i in list_with_dups if i not in list_with_dups]
+    [result.append(i) for i in list_with_dups if i not in result]
     return result
 
 
@@ -89,6 +169,15 @@ def format_circumstances(entry):
 def format_circumstance(circumstance):
     circumstance_dict = dict(forms.HistoryDetailsForm.CIRCUMSTANCE_CHOICES)
     return circumstance_dict.get(circumstance, circumstance)
+
+
+def get_employment_context(session):
+    current = session.get('current_work')
+    if current:
+        status = current.get('status', ['unknown'])[0]
+        return status in ['full_time', 'part_time', 'work_programme']
+    else:
+        return False
 
 
 def history_entry_as_string(entry):
@@ -166,3 +255,115 @@ class ClearSessionView(TemplateView):
         self.request.session['forms'] = []
         url = reverse('history:details')
         return http.HttpResponseRedirect(url)
+
+
+class HistoryStartView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        self.template_name = "history/start_text.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class HistoryStartStructuredView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        self.template_name = "history/start_structured.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+
+class CurrentWorkView(FormView):
+    template_name = "history/current_work.html"
+    form_class = forms.CurrentWorkStatusForm
+
+    def form_valid(self, form):
+        self.request.session['current_work'] = dict(form.data.lists())
+        is_working = get_employment_context(self.request.session)
+        url = reverse('history:work_change_1')
+        return http.HttpResponseRedirect(url)
+
+
+class WorkChangeOneView(FormView):
+    template_name = "history/work_change_1.html"
+    form_class = forms.PreviousYearsForm
+
+    def form_valid(self, form):
+        self.request.session['work_2015'] = dict(form.data.lists())
+        url = reverse('history:work_change_2')
+        return http.HttpResponseRedirect(url)
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['employed'] = get_employment_context(self.request.session)
+        return context
+
+
+class WorkChangeTwoView(FormView):
+    template_name = "history/work_change_2.html"
+    form_class = forms.PreviousYearsForm
+
+    def form_valid(self, form):
+        self.request.session['work_2014'] = dict(form.data.lists())
+        work_1 = self.request.session['work_2015'].get('changes', ['no'])[0]
+        work_2 = self.request.session['work_2014'].get('changes', ['no'])[0]
+        if (work_1 == 'no' and work_2 == 'no'):
+            url = reverse('history:work_previous')
+        else:
+            url = reverse('history:training_education')
+        return http.HttpResponseRedirect(url)
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['employed'] = get_employment_context(self.request.session)
+        return context
+
+
+class WorkPreviousView(FormView):
+    template_name = "history/work_previous.html"
+    form_class = forms.OneTextFieldForm
+
+    def form_valid(self, form):
+        self.request.session['before_2014'] = dict(form.data.lists())
+        url = reverse('history:training_education')
+        return http.HttpResponseRedirect(url)
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['employed'] = get_employment_context(self.request.session)
+        return context
+
+
+class TrainingEducationView(FormView):
+    template_name = "history/training_education.html"
+    form_class = forms.TrainingEducationForm
+
+    def form_valid(self, form):
+        self.request.session['training_education'] = dict(form.data.lists())
+        url = reverse('history:other_circumstances')
+        return http.HttpResponseRedirect(url)
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['employed'] = get_employment_context(self.request.session)
+        return context
+
+
+class OtherCircumstancesView(FormView):
+    template_name = "history/other_circumstances.html"
+    form_class = forms.OneTextFieldForm
+
+    def form_valid(self, form):
+        self.request.session['other'] = dict(form.data.lists())
+        url = reverse('history:summary')
+        return http.HttpResponseRedirect(url)
+
+
+class SummaryView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        self.template_name = "history/summary.html"
+        response = super().get(request, *args, **kwargs)
+        return response
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['summary'] = format_summary(self.request.session)
+        return context

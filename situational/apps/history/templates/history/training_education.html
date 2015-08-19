@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Tell your work coach your history{% endblock title %}
+
+{% block body_class %}class="history"{% endblock body_class %}
+
+{% block content %}
+
+<form method=post>
+  {% csrf_token %}
+  <div class="row">
+    <div class="medium-12 columns">
+      <h1>Training and Education</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <h3>Are you currently in training or education?</h3>
+      {% for choice in form.yes_or_no %}
+        <div class="columns">
+          {{choice.tag}}
+          <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <h3>Current training or education</h3>
+      <p>Tell us more.</p>
+        {{ form.current }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <h3>Previous training or education</h3>
+      <p>Tell us more.</p>
+        {{ form.previous }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <input type="submit" class="button" value="Next >>">
+    </div>
+  </div>
+  <hr/>
+</form>
+
+{% endblock content %}

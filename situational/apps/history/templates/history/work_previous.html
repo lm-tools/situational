@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Tell your work coach your history{% endblock title %}
+
+{% block body_class %}class="history"{% endblock body_class %}
+
+{% block content %}
+
+<form method=post>
+  {% csrf_token %}
+  <div class="row">
+    <div class="medium-12 columns">
+      <h1>Work before 2014</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <h3>Describe the changes to your work before 2014.</h3>
+      {% if employed %}
+        <p>How long have you been in work?</p>
+      {% else %}
+        <p>When were you last employed?</p>
+      {% endif %}
+      {{ form.text }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <input type="submit" class="button" value="Next >>">
+    </div>
+  </div>
+  <hr/>
+</form>
+
+{% endblock content %}

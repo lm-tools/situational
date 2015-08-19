@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Tell your work coach your history{% endblock title %}
+
+{% block body_class %}class="history"{% endblock body_class %}
+
+{% block content %}
+
+<form method=post>
+  {% csrf_token %}
+  <div class="row">
+    <div class="medium-12 columns">
+      <h1>Current situation</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <h3>What is your current work status?</h3>
+      {% for choice in form.status %}
+      <div class="medium-12 columns">
+        {{choice.tag}}
+        <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="row description hide">
+    <div class="medium-6 columns">
+      <h3>Description</h3>
+      <p class="question hide full_time part_time">
+        Describe your work situation, including job title, company, hours worked per week, and how long you have been working in this job.
+      </p>
+      <p class="question hide unemployed">
+        How long have you been unemployed?
+      </p>
+      <p class="question hide off_sick">
+        How long have you been off sick? Are you likely to be going back to work soon?
+      </p>
+      <p class="question hide work_programme">
+        Describe what work you are doing, including work programme provider and how long you have been in a work programme.
+      </p>
+      {{ form.description }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="medium-6 columns">
+      <input type="submit" class="button" value="Next >>">
+    </div>
+  </div>
+  <hr/>
+</form>
+
+{% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('input[type=radio][name=status]').change(function() {
+      $(".description").removeClass("hide");
+      $(".question").addClass("hide");
+      $(".question."+this.value).removeClass("hide");
+    });
+  });
+</script>
+
+{% endblock %}
