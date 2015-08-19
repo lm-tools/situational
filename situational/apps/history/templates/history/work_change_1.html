@@ -58,11 +58,7 @@
   <script type="text/javascript">
   $(document).ready(function() {
     $('input[type=radio][name=changes]').change(function() {
-      if (this.value == "yes") {
-        $(".description").removeClass("hide");
-      } else {
-        $(".description").addClass("hide");
-      }
+      $(".description").toggleClass("hide", this.value == "no");
     });
   });
 </script>
