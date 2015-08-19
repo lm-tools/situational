@@ -177,7 +177,7 @@ def get_employment_context(session):
         status = current.get('status', ['unknown'])[0]
         return status in ['full_time', 'part_time', 'work_programme']
     else:
-        False
+        return False
 
 
 def history_entry_as_string(entry):
