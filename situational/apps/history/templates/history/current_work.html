@@ -16,17 +16,12 @@
   <div class="row">
     <div class="medium-6 columns">
       <h3>What is your current work status?</h3>
-      <div {% if form.subject.errors %}class="error"{% endif %}>
-        {% for error in form.status.errors %}
-          <small class="error">{{ error|escape }}</small>
-        {% endfor %}
+      {% for choice in form.status %}
+      <div class="medium-12 columns">
+        {{choice.tag}}
+        <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
       </div>
-        {% for choice in form.status %}
-        <div class="medium-12 columns">
-          {{choice.tag}}
-          <label for="{{ choice.id_for_label }}">{{choice.choice_label}}</label>
-        </div>
-        {% endfor %}
+      {% endfor %}
     </div>
   </div>
   <div class="row description hide">

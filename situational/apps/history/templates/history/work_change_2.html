@@ -20,11 +20,6 @@
       {% else %}
         <h3>Did you work during 2014?</h3>
       {% endif %}
-      <div {% if form.subject.errors %}class="error"{% endif %}>
-        {% for error in form.changes.errors %}
-          <small class="error">{{ error|escape }}</small>
-        {% endfor %}
-      </div>
       {% if employed %}
         <p>For example, did you change job, go part time or full time or were unemployed for a period in 2014?</p>
       {% endif %}
