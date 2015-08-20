@@ -53,17 +53,17 @@ def jobs_breakdown(report):
 @shared_task
 def resident_occupations(report):
     logger.debug("Getting resident occupations")
-    jobs_breakdown = {"TODO": "RESIDENT OCCUPATIONS!"}
-    report.jobs_breakdown = jobs_breakdown
+    resident_occupations = {"TODO": "RESIDENT OCCUPATIONS!"}
+    report.resident_occupations = resident_occupations
     report.save(update_fields=['resident_occupations'])
 
 
 @shared_task
-def jobs_breakdown(report):
-    logger.debug("Getting jobs_breakdown")
-    jobs_breakdown = {"TODO": "JOBS BREAKDOWN!"}
-    report.jobs_breakdown = jobs_breakdown
-    report.save(update_fields=['jobs_breakdown'])
+def soc_code_data(report):
+    logger.debug("Getting soc_code_data")
+    soc_code_data = {"TODO": "SOC CODE DATA!"}
+    report.soc_code_data = soc_code_data
+    report.save(update_fields=['soc_code_data'])
 
 
 @shared_task
