@@ -123,12 +123,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-if not BASICAUTH_DISABLED:
-    MIDDLEWARE_CLASSES = tuple(
-        [
-            'basicauth.basic_auth_middleware.BasicAuthMiddleware',
-        ] + list(MIDDLEWARE_CLASSES)
-    )
 
 ROOT_URLCONF = 'situational.urls'
 
@@ -277,3 +271,10 @@ if len(sys.argv) > 1 and 'test' in sys.argv[1]:
 if BASICAUTH_DISABLED is False \
         and all((BASICAUTH_USERNAME, BASICAUTH_PASSWORD)) is False:
     raise ImproperlyConfigured("Please specify a HTTP username and password")
+
+if not BASICAUTH_DISABLED:
+    MIDDLEWARE_CLASSES = tuple(
+        [
+            'basicauth.basic_auth_middleware.BasicAuthMiddleware',
+        ] + list(MIDDLEWARE_CLASSES)
+    )
