@@ -2,16 +2,15 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.conf.urls.static import static
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'travel/', include('travel_report.urls', namespace='travel_report')),
     url(r'sectors/', include('sectors.urls', namespace='sectors')),
     url(r'history/', include('history.urls', namespace='history'))
-) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

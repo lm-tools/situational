@@ -1,10 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from . import views
 
-urlpatterns = patterns(
-    '',
-
+urlpatterns = [
     url(r'(?P<postcode>[a-zA-Z0-9\s]+)/populated_result_fields.json$',
         views.PopulatedResultFieldsView.as_view(),
         name="populated_result_fields"),
@@ -24,4 +22,4 @@ urlpatterns = patterns(
     url(r'^$',
         views.StartView.as_view(),
         name="start"),
-)
+]
