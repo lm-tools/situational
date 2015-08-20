@@ -4,6 +4,7 @@ from django import http
 from django.core.urlresolvers import reverse
 from django.views.generic import FormView
 from django.views.generic import TemplateView
+from django.views.generic import View
 from django.shortcuts import get_object_or_404
 
 from .forms import SectorForm
@@ -60,7 +61,7 @@ class SOCCodesView(TemplateView):
 class ReportView(TemplateView):
 
     def get(self, request, *args, **kwargs):
-        self.report, _created = models.Report.objects.get_or_create(
+        self.report, _created = models.SectorsReport.objects.get_or_create(
             postcode=kwargs['postcode'],
             soc_codes=kwargs['soc_codes']
         )
@@ -84,6 +85,21 @@ class ReportView(TemplateView):
         return context
 
 
+class PopulatedResultFieldsView(View):
+    def get(self, request, *args, **kwargs):
+        try:
+            report = models.SectorsReport.objects.get(
+                postcode=kwargs['postcode'],
+                soc_codes=kwargs['soc_codes']
+            )
+            return http.JsonResponse(
+                report.populated_result_fields,
+                safe=False
+            )
+        except models.SectorsReport.DoesNotExist:
+            return http.HttpResponseNotFound()
+
+
 class SendReportView(TemplateView):
     template_name = 'sectors/send_report.html'
 
@@ -91,6 +107,6 @@ class SendReportView(TemplateView):
         email = request.POST['email']
         postcode = kwargs['postcode']
         soc_codes = kwargs['soc_codes']
-        report = get_object_or_404(models.Report, postcode=postcode)
+        report = get_object_or_404(models.SectorsReport, postcode=postcode)
         report.send_to(email)
         return super().get(self, request, *args, **kwargs)

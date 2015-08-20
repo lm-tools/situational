@@ -8,7 +8,7 @@ from travel_times.models import TravelTimesMap
 from sectors import tasks
 
 
-class Report(TimeStampedModel):
+class SectorsReport(TimeStampedModel):
     postcode = models.CharField(
         blank=False, null=False, max_length=14, db_index=True)
     soc_codes = models.CharField(
