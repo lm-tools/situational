@@ -7,7 +7,7 @@ import requests
 from django.core.cache import cache
 from django.conf import settings
 
-from report import constants
+from . import constants
 
 
 class PostcodeNotFoundException(Exception):

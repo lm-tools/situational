@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('report', '0003_report_is_populating'),
+        ('travel_report', '0003_report_is_populating'),
     ]
 
     operations = [

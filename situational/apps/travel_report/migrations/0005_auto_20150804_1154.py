@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('report', '0004_remove_report_place_name'),
+        ('travel_report', '0004_remove_report_place_name'),
     ]
 
     operations = [

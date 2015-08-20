@@ -5,38 +5,38 @@ from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.views.generic import View
 
-from report import helpers
-from report import forms
-from report import models
+from . import helpers
+from . import forms
+from . import models
 
 
-class PostcodeLookupView(FormView):
+class StartView(FormView):
     """
     Render PostcodeForm and redirect to ReportView when the form is valid.
     """
 
-    template_name = "report/postcode_view.html"
+    template_name = "travel_report/start.html"
     form_class = forms.PostcodeForm
 
     def form_valid(self, form):
         postcode = form.cleaned_data['postcode'].upper().replace(' ', '')
-        url = reverse('report_view', kwargs={'postcode': postcode})
+        url = reverse('report:show', kwargs={'postcode': postcode})
         return http.HttpResponseRedirect(url)
 
 
-class ReportView(TemplateView):
+class ShowView(TemplateView):
     def get(self, request, *args, **kwargs):
-        self.report, _created = models.Report.objects.get_or_create(
+        self.report, _created = models.TravelReport.objects.get_or_create(
             postcode=kwargs['postcode']
         )
 
         if self.report.is_populated:
             status_code = 200
-            self.template_name = "report/report_view.html"
+            self.template_name = "travel_report/show.html"
         else:
             self.report.populate_async()
             status_code = 202
-            self.template_name = "report/report_pending.html"
+            self.template_name = "travel_report/pending.html"
 
         response = super().get(request, *args, **kwargs)
         response.status_code = status_code
@@ -49,34 +49,36 @@ class ReportView(TemplateView):
         return context
 
 
-class ReportPDFView(View):
+class PDFView(View):
     def get(self, request, *args, **kwargs):
         postcode = kwargs['postcode']
-        report = get_object_or_404(models.Report, postcode=postcode)
+        report = get_object_or_404(models.TravelReport, postcode=postcode)
         response = http.HttpResponse(report.to_pdf(), 'application/pdf')
         response['Content-Disposition'] = \
             "filename={}-report.pdf".format(postcode)
         return response
 
 
-class ReportSendView(TemplateView):
-    template_name = 'report/report_send.html'
+class SendView(TemplateView):
+    template_name = 'travel_report/send.html'
 
     def post(self, request, *args, **kwargs):
         email = request.POST['email']
         postcode = kwargs['postcode']
-        report = get_object_or_404(models.Report, postcode=postcode)
+        report = get_object_or_404(models.TravelReport, postcode=postcode)
         report.send_to(email)
         return super().get(self, request, *args, **kwargs)
 
 
-class ReportPopulatedResultFieldsView(View):
+class PopulatedResultFieldsView(View):
     def get(self, request, *args, **kwargs):
         try:
-            report = models.Report.objects.get(postcode=kwargs['postcode'])
+            report = models.TravelReport.objects.get(
+                postcode=kwargs['postcode']
+            )
             return http.JsonResponse(
                 report.populated_result_fields,
                 safe=False
             )
-        except models.Report.DoesNotExist:
+        except models.TravelReport.DoesNotExist:
             return http.HttpResponseNotFound()
