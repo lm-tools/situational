@@ -2,6 +2,7 @@
   "name":"situational",
   "scripts":{},
   "env":{
+    "APP_ROOT_URL"           :{"required":true},
     "AWS_ACCESS_KEY_ID"      :{"required":true},
     "AWS_S3_HOST"            :{"required":true},
     "AWS_SECRET_ACCESS_KEY"  :{"required":true},

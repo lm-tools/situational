@@ -1,3 +1,5 @@
+import os
+
 from django.conf import settings
 from django.db import transaction
 
@@ -86,10 +88,11 @@ def latest_jobs(report):
 @shared_task
 def send_report(report, email):
     subject = "Your travel time map report for {}".format(report.postcode)
+    app_root_url = os.environ.get('APP_ROOT_URL')
     logger.debug("Sending report {} to {}".format(report.id, email))
     send_templated_email(
         template_name="report/emails/travel_report",
-        context={"report": report},
+        context={"report": report, "app_root_url": app_root_url},
         to=[email],
         subject=subject,
         attachments=[
