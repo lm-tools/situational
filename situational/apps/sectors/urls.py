@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from sectors import views
+from . import views
 from .forms import SectorForm, JobDescriptionsForm, SOCCodesView
 
 named_form_steps = (
@@ -14,10 +14,20 @@ sector_wizard = views.SectorWizardView.as_view(
     url_name='sectors:wizard_step'
 )
 
+postcode = "(?P<postcode>[a-zA-Z0-9\s]+)"
+soc_codes = "(?P<soc_codes>[-\w\s]+(?:,[-\w\s]*)*)"
 
 urlpatterns = [
     url(r'^$',
         views.SectorStartView.as_view(), name="start"),
     url(r'wizard/(?P<step>.+)/$', sector_wizard, name='wizard_step'),
     url(r'wizard/$', sector_wizard, name='wizard'),
+    url(r'soc_codes$', views.SOCCodesView.as_view(),
+        name="soc_code_info"),
+    url(r'soc_codes/' + postcode + '/' + soc_codes + '$',
+        views.ReportView.as_view(),
+        name="report"),
+    url(r'soc_codes/' + postcode + '/' + soc_codes + '/send$',
+        views.SendReportView.as_view(),
+        name="send_report"),
 ]

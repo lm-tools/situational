@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load human_times %}
+
+{% block head %}
+<noscript>
+  <meta http-equiv="refresh" content="2" />
+</noscript>
+{% endblock head %}
+
+{% block content %}
+<div class="row">
+  <div class="columns large-11 small-9">
+    <h1>Please wait while we generate your report...</h1>
+    <ul>
+      <li>{% include "sectors/_result_field_pending.html" with field="jobs_breakdown" message="Generating jobs breakdown report..." %}</li>
+      <li>{% include "sectors/_result_field_pending.html" with field="resident_occupations" message="Generating resident occupations report..." %}</li>
+      <li>{% include "sectors/_result_field_pending.html" with field="soc_code_data" message="Generating SOC code report..." %}</li>
+    </ul>
+  </div>
+</div>
+{% endblock content %}
+
+{% load staticfiles %}
+{% block javascript %}
+  {{ block.super }}
+  <script src="{% static 'js/report-pending.js' %}"></script>
+{% endblock %}

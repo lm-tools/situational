@@ -1,8 +1,11 @@
-from django.views.generic import TemplateView
-from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView
 
 from formtools.wizard.views import NamedUrlCookieWizardView
+
+from . import models
 
 
 class SectorStartView(TemplateView):
@@ -38,3 +41,42 @@ class SectorWizardView(NamedUrlCookieWizardView):
                 self.get_cleaned_data_for_step('sector_form')['postcode']
 
         return kwargs
+
+
+class ReportView(TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        self.report, _created = models.Report.objects.get_or_create(
+            postcode=kwargs['postcode'],
+            soc_codes=kwargs['soc_codes']
+        )
+
+        if self.report.is_populated:
+            status_code = 200
+            self.template_name = "sectors/report.html"
+        else:
+            self.report.populate_async()
+            status_code = 202
+            self.template_name = "sectors/report_pending.html"
+
+        response = super().get(request, *args, **kwargs)
+        response.status_code = status_code
+
+        return response
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['report'] = self.report
+        return context
+
+
+class SendReportView(TemplateView):
+    template_name = 'sectors/send_report.html'
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST['email']
+        postcode = kwargs['postcode']
+        soc_codes = kwargs['soc_codes']
+        report = get_object_or_404(models.Report, postcode=postcode)
+        report.send_to(email)
+        return super().get(self, request, *args, **kwargs)
