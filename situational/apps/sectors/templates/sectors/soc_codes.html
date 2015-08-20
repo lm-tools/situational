@@ -16,12 +16,12 @@
         <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
         <aside>
           <div class="columns">
-            <a href="{% url 'sectors:sector_start' %}">&#8592; start again</a>
+            <a href="{% url 'sectors:wizard' %}?restart">&#8592; start again</a>
           </div>
         </aside>
       </header>
 
-      {% for soc_code,soc_data in soc_code_data.items %}
+      {% for soc_code,soc_data in form.soc_data.items %}
 
         <section>
           <div class="columns job_item">
@@ -76,16 +76,15 @@
               <div class="columns large-6">
                 <h3>Jobs in the area</h3>
                 <ul>
-                {% for job in jobs_breakdown %}
+                {% for job in form.jobs_breakdown %}
                   <li>{{ job.description }}</l>
                 {% endfor %}
                 </ul>
               </div>
-
               <div class="columns large-6">
                 <h3>Resident professions</h3>
                 <ul>
-                {% for job in resident_occupations %}
+                {% for job in form.resident_occupations %}
                   <li>{{ job.description|title }}</l>
                 {% endfor %}
                 </ul>
