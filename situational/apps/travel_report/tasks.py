@@ -5,10 +5,11 @@ from celery import chord, shared_task
 from celery.utils.log import get_task_logger
 from redlock import Redlock
 
-from report import helpers
 from templated_email import send_templated_email
 from travel_times.models import TravelTimesMap
 from travel_times import constants
+
+from . import helpers
 
 logger = get_task_logger(__name__)
 population_timeout = settings.REPORT_POPULATION_TIMEOUT
@@ -17,12 +18,15 @@ dlm = Redlock([settings.REDIS_URL])  # Distibuted Lock Manager
 
 @shared_task
 def populate_report(report):
-    lock = dlm.lock("populate-report-{}".format(report.pk), population_timeout)
+    lock = dlm.lock("populate-travel-report-{}".format(report.pk),
+                    population_timeout)
     if not lock:
-        logger.debug("Report '%s' is already populating" % report.postcode)
+        logger.debug(
+            "Travel report '%s' is already populating".format(report.postcode)
+        )
         return
 
-    logger.debug("Populating report '{}'".format(report.postcode))
+    logger.debug("Populating travel report '{}'".format(report.postcode))
 
     if not report.location_json:
         logger.debug("No Location JSON yet, getting it form MaPit")
@@ -41,7 +45,7 @@ def populate_report(report):
 
 @shared_task
 def release_lock(identifier, lock):
-    logger.debug("Releasing lock for report '{}'".format(identifier))
+    logger.debug("Releasing lock for travel report '{}'".format(identifier))
     dlm.unlock(lock)
 
 
@@ -88,7 +92,7 @@ def send_report(report, email):
     subject = "Your travel time map report for {}".format(report.postcode)
     logger.debug("Sending report {} to {}".format(report.id, email))
     send_templated_email(
-        template_name="report/emails/travel_report",
+        template_name="travel_report/emails/travel_report",
         context={"report": report},
         to=[email],
         subject=subject,

@@ -5,12 +5,12 @@ from unittest.mock import patch
 from django.core import mail
 from django.core.files import File
 
-from report.models import Report
+from travel_report.models import TravelReport
 from travel_times.models import TravelTimesMap
 from situational.testing import BaseCase
 
 
-class ReportBuilderMixin():
+class TravelReportBuilderMixin():
     def _dummy_travel_times_map(self):
         travel_times_map, created = TravelTimesMap.objects.get_or_create(
             postcode='SW1A 1AA',
@@ -37,27 +37,27 @@ class ReportBuilderMixin():
         }
         for field in without:
             del populated_fields[field]
-        return Report(**populated_fields)
+        return TravelReport(**populated_fields)
 
 
-class TestReportModel(BaseCase):
+class TestTravelReportModel(BaseCase):
     def test_population(self):
-        r = Report(postcode='SW1A 1AA')
+        r = TravelReport(postcode='SW1A 1AA')
         r.save()
         r.populate_async()  # celery runs tasks synchronously for tests
         r.refresh_from_db()
         self.assertTrue(r.is_populated)
 
 
-class TestReportIsPopulated(ReportBuilderMixin, BaseCase):
+class TestTravelReportIsPopulated(TravelReportBuilderMixin, BaseCase):
     def test_new_reports_are_considered_unpopulated(self):
-        self.assertFalse(Report().is_populated)
+        self.assertFalse(TravelReport().is_populated)
 
     def test_reports_with_all_fields_present_are_considered_populated(self):
         self.assertTrue(self._populated_report().is_populated)
 
     def test_reports_with_missing_fields_are_considered_unpopulated(self):
-        for field in (Report.RESULT_FIELDS):
+        for field in (TravelReport.RESULT_FIELDS):
             with self.subTest(field=field):
                 report = self._populated_report(without=[field])
                 self.assertFalse(report.is_populated)
@@ -68,21 +68,22 @@ class TestReportIsPopulated(ReportBuilderMixin, BaseCase):
         self.assertFalse(report.is_populated)
 
 
-class TestReportPopulatedResultFields(ReportBuilderMixin, BaseCase):
+class TestTravelReportPopulatedResultFields(TravelReportBuilderMixin,
+                                            BaseCase):
     def test_all_result_fields_populated(self):
         report = self._populated_report()
         self.assertCountEqual(
-            report.populated_result_fields, Report.RESULT_FIELDS
+            report.populated_result_fields, TravelReport.RESULT_FIELDS
         )
 
     def test_each_result_field_not_populated(self):
-        for field in Report.RESULT_FIELDS:
+        for field in TravelReport.RESULT_FIELDS:
             with self.subTest(field=field):
                 report = self._populated_report(without=[field])
                 self.assertNotIn(field, report.populated_result_fields)
 
 
-class TestReportSendTo(ReportBuilderMixin, BaseCase):
+class TestTravelReportSendTo(TravelReportBuilderMixin, BaseCase):
     def test_send_pdf_to_eprovided_mail_address(self):
         report = self._populated_report()
         with patch.object(report, 'to_pdf') as to_pdf_mock:

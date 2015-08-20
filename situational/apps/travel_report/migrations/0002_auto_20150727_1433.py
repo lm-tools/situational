@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('report', '0002_auto_20150727_1433'),
+        ('travel_report', '0001_initial'),
     ]
 
     operations = [
-        migrations.AddField(
+        migrations.AlterField(
             model_name='report',
-            name='is_populating',
-            field=models.BooleanField(default=False),
+            name='travel_times_map',
+            field=models.ForeignKey(to='travel_times.TravelTimesMap', null=True),
         ),
     ]

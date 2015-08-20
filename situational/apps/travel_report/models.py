@@ -5,10 +5,11 @@ from model_utils.models import TimeStampedModel
 
 import template_to_pdf
 from travel_times.models import TravelTimesMap
-from report import tasks
+
+from . import tasks
 
 
-class Report(TimeStampedModel):
+class TravelReport(TimeStampedModel):
     postcode = models.CharField(
         blank=False, null=False, max_length=14, db_index=True)
     location_json = JSONField()
@@ -23,7 +24,7 @@ class Report(TimeStampedModel):
     )
 
     def to_pdf(self):
-        template = template_to_pdf.Template('report/print.html')
+        template = template_to_pdf.Template('travel_report/print.html')
         return template.render({'report': self})
 
     def send_to(self, email):

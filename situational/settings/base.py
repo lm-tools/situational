@@ -150,7 +150,7 @@ INSTALLED_APPS = (
 PROJECT_APPS = (
     'basicauth',
     'history',
-    'report',
+    'travel_report',
     'sectors',
     'template_to_pdf',
     'templated_email',
