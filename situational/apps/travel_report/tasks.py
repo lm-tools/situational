@@ -28,12 +28,6 @@ def populate_report(report):
 
     logger.debug("Populating travel report '{}'".format(report.postcode))
 
-    if not report.location_json:
-        logger.debug("No Location JSON yet, getting it form MaPit")
-        report.location_json = helpers.geocode(report.postcode)
-        report.save(update_fields=['location_json'])
-
-    logger.debug("Running all the sub tasks")
     sub_tasks = (
         travel_times_map.si(report),
     )

@@ -12,7 +12,6 @@ from . import tasks
 class TravelReport(TimeStampedModel):
     postcode = models.CharField(
         blank=False, null=False, max_length=14, db_index=True)
-    location_json = JSONField()
     travel_times_map = models.ForeignKey(TravelTimesMap, null=True)
 
     RESULT_FIELDS = (
