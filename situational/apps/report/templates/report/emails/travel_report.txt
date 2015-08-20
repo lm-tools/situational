@@ -1,0 +1,3 @@
+Your travel time map report for {{ report.postcode }} is attached to this email.
+
+Email us at feedback@lm-tools.com if you have any feedback.
