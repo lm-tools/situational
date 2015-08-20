@@ -16,7 +16,6 @@ class Report(TimeStampedModel):
     jobs_breakdown = JSONField()
     resident_occupations = JSONField()
     soc_code_data = JSONField()
-    is_populating = models.BooleanField(default=False)
 
     RESULT_FIELDS = (
         'jobs_breakdown',
@@ -47,7 +46,4 @@ class Report(TimeStampedModel):
         )
 
     def _is_result_field_populated(self, field):
-        if field == 'travel_times_map':
-            return self.travel_times_map and self.travel_times_map.has_image
-        else:
-            return getattr(self, field) != ''
+        return getattr(self, field) != ''
