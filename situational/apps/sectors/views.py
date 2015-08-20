@@ -8,7 +8,6 @@ from django.views.generic import View
 from django.shortcuts import get_object_or_404
 
 from .forms import SectorForm
-from .helpers import LMIForAllClient
 
 from . import models
 

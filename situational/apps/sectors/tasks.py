@@ -45,7 +45,8 @@ def release_lock(identifier, lock):
 @shared_task
 def jobs_breakdown(report):
     logger.debug("Getting jobs breakdown")
-    jobs_breakdown = {"TODO": "JOBS BREAKDOWN!"}
+    lmi_client = helpers.LMIForAllClient()
+    jobs_breakdown = lmi_client.jobs_breakdown(report.postcode)
     report.jobs_breakdown = jobs_breakdown
     report.save(update_fields=['jobs_breakdown'])
 
@@ -53,7 +54,8 @@ def jobs_breakdown(report):
 @shared_task
 def resident_occupations(report):
     logger.debug("Getting resident occupations")
-    resident_occupations = {"TODO": "RESIDENT OCCUPATIONS!"}
+    lmi_client = helpers.LMIForAllClient()
+    resident_occupations = lmi_client.resident_occupations(report.postcode)
     report.resident_occupations = resident_occupations
     report.save(update_fields=['resident_occupations'])
 
