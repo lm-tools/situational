@@ -13,11 +13,7 @@ class TravelReport(TimeStampedModel):
     postcode = models.CharField(
         blank=False, null=False, max_length=14, db_index=True)
     location_json = JSONField()
-    top_categories = JSONField()
-    top_companies = JSONField()
-    latest_jobs = JSONField()
     travel_times_map = models.ForeignKey(TravelTimesMap, null=True)
-    is_populating = models.BooleanField(default=False)
 
     RESULT_FIELDS = (
         'travel_times_map',
