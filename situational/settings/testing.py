@@ -7,3 +7,4 @@ TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
 
 BASICAUTH_DISABLED = True
 LOGGING['root']['level'] = 'WARNING'
+SECRET_KEY = 'not_a_secret'
