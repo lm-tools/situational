@@ -1,10 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from sectors import views
 
-urlpatterns = patterns(
-    '',
-
+urlpatterns = [
     url(r'^$',
         views.SectorStartView.as_view(), name="sector_start"),
     url(r'^start$',
@@ -13,4 +11,4 @@ urlpatterns = patterns(
         name="job_descriptions"),
     url(r'soc_codes', views.SOCCodesView.as_view(),
         name="soc_code_info"),
-)
+]

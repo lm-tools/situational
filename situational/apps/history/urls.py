@@ -1,9 +1,8 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from history import views
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'details', views.HistoryDetailsView.as_view(), name="details"),
     url(r'report', views.HistoryReportView.as_view(), name="report"),
     url(r'clear_session', views.ClearSessionView.as_view(),
@@ -26,4 +25,4 @@ urlpatterns = patterns(
         name="other_circumstances"),
     url(r'summary', views.SummaryView.as_view(),
         name="summary")
-)
+]
