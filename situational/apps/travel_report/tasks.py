@@ -28,12 +28,6 @@ def populate_report(report):
 
     logger.debug("Populating travel report '{}'".format(report.postcode))
 
-    if not report.location_json:
-        logger.debug("No Location JSON yet, getting it form MaPit")
-        report.location_json = helpers.geocode(report.postcode)
-        report.save(update_fields=['location_json'])
-
-    logger.debug("Running all the sub tasks")
     sub_tasks = (
         travel_times_map.si(report),
     )
@@ -61,30 +55,6 @@ def travel_times_map(report):
         travel_times_map.download_image()
     report.travel_times_map = travel_times_map
     report.save(update_fields=['travel_times_map'])
-
-
-@shared_task
-def top_categories(report):
-    logger.debug("Getting top categories")
-    report.top_categories = \
-        helpers.top_categories_for_postcode(report.postcode)
-    report.save(update_fields=['top_categories'])
-
-
-@shared_task
-def top_companies(report):
-    logger.debug("Getting top companies")
-    report.top_companies = \
-        helpers.top_companies_for_postcode(report.postcode)
-    report.save(update_fields=['top_companies'])
-
-
-@shared_task
-def latest_jobs(report):
-    logger.debug("Getting latest jobs")
-    report.latest_jobs = \
-        helpers.latest_jobs_for_postcode(report.postcode)
-    report.save(update_fields=['latest_jobs'])
 
 
 @shared_task

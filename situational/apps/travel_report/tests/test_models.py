@@ -29,10 +29,6 @@ class TravelReportBuilderMixin():
     def _populated_report(self, without=[]):
         populated_fields = {
             'postcode': 'SW1A 1AA',
-            'location_json': '{"wgs84_lon": -0.141, "wgs84_lat": 51.501}',
-            'top_categories': '[{"category": "Testing Jobs", "count": 165}]',
-            'top_companies': '[{"company_name": "The Test Group"}]',
-            'latest_jobs': '[{"company_name": "The Test Kitchen"}]',
             'travel_times_map': self._dummy_travel_times_map(),
         }
         for field in without:
