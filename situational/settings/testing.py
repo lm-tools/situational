@@ -5,4 +5,5 @@ from .base import *
 # http://docs.celeryproject.org/en/2.5/django/unit-testing.html
 TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
 
+BASICAUTH_DISABLED = True
 LOGGING['root']['level'] = 'WARNING'
