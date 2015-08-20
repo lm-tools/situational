@@ -3,3 +3,20 @@
 footer {
   text-align: center;
 }
+
+body.has-report {
+  background: #FFFFFF;
+}
+
+.report {
+  > header {
+    margin-top: 2%;
+  }
+
+  section {
+    header {
+      padding-top: 1%;
+      margin-top: 0;
+    }
+  }
+}
