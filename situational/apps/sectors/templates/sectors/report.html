@@ -21,7 +21,7 @@
         </aside>
       </header>
 
-      {% for soc_code,soc_data in soc_code_data.items %}
+      {% for soc_code,soc_data in report.soc_code_data.items %}
 
         <section>
           <div class="columns job_item">
@@ -76,7 +76,7 @@
               <div class="columns large-6">
                 <h3>Jobs in the area</h3>
                 <ul>
-                {% for job in jobs_breakdown %}
+                {% for job in report.jobs_breakdown %}
                   <li>{{ job.description }}</l>
                 {% endfor %}
                 </ul>
@@ -85,7 +85,7 @@
               <div class="columns large-6">
                 <h3>Resident professions</h3>
                 <ul>
-                {% for job in resident_occupations %}
+                {% for job in report.resident_occupations %}
                   <li>{{ job.description|title }}</l>
                 {% endfor %}
                 </ul>
@@ -94,6 +94,25 @@
           </div>
         </div>
       </section>
+      <h2>{{report}}</h2>
+      <footer>
+        <div class="columns">
+          <div class="panel">
+            <form action="{% url 'sectors:send_report' soc_codes='soc_codes' postcode='postcode' %}" method="post">
+              <label for="email_address">Email yourself a copy of this report</label>
+              {% csrf_token %}
+              <div class="row collapse">
+                <div class="small-9 medium-10 columns">
+                  <input type="text" name="email" placeholder="Email address" id="email_address">
+                </div>
+                <div class="small-3 medium-2 columns">
+                  <input type="submit" class="button postfix" value="Send">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </footer>
 
     </article>
   </div>

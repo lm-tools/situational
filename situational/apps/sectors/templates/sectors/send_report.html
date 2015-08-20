@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load human_times %}
+
+{% block content %}
+
+<div class="row">
+  <div class="columns">
+    <div class="start-panel">
+      <h1>Your report has been sent</h1>
+      <p><a href="{% url 'sectors:report' soc_codes=soc_codes postcode=postcode %}">Return to your report</a></p>
+    </div>
+  </div>
+</div>
+{% endblock content %}
