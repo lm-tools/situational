@@ -11,7 +11,9 @@
   <div class="columns large-11 small-9">
     <h1>Please wait while we generate your report...</h1>
     <ul>
-      <li>{% include "travel_report/_result_field_pending.html" with field="travel_times_map" message="Generating travel times map..." %}</li>
+      <li>{% include "sectors/_result_field_pending.html" with field="jobs_breakdown" message="Generating jobs breakdown report..." %}</li>
+      <li>{% include "sectors/_result_field_pending.html" with field="resident_occupations" message="Generating resident occupations report..." %}</li>
+      <li>{% include "sectors/_result_field_pending.html" with field="soc_code_data" message="Generating SOC code report..." %}</li>
     </ul>
   </div>
 </div>
