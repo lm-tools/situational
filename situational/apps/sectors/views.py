@@ -106,6 +106,6 @@ class SendReportView(TemplateView):
         email = request.POST['email']
         postcode = kwargs['postcode']
         soc_codes = kwargs['soc_codes']
-        report = get_object_or_404(models.SectorsReport, postcode=postcode)
+        report = get_object_or_404(models.SectorsReport, postcode=postcode, soc_codes=soc_codes)
         report.send_to(email)
         return super().get(self, request, *args, **kwargs)
