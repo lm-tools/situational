@@ -11,13 +11,27 @@ from situational.testing import BaseCase
 
 class SectorsReportBuilderMixin():
 
+    SOC_TITLES = [
+        'Construction and building trades supervisors',
+        'Building and civil engineering technicians'
+    ]
+
     def _populated_report(self, without=[]):
         populated_fields = {
             'postcode': 'SW1A 1AA',
             'soc_codes': '3114,5330',
             'jobs_breakdown': {},
             'resident_occupations': {},
-            'soc_code_data': {}
+            'soc_code_data': {
+                'info': {
+                    '5330': {
+                        'title': self.SOC_TITLES[0]
+                    },
+                    '3114': {
+                        'title': self.SOC_TITLES[1]
+                    }
+                }
+            }
         }
         for field in without:
             del populated_fields[field]
@@ -73,13 +87,10 @@ class TestSectorsReportSendTo(SectorsReportBuilderMixin, BaseCase):
 
         self.assertIn('test-address@example.org', message.to)
         self.assertEqual(len(message.attachments), 1)
-        self.assertIn(
-            "Your sectors report for {}".format(report.postcode),
-            message.body,
-        )
-        self.assertIn(
-            "Your sectors report for {}".format(report.postcode),
-            message.alternatives[0][0],
-        )
+        self.assertIn("Your sectors report", message.body)
+        self.assertIn("Your sectors report", message.alternatives[0][0])
+        for soc_title in self.SOC_TITLES:
+            self.assertIn(soc_title, message.body)
+            self.assertIn(soc_title, message.alternatives[0][0])
         self.assertEqual(message.attachments[0][1], 'mock pdf content')
         self.assertEqual(message.attachments[0][2], 'application/pdf')

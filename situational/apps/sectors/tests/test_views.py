@@ -15,7 +15,7 @@ class TestShowView(BaseCase):
 
             response = self.client.get(
                 reverse(
-                    'sectors:show',
+                    'sectors:report',
                     kwargs={
                         'postcode': 'SW1H0DJ',
                         'soc_codes': '3114,5330'
@@ -32,7 +32,7 @@ class TestShowView(BaseCase):
 
             response = self.client.get(
                 reverse(
-                    'sectors:show',
+                    'sectors:report',
                     kwargs={
                         'postcode': 'SW1H0DJ',
                         'soc_codes': '3114,5330'
@@ -45,11 +45,21 @@ class TestShowView(BaseCase):
 
 class TestSendView(BaseCase):
     def test_post(self):
-        models.SectorReport.objects.create(
+        models.SectorsReport.objects.create(
             postcode='SW1H0DJ',
-            soc_codes='3114,5330'
+            soc_codes='3114,5330',
+            soc_code_data={
+                'info': {
+                    '5330': {
+                        'title': 'Construction and building trades supervisors'
+                    },
+                    '3114': {
+                        'title': 'Building and civil engineering technicians'
+                    }
+                }
+            }
         )
-        with patch('sectors.models.SectorReport.send_to') as send_to:
+        with patch('sectors.models.SectorsReport.send_to') as send_to:
             response = self.client.post(
                 reverse(
                     'sectors:send_report',
