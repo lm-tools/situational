@@ -45,7 +45,7 @@ class JobDescriptionsForm(BaseLMIForm):
             if keyword:
                 lmi_data = self.lmi_client.keyword_search(keyword)
                 for item in lmi_data[:3]:
-                    self.fields[item['soc']] = forms.BooleanField(
+                    self.fields[str(item['soc'])] = forms.BooleanField(
                         widget=forms.CheckboxInput,
                         label=item['title'],
                         help_text=item['description'],

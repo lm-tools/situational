@@ -19,7 +19,7 @@ class SectorWizardView(NamedUrlCookieWizardView):
     TEMPLATES = {
         'sector_form': 'sectors/sector_form.html',
         'job_descriptions_form': 'sectors/job_descriptions.html',
-        'soc_codes_form': 'sectors/soc_codes.html'
+        # 'soc_codes_form': 'sectors/report.html'
     }
 
     def get(self, *args, **kwargs):
@@ -36,37 +36,27 @@ class SectorWizardView(NamedUrlCookieWizardView):
         if step == 'job_descriptions_form':
             sectors = self.get_cleaned_data_for_step('sector_form')['sector']
             kwargs['keywords'] = sectors
-
-        if step == 'soc_codes_form':
-            codes = self.get_cleaned_data_for_step('job_descriptions_form')
-            kwargs['soc_codes'] = [k for k, v in codes.items() if v]
-            kwargs['postcode'] = \
-                self.get_cleaned_data_for_step('sector_form')['postcode']
         return kwargs
 
-
-    def post(self, request, *args, **kwargs):
-        postcode = self.request.POST['postcode']
-        soc_codes = []
-        for soc_code in self.request.POST.keys():
-            if soc_code.startswith('soc_'):
-                soc_code = soc_code[4:]
-                soc_codes.append(soc_code)
-
-        url_args = {
-            'postcode': postcode,
-            'soc_codes': ",".join(sorted(soc_codes))
-        }
-        url = reverse('sectors:report', kwargs=url_args)
-        return http.HttpResponseRedirect(url)
+    def done(self, form_list, form_dict, **kwargs):
+        print(form_dict)
+        sector_form = form_dict['sector_form']
+        postcode = sector_form.cleaned_data['postcode']
+        description_form = form_dict['job_descriptions_form']
+        soc_codes = [k for k, v in description_form.cleaned_data.items() if v]
+        report, _created = models.SectorsReport.objects.get_or_create(
+            postcode=postcode,
+            soc_codes=soc_codes
+        )
+        url = reverse("sectors:report", kwargs={'report_id': report.pk})
+        return HttpResponseRedirect(url)
 
 
 class ReportView(TemplateView):
 
     def get(self, request, *args, **kwargs):
-        self.report, _created = models.SectorsReport.objects.get_or_create(
-            postcode=kwargs['postcode'],
-            soc_codes=kwargs['soc_codes']
+        self.report = models.SectorsReport.objects.get(
+            pk=kwargs['report_id']
         )
 
         if self.report.is_populated:
@@ -92,8 +82,7 @@ class PopulatedResultFieldsView(View):
     def get(self, request, *args, **kwargs):
         try:
             report = models.SectorsReport.objects.get(
-                postcode=kwargs['postcode'],
-                soc_codes=kwargs['soc_codes']
+                pk=kwargs['report_id']
             )
             return http.JsonResponse(
                 report.populated_result_fields,
@@ -105,12 +94,9 @@ class PopulatedResultFieldsView(View):
 
 class PDFView(View):
     def get(self, request, *args, **kwargs):
-        postcode = kwargs['postcode']
-        soc_codes = kwargs['soc_codes']
         report = get_object_or_404(
             models.SectorsReport,
-            postcode=postcode,
-            soc_codes=soc_codes
+            pk=kwargs['report_id']
         )
         response = http.HttpResponse(report.to_pdf(), 'application/pdf')
         response['Content-Disposition'] = "filename=sectors-report.pdf"
@@ -122,12 +108,9 @@ class SendReportView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         email = request.POST['email']
-        postcode = kwargs['postcode']
-        soc_codes = kwargs['soc_codes']
         report = get_object_or_404(
             models.SectorsReport,
-            postcode=postcode,
-            soc_codes=soc_codes
+            pk=kwargs['report_id']
         )
         report.send_to(email)
         return super().get(self, request, *args, **kwargs)
