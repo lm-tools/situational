@@ -42,8 +42,20 @@ class SectorWizardView(NamedUrlCookieWizardView):
             kwargs['soc_codes'] = [k for k, v in codes.items() if v]
             kwargs['postcode'] = \
                 self.get_cleaned_data_for_step('sector_form')['postcode']
-
         return kwargs
+
+
+    def post(self, request, *args, **kwargs):
+        postcode = self.request.POST['postcode']
+        soc_codes = []
+        for soc_code in self.request.POST.keys():
+            if soc_code.startswith('soc_'):
+                soc_code = soc_code[4:]
+                soc_codes.append(soc_code)
+
+        url_args = {'postcode': postcode, 'soc_codes': ",".join(sorted(soc_codes))}
+        url = reverse('sectors:report', kwargs=url_args)
+        return http.HttpResponseRedirect(url)
 
 
 class ReportView(TemplateView):
