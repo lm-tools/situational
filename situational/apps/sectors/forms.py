@@ -60,36 +60,3 @@ class JobDescriptionsForm(BaseLMIForm):
                 code='invalid'
             )
         return cleaned_data
-
-
-class SOCCodesView(BaseLMIForm):
-    def __init__(self, *args, **kwargs):
-        soc_codes = kwargs['soc_codes']
-        del kwargs['soc_codes']
-
-        if 'postcode' not in kwargs:
-            raise KeyError("postcode not provided")
-        postcode = kwargs['postcode']
-        del kwargs['postcode']
-
-        super().__init__(*args, **kwargs)
-        self._add_soc_code_data(soc_codes)
-        self._add_resident_occupations(postcode)
-        self._add_jobs_breakdown(postcode)
-
-    def _add_soc_code_data(self, soc_codes):
-        self.soc_data = {}
-        for soc_code in soc_codes:
-            self.soc_data[soc_code] = {
-                'pay': self.lmi_client.pay(soc_code),
-                'hours_worked': self.lmi_client.hours_worked(soc_code),
-                'info': self.lmi_client.soc_code_info(soc_code),
-            }
-
-    def _add_resident_occupations(self, postcode):
-        self.resident_occupations = \
-            self.lmi_client.resident_occupations(postcode)
-
-    def _add_jobs_breakdown(self, postcode):
-        self.jobs_breakdown = \
-            self.lmi_client.jobs_breakdown(postcode)

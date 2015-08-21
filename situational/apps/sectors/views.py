@@ -39,7 +39,6 @@ class SectorWizardView(NamedUrlCookieWizardView):
         return kwargs
 
     def done(self, form_list, form_dict, **kwargs):
-        print(form_dict)
         sector_form = form_dict['sector_form']
         postcode = sector_form.cleaned_data['postcode']
         description_form = form_dict['job_descriptions_form']

@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from . import views
-from .forms import SectorForm, JobDescriptionsForm, SOCCodesView
+from .forms import SectorForm, JobDescriptionsForm
 
 named_form_steps = (
     ('sector_form', SectorForm),
