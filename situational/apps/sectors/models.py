@@ -9,10 +9,11 @@ from sectors import tasks
 
 
 class SectorsReport(TimeStampedModel):
+    # TODO: This should have a foreign key, or be two models, or...TBD
     postcode = models.CharField(
-        blank=False, null=False, max_length=14, db_index=True)
+        blank=False, null=False, max_length=14)
     soc_codes = models.CharField(
-        blank=False, null=False, max_length=200, db_index=True)
+        blank=False, null=False, max_length=200)
     jobs_breakdown = JSONField()
     resident_occupations = JSONField()
     soc_code_data = JSONField()
