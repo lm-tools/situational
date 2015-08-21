@@ -2,7 +2,7 @@
 
 {% block title %}Tell your work coach your history{% endblock title %}
 
-{% block body_class %}class="history"{% endblock body_class %}
+{% block body_class %}class="detailed_history"{% endblock body_class %}
 
 {% block content %}
 
@@ -24,7 +24,7 @@
       <p>You’ll be able to print out or email your answers at the end to give to your work coach. </p>
       <p>Your answers will not be stored or saved.</p>
 
-      <a href="{% url "history:current_work" %}" class="button large">Start</a>
+      <a href="{% url "detailed_history:current_work" %}" class="button large">Start</a>
     </div>
   </div>
 

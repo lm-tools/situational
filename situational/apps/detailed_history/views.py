@@ -130,29 +130,29 @@ def get_employment_context(session):
 
 class StartView(TemplateView):
     def get(self, request, *args, **kwargs):
-        self.template_name = "history/start.html"
+        self.template_name = "detailed_history/start.html"
         response = super().get(request, *args, **kwargs)
         return response
 
 
 class CurrentWorkView(FormView):
-    template_name = "history/current_work.html"
+    template_name = "detailed_history/current_work.html"
     form_class = forms.CurrentWorkStatusForm
 
     def form_valid(self, form):
         self.request.session['current_work'] = dict(form.data.lists())
         is_working = get_employment_context(self.request.session)
-        url = reverse('history:work_change_1')
+        url = reverse('detailed_history:work_change_1')
         return http.HttpResponseRedirect(url)
 
 
 class WorkChangeOneView(FormView):
-    template_name = "history/work_change_1.html"
+    template_name = "detailed_history/work_change_1.html"
     form_class = forms.PreviousYearsForm
 
     def form_valid(self, form):
         self.request.session['work_2015'] = dict(form.data.lists())
-        url = reverse('history:work_change_2')
+        url = reverse('detailed_history:work_change_2')
         return http.HttpResponseRedirect(url)
 
     def get_context_data(self, **kwargs):
@@ -162,7 +162,7 @@ class WorkChangeOneView(FormView):
 
 
 class WorkChangeTwoView(FormView):
-    template_name = "history/work_change_2.html"
+    template_name = "detailed_history/work_change_2.html"
     form_class = forms.PreviousYearsForm
 
     def form_valid(self, form):
@@ -170,9 +170,9 @@ class WorkChangeTwoView(FormView):
         work_1 = self.request.session['work_2015'].get('changes', ['no'])[0]
         work_2 = self.request.session['work_2014'].get('changes', ['no'])[0]
         if (work_1 == 'no' and work_2 == 'no'):
-            url = reverse('history:work_previous')
+            url = reverse('detailed_history:work_previous')
         else:
-            url = reverse('history:training_education')
+            url = reverse('detailed_history:training_education')
         return http.HttpResponseRedirect(url)
 
     def get_context_data(self, **kwargs):
@@ -182,12 +182,12 @@ class WorkChangeTwoView(FormView):
 
 
 class WorkPreviousView(FormView):
-    template_name = "history/work_previous.html"
+    template_name = "detailed_history/work_previous.html"
     form_class = forms.OneTextFieldForm
 
     def form_valid(self, form):
         self.request.session['before_2014'] = dict(form.data.lists())
-        url = reverse('history:training_education')
+        url = reverse('detailed_history:training_education')
         return http.HttpResponseRedirect(url)
 
     def get_context_data(self, **kwargs):
@@ -197,12 +197,12 @@ class WorkPreviousView(FormView):
 
 
 class TrainingEducationView(FormView):
-    template_name = "history/training_education.html"
+    template_name = "detailed_history/training_education.html"
     form_class = forms.TrainingEducationForm
 
     def form_valid(self, form):
         self.request.session['training_education'] = dict(form.data.lists())
-        url = reverse('history:other_circumstances')
+        url = reverse('detailed_history:other_circumstances')
         return http.HttpResponseRedirect(url)
 
     def get_context_data(self, **kwargs):
@@ -212,18 +212,18 @@ class TrainingEducationView(FormView):
 
 
 class OtherCircumstancesView(FormView):
-    template_name = "history/other_circumstances.html"
+    template_name = "detailed_history/other_circumstances.html"
     form_class = forms.OneTextFieldForm
 
     def form_valid(self, form):
         self.request.session['other'] = dict(form.data.lists())
-        url = reverse('history:summary')
+        url = reverse('detailed_history:summary')
         return http.HttpResponseRedirect(url)
 
 
 class SummaryView(TemplateView):
     def get(self, request, *args, **kwargs):
-        self.template_name = "history/summary.html"
+        self.template_name = "detailed_history/summary.html"
         response = super().get(request, *args, **kwargs)
         return response
 

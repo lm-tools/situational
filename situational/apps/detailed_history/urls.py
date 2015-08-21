@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from history import views
+from . import views
 
 urlpatterns = [
     url(r'current_work', views.CurrentWorkView.as_view(),

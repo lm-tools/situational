@@ -149,7 +149,7 @@ INSTALLED_APPS = (
 
 PROJECT_APPS = (
     'basicauth',
-    'history',
+    'detailed_history',
     'quick_history',
     'sectors',
     'template_to_pdf',
