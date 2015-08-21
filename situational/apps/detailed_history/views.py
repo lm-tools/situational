@@ -48,7 +48,7 @@ def format_other_circumstances(other_circumstances):
 def format_current_status(current):
     result = {}
     if current.get('status', None):
-        result["status"] = format_circumstance(current['status'][0])
+        result["status"] = format_status(current['status'][0])
     if current.get('description', None):
         result["description"] = current["description"][0]
     return result
@@ -104,19 +104,9 @@ def timeline_years_dict(nb_of_months):
     return years
 
 
-def format_circumstances(entry):
-    circumstance_data = entry["circumstances"][:]
-    if 'other' in circumstance_data:
-        circumstance_data.remove('other')
-    if entry["other_more"][0]:
-        circumstance_data += entry["other_more"]
-    formatted_circumstances = list(map(format_circumstance, circumstance_data))
-    return formatted_circumstances
-
-
-def format_circumstance(circumstance):
-    circumstance_dict = dict(forms.HistoryDetailsForm.CIRCUMSTANCE_CHOICES)
-    return circumstance_dict.get(circumstance, circumstance)
+def format_status(status):
+    status_dict = dict(forms.CurrentWorkStatusForm.WORK_STATUS_CHOICES)
+    return status_dict.get(status, status)
 
 
 def get_employment_context(session):

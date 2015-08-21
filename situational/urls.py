@@ -10,8 +10,14 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = [
-    url(r'detailed_history/', include('detailed_history.urls', namespace='detailed_history')),
-    url(r'quick_history/', include('quick_history.urls', namespace='quick_history')),
+    url(
+        r'detailed_history/',
+        include('detailed_history.urls', namespace='detailed_history')
+    ),
+    url(
+        r'quick_history/',
+        include('quick_history.urls', namespace='quick_history')
+    ),
     url(r'sectors/', include('sectors.urls', namespace='sectors')),
     url(r'travel/', include('travel_report.urls', namespace='travel_report')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
