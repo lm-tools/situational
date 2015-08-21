@@ -1,11 +1,14 @@
 import datetime
+
 from django import http
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.views.generic import View
+
 from . import forms
+from . import tasks
 
 
 def format_summary(session):
@@ -229,4 +232,7 @@ class SendView(TemplateView):
     template_name = "detailed_history/send.html"
 
     def post(self, request, *args, **kwargs):
+        email = request.POST["email"]
+        history = format_summary(self.request.session)
+        tasks.send_detailed_history.delay(history, email)
         return self.get(request, *args, **kwargs)
