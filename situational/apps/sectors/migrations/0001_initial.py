@@ -2,9 +2,9 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import django.utils.timezone
 import model_utils.fields
 import jsonfield.fields
-import django.utils.timezone
 
 
 class Migration(migrations.Migration):
@@ -14,17 +14,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Report',
+            name='SectorsReport',
             fields=[
-                ('id', models.AutoField(auto_created=True, verbose_name='ID', primary_key=True, serialize=False)),
-                ('created', model_utils.fields.AutoCreatedField(default=django.utils.timezone.now, verbose_name='created', editable=False)),
-                ('modified', model_utils.fields.AutoLastModifiedField(default=django.utils.timezone.now, verbose_name='modified', editable=False)),
-                ('postcode', models.CharField(max_length=14, db_index=True)),
-                ('soc_codes', models.CharField(max_length=200, db_index=True)),
+                ('id', models.AutoField(primary_key=True, serialize=False, verbose_name='ID', auto_created=True)),
+                ('created', model_utils.fields.AutoCreatedField(editable=False, verbose_name='created', default=django.utils.timezone.now)),
+                ('modified', model_utils.fields.AutoLastModifiedField(editable=False, verbose_name='modified', default=django.utils.timezone.now)),
+                ('postcode', models.CharField(max_length=14)),
+                ('soc_codes', models.CharField(max_length=200)),
                 ('jobs_breakdown', jsonfield.fields.JSONField()),
                 ('resident_occupations', jsonfield.fields.JSONField()),
                 ('soc_code_data', jsonfield.fields.JSONField()),
-                ('is_populating', models.BooleanField(default=False)),
             ],
             options={
                 'abstract': False,
