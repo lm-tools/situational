@@ -53,7 +53,10 @@ class SectorWizardView(NamedUrlCookieWizardView):
                 soc_code = soc_code[4:]
                 soc_codes.append(soc_code)
 
-        url_args = {'postcode': postcode, 'soc_codes': ",".join(sorted(soc_codes))}
+        url_args = {
+            'postcode': postcode,
+            'soc_codes': ",".join(sorted(soc_codes))
+        }
         url = reverse('sectors:report', kwargs=url_args)
         return http.HttpResponseRedirect(url)
 
