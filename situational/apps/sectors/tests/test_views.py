@@ -9,6 +9,10 @@ from situational.testing import BaseCase
 class TestShowView(BaseCase):
 
     def test_get_with_populated_report(self):
+        report = models.SectorsReport.objects.create(
+            postcode='SW1H0DJ',
+            soc_codes='3114,5330'
+        )
         with patch('sectors.models.SectorsReport.is_populated',
                    new_callable=PropertyMock) as mock_is_populated:
             mock_is_populated.return_value = True
@@ -17,8 +21,7 @@ class TestShowView(BaseCase):
                 reverse(
                     'sectors:report',
                     kwargs={
-                        'postcode': 'SW1H0DJ',
-                        'soc_codes': '3114,5330'
+                        'report_id': report.pk
                     }
                 )
             )
@@ -26,6 +29,10 @@ class TestShowView(BaseCase):
             self.assertTemplateUsed(response, "sectors/report.html")
 
     def test_get_with_unpopulated_report(self):
+        report = models.SectorsReport.objects.create(
+            postcode='SW1H0DJ',
+            soc_codes='3114,5330'
+        )
         with patch('sectors.models.SectorsReport.is_populated',
                    new_callable=PropertyMock) as mock_is_populated:
             mock_is_populated.return_value = False
@@ -34,8 +41,7 @@ class TestShowView(BaseCase):
                 reverse(
                     'sectors:report',
                     kwargs={
-                        'postcode': 'SW1H0DJ',
-                        'soc_codes': '3114,5330'
+                        'report_id': report.pk
                     }
                 )
             )
@@ -45,27 +51,16 @@ class TestShowView(BaseCase):
 
 class TestSendView(BaseCase):
     def test_post(self):
-        models.SectorsReport.objects.create(
+        report = models.SectorsReport.objects.create(
             postcode='SW1H0DJ',
-            soc_codes='3114,5330',
-            soc_code_data={
-                'info': {
-                    '5330': {
-                        'title': 'Construction and building trades supervisors'
-                    },
-                    '3114': {
-                        'title': 'Building and civil engineering technicians'
-                    }
-                }
-            }
+            soc_codes='3114,5330'
         )
         with patch('sectors.models.SectorsReport.send_to') as send_to:
             response = self.client.post(
                 reverse(
                     'sectors:send_report',
                     kwargs={
-                        'postcode': 'SW1H0DJ',
-                        'soc_codes': '3114,5330'
+                        'report_id': report.pk
                     }
                 ),
                 data={'email': 'test@example.org'}
@@ -73,5 +68,4 @@ class TestSendView(BaseCase):
             send_to.assert_called_with('test@example.org')
             self.assertEqual(response.status_code, 200)
             self.assertTemplateUsed(response, 'sectors/send_report.html')
-            self.assertEqual(response.context['postcode'], 'SW1H0DJ')
-            self.assertEqual(response.context['soc_codes'], '3114,5330')
+            self.assertEqual(int(response.context['report_id']), report.pk)

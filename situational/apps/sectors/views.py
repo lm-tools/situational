@@ -1,3 +1,4 @@
+from django import http
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.views.generic import FormView
@@ -19,7 +20,6 @@ class SectorWizardView(NamedUrlCookieWizardView):
     TEMPLATES = {
         'sector_form': 'sectors/sector_form.html',
         'job_descriptions_form': 'sectors/job_descriptions.html',
-        # 'soc_codes_form': 'sectors/report.html'
     }
 
     def get(self, *args, **kwargs):
@@ -54,8 +54,9 @@ class SectorWizardView(NamedUrlCookieWizardView):
 class ReportView(TemplateView):
 
     def get(self, request, *args, **kwargs):
-        self.report = models.SectorsReport.objects.get(
-            pk=kwargs['report_id']
+        self.report = get_object_or_404(
+            models.SectorsReport,
+            pk=int(kwargs['report_id'])
         )
 
         if self.report.is_populated:
@@ -79,23 +80,21 @@ class ReportView(TemplateView):
 
 class PopulatedResultFieldsView(View):
     def get(self, request, *args, **kwargs):
-        try:
-            report = models.SectorsReport.objects.get(
-                pk=kwargs['report_id']
-            )
-            return http.JsonResponse(
-                report.populated_result_fields,
-                safe=False
-            )
-        except models.SectorsReport.DoesNotExist:
-            return http.HttpResponseNotFound()
+        report = get_object_or_404(
+            models.SectorsReport,
+            pk=int(kwargs['report_id'])
+        )
+        return http.JsonResponse(
+            report.populated_result_fields,
+            safe=False
+        )
 
 
 class PDFView(View):
     def get(self, request, *args, **kwargs):
         report = get_object_or_404(
             models.SectorsReport,
-            pk=kwargs['report_id']
+            pk=int(kwargs['report_id'])
         )
         response = http.HttpResponse(report.to_pdf(), 'application/pdf')
         response['Content-Disposition'] = "filename=sectors-report.pdf"
@@ -109,7 +108,7 @@ class SendReportView(TemplateView):
         email = request.POST['email']
         report = get_object_or_404(
             models.SectorsReport,
-            pk=kwargs['report_id']
+            pk=int(kwargs['report_id'])
         )
         report.send_to(email)
         return super().get(self, request, *args, **kwargs)
