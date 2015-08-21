@@ -99,6 +99,20 @@ class PopulatedResultFieldsView(View):
             return http.HttpResponseNotFound()
 
 
+class PDFView(View):
+    def get(self, request, *args, **kwargs):
+        postcode = kwargs['postcode']
+        soc_codes = kwargs['soc_codes']
+        report = get_object_or_404(
+            models.SectorsReport,
+            postcode=postcode,
+            soc_codes=soc_codes
+        )
+        response = http.HttpResponse(report.to_pdf(), 'application/pdf')
+        response['Content-Disposition'] = "filename=sectors-report.pdf"
+        return response
+
+
 class SendReportView(TemplateView):
     template_name = 'sectors/send_report.html'
 

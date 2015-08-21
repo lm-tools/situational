@@ -22,6 +22,10 @@ urlpatterns = [
         views.ReportView.as_view(),
         name="report"),
 
+    url(r'soc_codes/' + postcode + '/' + soc_codes + '.pdf$',
+        views.PDFView.as_view(),
+        name="pdf"),
+
     url(r'soc_codes/' + postcode + '/' + soc_codes +
         '/populated_result_fields.json$',
         views.PopulatedResultFieldsView.as_view(),
