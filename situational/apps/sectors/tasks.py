@@ -63,7 +63,15 @@ def resident_occupations(report):
 @shared_task
 def soc_code_data(report):
     logger.debug("Getting soc_code_data")
-    soc_code_data = {"TODO": "SOC CODE DATA!"}
+    soc_codes_list = report.soc_codes.split(",")
+    lmi_client = helpers.LMIForAllClient()
+    soc_code_data = {}
+    for soc_code in soc_codes_list:
+        soc_code_data[soc_code] = {
+            'pay': lmi_client.pay(soc_code),
+            'hours_worked': lmi_client.hours_worked(soc_code),
+            'info': lmi_client.soc_code_info(soc_code)
+        }
     report.soc_code_data = soc_code_data
     report.save(update_fields=['soc_code_data'])
 
