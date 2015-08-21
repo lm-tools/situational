@@ -1,4 +1,4 @@
 Your sectors report for:
-{% for soc_code, soc_data in report.soc_code_data.info.items %}
- - {{ soc_data.title }}
+{% for soc_code,soc_data in report.soc_code_data.items %}
+ - {{ soc_data.info.title }}
 {% endfor %}
