@@ -8,6 +8,7 @@ from django.views.generic import FormView
 from django.views.generic import View
 
 from . import forms
+from . import pdf
 from . import tasks
 
 
@@ -236,3 +237,12 @@ class SendView(TemplateView):
         history = format_summary(self.request.session)
         tasks.send_detailed_history.delay(history, email)
         return self.get(request, *args, **kwargs)
+
+
+class PDFView(View):
+    def get(self, request, *args, **kwargs):
+        history = format_summary(self.request.session)
+        pdf_contents = pdf.render(history)
+        response = http.HttpResponse(pdf_contents, 'application/pdf')
+        response['Content-Disposition'] = "filename=history-summary.pdf"
+        return response
