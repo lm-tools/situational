@@ -21,14 +21,17 @@
     <h1>Select jobs you'd like to know more about</h1>
   </div>
 </div>
-<form id="results" action="{% url "sectors:soc_code_info" %}">
-  <input type="hidden" name="postcode" value="{{ postcode }}" id="postcode">
-  {% for code,result in results.items %}
+<form id="results" method=post>
+  {{ form.errors }}
+  {% csrf_token %}
+  {{ wizard.management_form }}
+  {% for field in form %}
     <div class="row">
       <div class="columns medium-10 large-9 result-item">
-        <label for="soc_{{ result.soc }}">
-          <h4><input type="checkbox" name="soc_{{ result.soc }}" id="soc_{{ result.soc }}"> {{ result.title }}</h4>
-          <p>{{ result.description }}</p>
+
+        <label>
+          <h4>{{ field }} {{ field.label }}</h4>
+          <p>{{ field.help_text }}</p>
         </label>
       </div>
     </div>

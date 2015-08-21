@@ -7,6 +7,7 @@ celery==3.1.18
 dj-database-url
 django-celery==3.1.16
 django-filter==0.10.0
+django-formtools==1.0
 django-localflavor
 django-log-request-id==1.1.0
 django-model-utils==2.2
