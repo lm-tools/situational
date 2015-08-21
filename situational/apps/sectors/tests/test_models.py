@@ -23,11 +23,13 @@ class SectorsReportBuilderMixin():
             'jobs_breakdown': {},
             'resident_occupations': {},
             'soc_code_data': {
-                'info': {
-                    '5330': {
+                '5330': {
+                    'info': {
                         'title': self.SOC_TITLES[0]
-                    },
-                    '3114': {
+                    }
+                },
+                '3114': {
+                    'info': {
                         'title': self.SOC_TITLES[1]
                     }
                 }
