@@ -143,13 +143,14 @@ class HistoryDetailsView(FormView):
 
 
 class HistoryReportView(TemplateView):
+    template_name = "quick_history/report.html"
+
     def get(self, request, *args, **kwargs):
         session = self.request.session
         if 'forms' not in session or len(session['forms']) < 3:
             url = reverse('quick_history:details')
             return http.HttpResponseRedirect(url)
         else:
-            self.template_name = "quick_history/report.html"
             response = super().get(request, *args, **kwargs)
             return response
 
@@ -169,7 +170,8 @@ class ClearSessionView(TemplateView):
 
 
 class StartView(TemplateView):
+    template_name = "quick_history/start.html"
+
     def get(self, request, *args, **kwargs):
-        self.template_name = "quick_history/start.html"
         response = super().get(request, *args, **kwargs)
         return response

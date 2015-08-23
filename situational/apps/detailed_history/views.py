@@ -119,8 +119,9 @@ def get_employment_context(session):
 
 
 class StartView(TemplateView):
+    template_name = "detailed_history/start.html"
+
     def get(self, request, *args, **kwargs):
-        self.template_name = "detailed_history/start.html"
         response = super().get(request, *args, **kwargs)
         return response
 
@@ -212,8 +213,9 @@ class OtherCircumstancesView(FormView):
 
 
 class SummaryView(TemplateView):
+    template_name = "detailed_history/summary.html"
+
     def get(self, request, *args, **kwargs):
-        self.template_name = "detailed_history/summary.html"
         response = super().get(request, *args, **kwargs)
         return response
 
