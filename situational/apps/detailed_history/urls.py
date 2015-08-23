@@ -1,18 +1,12 @@
 from django.conf.urls import url
 
-from history import views
+from . import views
 
 urlpatterns = [
-    url(r'details', views.HistoryDetailsView.as_view(), name="details"),
-    url(r'report', views.HistoryReportView.as_view(), name="report"),
-    url(r'clear_session', views.ClearSessionView.as_view(),
-        name="clear_session"),
     url(r'current_work', views.CurrentWorkView.as_view(),
         name="current_work"),
-    url(r'start_text', views.HistoryStartView.as_view(),
-        name="start_text"),
-    url(r'start_structured', views.HistoryStartStructuredView.as_view(),
-        name="start_structured"),
+    url(r'start', views.StartView.as_view(),
+        name="start"),
     url(r'work_change_1', views.WorkChangeOneView.as_view(),
         name="work_change_1"),
     url(r'work_change_2', views.WorkChangeTwoView.as_view(),
