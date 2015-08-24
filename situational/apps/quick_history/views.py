@@ -59,12 +59,20 @@ def enough_data_collected(session):
         return len(session['quick_history']) > 2
 
 
-# TODO: either from session or current time
-def get_end_date(session):
-    return {
-        "month": "8",
-        "year": "2015"
+def last_known_start_date(session):
+    today = datetime.datetime.now()
+    now = {
+        "month": today.month,
+        "year": today.year,
     }
+    if 'quick_history' not in session or len(session['quick_history']) == 0:
+        return now
+    else:
+        oldest_known_item = session['quick_history'][0]
+        return {
+            "month": oldest_known_item["from_month"],
+            "year": oldest_known_item["from_year"]
+        }
 
 
 def store_data_in_session(session, form):
@@ -73,19 +81,19 @@ def store_data_in_session(session, form):
     quick_history_entry = {
         "description": form.data.get('description'),
         "circumstances": form.data.get('circumstances'),
-        "from_month": form.data.get('date_month'),
-        "from_year": form.data.get('date_year'),
-        "to_month": get_end_date(session).get('month'),
-        "to_year": get_end_date(session).get('year')
+        "from_month": int(form.data.get('date_month')),
+        "from_year": int(form.data.get('date_year')),
+        "to_month": last_known_start_date(session).get('month'),
+        "to_year": last_known_start_date(session).get('year')
     }
-    session['quick_history'] += [quick_history_entry]
+    # Prepending to store data in chronological order, not order of entry
+    session['quick_history'] = [quick_history_entry] + session['quick_history']
     return
 
 
 def humanized_last_known_date(session):
-    date = get_end_date(session)
+    date = last_known_start_date(session)
     return "{} {}".format(MONTHS[int(date["month"])], date["year"])
-    return "Narnia o' clock"
 
 
 class HistoryDetailsView(FormView):
