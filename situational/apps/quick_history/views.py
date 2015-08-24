@@ -64,10 +64,12 @@ def store_data_in_session(session, form):
         session['quick_history'] = []
     quick_history_entry = {
         "description": form.data.get('description'),
-        "circumstances": form.data.get('circumstances')
+        "circumstances": form.data.get('circumstances'),
+        "from_month": form.data.get('date_month'),
+        "from_year": form.data.get('date_year'),
     }
-    # TODO: duration
     session['quick_history'] += [quick_history_entry]
+    print(session['quick_history'])
     return
 
 

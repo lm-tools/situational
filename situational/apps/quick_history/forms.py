@@ -1,4 +1,5 @@
 from django import forms
+from . import widgets
 
 
 class HistoryDetailsForm(forms.Form):
@@ -16,7 +17,9 @@ class HistoryDetailsForm(forms.Form):
         widget=forms.RadioSelect(),
         choices=CIRCUMSTANCE_CHOICES
     )
-    # TODO: date widget with year and month dropdown
+    date = forms.DateField(
+        widget=widgets.MonthYearWidget(years=range(1960, 2015))
+    )
     description = forms.CharField(required=False)
 
     def clean(self):
