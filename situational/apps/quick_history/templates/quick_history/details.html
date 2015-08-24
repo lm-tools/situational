@@ -33,10 +33,21 @@
       <p><span>from</span><span>TODO</span><span>to</span><span>{{ last_known_date }}
     </div>
   </div>
-  <div class="row">
+  <div class="row description hide">
     <div class="large-6 columns">
       <h2>Description</h2>
-      <p>Tell us more.</p>
+      <p class="question hide full_time part_time work_programme">
+        Job title and employer.
+      </p>
+      <p class="question hide training">
+        Course name.
+      </p>
+      <p class="question hide caring">
+        Who are you caring for?
+      </p>
+      <p class="question hide none sick unemployed">
+        Tell us more.
+      </p>
       {{ form.description }}
     </div>
   </div>
@@ -49,3 +60,18 @@
 </form>
 
 {% endblock content %}
+
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('input[type=radio][name=circumstances]').change(function() {
+      $(".description").removeClass("hide");
+      $(".question").addClass("hide");
+      $(".question."+this.value).removeClass("hide");
+    });
+  });
+</script>
+
+{% endblock %}

@@ -17,7 +17,6 @@ class HistoryDetailsForm(forms.Form):
         choices=CIRCUMSTANCE_CHOICES
     )
     #TODO: date widget with year and month dropdown
-    #TODO: different copies for the description label
     description = forms.CharField(required=False)
 
     def clean(self):
