@@ -2,10 +2,10 @@ import datetime
 
 from django import http
 from django.core.urlresolvers import reverse
+from django.utils.dates import MONTHS
 from django.views.generic import FormView
 from django.views.generic import TemplateView
 from django.views.generic import View
-
 
 from . import forms
 from . import tasks
@@ -59,6 +59,14 @@ def enough_data_collected(session):
         return len(session['quick_history']) > 2
 
 
+# TODO: either from session or current time
+def get_end_date(session):
+    return {
+        "month": "8",
+        "year": "2015"
+    }
+
+
 def store_data_in_session(session, form):
     if 'quick_history' not in session:
         session['quick_history'] = []
@@ -67,14 +75,16 @@ def store_data_in_session(session, form):
         "circumstances": form.data.get('circumstances'),
         "from_month": form.data.get('date_month'),
         "from_year": form.data.get('date_year'),
+        "to_month": get_end_date(session).get('month'),
+        "to_year": get_end_date(session).get('year')
     }
     session['quick_history'] += [quick_history_entry]
-    print(session['quick_history'])
     return
 
 
-# TODO:
 def humanized_last_known_date(session):
+    date = get_end_date(session)
+    return "{} {}".format(MONTHS[int(date["month"])], date["year"])
     return "Narnia o' clock"
 
 
@@ -102,13 +112,14 @@ class HistoryDetailsView(FormView):
         context = kwargs
         session = self.request.session
         has_some_data = data_collection_started(session)
-        last_known_date = humanized_last_known_date(session)
         if has_some_data:
+            last_known_date = humanized_last_known_date(session)
             title = "Your work circumstances before {}".format(last_known_date)
+            context['last_known_date'] = last_known_date
         else:
             title = "Your current work circumstances"
+            context['last_known_date'] = "now"
         context['circumstance_title'] = title
-        context['last_known_date'] = last_known_date
         return context
 
 
