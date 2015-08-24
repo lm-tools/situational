@@ -6,38 +6,70 @@ from django.views.generic import FormView
 from django.views.generic import TemplateView
 from django.views.generic import View
 
+
 from . import forms
 from . import tasks
 from . import pdf
 
-#TODO: implement
+
+# TODO: implement
 def format_timeline_data(session):
-# Timeline object:
-# timeline.items = [item, item, ...]
-# timeline.items has to be in chronological order (oldest item first)
-# item.description = nicely-formatted-circumstance (description)
-# item.intervals = [interval, interval] or [interval, interval, interval]
-# interval.active = True or False
-# interval.width = % of total length of timeline that interval should take
-# timeline.years = [year, year, ...]
-# timeline.years has to be in chronological order (oldest first)
-# year.width = % of total length of timeline that year should take
-# year.label = year number
     result = {}
-    r
+    result["items"] = []
+    for history_item in session['quick_history']:
+        item = {}
+        active_interval = {
+            "active": True,
+            "width": "30"
+        }
+        inactive_interval = {
+            "active": False,
+            "width": "70"
+        }
+        item["intervals"] = [active_interval, inactive_interval]
+        circumstance = history_item["circumstances"]  # TODO: FORMAT
+        description = history_item["description"]
+        label = "{} ({})".format(circumstance, description)
+        item["description"] = label
+        result["items"] += [item]
+    year_2014 = {
+        "width": "60",
+        "label": "2014"
+    }
+    year_2015 = {
+        "width": "40",
+        "label": "2015"
+    }
+    result["years"] = [year_2014, year_2015]
     return result
 
-# TODO: True if data collection has started, False if not
+
 def data_collection_started(session):
-    return True
+    if 'quick_history' not in session:
+        return False
+    else:
+        return len(session['quick_history']) > 0
+
 
 # TODO: True if at least 2 years and 2 things collected
 def enough_data_collected(session):
-    return False
+    if 'quick_history' not in session:
+        return False
+    else:
+        return len(session['quick_history']) > 2
 
-# TODO: seems like a self-explanatory method title
+
 def store_data_in_session(session, form):
+    if 'quick_history' not in session:
+        session['quick_history'] = []
+    quick_history_entry = {
+        "description": form.data.get('description'),
+        "circumstances": form.data.get('circumstances')
+    }
+    # TODO: duration
+    session['quick_history'] += [quick_history_entry]
     return
+
 
 # TODO:
 def humanized_last_known_date(session):
@@ -90,13 +122,14 @@ class HistoryReportView(TemplateView):
             return http.HttpResponseRedirect(url)
 
     def get_context_data(self, **kwargs):
+        context = kwargs
         context['timeline'] = format_timeline_data(self.request.session)
         return context
 
 
 class ClearSessionView(TemplateView):
     def post(self, request, *args, **kwargs):
-        self.request.session['forms'] = []
+        self.request.session['quick_history'] = []
         url = reverse('quick_history:start')
         return http.HttpResponseRedirect(url)
 

@@ -16,7 +16,7 @@ class HistoryDetailsForm(forms.Form):
         widget=forms.RadioSelect(),
         choices=CIRCUMSTANCE_CHOICES
     )
-    #TODO: date widget with year and month dropdown
+    # TODO: date widget with year and month dropdown
     description = forms.CharField(required=False)
 
     def clean(self):
