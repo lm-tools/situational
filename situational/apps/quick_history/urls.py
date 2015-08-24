@@ -10,4 +10,7 @@ urlpatterns = [
         name="clear_session"),
     url(r'start$', views.StartView.as_view(),
         name="start"),
+    url(r'send$', views.SendView.as_view(),
+        name="send"),
+
 ]

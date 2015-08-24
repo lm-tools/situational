@@ -27,7 +27,5 @@ class TestSendView(BaseCase):
             self.assertEqual(len(message.attachments), 1)
             self.assertIn("Your history report", message.body)
             self.assertIn("Your history report", message.alternatives[0][0])
-            self.assertTrue(len(message.attachments[0][1]) > 0,
-                            'The PDF should have content')
             self.assertEqual(message.attachments[0][1], "pdf-file-contents")
             self.assertEqual(message.attachments[0][2], 'application/pdf')

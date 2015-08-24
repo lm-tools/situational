@@ -179,6 +179,20 @@ class StartView(TemplateView):
         response = super().get(request, *args, **kwargs)
         return response
 
+
+class SendView(TemplateView):
+    template_name = "quick_history/send.html"
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST["email"]
+        data = {}
+        history_data = get_form_data_from_session(self.request.session)
+        data['report'] = map(history_entry_as_string, history_data)
+        data['timeline'] = format_timeline_data(history_data)
+        tasks.send_quick_history.delay(data, email)
+        return self.get(request, *args, **kwargs)
+
+
 class PDFView(View):
     def get(self, request, *args, **kwargs):
         data = {}
