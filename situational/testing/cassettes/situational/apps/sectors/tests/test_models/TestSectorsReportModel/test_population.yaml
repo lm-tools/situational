@@ -1,0 +1,328 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/census/jobs_breakdown?area=SW1A+1AA
+  response:
+    body: {string: '{"area":{"latitude":51.501009,"longitude":-0.141588,"district":"Westminster","ward":"St
+        James''s"},"totalJobs":2308.0,"jobsBreakdown":[{"socGroup":"111","description":"Chief
+        Executives and Senior Officials","value":17.0,"percentage":0.7365684575389948},{"socGroup":"112","description":"Production
+        Managers and Directors","value":7.0,"percentage":0.30329289428076256},{"socGroup":"113","description":"Functional
+        Managers and Directors","value":53.0,"percentage":2.296360485268631},{"socGroup":"115","description":"Financial
+        Institution Managers and Directors","value":6.0,"percentage":0.25996533795493937},{"socGroup":"116","description":"Managers
+        and Directors in Transport and Logistics","value":15.0,"percentage":0.6499133448873483},{"socGroup":"117","description":"Senior
+        Officers in Protective Services","value":69.0,"percentage":2.9896013864818025},{"socGroup":"118","description":"Health
+        and Social Services Managers and Directors","value":1.0,"percentage":0.04332755632582322},{"socGroup":"119","description":"Managers
+        and Directors in Retail and Wholesale","value":13.0,"percentage":0.5632582322357019},{"socGroup":"121","description":"Managers
+        and Proprietors in Agriculture Related Services","value":0.0,"percentage":0.0},{"socGroup":"122","description":"Managers
+        and Proprietors in Hospitality and Leisure Services","value":8.0,"percentage":0.34662045060658575},{"socGroup":"124","description":"Managers
+        and Proprietors in Health and Care Services","value":0.0,"percentage":0.0},{"socGroup":"125","description":"Managers
+        and Proprietors in Other Services","value":20.0,"percentage":0.8665511265164645},{"socGroup":"211","description":"Natural
+        and Social Science Professionals","value":1.0,"percentage":0.04332755632582322},{"socGroup":"212","description":"Engineering
+        Professionals","value":14.0,"percentage":0.6065857885615251},{"socGroup":"213","description":"Information
+        Technology and Telecommunications Professionals","value":25.0,"percentage":1.0831889081455806},{"socGroup":"214","description":"Conservation
+        and Environment Professionals","value":3.0,"percentage":0.12998266897746968},{"socGroup":"215","description":"Research
+        and Development Managers ","value":1.0,"percentage":0.04332755632582322},{"socGroup":"221","description":"Health
+        Professionals","value":6.0,"percentage":0.25996533795493937},{"socGroup":"222","description":"Therapy
+        Professionals","value":6.0,"percentage":0.25996533795493937},{"socGroup":"223","description":"Nursing
+        and Midwifery Professionals","value":5.0,"percentage":0.21663778162911612},{"socGroup":"231","description":"Teaching
+        and Educational Professionals","value":6.0,"percentage":0.25996533795493937},{"socGroup":"241","description":"Legal
+        Professionals","value":4.0,"percentage":0.17331022530329288},{"socGroup":"242","description":"Business,
+        Research and Administrative Professionals","value":79.0,"percentage":3.422876949740035},{"socGroup":"243","description":"Architects,
+        Town Planners and Surveyors","value":13.0,"percentage":0.5632582322357019},{"socGroup":"244","description":"Welfare
+        Professionals","value":4.0,"percentage":0.17331022530329288},{"socGroup":"245","description":"Librarians
+        and Related Professionals","value":2.0,"percentage":0.08665511265164644},{"socGroup":"246","description":"Quality
+        and Regulatory Professionals","value":6.0,"percentage":0.25996533795493937},{"socGroup":"247","description":"Media
+        Professionals","value":45.0,"percentage":1.9497400346620448},{"socGroup":"311","description":"Science,
+        Engineering and Production Technicians","value":0.0,"percentage":0.0},{"socGroup":"312","description":"Draughtspersons
+        and Related Architectural Technicians","value":0.0,"percentage":0.0},{"socGroup":"313","description":"Information
+        Technology Technicians","value":16.0,"percentage":0.6932409012131715},{"socGroup":"321","description":"Health
+        Associate Professionals","value":0.0,"percentage":0.0},{"socGroup":"323","description":"Welfare
+        and Housing Associate Professionals","value":5.0,"percentage":0.21663778162911612},{"socGroup":"331","description":"Protective
+        Service Occupations","value":784.0,"percentage":33.96880415944541},{"socGroup":"341","description":"Artistic,
+        Literary and Media Occupations","value":128.0,"percentage":5.545927209705372},{"socGroup":"342","description":"Design
+        Occupations","value":2.0,"percentage":0.08665511265164644},{"socGroup":"344","description":"Sports
+        and Fitness Occupations","value":1.0,"percentage":0.04332755632582322},{"socGroup":"351","description":"Transport
+        Associate Professionals","value":0.0,"percentage":0.0},{"socGroup":"352","description":"Legal
+        Associate Professionals","value":2.0,"percentage":0.08665511265164644},{"socGroup":"353","description":"Business,
+        Finance and Related Associate Professionals","value":43.0,"percentage":1.8630849220103984},{"socGroup":"354","description":"Sales,
+        Marketing and Related Associate Professionals","value":54.0,"percentage":2.3396880415944543},{"socGroup":"355","description":"Conservation
+        and Environmental associate professionals","value":0.0,"percentage":0.0},{"socGroup":"356","description":"Public
+        Services and Other Associate Professionals","value":33.0,"percentage":1.4298093587521665},{"socGroup":"411","description":"Administrative
+        Occupations: Government and Related Organisations","value":84.0,"percentage":3.6395147313691507},{"socGroup":"412","description":"Administrative
+        Occupations: Finance","value":43.0,"percentage":1.8630849220103984},{"socGroup":"413","description":"Administrative
+        Occupations: Records","value":26.0,"percentage":1.1265164644714039},{"socGroup":"415","description":"Other
+        Administrative Occupations","value":31.0,"percentage":1.34315424610052},{"socGroup":"416","description":"Administrative
+        Occupations: Office Managers and Supervisors","value":11.0,"percentage":0.47660311958405543},{"socGroup":"421","description":"Secretarial
+        and Related Occupations","value":83.0,"percentage":3.596187175043328},{"socGroup":"511","description":"Agricultural
+        and Related Trades","value":10.0,"percentage":0.43327556325823224},{"socGroup":"521","description":"Metal
+        Forming, Welding and Related Trades","value":0.0,"percentage":0.0},{"socGroup":"522","description":"Metal
+        Machining, Fitting and Instrument Making Trades","value":8.0,"percentage":0.34662045060658575},{"socGroup":"523","description":"Vehicle
+        Trades","value":4.0,"percentage":0.17331022530329288},{"socGroup":"524","description":"Electrical
+        and Electronic Trades","value":9.0,"percentage":0.389948006932409},{"socGroup":"525","description":"Skilled
+        Metal, Electrical and Electronic Trades Supervisors","value":0.0,"percentage":0.0},{"socGroup":"531","description":"Construction
+        and Building Trades","value":10.0,"percentage":0.43327556325823224},{"socGroup":"532","description":"Building
+        Finishing Trades","value":8.0,"percentage":0.34662045060658575},{"socGroup":"533","description":"Construction
+        and Building Trades Supervisors","value":0.0,"percentage":0.0},{"socGroup":"541","description":"Textiles
+        and Garments Trades","value":8.0,"percentage":0.34662045060658575},{"socGroup":"542","description":"Printing
+        Trades","value":3.0,"percentage":0.12998266897746968},{"socGroup":"543","description":"Food
+        Preparation and Hospitality Trades","value":46.0,"percentage":1.9930675909878681},{"socGroup":"544","description":"Other
+        Skilled Trades","value":7.0,"percentage":0.30329289428076256},{"socGroup":"612","description":"Childcare
+        and Related Personal Services","value":2.0,"percentage":0.08665511265164644},{"socGroup":"613","description":"Animal
+        Care and Control Services","value":5.0,"percentage":0.21663778162911612},{"socGroup":"614","description":"Caring
+        Personal Services","value":16.0,"percentage":0.6932409012131715},{"socGroup":"621","description":"Leisure
+        and Travel Services","value":42.0,"percentage":1.8197573656845754},{"socGroup":"622","description":"Hairdressers
+        and Related Services","value":1.0,"percentage":0.04332755632582322},{"socGroup":"623","description":"Housekeeping
+        and Related Services","value":22.0,"percentage":0.9532062391681109},{"socGroup":"624","description":"Cleaning
+        and Housekeeping Managers and Supervisors","value":33.0,"percentage":1.4298093587521665},{"socGroup":"711","description":"Sales
+        Assistants and Retail Cashiers","value":38.0,"percentage":1.6464471403812824},{"socGroup":"712","description":"Sales
+        Related Occupations","value":0.0,"percentage":0.0},{"socGroup":"713","description":"Sales
+        Supervisors","value":6.0,"percentage":0.25996533795493937},{"socGroup":"721","description":"Customer
+        Service Occupations","value":28.0,"percentage":1.2131715771230502},{"socGroup":"722","description":"Customer
+        Service Managers and Supervisors","value":5.0,"percentage":0.21663778162911612},{"socGroup":"811","description":"Process
+        Operatives","value":1.0,"percentage":0.04332755632582322},{"socGroup":"812","description":"Plant
+        and Machine Operatives","value":4.0,"percentage":0.17331022530329288},{"socGroup":"813","description":"Assemblers
+        and Routine Operatives","value":1.0,"percentage":0.04332755632582322},{"socGroup":"814","description":"Construction
+        Operatives","value":2.0,"percentage":0.08665511265164644},{"socGroup":"821","description":"Road
+        Transport Drivers","value":11.0,"percentage":0.47660311958405543},{"socGroup":"822","description":"Mobile
+        Machine Drivers and Operatives","value":1.0,"percentage":0.04332755632582322},{"socGroup":"823","description":"Other
+        Drivers and Transport Operatives","value":9.0,"percentage":0.389948006932409},{"socGroup":"911","description":"Elementary
+        Agricultural Occupations","value":0.0,"percentage":0.0},{"socGroup":"912","description":"Elementary
+        Construction Occupations","value":5.0,"percentage":0.21663778162911612},{"socGroup":"913","description":"Elementary
+        Process Plant Occupations","value":1.0,"percentage":0.04332755632582322},{"socGroup":"921","description":"Elementary
+        Administration Occupations","value":19.0,"percentage":0.8232235701906412},{"socGroup":"923","description":"Elementary
+        Cleaning Occupations","value":55.0,"percentage":2.383015597920277},{"socGroup":"924","description":"Elementary
+        Security Occupations","value":47.0,"percentage":2.0363951473136916},{"socGroup":"925","description":"Elementary
+        Sales Occupations","value":2.0,"percentage":0.08665511265164644}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Mon, 24 Aug 2015 09:48:48 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/census/resident_occupations?area=SW1A+1AA
+  response:
+    body: {string: '{"area":{"latitude":51.501009,"longitude":-0.141588,"district":"Westminster","ward":"St
+        James''s"},"totalResidents":399.0,"residentOccupations":[{"socGroup":"11","description":"CORPORATE
+        MANAGERS AND DIRECTORS","value":42.0,"percentage":10.526315789473683},{"socGroup":"12","description":"OTHER
+        MANAGERS AND PROPRIETORS","value":8.0,"percentage":2.0050125313283207},{"socGroup":"21","description":"SCIENCE,
+        RESEARCH, ENGINEERING AND TECHNOLOGY PROFESSIONALS","value":5.0,"percentage":1.2531328320802004},{"socGroup":"22","description":"HEALTH
+        PROFESSIONALS","value":5.0,"percentage":1.2531328320802004},{"socGroup":"23","description":"TEACHING
+        AND EDUCATIONAL PROFESSIONALS","value":5.0,"percentage":1.2531328320802004},{"socGroup":"24","description":"BUSINESS,
+        MEDIA AND PUBLIC SERVICE PROFESSIONALS","value":24.0,"percentage":6.015037593984962},{"socGroup":"31","description":"SCIENCE,
+        ENGINEERING AND TECHNOLOGY ASSOCIATE PROFESSIONALS","value":1.0,"percentage":0.2506265664160401},{"socGroup":"32","description":"HEALTH
+        AND SOCIAL CARE ASSOCIATE PROFESSIONALS","value":1.0,"percentage":0.2506265664160401},{"socGroup":"33","description":"PROTECTIVE
+        SERVICE OCCUPATIONS","value":201.0,"percentage":50.37593984962406},{"socGroup":"34","description":"CULTURE,
+        MEDIA AND SPORTS OCCUPATIONS","value":31.0,"percentage":7.769423558897243},{"socGroup":"35","description":"BUSINESS
+        AND PUBLIC SERVICE ASSOCIATE PROFESSIONALS","value":17.0,"percentage":4.260651629072681},{"socGroup":"41","description":"ADMINISTRATIVE
+        OCCUPATIONS","value":10.0,"percentage":2.506265664160401},{"socGroup":"42","description":"SECRETARIAL
+        AND RELATED OCCUPATIONS","value":3.0,"percentage":0.7518796992481203},{"socGroup":"51","description":"SKILLED
+        AGRICULTURAL AND RELATED TRADES","value":0.0,"percentage":0.0},{"socGroup":"52","description":"SKILLED
+        METAL, ELECTRICAL AND ELECTRONIC TRADES","value":3.0,"percentage":0.7518796992481203},{"socGroup":"53","description":"SKILLED
+        CONSTRUCTION AND BUILDING TRADES","value":1.0,"percentage":0.2506265664160401},{"socGroup":"54","description":"TEXTILES,
+        PRINTING AND OTHER SKILLED TRADES","value":3.0,"percentage":0.7518796992481203},{"socGroup":"61","description":"CARING
+        PERSONAL SERVICE OCCUPATIONS","value":1.0,"percentage":0.2506265664160401},{"socGroup":"62","description":"LEISURE,
+        TRAVEL AND RELATED PERSONAL SERVICE OCCUPATIONS","value":16.0,"percentage":4.010025062656641},{"socGroup":"71","description":"SALES
+        OCCUPATIONS","value":1.0,"percentage":0.2506265664160401},{"socGroup":"72","description":"CUSTOMER
+        SERVICE OCCUPATIONS","value":0.0,"percentage":0.0},{"socGroup":"81","description":"PROCESS,
+        PLANT AND MACHINE OPERATIVES","value":0.0,"percentage":0.0},{"socGroup":"82","description":"TRANSPORT
+        AND MOBILE MACHINE DRIVERS AND OPERATIVES","value":0.0,"percentage":0.0}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Mon, 24 Aug 2015 09:48:48 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=3114&coarse=true
+  response:
+    body: {string: '{"soc":31,"series":[{"year":2012,"estpay":590},{"year":2013,"estpay":610}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Mon, 24 Aug 2015 09:48:49 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimateHours?soc=3114&coarse=true
+  response:
+    body: {string: '{"soc":31,"series":[{"year":2012,"hours":40},{"year":2013,"hours":40}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Mon, 24 Aug 2015 09:48:49 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/soc/code/3114
+  response:
+    body: {string: '{"soc":3114,"tasks":" sets up apparatus and equipment and undertakes
+        field and laboratory tests of soil and work materials;\n performs calculations
+        and collects, records and interprets data;\n sets out construction site, supervises
+        excavations and marks out position of building work to be undertaken;\n inspects
+        construction materials and supervises work of contractors to ensure compliance
+        with specifications and arranges remedial work as necessary.","description":"Building
+        and civil engineering technicians perform a variety of technical support functions
+        to assist civil and building engineers.","title":"Building and civil engineering
+        technicians","qualifications":"Entrants usually possess a relevant BTEC/SQA
+        award or an Advanced GNVQ/GSVQ Level III. The status of engineering technician
+        is obtained after a period of further training at work and upon gaining the
+        membership of a professional engineering institution.","add_titles":["Analyst,
+        stress (construction, engineering)","Assistant, building","Assistant, engineering,
+        civil","Assistant, technical (civil engineering)","Consultant, building","Consultant,
+        construction","Consultant, services, building","Controller, production (building
+        construction)","Coordinator, project (construction)","Officer, technical (civil
+        engineering)","Technician, building","Technician, engineering, civil","Technician,
+        engineering, structural","Technician, survey","Technician, surveying","Technician
+        (engineering, civil)","Technician (engineering, structural)"]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Mon, 24 Aug 2015 09:48:49 GMT']
+      Expires: ['Mon, 24 Aug 2015 11:48:49 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimatePay?soc=5330&coarse=true
+  response:
+    body: {string: '{"soc":53,"series":[{"year":2012,"estpay":550},{"year":2013,"estpay":550}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Mon, 24 Aug 2015 09:48:49 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimateHours?soc=5330&coarse=true
+  response:
+    body: {string: '{"soc":53,"series":[{"year":2012,"hours":43},{"year":2013,"hours":43}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Mon, 24 Aug 2015 09:48:49 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/soc/code/5330
+  response:
+    body: {string: '{"soc":5330,"tasks":" directly supervises and coordinates the
+        activities of construction and building workers and/or subcontractors;\n establishes
+        and monitors work schedules to meet productivity requirements;\n liaises with
+        managers and contractors to resolve operational problems;\n determines or
+        recommends staffing and other needs to meet productivity requirements;\n reports
+        as required to managerial staff on work-related matters.","description":"Construction
+        and building trades supervisors oversee operations and directly supervise
+        and coordinate the activities of workers in construction and building trades.","title":"Construction
+        and building trades supervisors","qualifications":"There are no formal academic
+        entry requirements, though GCSEs/S grades are advantageous. Entry is typically
+        through an apprenticeship or traineeship approved by ConstructionSkills leading
+        to an NVQ/SVQ at Level 3, in addition to significant relevant work experience.","add_titles":["Chargeman,
+        track (railway maintenance and repair)","Chargeman, track (railways)","Foreman,
+        bridge","Foreman, builder''s","Foreman, building","Foreman, civilian (government)","Foreman,
+        concrete","Foreman, construction","Foreman, contractor''s","Foreman, demolition","Foreman,
+        distribution (gas supplier)","Foreman, district","Foreman, drainage","Foreman,
+        engineering, civil","Foreman, engineering, constructional","Foreman, estate","Foreman,
+        estates","Foreman, fittings (gas supplier)","Foreman, general (building construction)","Foreman,
+        highways","Foreman, maintenance (gas supplier)","Foreman, maintenance","Foreman,
+        painting","Foreman, pipe, main","Foreman, plumbing","Foreman, road","Foreman,
+        site","Foreman, way, permanent","Foreman, woodwork","Foreman (building construction)","Foreman
+        (civil engineering)","Foreman (construction)","Foreman (constructional engineering:
+        metal)","Foreman (DETR)","Foreman (flooring contracting)","Foreman (gas supplier)","Foreman
+        (heating engineering)","Foreman (joinery mfr)","Foreman (local government:
+        engineer''s dept)","Foreman (local government: highways dept)","Foreman (local
+        government: housing dept)","Foreman (local government: public works)","Foreman
+        (local government: surveyor''s dept)","Foreman (local government)","Foreman
+        (railway maintenance and repair)","Foreman (railways: district engineer''s
+        dept)","Foreman (woodware mfr)","Foreman of works","Foreman-ganger (maintenance)","Foreman-ganger
+        (building construction)","Foreman-ganger (cable laying)","Foreman-ganger (electricity
+        supplier)","Foreman-ganger (gas supplier)","Foreman-ganger (local government)","Foreman-ganger
+        (railway maintenance and repair)","Foreman-ganger (railways)","Foreman-ganger
+        (water works)","Ganger, highways","Ganger, navvy","Ganger (electricity supplier)","Ganger
+        (gas supplier)","Ganger (local government)","Ganger (railway maintenance and
+        repair)","Ganger (railways)","Ganger (water works)","Hand, leading (building
+        construction)","Hand, maintenance (transport: railways)","Inspector, ballast","Inspector,
+        bridge","Inspector, district (building construction)","Inspector, drain","Inspector,
+        drainage","Inspector, excavating (electricity supplier)","Inspector, highways","Inspector,
+        line, pipe","Inspector, line (railway maintenance and repair)","Inspector,
+        mains","Inspector, maintenance (local government: housing dept)","Inspector,
+        paving and extension","Inspector, trench","Inspector, tunnel","Inspector,
+        way, permanent","Inspector, works, district (railway maintenance and repair)","Inspector,
+        works, district (railways)","Inspector, works, new (railway maintenance and
+        repair)","Inspector, works, new (railways)","Inspector, works (railway maintenance
+        and repair)","Inspector, works (railways)","Inspector (local government: highways
+        dept)","Master, gang (drainage board)","Officer, maintenance (local government)","Skipper
+        (building construction)","Superintendent, board, gas","Superintendent, distribution
+        (gas supplier)","Superintendent, district (gas supplier)","Superintendent,
+        mains","Superintendent, maintenance","Superintendent, repairs","Superintendent,
+        works (building construction)","Superintendent, works (local government)","Superintendent
+        (building construction)","Superintendent (engineering: civil)","Superintendent
+        (engineering: structural)","Superintendent (local government: highways dept)","Superintendent
+        of works","Supervisor, area (building construction)","Supervisor, area (gas
+        supplier)","Supervisor, building","Supervisor, construction","Supervisor,
+        contract (building construction)","Supervisor, contracts (building construction)","Supervisor,
+        distribution (water company)","Supervisor, erection (building construction)","Supervisor,
+        maintenance","Supervisor, plumbing","Supervisor, service (gas supplier)","Supervisor
+        (gas supplier)"]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Mon, 24 Aug 2015 09:48:49 GMT']
+      Expires: ['Mon, 24 Aug 2015 11:48:49 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+version: 1
