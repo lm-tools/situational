@@ -1,4 +1,4 @@
-from django.template import loader, Context
+from django.template import loader
 
 from . import convertors
 

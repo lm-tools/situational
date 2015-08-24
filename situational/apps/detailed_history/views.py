@@ -2,7 +2,6 @@ import datetime
 
 from django import http
 from django.core.urlresolvers import reverse
-from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.views.generic import View
@@ -136,7 +135,6 @@ class CurrentWorkView(FormView):
 
     def form_valid(self, form):
         self.request.session['current_work'] = dict(form.data.lists())
-        is_working = get_employment_context(self.request.session)
         url = reverse('detailed_history:work_change_1')
         return http.HttpResponseRedirect(url)
 

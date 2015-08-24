@@ -1,6 +1,5 @@
 from django.db import models
 
-from jsonfield import JSONField
 from model_utils.models import TimeStampedModel
 
 import template_to_pdf

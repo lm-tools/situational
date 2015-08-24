@@ -1,7 +1,3 @@
-import csv
-import io
-from urllib.request import urlopen
-
 import requests
 
 from django.core.cache import cache
