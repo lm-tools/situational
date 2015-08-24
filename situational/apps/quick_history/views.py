@@ -24,15 +24,15 @@ def format_timeline_data(session):
     result["items"] = []
     for history_item in session['quick_history']:
         item = {}
+        circumstance = format_circumstance(history_item["circumstances"])
+        description = history_item["description"]
+        label = "{} ({})".format(circumstance, description)
+        item["description"] = label
         item["intervals"] = intervals_for_item(
             history_item,
             timeline_beginning,
             timeline_end
         )
-        circumstance = format_circumstance(history_item["circumstances"])
-        description = history_item["description"]
-        label = "{} ({})".format(circumstance, description)
-        item["description"] = label
         result["items"] += [item]
     result["years"] = year_timeline(
         timeline_beginning,
@@ -41,10 +41,13 @@ def format_timeline_data(session):
     return result
 
 
-# TODO: implement
+def same_date(month_1, year_1, month_2, year_2):
+    return (month_1 == month_2) and (year_1 == year_2)
+
+
 def intervals_for_item(history_item, timeline_beginning, timeline_end):
     number_active_months = number_of_months(history_item)
-    number_months_in_timeline = number_of_months(
+    total_months = number_of_months(
         {
             "from_month": timeline_beginning["month"],
             "from_year": timeline_beginning["year"],
@@ -52,15 +55,51 @@ def intervals_for_item(history_item, timeline_beginning, timeline_end):
             "to_year": timeline_end["year"]
         }
     )
-    active_interval = {
-        "active": True,
-        "width": number_active_months / number_months_in_timeline * 100
-    }
-    inactive_interval = {
-        "active": False,
-        "width": "70"  # TODO: calculate
-    }
-    return [active_interval, inactive_interval]  # TODO
+    if same_date(
+        timeline_beginning["month"],
+        timeline_beginning["year"],
+        history_item["from_month"],
+        history_item["from_year"]
+    ):
+        active_interval = {
+            "active": True,
+            "width": number_active_months / total_months * 100
+        }
+        inactive_interval = {
+            "active": False,
+            "width": 100 - active_interval["width"]
+        }
+        return [active_interval, inactive_interval]
+    elif same_date(
+        timeline_end["month"],
+        timeline_end["year"],
+        history_item["to_month"],
+        history_item["to_year"]
+    ):
+        active_interval = {
+            "active": True,
+            "width": number_active_months / total_months * 100
+        }
+        inactive_interval = {
+            "active": False,
+            "width": 100 - active_interval["width"]
+        }
+        return [inactive_interval, active_interval]
+    else:
+        # TODO this is very wrong
+        inactive_interval_1 = {
+            "active": False,
+            "width": 20
+        }
+        active_interval = {
+            "active": True,
+            "width": 60
+        }
+        inactive_interval_2 = {
+            "active": False,
+            "width": 20
+        }
+        return [inactive_interval_1, active_interval, inactive_interval_2]
 
 
 def year_timeline(timeline_beginning, timeline_end):
