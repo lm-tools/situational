@@ -19,7 +19,7 @@ class StartView(FormView):
 
     def form_valid(self, form):
         postcode = form.cleaned_data['postcode'].upper().replace(' ', '')
-        url = reverse('report:show', kwargs={'postcode': postcode})
+        url = reverse('travel_report:show', kwargs={'postcode': postcode})
         return http.HttpResponseRedirect(url)
 
 
