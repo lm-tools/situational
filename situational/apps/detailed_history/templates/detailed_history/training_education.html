@@ -24,7 +24,7 @@
       {% endfor %}
     </div>
   </div>
-  <div class="row">
+  <div class="row current_education">
     <div class="columns">
       <h3>Current training or education</h3>
       <p>Tell us more.</p>
@@ -46,4 +46,17 @@
   <hr/>
 </form>
 
+
 {% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('input[type=radio][name=yes_or_no]').change(function() {
+      $(".current_education").toggleClass("hide", this.value == "no");
+    });
+  });
+</script>
+
+{% endblock %}
