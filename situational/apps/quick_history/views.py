@@ -12,26 +12,54 @@ from . import tasks
 from . import pdf
 
 
-# TODO: implement
 def format_timeline_data(session):
     result = {}
+    timeline_beginning = last_known_start_date(session)
+    timeline_end = now()
     result["items"] = []
     for history_item in session['quick_history']:
         item = {}
-        active_interval = {
-            "active": True,
-            "width": "30"
-        }
-        inactive_interval = {
-            "active": False,
-            "width": "70"
-        }
-        item["intervals"] = [active_interval, inactive_interval]
+        item["intervals"] = intervals_for_item(
+            history_item,
+            timeline_beginning,
+            timeline_end
+        )
         circumstance = history_item["circumstances"]  # TODO: FORMAT
         description = history_item["description"]
         label = "{} ({})".format(circumstance, description)
         item["description"] = label
         result["items"] += [item]
+    result["years"] = year_timeline(
+        timeline_beginning,
+        timeline_end
+    )
+    return result
+
+
+# TODO: implement
+def intervals_for_item(history_item, timeline_beginning, timeline_end):
+    number_active_months = number_of_months(history_item)
+    number_months_in_timeline = number_of_months(
+        {
+            "from_month": timeline_beginning["month"],
+            "from_year": timeline_beginning["year"],
+            "to_month": timeline_end["month"],
+            "to_year": timeline_end["year"]
+        }
+    )
+    active_interval = {
+        "active": True,
+        "width": number_active_months / number_months_in_timeline * 100
+    }
+    inactive_interval = {
+        "active": False,
+        "width": "70"  # TODO: calculate
+    }
+    return [active_interval, inactive_interval]  # TODO
+
+
+# TODO: implement
+def year_timeline(timeline_beginning, timeline_end):
     year_2014 = {
         "width": "60",
         "label": "2014"
@@ -40,8 +68,7 @@ def format_timeline_data(session):
         "width": "40",
         "label": "2015"
     }
-    result["years"] = [year_2014, year_2015]
-    return result
+    return [year_2014, year_2015]
 
 
 def data_collection_started(session):
@@ -78,14 +105,18 @@ def enough_data_collected(session):
         return enough_items and enough_time
 
 
-def last_known_start_date(session):
+def now():
     today = datetime.datetime.now()
     now = {
         "month": today.month,
         "year": today.year,
     }
+    return now
+
+
+def last_known_start_date(session):
     if 'quick_history' not in session or len(session['quick_history']) == 0:
-        return now
+        return now()
     else:
         oldest_known_item = session['quick_history'][0]
         return {
