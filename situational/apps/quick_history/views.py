@@ -1,5 +1,3 @@
-import datetime
-
 from django import http
 from django.core.urlresolvers import reverse
 from django.utils.dates import MONTHS
@@ -8,6 +6,7 @@ from django.views.generic import TemplateView
 from django.views.generic import View
 
 from . import forms
+from . import helpers
 from . import tasks
 from . import pdf
 
@@ -20,119 +19,25 @@ def format_circumstance(circumstance):
 def format_timeline_data(session):
     result = {}
     timeline_beginning = last_known_start_date(session)
-    timeline_end = now()
+    timeline_end = helpers.formatted_now()
     result["items"] = []
     for history_item in session['quick_history']:
         item = {}
-        circumstance = format_circumstance(history_item["circumstances"])
+        circumstance = helpers.format_circumstance(history_item["circumstances"])
         description = history_item["description"]
         label = "{} ({})".format(circumstance, description)
         item["description"] = label
-        item["intervals"] = intervals_for_item(
+        item["intervals"] = helpers.intervals_for_item(
             history_item,
             timeline_beginning,
             timeline_end
         )
         result["items"] += [item]
-    result["years"] = year_timeline(
+    result["years"] = helpers.year_timeline(
         timeline_beginning,
         timeline_end
     )
     return result
-
-
-def same_date(month_1, year_1, month_2, year_2):
-    return (month_1 == month_2) and (year_1 == year_2)
-
-
-def intervals_for_item(history_item, timeline_beginning, timeline_end):
-    number_active_months = number_of_months(history_item)
-    total_months = number_of_months(
-        {
-            "from_month": timeline_beginning["month"],
-            "from_year": timeline_beginning["year"],
-            "to_month": timeline_end["month"],
-            "to_year": timeline_end["year"]
-        }
-    )
-    if same_date(
-        timeline_beginning["month"],
-        timeline_beginning["year"],
-        history_item["from_month"],
-        history_item["from_year"]
-    ):
-        active_interval = {
-            "active": True,
-            "width": number_active_months / total_months * 100
-        }
-        inactive_interval = {
-            "active": False,
-            "width": 100 - active_interval["width"]
-        }
-        return [active_interval, inactive_interval]
-    elif same_date(
-        timeline_end["month"],
-        timeline_end["year"],
-        history_item["to_month"],
-        history_item["to_year"]
-    ):
-        active_interval = {
-            "active": True,
-            "width": number_active_months / total_months * 100
-        }
-        inactive_interval = {
-            "active": False,
-            "width": 100 - active_interval["width"]
-        }
-        return [inactive_interval, active_interval]
-    else:
-        inactive_initial_months = number_of_months(
-            {
-                "from_month": timeline_beginning["month"],
-                "from_year": timeline_beginning["year"],
-                "to_month": history_item["from_month"],
-                "to_year": history_item["from_year"]
-            }
-        )
-        inactive_interval_1 = {
-            "active": False,
-            "width": inactive_initial_months / total_months * 100
-        }
-        active_interval = {
-            "active": True,
-            "width": number_active_months / total_months * 100
-        }
-        inactive_interval_2 = {
-            "active": False,
-            "width": 100 - active_interval["width"] - inactive_interval_1["width"]
-        }
-        return [inactive_interval_1, active_interval, inactive_interval_2]
-
-
-def year_timeline(timeline_beginning, timeline_end):
-    years = []
-    total_months = number_of_months(
-        {
-            "from_month": timeline_beginning["month"],
-            "from_year": timeline_beginning["year"],
-            "to_month": timeline_end["month"],
-            "to_year": timeline_end["year"]
-        }
-    )
-    years += [{
-        "width": (12 - timeline_beginning["month"]) / total_months * 100,
-        "label": timeline_beginning["year"]
-    }]
-    for year in range(timeline_beginning["year"] + 1, timeline_end["year"]):
-        years += [{
-            "width": 12 / total_months * 100,
-            "label": year
-        }]
-    years += [{
-        "width": timeline_end["month"] / total_months * 100,
-        "label": timeline_end["year"]
-    }]
-    return years
 
 
 def data_collection_started(session):
@@ -142,21 +47,10 @@ def data_collection_started(session):
         return len(session['quick_history']) > 0
 
 
-def number_of_months(history_item):
-    start_month = history_item["from_month"]
-    start_year = history_item["from_year"]
-    end_month = history_item["to_month"]
-    end_year = history_item["to_year"]
-    if start_month == end_month and start_year == end_year:
-        return 1
-    else:
-        return (end_year - start_year) * 12 + (end_month - start_month)
-
-
 def number_months_collected(session):
     result = 0
     for history_item in session.get('quick_history', []):
-        result += number_of_months(history_item)
+        result += helpers.number_of_months_in_item(history_item)
     return result
 
 
@@ -169,18 +63,9 @@ def enough_data_collected(session):
         return enough_items and enough_time
 
 
-def now():
-    today = datetime.datetime.now()
-    now = {
-        "month": today.month,
-        "year": today.year,
-    }
-    return now
-
-
 def last_known_start_date(session):
     if 'quick_history' not in session or len(session['quick_history']) == 0:
-        return now()
+        return helpers.formatted_now()
     else:
         oldest_known_item = session['quick_history'][0]
         return {
