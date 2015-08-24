@@ -86,18 +86,25 @@ def intervals_for_item(history_item, timeline_beginning, timeline_end):
         }
         return [inactive_interval, active_interval]
     else:
-        # TODO this is very wrong
+        inactive_initial_months = number_of_months(
+            {
+                "from_month": timeline_beginning["month"],
+                "from_year": timeline_beginning["year"],
+                "to_month": history_item["from_month"],
+                "to_year": history_item["from_year"]
+            }
+        )
         inactive_interval_1 = {
             "active": False,
-            "width": 20
+            "width": inactive_initial_months / total_months * 100
         }
         active_interval = {
             "active": True,
-            "width": 60
+            "width": number_active_months / total_months * 100
         }
         inactive_interval_2 = {
             "active": False,
-            "width": 20
+            "width": 100 - active_interval["width"] - inactive_interval_1["width"]
         }
         return [inactive_interval_1, active_interval, inactive_interval_2]
 
