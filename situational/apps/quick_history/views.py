@@ -12,6 +12,11 @@ from . import tasks
 from . import pdf
 
 
+def format_circumstance(circumstance):
+    circumstance_dict = dict(forms.HistoryDetailsForm.CIRCUMSTANCE_CHOICES)
+    return circumstance_dict.get(circumstance, circumstance)
+
+
 def format_timeline_data(session):
     result = {}
     timeline_beginning = last_known_start_date(session)
@@ -24,7 +29,7 @@ def format_timeline_data(session):
             timeline_beginning,
             timeline_end
         )
-        circumstance = history_item["circumstances"]  # TODO: FORMAT
+        circumstance = format_circumstance(history_item["circumstances"])
         description = history_item["description"]
         label = "{} ({})".format(circumstance, description)
         item["description"] = label
