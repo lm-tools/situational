@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+  <div class="columns">
+    <div class="start-panel">
+      <h1>Your report has been sent</h1>
+      <p><a href="{% url 'detailed_history:summary' %}">Return to your report</a></p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

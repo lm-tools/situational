@@ -17,6 +17,10 @@ urlpatterns = [
         name="training_education"),
     url(r'other_circumstances', views.OtherCircumstancesView.as_view(),
         name="other_circumstances"),
-    url(r'summary', views.SummaryView.as_view(),
-        name="summary")
+    url(r'summary$', views.SummaryView.as_view(),
+        name="summary"),
+    url(r'send', views.SendView.as_view(),
+        name="send"),
+    url(r'summary\.pdf$', views.PDFView.as_view(),
+        name="pdf"),
 ]

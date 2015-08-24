@@ -1,11 +1,15 @@
 import datetime
+
 from django import http
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.views.generic import View
+
 from . import forms
+from . import pdf
+from . import tasks
 
 
 def format_summary(session):
@@ -223,3 +227,22 @@ class SummaryView(TemplateView):
         context = kwargs
         context['summary'] = format_summary(self.request.session)
         return context
+
+
+class SendView(TemplateView):
+    template_name = "detailed_history/send.html"
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST["email"]
+        history = format_summary(self.request.session)
+        tasks.send_detailed_history.delay(history, email)
+        return self.get(request, *args, **kwargs)
+
+
+class PDFView(View):
+    def get(self, request, *args, **kwargs):
+        history = format_summary(self.request.session)
+        pdf_contents = pdf.render(history)
+        response = http.HttpResponse(pdf_contents, 'application/pdf')
+        response['Content-Disposition'] = "filename=history-summary.pdf"
+        return response
