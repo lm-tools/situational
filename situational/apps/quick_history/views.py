@@ -63,17 +63,30 @@ def intervals_for_item(history_item, timeline_beginning, timeline_end):
     return [active_interval, inactive_interval]  # TODO
 
 
-# TODO: implement
 def year_timeline(timeline_beginning, timeline_end):
-    year_2014 = {
-        "width": "60",
-        "label": "2014"
-    }
-    year_2015 = {
-        "width": "40",
-        "label": "2015"
-    }
-    return [year_2014, year_2015]
+    years = []
+    total_months = number_of_months(
+        {
+            "from_month": timeline_beginning["month"],
+            "from_year": timeline_beginning["year"],
+            "to_month": timeline_end["month"],
+            "to_year": timeline_end["year"]
+        }
+    )
+    years += [{
+        "width": (12 - timeline_beginning["month"]) / total_months * 100,
+        "label": timeline_beginning["year"]
+    }]
+    for year in range(timeline_beginning["year"] + 1, timeline_end["year"]):
+        years += [{
+            "width": 12 / total_months * 100,
+            "label": year
+        }]
+    years += [{
+        "width": timeline_end["month"] / total_months * 100,
+        "label": timeline_end["year"]
+    }]
+    return years
 
 
 def data_collection_started(session):
