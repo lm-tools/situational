@@ -1,39 +1,62 @@
-import json
-
 from django import forms
 
 from localflavor.gb.forms import GBPostcodeField
+from .helpers import LMIForAllClient
+from .fields import MultiCharField
 
 
 class NoColonForm(forms.Form):
+    """
+    Removes the default colons from form labels.
+    """
     def __init__(self, *args, **kwargs):
         kwargs.setdefault('label_suffix', '')
         super().__init__(*args, **kwargs)
 
 
-class SectorSelectorWidget(forms.MultiWidget):
-    def __init__(self, count, attrs=None):
-        _widgets = []
-        for w in range(count):
-            _widgets.append(forms.TextInput(attrs=attrs))
-
-        super().__init__(_widgets, attrs)
-
-    def decompress(self, value):
-        if value:
-            return json.loads(value)
-        return []
+class BaseLMIForm(NoColonForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.lmi_client = LMIForAllClient()
 
 
 class SectorForm(NoColonForm):
     SECTOR_INPUT_COUNT = 3
 
-    sector = forms.CharField(
-        widget=SectorSelectorWidget(SECTOR_INPUT_COUNT),
-        label="How would you describe the types of jobs you could do? "
-              "(eg security, data entry, driver)",
+    postcode = GBPostcodeField(required=True, label="Your postcode")
+    sector = MultiCharField(
+        count=SECTOR_INPUT_COUNT,
+        label="How would you describe the types of jobs you could do?"
+              " (eg security, data entry, driver)",
+        require_all_fields=False,
+        error_messages={'required': 'Enter at least one job role', },
     )
 
-    postcode = GBPostcodeField(
-        label="Your postcode"
-    )
+
+class JobDescriptionsForm(BaseLMIForm):
+    def __init__(self, *args, **kwargs):
+        keywords = kwargs['keywords']
+        del kwargs['keywords']
+        super().__init__(*args, **kwargs)
+        self._add_fields_from_keywords(keywords)
+
+    def _add_fields_from_keywords(self, keywords):
+        for keyword in keywords:
+            if keyword:
+                lmi_data = self.lmi_client.keyword_search(keyword)
+                for item in lmi_data[:3]:
+                    self.fields[str(item['soc'])] = forms.BooleanField(
+                        widget=forms.CheckboxInput,
+                        label=item['title'],
+                        help_text=item['description'],
+                        required=False,
+                    )
+
+    def clean(self):
+        cleaned_data = super().clean()
+        if not any(cleaned_data.values()):
+            raise forms.ValidationError(
+                "Please select at least one job title",
+                code='invalid'
+            )
+        return cleaned_data

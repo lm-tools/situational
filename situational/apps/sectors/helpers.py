@@ -41,6 +41,10 @@ class LMIForAllClient(object):
             clean_titles.append(title)
         return list(set(clean_titles))
 
+    def keyword_search(self, keyword):
+        BASE_URL = "http://api.lmiforall.org.uk/api/v1/soc/search"
+        return requests.get(BASE_URL, params={'q': keyword}).json()
+
     def soc_code_info(self, soc_code):
         info = self.base_request("soc/code/{0}".format(soc_code))
 

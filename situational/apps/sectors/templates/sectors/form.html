@@ -4,22 +4,12 @@
 {% block content %}
   <div class="row">
     <div class="columns large-8 large-centered">
-      <h1>About you</h1>
+      <h1>Enter location and job roles</h1>
       <form method=post id="sector_form">
-        {% csrf_token %}
         {{ wizard.management_form }}
-        <div class="multiwidget">
-          <label {% if form.sector.errors %}class="error"{% endif %}>
-            {{ form.sector.label }}
-            {{ form.sector }}
-          {% for error in form.sector.errors %}
-              <small class="error">{{ error }}</small>
-          {% endfor %}
-          </label>
-        </div>
-
+        {% csrf_token %}
         <div class="row">
-          <div class="columns large-12">
+          <div class="columns large-6">
             <label {% if form.postcode.errors %}class="error"{% endif %}>
               {{ form.postcode.label }}
               {{ form.postcode }}
@@ -29,7 +19,18 @@
             {% endfor %}
           </div>
         </div>
-
+        <div class="multiwidget">
+          <label {% if form.sector.errors %}class="error"{% endif %}>
+            {{ form.sector.label }}
+            {{ form.sector }}
+          {% for error in form.sector.errors %}
+              <small class="error">{{ error|escape }}</small>
+          {% endfor %}
+          </label>
+        </div>
+        <p>
+          (We'll try and match these against the official categories we have information about).
+        <p/>
         <button type="submit">Next</button>
       </form>
       <hr>

@@ -38,3 +38,10 @@
 
 /* end result-field                                 */
 /* ------------------------------------------------ */
+
+// Error style for multi-field widget
+.multiwidget input {
+    &:not(:last-of-type) {
+        margin-bottom:16px;
+    }
+}

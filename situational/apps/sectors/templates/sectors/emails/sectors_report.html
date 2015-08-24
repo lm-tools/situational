@@ -1,0 +1,7 @@
+<p>Your sectors report for:
+  <ul>
+    {% for soc_code,soc_data in report.soc_code_data.items %}
+      <li>{{ soc_data.info.title }}</li>
+    {% endfor %}
+  </ul>
+</p>
