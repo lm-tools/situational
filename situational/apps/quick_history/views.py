@@ -5,10 +5,7 @@ from django.views.generic import FormView
 from django.views.generic import TemplateView
 from django.views.generic import View
 
-from . import forms
-from . import helpers
-from . import tasks
-from . import pdf
+from . import forms, helpers, session_helpers, tasks, pdf
 
 
 def format_circumstance(circumstance):
@@ -18,12 +15,14 @@ def format_circumstance(circumstance):
 
 def format_timeline_data(session):
     result = {}
-    timeline_beginning = last_known_start_date(session)
-    timeline_end = helpers.formatted_now()
+    timeline_beginning = session_helpers.last_known_start_date(session)
+    timeline_end = session_helpers.formatted_now()
     result["items"] = []
     for history_item in session['quick_history']:
         item = {}
-        circumstance = helpers.format_circumstance(history_item["circumstances"])
+        circumstance = helpers.format_circumstance(
+            history_item["circumstances"]
+        )
         description = history_item["description"]
         label = "{} ({})".format(circumstance, description)
         item["description"] = label
@@ -63,27 +62,17 @@ def enough_data_collected(session):
         return enough_items and enough_time
 
 
-def last_known_start_date(session):
-    if 'quick_history' not in session or len(session['quick_history']) == 0:
-        return helpers.formatted_now()
-    else:
-        oldest_known_item = session['quick_history'][0]
-        return {
-            "month": oldest_known_item["from_month"],
-            "year": oldest_known_item["from_year"]
-        }
-
-
 def store_data_in_session(session, form):
     if 'quick_history' not in session:
         session['quick_history'] = []
+    last_known_start = session_helpers.last_known_start_date(session)
     quick_history_entry = {
         "description": form.data.get('description'),
         "circumstances": form.data.get('circumstances'),
         "from_month": int(form.data.get('date_month')),
         "from_year": int(form.data.get('date_year')),
-        "to_month": last_known_start_date(session).get('month'),
-        "to_year": last_known_start_date(session).get('year')
+        "to_month": last_known_start.get('month'),
+        "to_year": session_helpers.last_known_start_date(session).get('year')
     }
     # Prepending to store data in chronological order, not order of entry
     session['quick_history'] = [quick_history_entry] + session['quick_history']
@@ -91,7 +80,7 @@ def store_data_in_session(session, form):
 
 
 def humanized_last_known_date(session):
-    date = last_known_start_date(session)
+    date = session_helpers.last_known_start_date(session)
     return "{} {}".format(MONTHS[int(date["month"])], date["year"])
 
 
@@ -108,7 +97,6 @@ class HistoryDetailsView(FormView):
             return response
 
     def form_valid(self, form):
-        # TODO: check since date is the past
         store_data_in_session(self.request.session, form)
         if enough_data_collected(self.request.session):
             url = reverse('quick_history:report')

@@ -1,5 +1,3 @@
-import datetime
-
 from . import forms
 
 
@@ -65,9 +63,10 @@ def intervals_for_item(history_item, timeline_beginning, timeline_end):
             "active": True,
             "width": number_active_months / total_months * 100
         }
+        width_so_far = active_interval["width"] + inactive_interval_1["width"]
         inactive_interval_2 = {
             "active": False,
-            "width": 100 - active_interval["width"] - inactive_interval_1["width"]
+            "width": 100 - width_so_far
         }
         return [inactive_interval_1, active_interval, inactive_interval_2]
 
@@ -110,12 +109,3 @@ def number_of_months(start_month, start_year, end_month, end_year):
         return 1
     else:
         return (end_year - start_year) * 12 + (end_month - start_month)
-
-
-def formatted_now():
-    today = datetime.datetime.now()
-    now = {
-        "month": today.month,
-        "year": today.year,
-    }
-    return now
