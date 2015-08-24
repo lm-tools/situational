@@ -64,5 +64,8 @@ ul.dates {
 
   .right-border {
     border-right-style: dotted;
+    &:last-child {
+        border-right-style: none;
+    }
   }
 }
