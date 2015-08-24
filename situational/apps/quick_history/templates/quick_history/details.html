@@ -56,8 +56,16 @@
       <input type="submit" class="button" value="Next >>">
     </div>
   </div>
-  <hr/>
 </form>
+
+<div class="row">
+  <form action="{% url 'quick_history:clear_session' %}" method="post">
+    {% csrf_token %}
+    <div class="columns">
+      <input type="submit" class="button" value="< Start again">
+    </div>
+  </form>
+</div>
 
 {% endblock content %}
 
