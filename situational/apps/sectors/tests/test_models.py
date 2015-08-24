@@ -1,9 +1,6 @@
-from base64 import b64decode
-from io import BytesIO
 from unittest.mock import patch
 
 from django.core import mail
-from django.core.files import File
 
 from sectors.models import SectorsReport
 from situational.testing import BaseCase

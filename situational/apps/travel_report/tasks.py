@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.db import transaction
 
 from celery import chord, shared_task
 from celery.utils.log import get_task_logger
@@ -8,8 +7,6 @@ from redlock import Redlock
 from templated_email import send_templated_email
 from travel_times.models import TravelTimesMap
 from travel_times import constants
-
-from . import helpers
 
 logger = get_task_logger(__name__)
 population_timeout = settings.REPORT_POPULATION_TIMEOUT

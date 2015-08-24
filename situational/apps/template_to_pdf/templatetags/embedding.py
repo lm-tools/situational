@@ -3,7 +3,6 @@ import mimetypes
 import subprocess
 
 from django import template
-from django.conf import settings
 from django.contrib.staticfiles.finders import find
 
 register = template.Library()

@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.db import transaction
 
 from celery import chord, shared_task
 from celery.utils.log import get_task_logger
