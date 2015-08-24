@@ -18,5 +18,7 @@ urlpatterns = [
     url(r'other_circumstances', views.OtherCircumstancesView.as_view(),
         name="other_circumstances"),
     url(r'summary', views.SummaryView.as_view(),
-        name="summary")
+        name="summary"),
+    url(r'send', views.SendView.as_view(),
+        name="send"),
 ]

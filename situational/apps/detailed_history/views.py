@@ -223,3 +223,10 @@ class SummaryView(TemplateView):
         context = kwargs
         context['summary'] = format_summary(self.request.session)
         return context
+
+
+class SendView(TemplateView):
+    template_name = "detailed_history/send.html"
+
+    def post(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
