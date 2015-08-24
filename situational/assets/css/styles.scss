@@ -5,7 +5,7 @@
 
 .start-panel {
   @media #{$medium-up} {
-    @include panel;
+    @include panel($adjust: false);
     margin: 5%;
   }
 }
