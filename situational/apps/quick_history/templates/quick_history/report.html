@@ -6,46 +6,33 @@
 
 {% block content %}
 
-  <div class="row">
-    <div class="columns">
-      <h2>Timeline</h2>
-      <div class="exp-timeline">
-        <div class="container">
-          <ul class="items">
-            {% for circumstance, ranges in timeline.timeline.items %}
-              <li>
-                <h5>{{circumstance}}</h5>
-                {% for interval in ranges %}
-                  {% if interval.active %}
-                    <div class="active" style="width: {{interval.length}}%"></div>
-                  {% else %}
-                    <div class="inactive" style="width: {{interval.length}}%"></div>
-                  {% endif %}
-                {% endfor %}
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-        <ul class="inline-list dates">
-          {% for year in timeline.years %}
-            <li class="right-border" style="width:{{ year.width }}%">{{ year.label }}</li>
+<div class="row">
+  <div class="columns">
+    <h2>Timeline</h2>
+    <div class="exp-timeline">
+      <div class="container">
+        <ul class="items">
+          {% for item in timeline.items %}
+            <li>
+              <h5>{{item.description}}</h5>
+              {% for interval in item.intervals %}
+                {% if interval.active %}
+                  <div class="active" style="width: {{interval.width}}%"></div>
+                {% else %}
+                  <div class="inactive" style="width: {{interval.width}}%"></div>
+                {% endif %}
+              {% endfor %}
+            </li>
           {% endfor %}
         </ul>
       </div>
-    </div>
-  </div>
-  <hr/>
-  <div class="row">
-    <div class="columns">
-      <h2>Summary</h2>
-      <ul>
-        {% for entry in report %}
-          <h4>{{ entry }}</h4>
+      <ul class="inline-list dates">
+        {% for year in timeline.years %}
+          <li class="right-border" style="width:{{ year.width }}%">{{ year.label }}</li>
         {% endfor %}
       </ul>
     </div>
   </div>
-  <hr/>
   <div class="row">
     <div class="columns large-10">
       <form action="{% url 'quick_history:clear_session' %}" method="post">
@@ -74,5 +61,6 @@
       </div>
     </div>
   </footer>
+</div>
 
 {% endblock %}
