@@ -29,8 +29,18 @@
     </div>
   </div>
   <div class="row">
+    <div class="large-3 columns">
+      <p>from</p>
+    </div>
     <div class="large-6 columns">
-      <p><span>from</span><span>{{form.date}}</span><span>to</span><span>{{ last_known_date }}
+      <div class="row">
+        <div class="large-6 columns">
+          {{ form.date }}
+        </div>
+      </div>
+    </div>
+    <div class="large-3 columns">
+      <p>to {{last_known_date }}</p>
     </div>
   </div>
   <div class="row description hide">
