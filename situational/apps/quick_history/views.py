@@ -165,7 +165,7 @@ class HistoryReportView(TemplateView):
 class ClearSessionView(TemplateView):
     def post(self, request, *args, **kwargs):
         self.request.session['forms'] = []
-        url = reverse('quick_history:details')
+        url = reverse('quick_history:start')
         return http.HttpResponseRedirect(url)
 
 
