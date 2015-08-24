@@ -1,10 +1,11 @@
+@import '_foundation_settings';
 @import '../foundation/scss/normalize';
 @import '../foundation/scss/foundation';
 @import '_report';
 
 .start-panel {
   @media #{$medium-up} {
-    @include panel;
+    @include panel($adjust: false);
     margin: 5%;
   }
 }

@@ -28,6 +28,9 @@ body.has-report {
   }
 
   section {
+    @include clearfix;
+    margin-bottom: 2%;
+
     header {
       h2, h3 { color: #6F6F6F; }
       text-align: center;
@@ -44,6 +47,7 @@ body.has-report {
       }
     }
     .panel {
+      margin-top: 2%;
       header {
         border-top: none;
       }
