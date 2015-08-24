@@ -4,8 +4,11 @@ from django import http
 from django.core.urlresolvers import reverse
 from django.views.generic import FormView
 from django.views.generic import TemplateView
+from django.views.generic import View
 
 from . import forms
+from . import tasks
+from . import pdf
 
 
 def get_form_data_from_session(session):
@@ -174,4 +177,15 @@ class StartView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
+        return response
+
+class PDFView(View):
+    def get(self, request, *args, **kwargs):
+        data = {}
+        history_data = get_form_data_from_session(self.request.session)
+        data['report'] = map(history_entry_as_string, history_data)
+        data['timeline'] = format_timeline_data(history_data)
+        pdf_contents = pdf.render(data)
+        response = http.HttpResponse(pdf_contents, 'application/pdf')
+        response['Content-Disposition'] = "filename=history-summary.pdf"
         return response
