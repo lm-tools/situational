@@ -10,3 +10,6 @@ python manage.py test --noinput
 
 echo "Running pep8..."
 pep8 .
+
+echo "Running flake8..."
+flake8 .
