@@ -18,11 +18,6 @@ class HistoryDetailsForm(forms.Form):
         choices=CIRCUMSTANCE_CHOICES
     )
     date = forms.DateField(
-        widget=widgets.MonthYearWidget(years=range(1960, 2015))
+        widget=widgets.MonthYearWidget(years=range(1960, 2016))
     )
     description = forms.CharField(required=False)
-
-    def clean(self):
-        cleaned_data = super(HistoryDetailsForm, self).clean()
-        # TODO: check since date is the past
-        return cleaned_data

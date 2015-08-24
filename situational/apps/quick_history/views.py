@@ -51,12 +51,31 @@ def data_collection_started(session):
         return len(session['quick_history']) > 0
 
 
-# TODO: True if at least 2 years and 2 things collected
+def number_of_months(history_item):
+    start_month = history_item["from_month"]
+    start_year = history_item["from_year"]
+    end_month = history_item["to_month"]
+    end_year = history_item["to_year"]
+    if start_month == end_month and start_year == end_year:
+        return 1
+    else:
+        return (end_year - start_year) * 12 + (end_month - start_month)
+
+
+def number_months_collected(session):
+    result = 0
+    for history_item in session.get('quick_history', []):
+        result += number_of_months(history_item)
+    return result
+
+
 def enough_data_collected(session):
     if 'quick_history' not in session:
         return False
     else:
-        return len(session['quick_history']) > 2
+        enough_items = len(session['quick_history']) >= 2
+        enough_time = number_months_collected(session) >= 24
+        return enough_items and enough_time
 
 
 def last_known_start_date(session):
@@ -109,6 +128,7 @@ class HistoryDetailsView(FormView):
             return response
 
     def form_valid(self, form):
+        # TODO: check since date is the past
         store_data_in_session(self.request.session, form)
         if enough_data_collected(self.request.session):
             url = reverse('quick_history:report')
