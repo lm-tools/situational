@@ -23,8 +23,9 @@ def format_timeline_data(session):
         circumstance = helpers.format_circumstance(
             history_item["circumstances"]
         )
-        description = history_item["description"]
-        label = "{} ({})".format(circumstance, description)
+        label = circumstance
+        if history_item["description"]:
+            label += " ({})".format(description)
         item["description"] = label
         item["intervals"] = helpers.intervals_for_item(
             history_item,
