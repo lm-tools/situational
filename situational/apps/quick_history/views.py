@@ -18,7 +18,7 @@ def format_timeline_data(session):
     timeline_beginning = session_helpers.last_known_start_date(session)
     timeline_end = session_helpers.formatted_now()
     result["items"] = []
-    for history_item in session['quick_history']:
+    for history_item in session.get('quick_history', []):
         item = {}
         circumstance = helpers.format_circumstance(
             history_item["circumstances"]
@@ -155,9 +155,7 @@ class SendView(TemplateView):
     def post(self, request, *args, **kwargs):
         email = request.POST["email"]
         data = {}
-        history_data = get_form_data_from_session(self.request.session)
-        data['report'] = map(history_entry_as_string, history_data)
-        data['timeline'] = format_timeline_data(history_data)
+        data['timeline'] = format_timeline_data(self.request.session)
         tasks.send_quick_history.delay(data, email)
         return self.get(request, *args, **kwargs)
 
@@ -165,9 +163,7 @@ class SendView(TemplateView):
 class PDFView(View):
     def get(self, request, *args, **kwargs):
         data = {}
-        history_data = get_form_data_from_session(self.request.session)
-        data['report'] = map(history_entry_as_string, history_data)
-        data['timeline'] = format_timeline_data(history_data)
+        data['timeline'] = format_timeline_data(self.request.session)
         pdf_contents = pdf.render(data)
         response = http.HttpResponse(pdf_contents, 'application/pdf')
         response['Content-Disposition'] = "filename=history-summary.pdf"
