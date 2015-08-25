@@ -29,18 +29,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="large-3 columns">
-      <p>from</p>
-    </div>
     <div class="large-6 columns">
       <div class="row">
-        <div class="large-6 columns">
-          {{ form.date }}
+        <div class="date-select">
+          <p>from</p>
+        </div>
+        {{ form.date }}
+        <div class="date-select">
+          <p>to {{last_known_date }}</p>
         </div>
       </div>
-    </div>
-    <div class="large-3 columns">
-      <p>to {{last_known_date }}</p>
     </div>
   </div>
   <div class="row description hide">
@@ -72,7 +70,7 @@
   <form action="{% url 'quick_history:clear_session' %}" method="post">
     {% csrf_token %}
     <div class="columns">
-      <input type="submit" class="button" value="< Start again">
+      <input type="submit" class="button" value="Start again">
     </div>
   </form>
 </div>

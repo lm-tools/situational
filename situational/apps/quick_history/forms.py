@@ -19,11 +19,10 @@ class HistoryDetailsForm(forms.Form):
         choices=CIRCUMSTANCE_CHOICES
     )
     date = forms.DateField(
-        widget=widgets.MonthYearWidget(years=range(1960, 2016))
+        widget=widgets.MonthYearWidget(years=range(2000, 2016))
     )
     description = forms.CharField(required=False)
 
     def clean(self):
         cleaned_data = super(HistoryDetailsForm, self).clean()
-        # TODO: check date is <= last_known_start_date
         return cleaned_data

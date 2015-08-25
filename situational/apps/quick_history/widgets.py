@@ -1,4 +1,4 @@
-# The following code was copied from https://djangosnippets.org/snippets/10522/
+# The following code was adapted from https://djangosnippets.org/snippets/10522/
 import datetime
 import re
 from six import string_types
@@ -23,7 +23,8 @@ class MonthYearWidget(Widget):
 
 
     """
-    none_value = (0, '---')
+    none_value_month = (0, 'Month')
+    none_value_year = (0, 'Year')
     month_field = '%s_month'
     year_field = '%s_year'
 
@@ -33,7 +34,7 @@ class MonthYearWidget(Widget):
         self.attrs = attrs or {}
         self.required = required
         if years:
-            self.years = years
+            self.years = list(reversed(years))
         else:
             this_year = datetime.date.today().year
             self.years = range(this_year, this_year + 10)
@@ -57,20 +58,20 @@ class MonthYearWidget(Widget):
 
         month_choices = list(MONTHS.items())
         if not (self.required and value):
-            month_choices.append(self.none_value)
+            month_choices.append(self.none_value_month)
         month_choices.sort()
         local_attrs = self.build_attrs(id=self.month_field % id_)
         s = Select(choices=month_choices)
         select_html = s.render(self.month_field % name, m_val, local_attrs)
-        output.append(select_html)
+        output.append('<div class="date-select">'+select_html+'</div>')
 
         year_choices = [(i, i) for i in self.years]
         if not (self.required and value):
-            year_choices.insert(0, self.none_value)
+            year_choices.insert(0, self.none_value_year)
         local_attrs['id'] = self.year_field % id_
         s = Select(choices=year_choices)
         select_html = s.render(self.year_field % name, y_val, local_attrs)
-        output.append(select_html)
+        output.append('<div class="date-select">'+select_html+'</div>')
 
         return mark_safe(u'\n'.join(output))
 
