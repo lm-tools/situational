@@ -58,9 +58,9 @@ def enough_data_collected(session):
     if 'quick_history' not in session:
         return False
     else:
-        enough_items = len(session['quick_history']) >= 2
+        enough_items = len(session['quick_history']) >= 6
         enough_time = number_months_collected(session) >= 24
-        return enough_items and enough_time
+        return enough_items or enough_time
 
 
 def store_data_in_session(session, form):
