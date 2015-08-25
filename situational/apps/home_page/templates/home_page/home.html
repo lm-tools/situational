@@ -22,28 +22,28 @@
   <div class="medium-9 columns" role="content">
 
     <article>
-      <h3><a href="https://lmt-situational.herokuapp.com/">Understand where you could travel for work</a></h3>
+      <h3><a href="{% url 'travel_report:start' %}">Understand where you could travel for work</a></h3>
       <p>Enter a postcode to view a map of where you can travel to in 90 minutes on public transport. Generate a report to share with your work coach to help agree your commitments.</p>
       <p><a target="_blank" class="button" href="https://lmt-situational.herokuapp.com/travel/">Get started</a></p>
     </article>
     <hr/>
 
     <article>
-      <h3><a href="https://lmt-situational.herokuapp.com/sectors/">Understand what sort of jobs you could do</a></h3>
+      <h3><a href="{% url 'sectors:start' %}">Understand what sort of jobs you could do</a></h3>
       <p>Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online. Generate a report to share with your work coach so they know how to help you.</p>
       <p><a target="_blank" class="button" href="https://lmt-situational.herokuapp.com/sectors/">Get started</a></p>
     </article>
     <hr/>
 
     <article>
-      <h3><a href="https://lmt-local-jobs-dashboard.herokuapp.com">Tell your work coach your history (quick)</a></h3>
+      <h3><a href="{% url 'quick_history:start' %}">Tell your work coach your history (quick)</a></h3>
       <p>Answer a few simple questions to build a picture of your work history, so your work coach understands how to help you.</p>
       <p><a target="_blank" class="button" href="https://lmt-situational.herokuapp.com/quick_history/start">Get started</a></p>
     </article>
     <hr/>
 
     <article>
-      <h3><a href="https://lmt-local-jobs-dashboard.herokuapp.com">Tell your work coach your history (detailed)</a></h3>
+      <h3><a href="{% url 'detailed_history:start' %}">Tell your work coach your history (detailed)</a></h3>
       <p>Answer a few simple questions to build a picture of your work history, so your work coach understands how to help you.</p>
       <p><a target="_blank" class="button" href="https://lmt-situational.herokuapp.com/detailed_history/start">Get started</a></p>
     </article>
