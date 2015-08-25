@@ -46,3 +46,12 @@
         margin-bottom:16px;
     }
 }
+
+.date-select {
+  float: left;
+  padding: 5px;
+}
+
+#id_date_year, #id_date_month {
+  width: 100px;
+}
