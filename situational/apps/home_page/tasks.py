@@ -1,6 +1,6 @@
 from django.conf import settings
 
-from celery import chord, shared_task
+from celery import shared_task
 from celery.utils.log import get_task_logger
 from redlock import Redlock
 
@@ -24,6 +24,6 @@ def send_feedback(name, email, subject, content):
                 "email": email
             }
         },
-        to="feedback@lm-tools.com",  #TODO: envify that
+        to=["feedback@lm-tools.com"],
         subject=subject
     )
