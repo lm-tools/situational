@@ -2,7 +2,6 @@
 # https://djangosnippets.org/snippets/10522/
 import datetime
 import re
-from six import string_types
 
 from django.forms.widgets import Widget, Select
 from django.utils.dates import MONTHS
@@ -45,7 +44,7 @@ class MonthYearWidget(Widget):
             y_val, m_val = value.year, value.month
         except AttributeError:
             y_val = m_val = None
-            if isinstance(value, string_types):
+            if isinstance(value, str):
                 match = RE_DATE.match(value)
                 if match:
                     y_val, m_val, d_val = [int(v) for v in match.groups()]
