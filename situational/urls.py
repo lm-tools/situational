@@ -11,6 +11,9 @@ admin.autodiscover()
 
 urlpatterns = [
     url(
+        r'^$', include('home_page.urls', namespace='home_page')
+    ),
+    url(
         r'detailed_history/',
         include('detailed_history.urls', namespace='detailed_history')
     ),

@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}Labour market tools{% endblock title %}
+
+{% block body_class %}class="home"{% endblock body_class %}
+
+{% block content %}
+
+<div class="row">
+  <div class="medium-9 columns">
+    <h1>Labour market tools</h1>
+    <hr/>
+
+    <p>A series of tools to help us understand how we can help people improve their employment prospects.
+    <hr/>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="medium-9 columns" role="content">
+
+    <article>
+      <h3><a href="https://lmt-situational.herokuapp.com/">Understand where you could travel for work</a></h3>
+      <p>Enter a postcode to view a map of where you can travel to in 90 minutes on public transport. Generate a report to share with your work coach to help agree your commitments.</p>
+      <p><a target="_blank" class="button" href="https://lmt-situational.herokuapp.com/travel/">Get started</a></p>
+    </article>
+    <hr/>
+
+    <article>
+      <h3><a href="https://lmt-situational.herokuapp.com/sectors/">Understand what sort of jobs you could do</a></h3>
+      <p>Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online. Generate a report to share with your work coach so they know how to help you.</p>
+      <p><a target="_blank" class="button" href="https://lmt-situational.herokuapp.com/sectors/">Get started</a></p>
+    </article>
+    <hr/>
+
+    <article>
+      <h3><a href="https://lmt-local-jobs-dashboard.herokuapp.com">Tell your work coach your history (quick)</a></h3>
+      <p>Answer a few simple questions to build a picture of your work history, so your work coach understands how to help you.</p>
+      <p><a target="_blank" class="button" href="https://lmt-situational.herokuapp.com/quick_history/start">Get started</a></p>
+    </article>
+    <hr/>
+
+    <article>
+      <h3><a href="https://lmt-local-jobs-dashboard.herokuapp.com">Tell your work coach your history (detailed)</a></h3>
+      <p>Answer a few simple questions to build a picture of your work history, so your work coach understands how to help you.</p>
+      <p><a target="_blank" class="button" href="https://lmt-situational.herokuapp.com/detailed_history/start">Get started</a></p>
+    </article>
+    <hr/>
+
+    <article>
+      <h3><a href="https://lmt-local-jobs-dashboard.herokuapp.com">Local jobs dashboard</a></h3>
+      <p>A rolling display of jobs being posted online for display on TV screens in job centres.</p>
+      <p><a target="_blank" class="button" href="https://lmt-local-jobs-dashboard.herokuapp.com">Get started</a></p>
+    </article>
+
+    <article>
+      <h3><a href="#">Send us feedback</a></h3>
+
+        <p>We would love to know about any questions, bug reports, suggestions
+          and comments you may have on our questions for each prototype.</p>
+
+        <form id="contact-form" action="/send_email" class="contact-form" method="post">
+
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" class="field" required /><br/>
+
+          <label for="email">E-mail</label>
+          <input id="email" type="email" name="email" class="field" required /><br/>
+
+          <label for="subject">Subject</label>
+          <input id="subject" type="text" name="subject" class="field" required /><br/>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required ></textarea><br/>
+
+          <button type="submit">Send</button>
+        </form>
+    </article>
+    <hr/>
+
+  </div>
+</div>
+
+<footer class="row">
+  <div class="columns">
+    <p>Contact: <a href="mailto:feedback@lm-tools.com">feedback@lm-tools.com</a></p>
+  </div>
+</footer>
+
+{% endblock content %}
