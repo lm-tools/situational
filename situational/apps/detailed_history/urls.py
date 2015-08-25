@@ -5,7 +5,7 @@ from . import views
 urlpatterns = [
     url(r'current_work', views.CurrentWorkView.as_view(),
         name="current_work"),
-    url(r'start', views.StartView.as_view(),
+    url(r'^$', views.StartView.as_view(),
         name="start"),
     url(r'work_change_1', views.WorkChangeOneView.as_view(),
         name="work_change_1"),

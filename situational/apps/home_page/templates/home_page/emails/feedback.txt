@@ -1,0 +1,6 @@
+Feedback from:
+
+Name: {{ from.name }}
+Email: {{ from.email }}
+
+{{ content }}
