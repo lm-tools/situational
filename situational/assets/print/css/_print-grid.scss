@@ -1,0 +1,5 @@
+@import '../foundation-print/scss/foundation/components/grid';
+
+@include exports("print-grid") {
+  @include grid-html-classes($size:print);
+}

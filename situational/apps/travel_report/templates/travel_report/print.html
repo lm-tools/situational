@@ -3,32 +3,30 @@
 <html>
 <head>
   <title>Understand where you could travel for work</title>
-  {% embed_stylesheet "css/report-print.scss" %}
+  {% embed_stylesheet "print/css/travel.scss" %}
 </head>
 <body>
-<div class="row">
-  <div class="columns">
-    <article class="report clearfix">
-      <header>
-        <h1>Understand where you could travel for work</h1>
-        <p>This report contains information to help you understand travel time and costs when you are looking for work.</p>
-      </header>
+  <article class="report clearfix">
+    <header>
+      <h1>Understand where you could travel for work</h1>
+      <p>This report contains information to help you understand travel time and costs when you are looking for work.</p>
+    </header>
 
-      <section>
-        <div class="columns small-centered">
-          <header>
-            <h3>Travel times from {{ report.postcode }} on public transport</h3>
-          </header>
+    <section>
+      <header>
+        <h3>Travel times from {{ report.postcode }} on public transport</h3>
+      </header>
+      <div class="row">
+        <div class="column print-11 print-centered">
           <p><img src="{% dataurl report.travel_times_map.image mimetype=report.travel_times_map.mime_type %}"></p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <footer>
-        <p>Let us know if this is useful at <strong>feedback@lm-tools.com</strong></p>
-      </footer>
-    </article>
-  </div>
-</div>
+    <footer>
+      <p>Let us know if this is useful at <strong>feedback@lm-tools.com</strong></p>
+    </footer>
+  </article>
 
 </body>
 </html>
