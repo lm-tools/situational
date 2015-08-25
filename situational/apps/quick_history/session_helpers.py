@@ -2,7 +2,7 @@ import datetime
 
 
 def last_known_start_date(session):
-    if 'quick_history' not in session or len(session['quick_history']) == 0:
+    if 'quick_history' not in session or not session['quick_history']:
         return formatted_now()
     else:
         oldest_known_item = session['quick_history'][0]

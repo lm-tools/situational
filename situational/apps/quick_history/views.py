@@ -41,10 +41,7 @@ def format_timeline_data(session):
 
 
 def data_collection_started(session):
-    if 'quick_history' not in session:
-        return False
-    else:
-        return len(session['quick_history']) > 0
+    return bool(session.get('quick_history', None))
 
 
 def number_months_collected(session):
