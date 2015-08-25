@@ -1,4 +1,5 @@
-# The following code was adapted from https://djangosnippets.org/snippets/10522/
+# The following code was adapted from:
+# https://djangosnippets.org/snippets/10522/
 import datetime
 import re
 from six import string_types
@@ -63,7 +64,7 @@ class MonthYearWidget(Widget):
         local_attrs = self.build_attrs(id=self.month_field % id_)
         s = Select(choices=month_choices)
         select_html = s.render(self.month_field % name, m_val, local_attrs)
-        output.append('<div class="date-select">'+select_html+'</div>')
+        output.append('<div class="date-select">' + select_html + '</div>')
 
         year_choices = [(i, i) for i in self.years]
         if not (self.required and value):
@@ -71,7 +72,7 @@ class MonthYearWidget(Widget):
         local_attrs['id'] = self.year_field % id_
         s = Select(choices=year_choices)
         select_html = s.render(self.year_field % name, y_val, local_attrs)
-        output.append('<div class="date-select">'+select_html+'</div>')
+        output.append('<div class="date-select">' + select_html + '</div>')
 
         return mark_safe(u'\n'.join(output))
 
