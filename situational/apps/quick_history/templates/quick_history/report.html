@@ -34,11 +34,8 @@
     </div>
   </div>
   <div class="row">
-    <div class="columns large-10">
-      <form action="{% url 'quick_history:clear_session' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" class="button" value="Start again">
-      </form>
+    <div class="columns">
+      <a href="{% url 'quick_history:clear_session' %}"><< Start again</a>
     </div>
   </div>
   <footer>
