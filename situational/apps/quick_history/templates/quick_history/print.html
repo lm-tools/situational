@@ -1,0 +1,46 @@
+{% load embedding %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tell your work coach your history</title>
+  {% embed_stylesheet "css/quick-history-print.scss" %}
+</head>
+<body>
+  <h2>Timeline</h2>
+  <div class="exp-timeline">
+    <div class="container">
+      <ul class="items" style="margin-bottom:2em;">
+        {% for circumstance, ranges in report.timeline.timeline.items %}
+        <li>
+          <h5>{{circumstance}}</h5>
+          {% for interval in ranges %}
+          {% if interval.active %}
+            <div class="active" style="height:10px; width: {{interval.length}}%"></div>
+          {% else %}
+            <div class="inactive" style="height:10px; width: {{interval.length}}%"></div>
+          {% endif %}
+          {% endfor %}
+        </li>
+        {% endfor %}
+      </ul>
+      <ul class="inline-list dates">
+        {% for year in report.timeline.years %}
+        <li class="right-border" style="width:{{ year.width }}%">{{ year.label }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <div class="columns">
+      <h2>Summary</h2>
+      <ul>
+      {% for entry in report.report %}
+      <li><h4>{{ entry }}</h4></li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
