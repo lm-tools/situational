@@ -13,10 +13,10 @@ def _cassette_path(function):
     cassette_path = module_path_part + function_path_part
     return os.path.join(_CASSETTE_LIBRARY_PATH, *cassette_path)
 
-
 _VCR = vcr.VCR(
     path_transformer=vcr.VCR.ensure_suffix('.yaml'),
-    func_path_generator=_cassette_path
+    func_path_generator=_cassette_path,
+    filter_query_parameters=['app_key', 'app_id'],
 )
 
 
