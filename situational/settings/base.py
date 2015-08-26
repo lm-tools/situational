@@ -150,14 +150,14 @@ INSTALLED_APPS = (
 
 PROJECT_APPS = (
     'basicauth',
-    'detailed_history',
-    'home_page',
-    'job_discovery',
-    'quick_history',
-    'sectors',
-    'template_to_pdf',
+    'detailed_history.apps.DetailedHistoryConfig',
+    'home_page.apps.HomePageConfig',
+    'job_discovery.apps.JobDiscoveryConfig',
+    'quick_history.apps.QuickHistoryConfig',
+    'sectors.apps.SectorsConfig',
     'templated_email',
-    'travel_report',
+    'template_to_pdf',
+    'travel_report.apps.TravelReportConfig',
     'travel_times',
 )
 
