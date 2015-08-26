@@ -151,6 +151,7 @@ PROJECT_APPS = (
     'basicauth',
     'detailed_history',
     'home_page',
+    'job_discovery',
     'quick_history',
     'sectors',
     'template_to_pdf',
