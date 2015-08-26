@@ -15,11 +15,14 @@ body.has-report {
   }
 
   section {
-    page-break-inside: avoid;
     margin-bottom: 1%;
     header {
       padding-top: 1%;
       margin-top: 0;
     }
+  }
+
+  .panel {
+    page-break-inside: avoid;
   }
 }
