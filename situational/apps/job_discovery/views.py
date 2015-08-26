@@ -32,21 +32,14 @@ class JobPool():
     def __init__(self, constraints):
         self.constraints = constraints
 
-
 class SuggestionView(FormView):
     template_name = "job_discovery/suggestion.html"
     form_class = forms.SuggestionForm
 
     def get_context_data(self, **kwargs):
         context = kwargs
-        # start a suggestion engine thing based on report
-        # job_pool = job_pool.new(report.input_parameters)
-        # job_pool.populate()
-        # job = suggestion_engine.new(job_pool).suggest_me_a_job(report.output_so_far)
-        context["job"] = {
-            "job_id": "fasdhjasfdhkj",
-            # the actual job should go there
-        }
+        report = models.JobDiscoveryReport.objects.get(pk=kwargs["guid"])
+        context["job"] = engine.get_suggestion(report)
         return context
 
     def form_valid(self, form):

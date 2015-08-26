@@ -1,3 +1,5 @@
+from unittest.mock import patch, MagicMock
+
 from django.core.urlresolvers import reverse
 
 from situational.testing import BaseCase
@@ -28,3 +30,25 @@ class TestStartView(BaseCase):
         response = self.client.get(reverse("job_discovery:start"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "job_discovery/start.html")
+
+
+class TestSuggestionView(BaseCase):
+
+    def setUp(self):
+        self.report = models.JobDiscoveryReport.objects.create(
+            postcode="N87RW",
+        )
+
+
+    def test_get_renders_job_suggestion(self):
+        with patch('job_discovery.engine.get_suggestion') as get_suggestion:
+            job = MagicMock()
+            get_suggestion.return_value = job
+
+            response = self.client.get(
+                reverse("job_discovery:suggestion",
+                        kwargs={"guid":self.report.guid})
+            )
+            self.assertEqual(response.status_code, 200)
+            self.assertTemplateUsed(response, "job_discovery/suggestion.html")
+            self.assertEqual(response.context["job"], expected_job)
