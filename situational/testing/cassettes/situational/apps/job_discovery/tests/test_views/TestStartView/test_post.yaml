@@ -1,0 +1,782 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/geodata/?where=N87RW
+  response:
+    body: {string: '{"location":{"area":["UK","London","North London","Turnpike Lane"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Turnpike
+        Lane, North London"},"locations":[{"location":{"area":["UK","London","South
+        East London","Bromley","Shortlands"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Shortlands,
+        Bromley"},"count":5,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"location":{"display_name":"Hampton
+        Wick, Kingston Upon Thames","area":["UK","London","South West London","Kingston
+        Upon Thames","Hampton Wick"],"__CLASS__":"Adzuna::API::Response::Location"},"__CLASS__":"Adzuna::API::Response::LocationJobs","count":5}],"__CLASS__":"Adzuna::API::Response::JobGeoData"}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['699']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Thu, 27 Aug 2015 15:38:05 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['1160801696']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/1?location0=UK&location1=London&location2=North+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"__CLASS__":"Adzuna::API::Response::JobSearchResults","count":3681,"results":[{"__CLASS__":"Adzuna::API::Response::Job","latitude":51.553398,"longitude":-0.103755,"contract_type":"contract","salary_min":37440,"salary_is_predicted":"0","company":{"display_name":"Interserve
+        Healthcare","__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307114169?v=30018E7BE39D4C073F84D366EC3C516111FE1CD8&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","category":{"tag":"healthcare-nursing-jobs","label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"salary_max":72960,"description":"RGN
+        required to provide complex clinical care in a home environment. \u00a319.50
+        - \u00a338.00 per hour. Day and night shifts available. Strand Nurses Bureau,
+        a specialist home healthcare provider, is looking to expand it\u2019s team
+        of RGNs in order to support a client with complex care needs in their own
+        home. Our client is a 60 year old male who suffers with Creutzfeldt Jacob
+        Disease. He is immobile, bed and wheelchair bound. He lives with his brother
+        and his family in an easily accessible area and we can \u2026","id":"307114169","created":"2015-08-27T15:50:33Z","contract_time":"full_time","title":"RGN","location":{"area":["UK","London","North
+        London","Highbury"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Highbury,
+        North London"}},{"title":"Care Assistants - Paediatric","location":{"area":["UK","London","North
+        London","Stoke Newington"],"display_name":"Stoke Newington, North London","__CLASS__":"Adzuna::API::Response::Location"},"description":"Care
+        Assistants with paediatric experience required to provide care to our young
+        client in the North London area. Pay rate: \u00a311.00 - \u00a313.25 per hour,
+        days, nights, weekend shifts available, up to 70 hours per week. Strand Nurses
+        have been entrusted with the care of a 14 month old little boy, who has been
+        diagnosed with Centronuclear Myopathy and is currently still in hospital.
+        He has had developmental delay since birth and was admitted to hospital with
+        Rhinovirus deterioration/Pneumonia. He now\u2026","id":"307114126","created":"2015-08-27T15:50:32Z","salary_max":25440,"contract_time":"part_time","category":{"tag":"healthcare-nursing-jobs","label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"salary_is_predicted":"0","company":{"__CLASS__":"Adzuna::API::Response::Company","display_name":"Interserve
+        Healthcare"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307114126?v=A67D896A12A7962E052CC062894D001034915F1A&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","__CLASS__":"Adzuna::API::Response::Job","latitude":51.562099,"longitude":-0.073623,"salary_min":21120,"contract_type":"contract"},{"contract_time":"part_time","salary_max":37440,"created":"2015-08-27T15:50:31Z","id":"307114102","description":"Paediatric
+        Care Assistants required for our young client with complex care needs - based
+        near the Wood Green area. Pay \u00a39.75 to \u00a319.50 per hour - Night shifts
+        - hours 21:00 to 07:00 - Monday to Sunday shifts available. Strand Nurses
+        Bureau are offering an opportunity for dedicated Paediatric Care Assistants
+        to join our established team of carers, in support of our client who is 4
+        years old and has an undiagnosed syndrome. Our client lives at home with their
+        parents and attends nursery. This lit\u2026","location":{"display_name":"Wood
+        Green, North London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Wood Green"]},"title":"Care Assistant - Paediatric","salary_min":18720,"contract_type":"contract","longitude":-0.109514,"latitude":51.5965,"__CLASS__":"Adzuna::API::Response::Job","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307114102?v=0D6AEF5479CBBE1B6E3E85F3DB593EA23E0A9475&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","company":{"display_name":"Interserve
+        Healthcare","__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"0","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Healthcare
+        & Nursing Jobs","tag":"healthcare-nursing-jobs"}},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307111673?v=A9BF30820FE035D566EF9EA3C7BD17DC25A7C2E1&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","company":{"__CLASS__":"Adzuna::API::Response::Company","display_name":"Home
+        Instead Senior Care Barnet"},"salary_is_predicted":"0","category":{"label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"healthcare-nursing-jobs"},"latitude":51.615299,"__CLASS__":"Adzuna::API::Response::Job","salary_min":20000,"contract_type":"permanent","longitude":-0.145697,"title":"Recruiter/Trainer
+        (Barnet, London)","location":{"area":["UK","London","North London","Friern
+        Barnet"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Friern
+        Barnet, North London"},"salary_max":23000,"created":"2015-08-27T15:42:45Z","id":"307111673","description":"This
+        is a great opportunity to join our well established and very friendly team
+        as our Trainer and Recruiter. Most people don''t want to see different faces
+        in their homes every day, having to tell each new person how they like things
+        to be done. At Home Instead we match our Caregivers with our Clients to ensure
+        our clients have the same caregiver and so that a trusting relationship can
+        be established. We also ensure our clients are not rushed, so our visits are
+        always an hour or longer. The cha\u2026","contract_time":"full_time"},{"location":{"display_name":"Friern
+        Barnet, North London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Friern Barnet"]},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307108693?v=D9E9EEC0E920F7D873E7AA711850C2007B1772BA&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","salary_is_predicted":"0","company":{"display_name":"NATIONWIDE
+        PLACEMENTS UK LTD","__CLASS__":"Adzuna::API::Response::Company"},"category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Sales
+        Jobs","tag":"sales-jobs"},"title":"Sales Controller","salary_min":28000,"longitude":-0.145697,"latitude":51.615299,"__CLASS__":"Adzuna::API::Response::Job","salary_max":30000,"created":"2015-08-27T15:29:10Z","description":"We
+        are looking for an ambitious and remarkable Sales Controller to join our client
+        in the automotive sector This role is meant for you if you have a keen interest
+        in sales","id":"307108693"},{"longitude":-0.123313,"salary_min":84000,"contract_type":"contract","salary_max":96000,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"description":"My
+        client is an established Acute Trust and one of the London''s major acute
+        hospitals. An exciting new opportunity has arisen due to the expansion of
+        the team, my client is now urgently seeking a diligent and hardworking professional
+        to take control of the Estates department as a Head of Estates and Capital.
+        You will focus mainly on the hard services within the trust from an operational
+        level. This is a fantastic opportunity for someone who is looking to move
+        quickly straight into a new, challe\u2026","id":"307101651","created":"2015-08-27T15:08:24Z","location":{"area":["UK","London","North
+        London"],"display_name":"North London, London","__CLASS__":"Adzuna::API::Response::Location"},"salary_is_predicted":"0","company":{"__CLASS__":"Adzuna::API::Response::Company","display_name":"Eden
+        Brown Ltd"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307101651?v=3A013AA8CFDE34EB262A01AF897F2111521687E6&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","title":"Head
+        Of Estate","category":{"label":"Engineering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"engineering-jobs"}},{"id":"307099496","description":"High
+        profile property company are looking for a dynamic hands on team PA who will
+        support 3 directors. in their North London office. Envisaged to be a busy
+        role with project administration element to it. Candidates must have professional
+        services experience and be completely ok with dealing with stakeholders, external
+        clients, booking meetings, amending documents, updating power point presentations
+        and general day to day admin. The role is offering a great salary with wonderful
+        benefits includi\u2026","created":"2015-08-27T15:06:04Z","salary_max":28500,"latitude":51.586237,"__CLASS__":"Adzuna::API::Response::Job","longitude":-0.123313,"salary_min":25000,"title":"Team
+        Personal Assistant","category":{"tag":"property-jobs","label":"Property Jobs","__CLASS__":"Adzuna::API::Response::Category"},"salary_is_predicted":"0","company":{"display_name":"ROC
+        Recruitment","__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307099496?v=10BC69F2662E922CE791E31F28548572E639E626&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","location":{"area":["UK","London","North
+        London"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"North
+        London, London"}},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307097343?v=CE25FD4F995D12BFE6A79A91DFA8F41FF2E79084&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","company":{"display_name":"Allied
+        Healthcare","canonical_name":"Allied Healthcare","__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","category":{"label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"healthcare-nursing-jobs"},"title":"Care
+        Assistant / Worker","location":{"area":["UK","London","North London"],"display_name":"North
+        London, London","__CLASS__":"Adzuna::API::Response::Location"},"__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"salary_max":14732.43,"created":"2015-08-27T14:53:11Z","id":"307097343","description":"Care
+        Assistant  For One Month only if you apply for a care worker role in Barnet
+        your DBS will be free (normally \u00a344.00)  Allied Healthcare are looking
+        for caring and passionate individuals to join our team of Care Assistants
+        providing support to our clients in the comfort of their own home. We are
+        holding immediate interviews for Barnet & the surrounding areas, including:
+        Barnet - High Barnet, New Barnet, Cockfosters, East Barnet, Southgate, New
+        Southgate, Oakwood, Whetstone, Olieigh Park, Arn\u2026","salary_min":14732.43,"longitude":-0.123313,"contract_time":"full_time"},{"longitude":-0.123313,"contract_time":"full_time","salary_min":16369.39,"id":"307097334","description":"Care
+        Assistant Allied Healthcare are looking for caring and passionate individuals
+        to join our team of Care Assistants providing support to our clients in the
+        comfort of their own home. We are holding immediate interviews for Finchley
+        & the surrounding areas, including: Finchley - Friern Barnet, North Finchley,
+        Muswell Hill, East Finchley, Golders Green, Central Finchley. We''d love to
+        hear from people who want to begin or continue their career in care, as we
+        offer an interactive induction, care\u2026","created":"2015-08-27T14:53:10Z","salary_max":16369.39,"latitude":51.586237,"__CLASS__":"Adzuna::API::Response::Job","location":{"area":["UK","London","North
+        London"],"display_name":"North London, London","__CLASS__":"Adzuna::API::Response::Location"},"title":"Care
+        Assistant / Worker","category":{"tag":"healthcare-nursing-jobs","label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"salary_is_predicted":"1","company":{"display_name":"Allied
+        Healthcare","canonical_name":"Allied Healthcare","__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307097334?v=9FE2EE8EB549FBF33E4D5140DB8785B556C9BF8B&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf"},{"salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company","display_name":"Allied
+        Healthcare","canonical_name":"Allied Healthcare"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307097337?v=299990D9A0803AC84CE2F84E64A0D048AAB18D0D&se=-N300KsVR6Oir0bxjoYQpw&utm_medium=api&utm_source=8910decf","title":"Care
+        Assistant / Worker","category":{"label":"Healthcare & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"healthcare-nursing-jobs"},"location":{"display_name":"North
+        London, London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London"]},"salary_max":16161.12,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"id":"307097337","description":"Care
+        Assistant Allied Healthcare are looking for caring and passionate individuals
+        to join our team of Care Assistants providing support to our clients in the
+        comfort of their own home. We are holding immediate interviews for Islington
+        & the surrounding areas, including: Finsbury Park, Highbury, Stoke Newington,
+        Upper Holloway, Kings Cross, Archway. We''d love to hear from people who want
+        to begin or continue their career in care, as we offer an interactive induction,
+        care coaching as well as fu\u2026","created":"2015-08-27T14:53:10Z","longitude":-0.123313,"contract_time":"full_time","salary_min":16161.12}],"mean":31405.39}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['13094']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Thu, 27 Aug 2015 15:38:06 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['1160801712']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/2?location0=UK&location1=London&location2=North+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"mean":31405.39,"results":[{"latitude":51.586237,"created":"2015-08-27T14:53:09Z","salary_min":16346.05,"company":{"display_name":"Allied
+        Healthcare","canonical_name":"Allied Healthcare","__CLASS__":"Adzuna::API::Response::Company"},"category":{"tag":"healthcare-nursing-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Healthcare
+        & Nursing Jobs"},"title":"Care Assistant / Worker","contract_time":"full_time","longitude":-0.123313,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307097308?v=657ED13B91D7385E14BF467C853E20B82D3F3302&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","id":"307097308","salary_is_predicted":"1","location":{"area":["UK","London","North
+        London"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"North
+        London, London"},"salary_max":16346.05,"__CLASS__":"Adzuna::API::Response::Job","description":"Care
+        Assistant - Guaranteed Hours Available - Apply Now  For One Month only if
+        you apply for a care worker role in the Barnet area specifically your DBS
+        will be free (normally \u00a344.00)  Allied Healthcare are looking for caring
+        and passionate individuals to join our team of Care Assistants providing support
+        to our clients in the comfort of their own home. We are holding immediate
+        interviews for the following areas; Barnet, East Finchley, Hamstead, Fortis
+        Green, Hamstead Garden Suburb, Finchley Ce\u2026"},{"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_min":32305.79,"created":"2015-08-27T14:20:43Z","latitude":51.605748,"contract_type":"permanent","description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Architect - Unpaid position
+        Job title: Architect Last revision date: JULY 2015 Awaiting Eyes Foundation
+        (AEF) is a non-profit organization working for the welfare of orphan children.
+        Founded in 2006 Awaiting Eyes Foundation provides humanitarian relief for
+        victims of natural disasters. Awaiting Eyes Foundation is a registered UK
+        Charity and fully complies with UK laws. Currently we are looking for committed
+        and dedicated volunteers - Archi\u2026","__CLASS__":"Adzuna::API::Response::Job","salary_max":32305.79,"location":{"display_name":"Upper
+        Edmonton, North London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Upper Edmonton"]},"salary_is_predicted":"1","id":"307091913","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091913?v=994F00599A27A6B0BA5978B9428EAC476F4145BA&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","title":"Architect
+        - Unpaid position","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Charity
+        & Voluntary Jobs","tag":"charity-voluntary-jobs"},"longitude":-0.06993},{"contract_type":"permanent","created":"2015-08-27T14:20:42Z","latitude":51.598099,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_min":18598.6,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091907?v=E4EDC0390FDA734A5F1A71E2ABA4D7E36A7CA731&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","category":{"tag":"healthcare-nursing-jobs","label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"title":"Senior
+        Care Assistants/Healthcare Assistants, Residential Homes, Enfield, Hampstead
+        or Muswell Hill","longitude":-0.147259,"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Muswell Hill"],"display_name":"Muswell Hill, North London"},"salary_is_predicted":"1","id":"307091907","__CLASS__":"Adzuna::API::Response::Job","salary_max":18598.6,"description":"Springdene
+        Care Homes Group are currently recruiting for Senior Care Assistants and Care
+        Assistants in our luxury care homes in Enfield, Muswell Hill and Hampstead.
+        This is an opportunity to work in well-equipped and well-staffed homes, for
+        a local care provider. The Senior Carer role involves assessing the needs
+        of residents, developing care plans, supervising care staff, and working with
+        a team to deliver the highest standards of care. Senior carers must have an
+        NVQ3 in Health and Social Care\u2026"},{"salary_max":27467.96,"__CLASS__":"Adzuna::API::Response::Job","description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Architect Landscape Designer
+        - Unpaid position Job title: Architect Landscape Designer Reports to: Operation
+        Officer Last revision date: JULY 2015 Awaiting Eyes Foundation (AEF) is a
+        non-profit organization working for the welfare of orphan children. Founded
+        in 2006 Awaiting Eyes Foundation provides humanitarian relief for victims
+        of natural disasters. Awaiting Eyes Foundation is a registered UK Charity
+        and fully complies with UK laws. Awa\u2026","title":"Architect Landscape Designer
+        - Unpaid position","category":{"tag":"charity-voluntary-jobs","label":"Charity
+        & Voluntary Jobs","__CLASS__":"Adzuna::API::Response::Category"},"longitude":-0.06993,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091898?v=6C1838B5971965244BDA43863ED8A9DBC4FE0AD6&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","id":"307091898","salary_is_predicted":"1","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Upper Edmonton"],"display_name":"Upper Edmonton, North London"},"salary_min":27467.96,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"contract_type":"permanent","latitude":51.605748,"created":"2015-08-27T14:20:41Z"},{"contract_type":"permanent","created":"2015-08-27T14:20:41Z","latitude":51.605748,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_min":31788.86,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091901?v=D364318E369349B2E041ABCEF127FD64BF0ED2D7&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","title":"Architect
+        Interior Designer - Unpaid position","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Charity
+        & Voluntary Jobs","tag":"charity-voluntary-jobs"},"longitude":-0.06993,"location":{"display_name":"Upper
+        Edmonton, North London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Upper Edmonton"]},"id":"307091901","salary_is_predicted":"1","__CLASS__":"Adzuna::API::Response::Job","salary_max":31788.86,"description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Architect Interior Designer
+        - Unpaid position Job title: Architect Interior Designer Reports to: Operation
+        Officer Last revision date: JULY 2015 Awaiting Eyes Foundation (AEF) is a
+        non-profit organization working for the welfare of orphan children. Founded
+        in 2006 Awaiting Eyes Foundation provides humanitarian relief for victims
+        of natural disasters. Awaiting Eyes Foundation is a registered UK Charity
+        and fully complies with UK laws. Await\u2026"},{"latitude":51.605748,"created":"2015-08-27T14:20:39Z","contract_type":"permanent","salary_min":33559.24,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"307091888","salary_is_predicted":"1","location":{"display_name":"Upper
+        Edmonton, North London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Upper Edmonton"]},"title":"Architect with a Master Degree - Unpaid
+        position","category":{"tag":"charity-voluntary-jobs","label":"Charity & Voluntary
+        Jobs","__CLASS__":"Adzuna::API::Response::Category"},"longitude":-0.06993,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091888?v=9E738839F8080006B5F21E823DA93E85194F9E87&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Architect with a Master Degree
+        - Unpaid position Job title: Architect Last revision date: JULY 2015 Awaiting
+        Eyes Foundation (AEF) is a non-profit organization working for the welfare
+        of orphan children. Founded in 2006 Awaiting Eyes Foundation provides humanitarian
+        relief for victims of natural disasters. Awaiting Eyes Foundation is a registered
+        UK Charity and fully complies with UK laws. Currently we are looking for committed
+        and dedicat\u2026","salary_max":33559.24,"__CLASS__":"Adzuna::API::Response::Job"},{"latitude":51.605748,"created":"2015-08-27T14:20:38Z","contract_type":"permanent","salary_min":15803.04,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","id":"307091877","location":{"area":["UK","London","North
+        London","Upper Edmonton"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Upper
+        Edmonton, North London"},"title":"Data Entry Clerk - Unpaid Position","category":{"label":"Charity
+        & Voluntary Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"charity-voluntary-jobs"},"longitude":-0.06993,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091877?v=47193F58443BC8035CEF56714BB66489BEAE41DC&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Data Entry Clerk - Unpaid Position
+        Job title: Data Entry Clerk Last revision date: JULY 2015 Awaiting Eyes Foundation
+        (AEF) is a non-profit organization working for the welfare of orphan children.
+        Founded in 2006 Awaiting Eyes Foundation provides humanitarian relief for
+        victims of natural disasters. Awaiting Eyes Foundation is a registered UK
+        Charity and fully complies with UK laws. We are currently looking for a volunteer
+        Data Entry Clerk\u2026","salary_max":15803.04,"__CLASS__":"Adzuna::API::Response::Job"},{"description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Architect Structural Engineer
+        - Unpaid position Job title: Architect Structural Engineer Department: Design
+        Reports to: Charity CEO Last revision date: JULY 2015 Awaiting Eyes Foundation
+        (AEF) is a non-profit organization working for the welfare of orphan children.
+        Founded in 2006 Awaiting Eyes Foundation provides humanitarian relief for
+        victims of natural disasters. Awaiting Eyes Foundation is a registered UK
+        Charity and fully complies wi\u2026","__CLASS__":"Adzuna::API::Response::Job","salary_max":31898.24,"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Upper Edmonton"],"display_name":"Upper Edmonton, North London"},"salary_is_predicted":"1","id":"307091850","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091850?v=2B789C71200E5C2F26422D4347F59AE3414886F8&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","longitude":-0.06993,"category":{"tag":"charity-voluntary-jobs","label":"Charity
+        & Voluntary Jobs","__CLASS__":"Adzuna::API::Response::Category"},"title":"Architect
+        Structural Engineer - Unpaid position","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_min":31898.24,"created":"2015-08-27T14:20:32Z","latitude":51.605748,"contract_type":"permanent"},{"salary_min":27004.07,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"contract_type":"permanent","latitude":51.605748,"created":"2015-08-27T14:20:31Z","salary_max":27004.07,"__CLASS__":"Adzuna::API::Response::Job","description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Architect 3D Model Designer
+        - Unpaid position Job title: Architect 3D Model Designer Last revision date:
+        JULY 2015 Awaiting Eyes Foundation (AEF) is a non-profit organization working
+        for the welfare of orphan children. Founded in 2006 Awaiting Eyes Foundation
+        provides humanitarian relief for victims of natural disasters. Awaiting Eyes
+        Foundation is a registered UK Charity and fully complies with UK laws. Currently
+        we are looking for commit\u2026","longitude":-0.06993,"category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Charity
+        & Voluntary Jobs","tag":"charity-voluntary-jobs"},"title":"Architect 3D Model
+        Designer - Unpaid position","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091841?v=1B6342B18184A88AACCB4AD907B026BE968752CB&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","id":"307091841","salary_is_predicted":"1","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Upper Edmonton"],"display_name":"Upper Edmonton, North London"}},{"description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Architect 3D Model Maker -
+        Unpaid position Job title: Architect 3D Model Maker Reports to: Operation
+        Officer Last revision date: JULY 2015 Awaiting Eyes Foundation (AEF) is a
+        non-profit organization working for the welfare of orphan children. Founded
+        in 2006 Awaiting Eyes Foundation provides humanitarian relief for victims
+        of natural disasters. Awaiting Eyes Foundation is a registered UK Charity
+        and fully complies with UK laws. We require \u2026","salary_max":23928.32,"__CLASS__":"Adzuna::API::Response::Job","salary_is_predicted":"1","id":"307091836","location":{"display_name":"Upper
+        Edmonton, North London","area":["UK","London","North London","Upper Edmonton"],"__CLASS__":"Adzuna::API::Response::Location"},"longitude":-0.06993,"category":{"label":"Charity
+        & Voluntary Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"charity-voluntary-jobs"},"title":"Architect
+        3D Model Maker - Unpaid position","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307091836?v=58E79239430B5FA83D3577816121308C26503CD5&se=1AzT8buVSJ6AW9yFDejdsQ&utm_medium=api&utm_source=8910decf","salary_min":23928.32,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"latitude":51.605748,"created":"2015-08-27T14:20:30Z","contract_type":"permanent"}],"count":3681,"__CLASS__":"Adzuna::API::Response::JobSearchResults"}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['13364']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Thu, 27 Aug 2015 15:38:07 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['1160801734']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/3?location0=UK&location1=London&location2=North+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"__CLASS__":"Adzuna::API::Response::JobSearchResults","count":3681,"results":[{"__CLASS__":"Adzuna::API::Response::Job","latitude":51.605748,"salary_max":19963.66,"created":"2015-08-27T14:12:45Z","description":"AWAITING
+        EYES FOUNDATION NON PROFIT MAKING ORGANIZATION Donations Manager - Unpaid
+        position Job title: Donations Manager Department: Business Development Department
+        Reports to: Donations Manager Last revision date: JULY 2015 Awaiting Eyes
+        Foundation (AEF) is a non-profit organization working for the welfare of orphan
+        children. Founded in 2006 Awaiting Eyes Foundation provides humanitarian relief
+        for victims of natural disasters. Awaiting Eyes Foundation is a registered
+        UK Charity and fully comp\u2026","id":"307090805","contract_type":"permanent","salary_min":19963.66,"longitude":-0.06993,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307090805?v=3E178451C0F87D761E1DD4B2C076FA607DEE4DD3&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","category":{"tag":"charity-voluntary-jobs","label":"Charity
+        & Voluntary Jobs","__CLASS__":"Adzuna::API::Response::Category"},"title":"Donations
+        Manager - Unpaid position","location":{"area":["UK","London","North London","Upper
+        Edmonton"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Upper
+        Edmonton, North London"}},{"contract_type":"permanent","salary_min":14015.13,"longitude":-0.102122,"created":"2015-08-27T14:11:41Z","id":"307090761","description":"We
+        are looking for experienced part time waiting staff with experience of the
+        bar for The Peasant, an award winning pub and dining room in Clerkenwell,
+        EC1. (Just down the road from Islington Upper street) The Peasant offers high
+        quality British menus, using fresh seasonal ingredients, quality wines by
+        the glass, diverse selection of draught and bottled beers. The focus is on
+        friendly service and creating a warm, welcoming place for local people to
+        enjoy drinks with good food. The ideal candida\u2026","latitude":51.538601,"__CLASS__":"Adzuna::API::Response::Job","salary_max":14015.13,"location":{"display_name":"Islington,
+        North London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Islington"]},"category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs","tag":"hospitality-catering-jobs"},"title":"Part time waiting
+        staff, The Peasant, EC1 \u00a3850 - \u00a3950 per hour","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307090761?v=DB7251DB4495180E46CD48AF8CB9BEA0ECEFD334&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"}},{"salary_max":17951.07,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.600712,"id":"307090746","description":"Two
+        Rivers Care is a specialist residential and supported living care provider
+        which focuses on supporting Asian female clients with moderate to severe learning
+        disabilities in North London. Care and support is designed on an individual
+        basis to meet the needs of each service user. We are currently expanding and
+        looking to recruit care workers in Finchley. In particular we''re looking
+        for Sleeping Night staff and local staff with flexibility who want to do part-time
+        posts to start with. The post\u2026","created":"2015-08-27T14:11:28Z","longitude":-0.183149,"contract_type":"contract","salary_min":17951.07,"salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307090746?v=C9FCDC2425BD0C8384987B0EF3C710AFB79F53E8&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","title":"PERMANENT
+        CARE WORKER IN FINCHLEY LD (Sleeping Nights & Flexible Hours)","category":{"tag":"healthcare-nursing-jobs","label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"location":{"area":["UK","London","North
+        London","Finchley"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Finchley,
+        North London"}},{"location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Holloway,
+        North London","area":["UK","London","North London","Holloway"]},"salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307089909?v=3706DD2B66E0173A4546AF2120D6456CCE870206&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","title":"Legal
+        Work Experince Placement","category":{"label":"Legal Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"legal-jobs"},"longitude":-0.126636,"salary_min":14972.7,"contract_type":"permanent","salary_max":14972.7,"latitude":51.554298,"__CLASS__":"Adzuna::API::Response::Job","description":"Tulips
+        Solicitors Voluntary Work Experience Placement We are a high street firm in
+        Archway, North London and looking for someone who is an LPC graduate and wishes
+        to have voluntary work experience in our firm. This is a great opportunity
+        to gain relevant work experience in a legal environment. If you are interested
+        please send your CV and a covering letter with your availability. It is not
+        possible for us to reply to every applicant due to high volume of applications
+        we receive.","id":"307089909","created":"2015-08-27T13:57:04Z"},{"category":{"tag":"healthcare-nursing-jobs","label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"title":"Clinical
+        Negligence Solicitor 6-8 years PQE","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307078837?v=80836AD971012654CF94B208E019A17BD1AA5DDE&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","company":{"display_name":"Igloo
+        Law Limited","__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","location":{"display_name":"North
+        London, London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London"]},"created":"2015-08-27T13:48:22Z","id":"307078837","description":"We
+        are currently looking for an enthusiastic 6-8 years PQE Solicitor to join
+        our growing Clinical Negligence team. You will have a commitment to providing
+        a high quality service and be serious about developing your career in this
+        area. Management experience and panel membership would both be an advantage.
+        You will be motivated, organised and innovative. You should have an excellent
+        understanding of the Civil Procedure Rules and Protocols. Previous experience
+        of Clinical Negligence work is neces\u2026","latitude":51.586237,"__CLASS__":"Adzuna::API::Response::Job","salary_max":39294.31,"salary_min":39294.31,"longitude":-0.123313},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307078378?v=EDE2F3DF7E844017F219981C499D16AE17FF1675&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company","display_name":"Randstad
+        CPE Limited"},"category":{"tag":"manufacturing-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Manufacturing
+        Jobs"},"title":"Project Engineer / Project Managers","location":{"display_name":"North
+        London, London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London"]},"__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"salary_max":36112.12,"created":"2015-08-27T13:48:07Z","description":"Exciting
+        opportunity to join an growing team as a Project Engineer to focus on capital
+        expenditure within the business, permanent role based in North London offering
+        a competitive salary and benefits package. Key Responsibilities:  Be professionally
+        accountable for all projects and strategic development planning under the
+        supervision on the head of Capital Projects.  Accountable for developing and
+        maintaining suitable financial plans relating to all major and minor Capital
+        Projects indicating c\u2026","id":"307078378","contract_type":"permanent","salary_min":36112.12,"longitude":-0.123313},{"description":"PROJECT
+        QUANTITY SURVEYOR REQUIRED TO WORK ON EXCITING PROJECT - \u00a320M MIXED-USE
+        DEVELOPMENT Salary: \u00a345k - \u00a355k DOE  Car, 28 days'' holiday, BUPA
+        & Bonus Sector: New-Build Construction Position: Project Quantity Surveyor
+        / PQS / QS / Commercial Manager Region: North London THE COMPANY A fantastic
+        opportunity has arisen for a Permanent Project Quantity Surveyor to work on
+        an exciting mixed-use development with a Tier 1 main-contractor. Our client
+        is one of the most highly regarded main contractor\u2026","id":"307077493","created":"2015-08-27T13:47:35Z","salary_max":55000,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"longitude":-0.123313,"salary_min":45000,"contract_type":"permanent","title":"Project
+        Quantity Surveyor","category":{"label":"Trade & Construction Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"trade-construction-jobs"},"company":{"display_name":"General
+        ATA Posting","__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"0","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307077493?v=F14C32404C7600F50D3F447703593FDCE2DC4F43&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"North
+        London, London","area":["UK","London","North London"]}},{"longitude":-0.097628,"contract_type":"contract","salary_min":39018.37,"salary_max":39018.37,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.565102,"id":"307077342","description":"
+        Do you want to make a difference in Enfield?  Could you be a mentor?  Find
+        out how this experience will benefit you  Meet a current Mentor  Leave feeling
+        motivated and inspired THURSDAY 17th SEPTEMBER, 5:30pm - 7:30pm (Presentation
+        at 6:00pm) Enfield Civic Centre, Council Chambers, Silver Street, En1 3XA","created":"2015-08-27T13:47:28Z","location":{"area":["UK","London","North
+        London","Finsbury Park"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Finsbury
+        Park, North London"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307077342?v=CCDF152E03F495013FD4A9B37F75A36C00D3976B&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","title":"Chance
+        UK Come and hear how you can become a mentor 17th September, Enfield Civic
+        Ctre from 530pm","category":{"tag":"charity-voluntary-jobs","label":"Charity
+        & Voluntary Jobs","__CLASS__":"Adzuna::API::Response::Category"}},{"contract_type":"permanent","salary_min":19218.01,"longitude":-0.161553,"created":"2015-08-27T13:45:20Z","description":"Bufi
+        in East Finchley, North London is looking for an experienced head waiter with
+        the possibility to quickly progress to a supervisor role. Candidates should
+        be well presented, able to speak fluent english and Italian is a bonus Experience
+        is essential Immediate start If you would like to join our team please send
+        your CV via the link provided.","id":"307077153","__CLASS__":"Adzuna::API::Response::Job","latitude":51.582802,"salary_max":19218.01,"location":{"area":["UK","London","North
+        London","East Finchley"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"East
+        Finchley, North London"},"category":{"tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category"},"title":"Head
+        Waiter  Supervisor required for busy North London Neapolitan Pizzeria/Restaurant","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307077153?v=8D66F076198CA9207903B60F33D8DB1CD43B9E81&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"}},{"salary_min":19330.59,"contract_type":"permanent","longitude":-0.07053,"created":"2015-08-27T13:42:13Z","description":"Express
+        Airport Transport is specialised in providing airport transfer services for
+        to and from all London Airports, UK Cruise Ports, Train/Tube Stations, to
+        and from anywhere in the UK. We are currently looking for owner drivers for
+        our fast growing airport transfers business. This will be ideal for drivers
+        who live near London airports, central London or outside of London. Three
+        shifts are available, early Moring, late evening and night (10 to 12 Hour
+        per shift). You do not have to come to th\u2026","id":"307077114","latitude":51.588699,"__CLASS__":"Adzuna::API::Response::Job","salary_max":19330.59,"location":{"area":["UK","London","North
+        London","Seven Sisters"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Seven
+        Sisters, North London"},"category":{"tag":"logistics-warehouse-jobs","label":"Logistics
+        & Warehouse Jobs","__CLASS__":"Adzuna::API::Response::Category"},"title":"Minicab
+        Drivers/ Chauffeur Drivers Needed for an Airport Transfer Company  Urgent","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307077114?v=10CC31352864442C0FF2AC3B0045050B3CBA797F&se=glyzT5oASxiRDLzn8OCvDA&utm_medium=api&utm_source=8910decf","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1"}],"mean":31405.39}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['13017']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Thu, 27 Aug 2015 15:38:08 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['1160801744']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/4?location0=UK&location1=London&location2=North+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"__CLASS__":"Adzuna::API::Response::JobSearchResults","results":[{"latitude":51.586237,"__CLASS__":"Adzuna::API::Response::Job","salary_min":50000,"created":"2015-08-27T13:42:12Z","longitude":-0.123313,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307077101?v=9495F0131805EFA72A1BC9F0742CC6959320F6DB&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","location":{"display_name":"North
+        London, London","area":["UK","London","North London"],"__CLASS__":"Adzuna::API::Response::Location"},"contract_time":"full_time","id":"307077101","category":{"label":"Logistics
+        & Warehouse Jobs","tag":"logistics-warehouse-jobs","__CLASS__":"Adzuna::API::Response::Category"},"salary_max":55000,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"0","description":"Financial
+        & Professional Services Manager - Indirect Procurement - \u00a3100m spends
+        - Multinational Retail Giant - North London - Up to \u00a355,000  car Globally
+        dominant retail giant seeks an experienced procurement professional to manage
+        and drive one of the largest financial and professional services categories
+        in the market. Managing \u00a3 multi-million spends and receiving direct mentoring
+        from the global Head of Procurement, this opportunity is tailor made for an
+        ambitious professional, determined to\u2026","title":"Financial and Professional
+        Services Manager"},{"salary_min":45000,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"logistics-warehouse-jobs","label":"Logistics
+        & Warehouse Jobs"},"id":"307077083","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307077083?v=2F06AA0C8A38795EBAAC3E94AF440250F2EBFA12&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","contract_time":"full_time","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"North
+        London, London","area":["UK","London","North London"]},"longitude":-0.123313,"created":"2015-08-27T13:42:09Z","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":55000,"title":"Procurement
+        Manager- FM/PS- FTSE 100 Retail","description":"Procurement Manager - FM,
+        Property and Indirects - FTSE 100 Multinational Retail Giant - \"Iconic Brand\"
+        - FTSE 100 - North London - \u00a345-55K  Package Global Retail Major seeks
+        Indirect Generalist Procurement professionals to take the reins on an FM,
+        Property and Professional Services spend worth \u00a3150 million. With a market
+        capitalisation valuing in the billions, this giant only hires the top talent
+        in Procurement, and as a result the successful Procurement Manager will be
+        joining a best in class\u2026","salary_is_predicted":"0"},{"contract_type":"contract","salary_max":27748.04,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"description":"We
+        have work for experienced Carpenters to start work tonight. CSCS card essential.
+        Please call 02081661606 We are an agency","salary_is_predicted":"1","title":"
+        CARPENTERS  Night shift  Weekend (starting tonight)","latitude":51.538601,"__CLASS__":"Adzuna::API::Response::Job","salary_min":27748.04,"created":"2015-08-27T13:41:24Z","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Islington"],"display_name":"Islington, North London"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307076914?v=077FDF7526DA3B84BAFA044DD8E7A34E97BC0C94&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","longitude":-0.102122,"id":"307076914","category":{"label":"Trade
+        & Construction Jobs","tag":"trade-construction-jobs","__CLASS__":"Adzuna::API::Response::Category"}},{"id":"307076369","category":{"tag":"logistics-warehouse-jobs","label":"Logistics
+        & Warehouse Jobs","__CLASS__":"Adzuna::API::Response::Category"},"created":"2015-08-27T13:38:52Z","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307076369?v=4504A6E08166D9876ADAE748177DACAA04EE1CFB&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","longitude":-0.102122,"location":{"area":["UK","London","North
+        London","Islington"],"display_name":"Islington, North London","__CLASS__":"Adzuna::API::Response::Location"},"salary_min":15111.94,"latitude":51.538601,"__CLASS__":"Adzuna::API::Response::Job","salary_is_predicted":"1","description":"We
+        are looking for a van driver for our property business. We have more that
+        700 rooms to rent around Central London and our Maintenance team is now looking
+        for someone who has experience in driving a van to help with pick up and delivery
+        of furniture as well as building materials. You will need to have a valid
+        EU license and experience with driving a van. You will also need to be strong
+        and fit and able to carry furniture by hand whenever necessary. Compensation:
+        Will start from \u00a31500 take hom\u2026","title":"Van Driver / Furniture
+        Delivery / Property company - Needed ASAP","salary_max":15111.94,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"contract_type":"permanent"},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307076286?v=146C2B7893D9FB6AB44FE4A6745622A68AF17380&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","longitude":-0.113205,"location":{"display_name":"Palmers
+        Green, North London","area":["UK","London","North London","Palmers Green"],"__CLASS__":"Adzuna::API::Response::Location"},"created":"2015-08-27T13:38:46Z","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Logistics
+        & Warehouse Jobs","tag":"logistics-warehouse-jobs"},"id":"307076286","__CLASS__":"Adzuna::API::Response::Job","latitude":51.618401,"salary_min":19665.31,"title":"Food
+        Delivery Driver","salary_is_predicted":"1","description":"We are looking for
+        an experienced food delivery driver in palmers green area. It is essential
+        you have knowledge of North London area. We are looking for part time drivers
+        with bike or car but preferably moped.","contract_type":"permanent","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":19665.31},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307076267?v=B9ECD2F1C6C2118ADAE1BD2D03657B21E8F38F84&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Angel"],"display_name":"Angel, North London"},"longitude":-0.09761,"created":"2015-08-27T13:38:45Z","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Trade
+        & Construction Jobs","tag":"trade-construction-jobs"},"id":"307076267","__CLASS__":"Adzuna::API::Response::Job","latitude":51.5163,"salary_min":26298.08,"title":"Tilers
+        Needed Urgently - immediate start","description":"Experienced Tilers are required
+        for an Immediate start. Must have previous site experience and hold the relevant
+        Qualifications along with Tools and PPE. Please call us on 02075389392","salary_is_predicted":"1","contract_type":"contract","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":26298.08},{"salary_min":25258.98,"latitude":51.595901,"__CLASS__":"Adzuna::API::Response::Job","id":"307076237","category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"trade-construction-jobs","label":"Trade
+        & Construction Jobs"},"created":"2015-08-27T13:38:44Z","location":{"area":["UK","London","North
+        London","Tottenham"],"display_name":"Tottenham, North London","__CLASS__":"Adzuna::API::Response::Location"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307076237?v=BCE8652915407A10CF5B63C50609660FC897959F&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","longitude":-0.071379,"salary_max":25258.98,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"contract_type":"contract","description":"CPCS
+        loading shovel driver needed for an exciting project in Tottenham, North London.
+        Three months work with great hourly rate and hours. The successful candidate
+        will need the following: -CPCS Card -CSCS card -Experience in driving 24 tonne
+        loading shovel machine -Own PPE Please call Scott on 02085553325 if you are
+        interested","salary_is_predicted":"1","title":"CPCS Loading Shovel Driver"},{"title":"Senior
+        Quantity Surveyor (SQS)","salary_is_predicted":"0","description":"Job Title:
+        Senior/Intermediate Quantity Surveyor (SQS) My client is also looking to hear
+        from Assistant Quantity Surveyors (AQS), who are looking to make the next
+        step up Location: North London, commutable from Romford, Dagenham, Stratford,
+        Ilford & Potters Bar Day rate: \u00a3320 - \u00a3430 per day, negotiable dependent
+        on experience Duration: Initially offering 6 months with a view to extend
+        up to 2 years Start Date: Ideally my client would like someone appointed immediately
+        but deadline can","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":103200,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307075877?v=24165594FEDFC5ED1C005F3E0FF85C8DF65CA7C7&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","location":{"display_name":"North
+        London, London","area":["UK","London","North London"],"__CLASS__":"Adzuna::API::Response::Location"},"longitude":-0.123313,"created":"2015-08-27T13:37:52Z","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Unknown","tag":"unknown"},"id":"307075877","__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"salary_min":76800},{"longitude":-0.161553,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307069688?v=B9C7B97CA5F61BA5ED721B9F03D3201B5F47D7E6&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","location":{"area":["UK","London","North
+        London","East Finchley"],"display_name":"East Finchley, North London","__CLASS__":"Adzuna::API::Response::Location"},"created":"2015-08-27T13:32:02Z","category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs"},"id":"307069688","__CLASS__":"Adzuna::API::Response::Job","latitude":51.582802,"salary_min":17417.34,"title":"Kitchen
+        Porter required for busy North London Pizzeria","salary_is_predicted":"1","description":"Bufi
+        in East Finchley, North London, is looking for a hard working Kitchen Porter
+        preferably with experience but not essential. Immediate Start. If you would
+        like to apply for this role please send a copy of your CV via the link provided.","contract_type":"permanent","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":17417.34},{"__CLASS__":"Adzuna::API::Response::Job","latitude":51.579399,"salary_min":21514.56,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307069679?v=C3184B83B3768F49804F482D800F88CF47D9CD33&se=MfcnDl8WSiu7tPee4xtRvg&utm_medium=api&utm_source=8910decf","longitude":-0.122652,"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Hornsey"],"display_name":"Hornsey, North London"},"created":"2015-08-27T13:31:57Z","category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs"},"id":"307069679","contract_type":"permanent","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":21514.56,"title":"Awesome
+        Kitchen Staff Around CDP(ish) Level Needed to Cook, Drink Free Booze and Enjoy
+        Yourself","salary_is_predicted":"1","description":"We''re called Max''s Sandwich
+        Shop, look us up on the internet We''re looking for chefs at about CDP level
+        to come work in our kitchen and be part of a growing business that understands
+        that in order to work hard and make brilliant food, you have to enjoy yourself,
+        be well trained, get two days off in a row every week AND get properly paid
+        for your efforts We make all our own bread, mayonnaise etc etc Please get
+        in touch if this sounds like the sort of thing that floats your boat. Loads
+        of experie\u2026"}],"count":3681,"mean":31405.39}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['11727']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Thu, 27 Aug 2015 15:38:09 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['1160801751']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/5?location0=UK&location1=London&location2=North+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"__CLASS__":"Adzuna::API::Response::JobSearchResults","results":[{"location":{"area":["UK","London","North
+        London"],"display_name":"North London, London","__CLASS__":"Adzuna::API::Response::Location"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307068304?v=B3FDCEDA341F7E83A6310B972B92F28F1FE865CC&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","company":{"display_name":"Randstad
+        Education Group","__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","category":{"tag":"teaching-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Teaching
+        Jobs"},"title":"Maths Teacher","salary_min":27254.94,"longitude":-0.123313,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"salary_max":27254.94,"created":"2015-08-27T13:16:14Z","id":"307068304","description":"Teacher
+        of MathsA secondary school in Hackney are looking for a Teacher of maths.
+        The position is a permanent contract starting in September 2015/January 2016.The
+        opportunity\u2026The position involves teaching maths across all ability groups
+        for KS3 and KS4."},{"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307068282?v=9A05AAF394101C84B2B080F5BCEF28FD67A4EB81&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","title":"Marketing
+        Assistant - FULL TIME/PART TIME","category":{"tag":"pr-advertising-marketing-jobs","label":"PR,
+        Advertising & Marketing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Angel,
+        North London","area":["UK","London","North London","Angel"]},"salary_max":19240.61,"latitude":51.5163,"__CLASS__":"Adzuna::API::Response::Job","id":"307068282","description":"MARKETING
+        ASSISTANT ROLES - FULL TIME & PART TIME \u00a320,000 - \u00a326,000 Seeking
+        fun, outgoing and organised individuals for junior / trainee / entry level
+        openings in Event Marketing & Sales. Junior Marketing & Sales Assistants do
+        not need a degree or experience but must: - Have a great work ethic - Crave
+        face to face interaction in their job - Be quick and willing learners No experience
+        is needed, we believe that your attitude, personality and professionalism
+        are the most important attributes. We \u2026","created":"2015-08-27T13:15:10Z","longitude":-0.09761,"salary_min":19240.61,"contract_type":"permanent"},{"longitude":-0.194872,"salary_min":17593.58,"contract_type":"permanent","salary_max":17593.58,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.600399,"id":"307068035","description":"Reference
+        REF-1QP-UG3MQVO About the position What you\u2019ll do in this role Each of
+        our pub and restaurant brands has its own individual style, but every one
+        of our 1,600 pubs are focused on making sure we always serve up a delicious
+        food and drink, attentive customer service and a great guest experience. As
+        a Bar & Waiting team member, you\u2019re the face of your brand for every
+        guest that walks through our door so we\u2019re looking for team members who
+        enjoy working with people and are passionate about \u2026","created":"2015-08-27T13:04:10Z","location":{"area":["UK","London","North
+        London","Finchley"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Finchley,
+        North London"},"salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307068035?v=4CD39663F6DC25450DA51FD8F1D5BC5521B8288D&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","title":"Bar
+        Staff at Dignity","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs","tag":"hospitality-catering-jobs"}},{"longitude":-0.109514,"contract_type":"contract","salary_min":17963.4,"salary_max":17963.4,"latitude":51.5965,"__CLASS__":"Adzuna::API::Response::Job","description":"Reference
+        REF-2N0-PC1BANA About the position What you\u2019ll do in this role Each of
+        our pub and restaurant brands has its own individual style, but every one
+        of our 1,600 pubs are focused on making sure we always serve up a delicious
+        food and drink, attentive customer service and a great guest experience. As
+        a Bar & Waiting team member, you\u2019re the face of your brand for every
+        guest that walks through our door so we\u2019re looking for team members who
+        enjoy working with people and are passionate about \u2026","id":"307068022","created":"2015-08-27T13:04:04Z","location":{"area":["UK","London","North
+        London","Wood Green"],"display_name":"Wood Green, North London","__CLASS__":"Adzuna::API::Response::Location"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307068022?v=9658587EF561BD67FCFDD4CCBEE523C45FE10D3D&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","title":"Bar
+        Staff at The Starting Gate","category":{"label":"Hospitality & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"}},{"title":"Bar
+        Staff at The Starting Gate","category":{"label":"Hospitality & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307068019?v=F05118A9E3C7881C96AE3A5ACBF38ABA042B470F&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","location":{"area":["UK","London","North
+        London","Wood Green"],"display_name":"Wood Green, North London","__CLASS__":"Adzuna::API::Response::Location"},"description":"Reference
+        REF-2N0-P90Q7PA About the position What you\u2019ll do in this role Each of
+        our pub and restaurant brands has its own individual style, but every one
+        of our 1,600 pubs are focused on making sure we always serve up a delicious
+        food and drink, attentive customer service and a great guest experience. As
+        a Bar & Waiting team member, you\u2019re the face of your brand for every
+        guest that walks through our door so we\u2019re looking for team members who
+        enjoy working with people and are passionate about \u2026","id":"307068019","created":"2015-08-27T13:04:03Z","salary_max":18583.86,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.5965,"longitude":-0.109514,"contract_type":"contract","salary_min":18583.86},{"salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307068020?v=CC8D029BB8EC10CD5C0363D335BF69BC3F55CFFE&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","title":"Bar
+        Staff at Maid Of Muswell","category":{"label":"Hospitality & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"location":{"display_name":"Muswell
+        Hill, North London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Muswell Hill"]},"salary_max":17639.63,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.598099,"description":"Reference
+        REF-AT-MMHCZTT About the position What you\u2019ll do in this role Each of
+        our pub and restaurant brands has its own individual style, but every one
+        of our 1,600 pubs are focused on making sure we always serve up a delicious
+        food and drink, attentive customer service and a great guest experience. As
+        a Bar & Waiting team member, you\u2019re the face of your brand for every
+        guest that walks through our door so we\u2019re looking for team members who
+        enjoy working with people and are passionate about d\u2026","id":"307068020","created":"2015-08-27T13:04:03Z","longitude":-0.147259,"contract_type":"permanent","salary_min":17639.63},{"salary_min":30311.44,"contract_type":"permanent","longitude":-0.123313,"created":"2015-08-27T13:03:47Z","description":"Are
+        you looking for a New Opportunity in a National Flagship Team? Medical Sales
+        Representatives - London Excellent Salary and Benefits Package Apodi is a
+        high performance outsourcing organisation that identifies and implements innovative
+        access strategies in order to ensure that appropriate medicines get to patients.
+        We are building a new breed of team, which is based on market demand for a
+        quality, flagship solution that delivers high quality engagement with the
+        NHS and supports respected bra\u2026","id":"307067924","__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"salary_max":30311.44,"location":{"display_name":"North
+        London, London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London"]},"category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Healthcare
+        & Nursing Jobs","tag":"healthcare-nursing-jobs"},"title":"Medical Sales Representatives
+        - London","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307067924?v=C8AE626ABCF6DCA52499B4327462DB8AF41AE21D&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company","display_name":"Apodi
+        Ltd"}},{"location":{"area":["UK","London","North London"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"North
+        London, London"},"category":{"label":"Healthcare & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"healthcare-nursing-jobs"},"title":"Key
+        Account Manager","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307067862?v=4902C953C22B6C0CD1D24B078AE228B18D3F9AAE&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","salary_is_predicted":"1","company":{"display_name":"Star","canonical_name":"STAR
+        Medical","__CLASS__":"Adzuna::API::Response::Company"},"salary_min":35355.48,"contract_type":"contract","longitude":-0.123313,"created":"2015-08-27T13:03:45Z","description":"Position:
+        Key Account Manager Territory: North London, Home Counties Salary: \u00a345
+        - \u00a355k Reference: 1507-1 Star are currently recruiting for an experienced
+        Key Account Manager to work on behalf of our client who are specialist pharmaceutical
+        company. Main purpose You will manage and develop a sales territory and ensure
+        sales targets are achieved through formulary positioning in both primary and
+        secondary care. Responsibilities If successful, you will be responsible for:  Maximising
+        sales and inc\u2026","id":"307067862","latitude":51.586237,"__CLASS__":"Adzuna::API::Response::Job","salary_max":35355.48},{"created":"2015-08-27T13:03:44Z","id":"307067810","description":"Are
+        you looking for a New Opportunity in a National Flagship Team? Medical Sales
+        Representatives - Hertfordshire & Essex Excellent Salary and Benefits Package
+        Apodi is a high performance outsourcing organisation that identifies and implements
+        innovative access strategies in order to ensure that appropriate medicines
+        get to patients. We are building a new breed of team, which is based on market
+        demand for a quality, flagship solution that delivers high quality engagement
+        with the NHS and support\u2026","__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"salary_max":29564.52,"salary_min":29564.52,"contract_type":"permanent","longitude":-0.123313,"category":{"tag":"healthcare-nursing-jobs","label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"title":"Medical
+        Sales Representatives - Hertfordshire &amp; Essex","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307067810?v=3F838A95E80FF0A27ADB0AAAB1D93F8599993C88&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","company":{"display_name":"Apodi
+        Ltd","__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","location":{"display_name":"North
+        London, London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London"]}},{"contract_type":"permanent","salary_min":30000,"longitude":-0.123313,"created":"2015-08-27T13:03:40Z","description":"Medical
+        Sales Executive / Dental Sales / Dental Products World leader in the aesthetic
+        and restorative dental market. Fantastic reputation for training and educating
+        clinical customers. The company is dedicated to offering its staff ongoing
+        career development opportunities and continual support to achieve their goals.
+        North Thames - Up to \u00a330-35k basic / OTE IRO \u00a315K  - Car / Corporate
+        Benefits - Medical Sales / Dental Sales Role - The Dental Sales Executive
+        will be responsible for selling a ra\u2026","id":"307067700","__CLASS__":"Adzuna::API::Response::Job","latitude":51.586237,"salary_max":35000,"location":{"area":["UK","London","North
+        London"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"North
+        London, London"},"category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Healthcare
+        & Nursing Jobs","tag":"healthcare-nursing-jobs"},"title":"Medical Sales Executive
+        - Dental Implants","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307067700?v=B402703E105A98B42426068753BB999F4064B7D3&se=tFO7zyI9Sme3z3EOwLLFgg&utm_medium=api&utm_source=8910decf","salary_is_predicted":"0","company":{"__CLASS__":"Adzuna::API::Response::Company","display_name":"Progress
+        Sales Recruitment Ltd"}}],"count":3681,"mean":31405.39}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['13031']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Thu, 27 Aug 2015 15:38:09 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['1160801763']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/6?location0=UK&location1=London&location2=North+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"mean":31405.39,"count":3681,"results":[{"salary_min":16235.58,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.538601,"category":{"label":"Hospitality
+        & Catering Jobs","tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category"},"id":"307067270","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307067270?v=BDD8218495BB6F8A45A5D4153835DAE4F379E92D&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","location":{"area":["UK","London","North
+        London","Islington"],"display_name":"Islington, North London","__CLASS__":"Adzuna::API::Response::Location"},"longitude":-0.102122,"created":"2015-08-27T13:03:27Z","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":16235.58,"contract_type":"permanent","title":"Full
+        and Part-Time Bartenders","description":"Raise the bar on serving the best
+        cocktails and service in town Dirty Martini is a sparkling, fun, sophisticated
+        slice of London life located at some of the capital\u2019s premier addresses.
+        We mix sophisticated surroundings, fantastic cocktails and a range of quality
+        champagnes, wines, beers and spirits. It\u2019s a place where you\u2019ll
+        find bright young professionals going the same place we are. We\u2019re looking
+        for skilled and experienced full and part-time Bartenders who can mix up a
+        Dirty Martini, whilst\u2026","salary_is_predicted":"1"},{"description":"Hi,
+        We are a professional couple looking for a fun reliable childminder to care
+        for our two girls 6 and 8 and a Golden Retriever puppy. Pick up from school
+        at 3:30 and care for the girls till 6:30 3/4 days per week. If we could also
+        have 1 or 2 mornings from 7:30-9 that would be wonderful. Help with homework
+        and heating /cooking dinner, walking the puppy, emptying the dishwasher and
+        bringing in washing from the line (when required) would be essential. Additional
+        all day school holiday care woul\u2026","salary_is_predicted":"1","title":"After
+        school care","contract_type":"permanent","salary_max":13187.41,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"created":"2015-08-27T13:02:56Z","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Muswell Hill"],"display_name":"Muswell Hill, North London"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307067145?v=0A852CFE85F95202A7214F854A38D679E706FC73&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","longitude":-0.147259,"id":"307067145","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs","tag":"domestic-help-cleaning-jobs"},"latitude":51.598099,"__CLASS__":"Adzuna::API::Response::Job","salary_min":13187.41},{"__CLASS__":"Adzuna::API::Response::Job","latitude":51.5872,"salary_min":22931.16,"longitude":-0.133865,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307067153?v=B0BC411A76FD1F9B41E2F9E32D8D50ED1F351F5C&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","location":{"area":["UK","London","North
+        London","Crouch End"],"display_name":"Crouch End, North London","__CLASS__":"Adzuna::API::Response::Location"},"created":"2015-08-27T13:02:56Z","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs","tag":"domestic-help-cleaning-jobs"},"id":"307067153","contract_type":"contract","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":22931.16,"title":"Nanny
+        - Gardienne d''enfants - Nounou Part-time in Crouch End N8; (native French
+        speaker preferred)","description":"From mid / late September we need a part-time
+        nanny (French speaker preferred) to look after two children (one girl aged
+        8, one boy aged 4) on four afternoons per week. You would pick them up from
+        school (3.15pm) walk them home, play, give them supper and look after them
+        until 6.30pm. To apply / for more details, please respond by email to Anne-Marie.","salary_is_predicted":"1"},{"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs"},"id":"307065640","longitude":-0.145697,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307065640?v=13B230975733A685CA334E385D99D6B5A6B4C03D&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","location":{"display_name":"Friern
+        Barnet, North London","area":["UK","London","North London","Friern Barnet"],"__CLASS__":"Adzuna::API::Response::Location"},"created":"2015-08-27T13:01:22Z","salary_min":18419.01,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.615299,"title":"Bar
+        Staff at Red Lion Toby Carvery (formerly Barnet)","salary_is_predicted":"1","description":"Reference
+        REF-1HX-YAGQ20O About the position What you\u2019ll do in this role Each of
+        our pub and restaurant brands has its own individual style, but every one
+        of our 1,600 pubs are focused on making sure we always serve up a delicious
+        food and drink, attentive customer service and a great guest experience. As
+        a Bar & Waiting team member, you\u2019re the face of your brand for every
+        guest that walks through our door so we\u2019re looking for team members who
+        enjoy working with people and are passionate about \u2026","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":18419.01,"contract_type":"permanent"},{"salary_min":23882.01,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.538601,"category":{"label":"Hospitality
+        & Catering Jobs","tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category"},"id":"307065618","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307065618?v=AF74DE22B7217AED907FD24385C0FD72C050A66F&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Islington,
+        North London","area":["UK","London","North London","Islington"]},"longitude":-0.102122,"created":"2015-08-27T13:01:19Z","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":23882.01,"contract_type":"permanent","title":"Looking
+        to progress to Management? Ambitious Supervisor required for quirky Islington
+        pub","salary_is_predicted":"1","description":"LOCATION Kings Head Theatre
+        115 Upper Street, Islington, N1 1QN SALARY \u00a37.50 per hour ABOUT US Welcome
+        to the King\u2019s Head Theatre Pub Located on the trendy and eclectic Upper
+        Street in Islington we are best known for being the first theatre pub since
+        Shakespearean times when it was founded in 1970. But while we are famous for
+        our theatre in the back, at this Victorian pub our customers also enjoy great
+        drinks in front of a roaring fire, see the images of the world\u2019s famous
+        stage faces and liste\u2026"},{"location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Highbury,
+        North London","area":["UK","London","North London","Highbury"]},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307065368?v=29F1704AD64117533247E92D6529F9E0B1C9E2C3&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","longitude":-0.103755,"created":"2015-08-27T13:01:00Z","category":{"tag":"domestic-help-cleaning-jobs","label":"Domestic
+        help & Cleaning Jobs","__CLASS__":"Adzuna::API::Response::Category"},"id":"307065368","__CLASS__":"Adzuna::API::Response::Job","latitude":51.553398,"salary_min":15070.33,"title":"Part
+        time after school and holiday nanny","salary_is_predicted":"1","description":"We
+        are a family living in Highbury looking for after school and holiday care
+        for our three children aged 15,13 and 8 years , Monday to Wednesday until
+        I get home from work , at around six . You will be picking up the 8y/o from
+        school , feeding the children , supervising play dates and homework . In the
+        holidays we will need longer hours - but this will mostly involve looking
+        after the youngest as the older children are becoming more self sufficient
+        at sorting out their own activities . We are a\u2026","contract_type":"permanent","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":15070.33},{"title":"Warehouse
+        Supervisor (Manager Designate)","description":"We are importers and distributors
+        of storage products for the home and office. We are looking for a warehouse
+        supervisor who has at least 4 years experience of working in a warehouse.
+        Duties will include the following: Supervise the warehouse team Receive, check
+        and store products Pick and pack products Vehicle loading and unloading Forklift
+        driving experience Keeping the warehouse clean and tidy A good level of health
+        and physical fitness is required to carry out your role as some lifting is
+        i\u2026","salary_is_predicted":"1","contract_type":"contract","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":13780.17,"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Woodside Park"],"display_name":"Woodside Park, North London"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307064654?v=189955D4F154D4A96E24D1B73902E15B4C7A47A8&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","longitude":-0.177474,"created":"2015-08-27T12:59:17Z","category":{"tag":"other-general-jobs","label":"Other/General
+        Jobs","__CLASS__":"Adzuna::API::Response::Category"},"id":"307064654","__CLASS__":"Adzuna::API::Response::Job","latitude":51.618752,"salary_min":13780.17},{"id":"307064145","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Unknown","tag":"unknown"},"created":"2015-08-27T12:59:00Z","longitude":-0.123313,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307064145?v=BE9DC6EB135F16F3BE3F1C92F0996394F04478A9&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","location":{"area":["UK","London","North
+        London"],"display_name":"North London, London","__CLASS__":"Adzuna::API::Response::Location"},"salary_min":27821.25,"latitude":51.586237,"__CLASS__":"Adzuna::API::Response::Job","salary_is_predicted":"1","description":"A
+        position has arisen for a fully qualified motor vehicle TECHNICIAN to work
+        for a well-respected prestige Franchise Dealership in the WOODFORD area. You
+        will be a qualified and experienced Car Technician with a minimum of three
+        years previous experience with a Franchise Main Dealership. You will be required
+        to accurately service, undertake general repairs and meet deadlines. As such
+        you will be fully qualified and be able to demonstrate stable experience within
+        a Garage or Dealership. You will\u2026","title":"Technician - Premium Brand","salary_max":27821.25,"company":{"display_name":"Square
+        Peg Square Hole Recruitment Ltd","__CLASS__":"Adzuna::API::Response::Company"},"contract_type":"permanent"},{"location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Highbury,
+        North London","area":["UK","London","North London","Highbury"]},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307062744?v=DFB89AD05D3798911386BA98EED54091C924B015&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","longitude":-0.103755,"created":"2015-08-27T12:54:36Z","category":{"tag":"teaching-jobs","label":"Teaching
+        Jobs","__CLASS__":"Adzuna::API::Response::Category"},"id":"307062744","__CLASS__":"Adzuna::API::Response::Job","latitude":51.553398,"salary_min":20633.44,"title":"Two
+        positions available One ABA team lead, one live in tutor/support worker","description":"Live
+        in position: An enthusiastic creative, enabler/buddy needed for 19 year old
+        man with autism. Must have ABA/PBS experience or interest and able to live
+        in. A suitable candidate would be required to work both day and night shifts,
+        due to young mans sleep disorder. But hours can be flexible. You must have
+        a knowledge of language processing disorders and the ability to support language
+        through a variety of ways. Including visual timetables and social stories
+        (Sign language would be a bonus, bu\u2026","salary_is_predicted":"1","contract_type":"permanent","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":20633.44},{"salary_min":10,"latitude":51.538601,"__CLASS__":"Adzuna::API::Response::Job","id":"307060266","category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs","tag":"domestic-help-cleaning-jobs"},"created":"2015-08-27T12:10:48Z","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","North
+        London","Islington"],"display_name":"Islington, North London"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/307060266?v=9B4D46A3B7FDBE5E9A84D94C8A7D83ECFD0C0A52&se=PfxZsCXAQiKxjLWzbNlmPA&utm_medium=api&utm_source=8910decf","longitude":-0.102122,"salary_max":12,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"description":"Islington
+        based first time parents are looking for a full time live out nanny to take
+        a very good care of their 7 months old twin boys. The daily responsibilities
+        for this Islington nanny job will be nanny duties, establishing daily routine
+        and activities, cooking healthy and wholesome meals for the children. This
+        Islington family are hoping to find a loving, caring and supportive nanny
+        to help them on daily basis Monday to Friday with 55 hours per week. The salary
+        for this full time live out n\u2026","salary_is_predicted":"0","title":"Full
+        time live out Nanny in Islington London"}],"__CLASS__":"Adzuna::API::Response::JobSearchResults"}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['13187']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Thu, 27 Aug 2015 15:38:10 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['1160801770']
+    status: {code: 200, message: OK}
+version: 1
