@@ -18,6 +18,10 @@ urlpatterns = [
         include('detailed_history.urls', namespace='detailed_history')
     ),
     url(
+        r'job_discovery/',
+        include('job_discovery.urls', namespace='job_discovery')
+    ),
+    url(
         r'quick_history/',
         include('quick_history.urls', namespace='quick_history')
     ),

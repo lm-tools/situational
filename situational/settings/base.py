@@ -1,4 +1,5 @@
 import sys
+import os
 from os import environ
 from os.path import join, abspath, dirname
 from django.core.exceptions import ImproperlyConfigured
@@ -151,6 +152,7 @@ PROJECT_APPS = (
     'basicauth',
     'detailed_history',
     'home_page',
+    'job_discovery',
     'quick_history',
     'sectors',
     'template_to_pdf',
@@ -202,6 +204,9 @@ LOGGING = {
         },
     },
 }
+
+ADZUNA_APP_ID = os.environ.get('ADZUNA_APP_ID')
+ADZUNA_APP_KEY = os.environ.get('ADZUNA_APP_KEY')
 
 # EMAILS
 DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
