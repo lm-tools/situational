@@ -125,6 +125,17 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = [
+    "django.contrib.auth.context_processors.auth",
+    "django.template.context_processors.debug",
+    'django.template.context_processors.request',
+    "django.template.context_processors.i18n",
+    "django.template.context_processors.media",
+    "django.template.context_processors.static",
+    "django.template.context_processors.tz",
+    "django.contrib.messages.context_processors.messages"
+]
+
 ROOT_URLCONF = 'situational.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -207,6 +218,10 @@ LOGGING = {
 
 ADZUNA_APP_ID = os.environ.get('ADZUNA_APP_ID')
 ADZUNA_APP_KEY = os.environ.get('ADZUNA_APP_KEY')
+
+# Manifest.json
+DEFAULT_MANIFEST_APP_NAME = environ.get(
+    'DEFAULT_MANIFEST_APP_NAME', 'home_page')
 
 # EMAILS
 DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')
