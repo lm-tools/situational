@@ -16,7 +16,7 @@ class Adzuna(object):
 
         assert all((self.APP_ID, self.APP_KEY))
 
-    def base_request(self, endpoint, params, page=None):
+    def _base_request(self, endpoint, params, page=None):
         URL = "{0}{1}".format(self.BASE_URL, endpoint)
         if page:
             URL = "{0}{1}".format(URL, page)
@@ -34,12 +34,12 @@ class Adzuna(object):
                 req.json()['display']))
         return req
 
-    def unwrap_pagination(self, endpoint, params, count):
+    def _unwrap_pagination(self, endpoint, params, count):
         num_results = 0
         page = 1
 
         while num_results <= count:
-            results = self.base_request(endpoint, params, page)
+            results = self._base_request(endpoint, params, page)
             all_results = results.json().get('results', [])
 
             for result in all_results:
@@ -55,7 +55,7 @@ class Adzuna(object):
         params = {
             "where": postcode,
         }
-        results = self.base_request(endpoint, params)
+        results = self._base_request(endpoint, params)
         area = results.json()['location']['area']
         assert (len(area) >= 3)
         locations = area[:3]
@@ -72,7 +72,7 @@ class Adzuna(object):
             "sort_by": "date",
         }
 
-        return self.unwrap_pagination(endpoint, params, count)
+        return self._unwrap_pagination(endpoint, params, count)
 
     def top_companies(self, location0, location1, location2, count=10):
         endpoint = "jobs/gb/top_companies/"
@@ -82,5 +82,5 @@ class Adzuna(object):
             "location1": location1,
             "location2": location2,
         }
-        results = self.base_request(endpoint, params)
+        results = self._base_request(endpoint, params)
         return results.json()['leaderboard'][:count]
