@@ -19,27 +19,15 @@ class StartView(FormView):
         return http.HttpResponseRedirect(url)
 
 
-import random
-class JobSuggester():
-    def __init__(self, job_pool):
-        self.job_pool = job_pool
-
-    def suggest_me_a_job(self, profile):
-        return job_pool.sample(exclude=profile.all_job_ids)
-
-
-class JobPool():
-    def __init__(self, constraints):
-        self.constraints = constraints
-
 class SuggestionView(FormView):
     template_name = "job_discovery/suggestion.html"
     form_class = forms.SuggestionForm
 
     def get_context_data(self, **kwargs):
         context = kwargs
-        report = models.JobDiscoveryReport.objects.get(pk=kwargs["guid"])
-        context["job"] = engine.get_suggestion(report)
+        guid = self.kwargs['guid']
+        report = models.JobDiscoveryReport.objects.get(pk=guid)
+        context["job"] = report.get_suggestion()
         return context
 
     def form_valid(self, form):

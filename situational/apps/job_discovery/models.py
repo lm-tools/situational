@@ -8,3 +8,6 @@ class JobDiscoveryReport(TimeStampedModel):
         blank=False, null=False, max_length=14, db_index=True)
     guid = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)
+
+    def get_suggestion(self):
+        pass

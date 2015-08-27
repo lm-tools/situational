@@ -39,9 +39,9 @@ class TestSuggestionView(BaseCase):
             postcode="N87RW",
         )
 
-
     def test_get_renders_job_suggestion(self):
-        with patch('job_discovery.engine.get_suggestion') as get_suggestion:
+        with patch('job_discovery.models.JobDiscoveryReport.get_suggestion') \
+                   as get_suggestion:
             job = MagicMock()
             get_suggestion.return_value = job
 
@@ -51,4 +51,4 @@ class TestSuggestionView(BaseCase):
             )
             self.assertEqual(response.status_code, 200)
             self.assertTemplateUsed(response, "job_discovery/suggestion.html")
-            self.assertEqual(response.context["job"], expected_job)
+            self.assertEqual(response.context["job"], job)
