@@ -16,7 +16,7 @@ class TestStartView(BaseCase):
         last_report = models.JobDiscoveryReport.objects.get()
         with self.subTest("creates an empty report"):
             self.assertEqual(
-                last_report.postcode,
+                last_report.location.postcode,
                 "N87RW"
             )
 
@@ -36,8 +36,12 @@ class TestStartView(BaseCase):
 class TestSuggestionView(BaseCase):
 
     def setUp(self):
-        self.report = models.JobDiscoveryReport.objects.create(
+        location = models.JobLocation.objects.create(
             postcode="N87RW",
+            location="locationstring"
+        )
+        self.report = models.JobDiscoveryReport.objects.create(
+            location=location,
         )
 
     def _suggestion_url(self):
@@ -57,7 +61,13 @@ class TestSuggestionView(BaseCase):
             self.assertEqual(response.context["job"], job)
 
     def test_post_adds_a_job_reaction_to_the_report(self):
-        job = models.Job.objects.create()
+        location = models.JobLocation.objects.create(
+            postcode="N87RW",
+            location="location"
+        )
+        job = models.Job.objects.create(
+            location=location
+        )
         response = "yes"
 
         self.client.post(

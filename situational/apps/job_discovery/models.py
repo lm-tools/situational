@@ -5,15 +5,21 @@ from model_utils.models import TimeStampedModel
 from django.db import models
 
 
-class Job(TimeStampedModel):
+class JobLocation(models.Model):
+    postcode = models.CharField(
+        blank=False, null=False, max_length=14
+    )
     location = models.CharField(
         blank=False, null=False, max_length=120
     )
 
 
+class Job(TimeStampedModel):
+    location = models.ForeignKey(JobLocation)
+
+
 class JobDiscoveryReport(TimeStampedModel):
-    postcode = models.CharField(
-        blank=False, null=False, max_length=14, db_index=True)
+    location = models.ForeignKey(JobLocation)
     guid = models.UUIDField(
         primary_key=True, default=uuid.uuid4, editable=False)
     seen_jobs = models.ManyToManyField(Job, through='Reaction')
@@ -27,23 +33,13 @@ class JobDiscoveryReport(TimeStampedModel):
 
     def get_suggestion(self):
         try:
-            job_location = JobLocationToPostcode.objects.get(
-                postcode=self.postcode
-            )
+            # CamilleTODO: ommit already seen jobs
+            # CamilleTODO: randomise!
             return Job.objects.get(
-                location=job_location.location
+                location=self.location
             )
-        except JobLocationToPostcode.DoesNotExist:
+        except Job.DoesNotExist:
             return None
-
-
-class JobLocationToPostcode(models.Model):
-    postcode = models.CharField(
-        blank=False, null=False, max_length=14
-    )
-    location = models.CharField(
-        blank=False, null=False, max_length=120
-    )
 
 
 class Reaction(TimeStampedModel):

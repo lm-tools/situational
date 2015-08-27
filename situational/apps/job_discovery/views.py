@@ -12,8 +12,18 @@ class StartView(FormView):
 
     def form_valid(self, form):
         postcode = form.cleaned_data['postcode'].upper().replace(' ', '')
+        try:
+            location = models.JobLocation.objects.get(
+                postcode=postcode
+            )
+        except models.JobLocation.DoesNotExist:
+            location = models.JobLocation.objects.create(
+                postcode=postcode,
+                # CamilleTODO = get that location string from Adzuna
+                location="todo"
+            )
         report = models.JobDiscoveryReport.objects.create(
-            postcode=postcode
+            location=location
         )
         url = reverse('job_discovery:suggestion', kwargs={'guid': report.guid})
         return http.HttpResponseRedirect(url)
