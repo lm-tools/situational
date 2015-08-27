@@ -32,15 +32,12 @@ class JobDiscoveryReport(TimeStampedModel):
         Reaction.objects.create(report=self, job=job, response=response)
 
     def get_suggestion(self):
-        try:
-            # CamilleTODO: ommit already seen jobs
-            # CamilleTODO: randomise!
-            return Job.objects.get(
-                location=self.location
-            )
-        except Job.DoesNotExist:
-            # CamilleTODO: import some jobs!
-            return None
+        job_ids = self.seen_jobs.values_list('id', flat=True)
+        unseen_jobs = Job.objects.exclude(id__in=job_ids)
+        job = unseen_jobs.filter(location=self.location).first()
+        # TODO shuffle
+        return job
+        # if job None CamilleTODO: import some jobs!
 
 
 class Reaction(TimeStampedModel):

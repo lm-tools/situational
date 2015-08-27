@@ -22,6 +22,9 @@ class TestJobDiscoveryModel(BaseCase):
         self.job = models.Job.objects.create(
             location=self.location
         )
+        self.job_2 = models.Job.objects.create(
+            location=self.location
+        )
         self.other_job = models.Job.objects.create(
             location=self.other_location
         )
@@ -36,4 +39,15 @@ class TestJobDiscoveryModel(BaseCase):
         self.assertEqual(
             other_suggestion,
             self.other_job
+        )
+
+    def test_get_suggestion_returns_job_not_already_seen(self):
+        models.Reaction.objects.create(
+            job=self.job,
+            report=self.report
+        )
+        suggestion = self.report.get_suggestion()
+        self.assertEqual(
+            suggestion,
+            self.job_2
         )
