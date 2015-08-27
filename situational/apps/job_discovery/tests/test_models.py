@@ -63,3 +63,17 @@ class TestJobDiscoveryModel(BaseCase):
                 job_2_returned += 1
         self.assertTrue(225 <= job_1_returned <= 275)
         self.assertTrue(225 <= job_2_returned <= 275)
+
+    def test_get_suggestion_imports_jobs_if_needed(self):
+        no_jobs_location = models.JobLocation.objects.create(
+            postcode="N87RZ",
+            adzuna_locations="UK,London,Central London"
+        )
+        report = models.JobDiscoveryReport.objects.create(
+            location=no_jobs_location
+        )
+        report.get_suggestion()
+        number_jobs = models.Job.objects.filter(
+            location=no_jobs_location
+        ).count()
+        self.assertTrue(number_jobs, 50)
