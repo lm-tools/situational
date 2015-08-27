@@ -25,7 +25,13 @@ class _VCROnAllTestsMeta(type):
         for attr_name, attr_value in iter(attrs.items()):
             if attr_name.startswith('test_') and \
                     isinstance(attr_value, types.FunctionType):
-                attrs[attr_name] = _VCR.use_cassette(attr_value)
+                filter_args = [
+                    'app_key',
+                    'app_id',
+                ]
+                attrs[attr_name] = _VCR.use_cassette(
+                    attr_value,
+                    filter_query_parameters=filter_args)
 
         return super(_VCROnAllTestsMeta, cls).__new__(cls, name, bases, attrs)
 

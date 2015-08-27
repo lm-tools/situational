@@ -1,0 +1,32 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/geodata/?where=N87RW
+  response:
+    body: {string: '{"location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Turnpike
+        Lane, North London","area":["UK","London","North London","Turnpike Lane"]},"locations":[{"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        East London","Bromley","Shortlands"],"display_name":"Shortlands, Bromley"},"count":5,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"location":{"display_name":"Hampton
+        Wick, Kingston Upon Thames","area":["UK","London","South West London","Kingston
+        Upon Thames","Hampton Wick"],"__CLASS__":"Adzuna::API::Response::Location"},"count":5,"__CLASS__":"Adzuna::API::Response::LocationJobs"}],"__CLASS__":"Adzuna::API::Response::JobGeoData"}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['699']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Thu, 27 Aug 2015 12:57:52 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['1160694555']
+    status: {code: 200, message: OK}
+version: 1
