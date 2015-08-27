@@ -14,6 +14,16 @@ class TestStartView(BaseCase):
             {"postcode": "N87RW"}
         )
         last_report = models.JobDiscoveryReport.objects.get()
+        with self.subTest("creates a JobLocation with the postcode"):
+            self.assertEqual(
+                models.JobLocation.objects.get().postcode,
+                "N87RW"
+            )
+        with self.subTest("looks up location strings from Adzuna"):
+            self.assertEqual(
+                models.JobLocation.objects.get().adzuna_locations,
+                "UK,London,North London"
+            )
         with self.subTest("creates an empty report"):
             self.assertEqual(
                 last_report.location.postcode,
