@@ -32,9 +32,9 @@ class TestJobDiscoveryModel(BaseCase):
     def test_get_suggestion_returns_job_from_correct_location(self):
         suggestion = self.report.get_suggestion()
         other_suggestion = self.other_report.get_suggestion()
-        self.assertEqual(
+        self.assertIn(
             suggestion,
-            self.job
+            [self.job, self.job_2]
         )
         self.assertEqual(
             other_suggestion,
@@ -51,3 +51,15 @@ class TestJobDiscoveryModel(BaseCase):
             suggestion,
             self.job_2
         )
+
+    def test_get_suggestion_returns_random_job(self):
+        job_1_returned = 0
+        job_2_returned = 0
+        for x in range(500):
+            suggestion = self.report.get_suggestion()
+            if suggestion == self.job:
+                job_1_returned += 1
+            else:
+                job_2_returned += 1
+        self.assertTrue(225 <= job_1_returned <= 275)
+        self.assertTrue(225 <= job_2_returned <= 275)

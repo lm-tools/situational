@@ -13,6 +13,9 @@ class JobLocation(models.Model):
         blank=False, null=False, max_length=200
     )
 
+    def import_jobs(self):
+        pass
+
 
 class Job(TimeStampedModel):
     location = models.ForeignKey(JobLocation)
@@ -34,8 +37,7 @@ class JobDiscoveryReport(TimeStampedModel):
     def get_suggestion(self):
         job_ids = self.seen_jobs.values_list('id', flat=True)
         unseen_jobs = Job.objects.exclude(id__in=job_ids)
-        job = unseen_jobs.filter(location=self.location).first()
-        # TODO shuffle
+        job = unseen_jobs.filter(location=self.location).order_by('?').first()
         return job
         # if job None CamilleTODO: import some jobs!
 
