@@ -6,7 +6,9 @@ from django.db import models
 
 
 class Job(TimeStampedModel):
-    pass
+    location = models.CharField(
+        blank=False, null=False, max_length=120
+    )
 
 
 class JobDiscoveryReport(TimeStampedModel):
@@ -24,7 +26,24 @@ class JobDiscoveryReport(TimeStampedModel):
         Reaction.objects.create(report=self, job=job, response=response)
 
     def get_suggestion(self):
-        pass
+        try:
+            job_location = JobLocationToPostcode.objects.get(
+                postcode=self.postcode
+            )
+            return Job.objects.get(
+                location=job_location.location
+            )
+        except JobLocationToPostcode.DoesNotExist:
+            return None
+
+
+class JobLocationToPostcode(models.Model):
+    postcode = models.CharField(
+        blank=False, null=False, max_length=14
+    )
+    location = models.CharField(
+        blank=False, null=False, max_length=120
+    )
 
 
 class Reaction(TimeStampedModel):
