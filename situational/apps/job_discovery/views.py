@@ -31,11 +31,11 @@ class SuggestionView(FormView):
         return context
 
     def form_valid(self, form):
-        report = {} # get the report from the guid
-        job_id = "bla"
-        liked_status= "much liked, such thumbs up"
+        # report = {} # get the report from the guid
+        # job_id = "bla"
+        # liked_status= "much liked, such thumbs up"
         # put that job_id and liked status in the report and save
-        url = reverse('job_discovery:suggestion', kwargs={'guid': guid})
+        url = reverse('job_discovery:suggestion', kwargs={'guid': 'foo'})
         return http.HttpResponseRedirect(url)
 
 
