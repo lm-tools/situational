@@ -40,16 +40,33 @@ class TestSuggestionView(BaseCase):
             postcode="N87RW",
         )
 
+    def _suggestion_url(self):
+        return reverse("job_discovery:suggestion",
+                       kwargs={"guid": self.report.guid})
+
     def test_get_renders_job_suggestion(self):
         with patch('job_discovery.models.JobDiscoveryReport.get_suggestion') \
                 as get_suggestion:
             job = MagicMock()
             get_suggestion.return_value = job
 
-            response = self.client.get(
-                reverse("job_discovery:suggestion",
-                        kwargs={"guid": self.report.guid})
-            )
+            response = self.client.get(self._suggestion_url())
+
             self.assertEqual(response.status_code, 200)
             self.assertTemplateUsed(response, "job_discovery/suggestion.html")
             self.assertEqual(response.context["job"], job)
+
+    def test_post_adds_a_job_reaction_to_the_report(self):
+        job = models.Job.objects.create()
+        response = "yes"
+
+        self.client.post(
+            self._suggestion_url(),
+            data={"job_id": job.id, "response": response},
+        )
+
+        self.report.refresh_from_db()
+        self.assertIn(job, self.report.seen_jobs.all())
+        reactions = self.report.reactions.filter(job=job, response=response)
+        self.assertEqual(len(reactions), 1,
+                         "Report should contain expected reaction")

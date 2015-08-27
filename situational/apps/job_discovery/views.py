@@ -25,17 +25,16 @@ class SuggestionView(FormView):
 
     def get_context_data(self, **kwargs):
         context = kwargs
-        guid = self.kwargs['guid']
-        report = models.JobDiscoveryReport.objects.get(pk=guid)
+        report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
         context["job"] = report.get_suggestion()
         return context
 
     def form_valid(self, form):
-        # report = {} # get the report from the guid
-        # job_id = "bla"
-        # liked_status= "much liked, such thumbs up"
-        # put that job_id and liked status in the report and save
-        url = reverse('job_discovery:suggestion', kwargs={'guid': 'foo'})
+        report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
+        job = models.Job.objects.get(pk=form.cleaned_data["job_id"])
+        response = form.cleaned_data["response"]
+        report.add_reaction(job, response)
+        url = reverse('job_discovery:suggestion', kwargs={'guid': report.guid})
         return http.HttpResponseRedirect(url)
 
 

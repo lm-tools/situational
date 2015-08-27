@@ -8,4 +8,5 @@ class PostcodeForm(forms.Form):
 
 
 class SuggestionForm(forms.Form):
-    pass
+    job_id = forms.CharField(widget=forms.HiddenInput)
+    response = forms.CharField()
