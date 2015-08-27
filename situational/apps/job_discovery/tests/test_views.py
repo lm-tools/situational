@@ -38,7 +38,7 @@ class TestSuggestionView(BaseCase):
     def setUp(self):
         location = models.JobLocation.objects.create(
             postcode="N87RW",
-            location="locationstring"
+            adzuna_locations="locationstring"
         )
         self.report = models.JobDiscoveryReport.objects.create(
             location=location,
@@ -63,7 +63,7 @@ class TestSuggestionView(BaseCase):
     def test_post_adds_a_job_reaction_to_the_report(self):
         location = models.JobLocation.objects.create(
             postcode="N87RW",
-            location="location"
+            adzuna_locations="location"
         )
         job = models.Job.objects.create(
             location=location

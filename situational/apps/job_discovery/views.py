@@ -17,10 +17,11 @@ class StartView(FormView):
                 postcode=postcode
             )
         except models.JobLocation.DoesNotExist:
+            az = Adzuna()
+            adzuna_locations = az.locations_for_postcode(postcode)
             location = models.JobLocation.objects.create(
                 postcode=postcode,
-                # CamilleTODO = get that location string from Adzuna
-                location="todo"
+                adzuna_locations=','.join(adzuna_locations)
             )
         report = models.JobDiscoveryReport.objects.create(
             location=location

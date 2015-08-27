@@ -2,8 +2,8 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import django.utils.timezone
 import uuid
+import django.utils.timezone
 import model_utils.fields
 
 
@@ -16,9 +16,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Job',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
-                ('created', model_utils.fields.AutoCreatedField(editable=False, default=django.utils.timezone.now, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(editable=False, default=django.utils.timezone.now, verbose_name='modified')),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('created', model_utils.fields.AutoCreatedField(verbose_name='created', default=django.utils.timezone.now, editable=False)),
+                ('modified', model_utils.fields.AutoLastModifiedField(verbose_name='modified', default=django.utils.timezone.now, editable=False)),
             ],
             options={
                 'abstract': False,
@@ -27,9 +27,9 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='JobDiscoveryReport',
             fields=[
-                ('created', model_utils.fields.AutoCreatedField(editable=False, default=django.utils.timezone.now, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(editable=False, default=django.utils.timezone.now, verbose_name='modified')),
-                ('guid', models.UUIDField(serialize=False, primary_key=True, default=uuid.uuid4, editable=False)),
+                ('created', model_utils.fields.AutoCreatedField(verbose_name='created', default=django.utils.timezone.now, editable=False)),
+                ('modified', model_utils.fields.AutoLastModifiedField(verbose_name='modified', default=django.utils.timezone.now, editable=False)),
+                ('guid', models.UUIDField(primary_key=True, editable=False, default=uuid.uuid4, serialize=False)),
             ],
             options={
                 'abstract': False,
@@ -38,17 +38,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='JobLocation',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('postcode', models.CharField(max_length=14)),
-                ('location', models.CharField(max_length=120)),
+                ('adzuna_locations', models.CharField(max_length=200)),
             ],
         ),
         migrations.CreateModel(
             name='Reaction',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
-                ('created', model_utils.fields.AutoCreatedField(editable=False, default=django.utils.timezone.now, verbose_name='created')),
-                ('modified', model_utils.fields.AutoLastModifiedField(editable=False, default=django.utils.timezone.now, verbose_name='modified')),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('created', model_utils.fields.AutoCreatedField(verbose_name='created', default=django.utils.timezone.now, editable=False)),
+                ('modified', model_utils.fields.AutoLastModifiedField(verbose_name='modified', default=django.utils.timezone.now, editable=False)),
                 ('response', models.CharField(max_length=50)),
                 ('job', models.ForeignKey(to='job_discovery.Job')),
                 ('report', models.ForeignKey(to='job_discovery.JobDiscoveryReport')),
@@ -65,7 +65,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='jobdiscoveryreport',
             name='seen_jobs',
-            field=models.ManyToManyField(through='job_discovery.Reaction', to='job_discovery.Job'),
+            field=models.ManyToManyField(to='job_discovery.Job', through='job_discovery.Reaction'),
         ),
         migrations.AddField(
             model_name='job',

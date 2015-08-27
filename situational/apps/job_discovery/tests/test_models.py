@@ -7,11 +7,11 @@ class TestJobDiscoveryModel(BaseCase):
     def setUp(self):
         self.location = models.JobLocation.objects.create(
             postcode="N87RW",
-            location="location"
+            adzuna_locations="location"
         )
         self.other_location = models.JobLocation.objects.create(
             postcode="N87RQ",
-            location="other_location"
+            adzuna_locations="other_location"
         )
         self.report = models.JobDiscoveryReport.objects.create(
             location=self.location

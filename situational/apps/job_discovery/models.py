@@ -9,8 +9,8 @@ class JobLocation(models.Model):
     postcode = models.CharField(
         blank=False, null=False, max_length=14
     )
-    location = models.CharField(
-        blank=False, null=False, max_length=120
+    adzuna_locations = models.CharField(
+        blank=False, null=False, max_length=200
     )
 
 
@@ -39,6 +39,7 @@ class JobDiscoveryReport(TimeStampedModel):
                 location=self.location
             )
         except Job.DoesNotExist:
+            # CamilleTODO: import some jobs!
             return None
 
 
