@@ -11,11 +11,11 @@
         <div class="multiwidget">
           <label {% if form.sector.errors %}class="error"{% endif %}>
             {{ form.sector.label }}
-            {{ form.sector }}
-          {% for error in form.sector.errors %}
-              <small class="error">{{ error }}</small>
-          {% endfor %}
+            {% for error in form.sector.errors %}
+                <small class="error">{{ error }}</small>
+            {% endfor %}
           </label>
+          {{ form.sector }}
         </div>
 
         <div class="row">
