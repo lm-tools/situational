@@ -87,3 +87,46 @@ class TestSuggestionView(BaseCase):
 
         with self.subTest("redirects to new suggestion"):
             self.assertRedirects(response, self._suggestion_url())
+
+
+class TestReportView(BaseCase):
+
+    def setUp(self):
+        self.location = models.JobLocation.objects.create(
+            adzuna_locations="Uk,London,Central London"
+        )
+        self.report = models.JobDiscoveryReport.objects.create(
+            postcode="N87RW",
+            location=self.location,
+        )
+        self.job_liked = models.Job.objects.create()
+        self.job_liked_2 = models.Job.objects.create()
+        self.job_disliked = models.Job.objects.create()
+        self.location.jobs.add(self.job_liked)
+        self.location.jobs.add(self.job_liked_2)
+        self.location.jobs.add(self.job_disliked)
+
+    def _report_url(self):
+        return reverse("job_discovery:report",
+                       kwargs={"guid": self.report.guid})
+
+    def test_get_renders_no_jobs_if_no_jobs_seen(self):
+        response = self.client.get(self._report_url())
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "job_discovery/report.html")
+        self.assertEqual(list(response.context["jobs"]), [])
+        self.assertContains(response, "You have not liked any jobs so far.")
+
+    def test_get_renders_jobs_liked(self):
+        self.report.add_reaction(self.job_liked, "yes")
+        self.report.add_reaction(self.job_liked_2, "yes")
+        self.report.add_reaction(self.job_disliked, "no")
+        response = self.client.get(self._report_url())
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "job_discovery/report.html")
+        self.assertEqual(
+            list(response.context["jobs"]),
+            [self.job_liked, self.job_liked_2]
+        )
