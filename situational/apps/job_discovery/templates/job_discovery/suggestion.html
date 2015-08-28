@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+<table style="border: 4px; border-style: solid;">
+  <tr>
+    <td>Title</td>
+    <td><b>{{ job.title }}</b></td>
+  </tr>
+  <tr>
+    <td>Salary</td>
+    <td><i>max salary:</i> <b>{{ job.salary_max }}</b>, <i>min salary:</i> <b>{{ job.salary_min }}</b>, <i>is salary predicted?:</i> <b>{{ job.salary_is_predicted }}</b></td>
+  </tr>
+  <tr>
+    <td>Location</td>
+    <td><b>{{ job.location.adzuna_locations }}</b> (<i>latitude:</i> <b>{{ job.latitude }}</b>,  <i>longitude:</i> <b>{{ job.longitude}}</b>)</td>
+  </tr>
+  <tr>
+    <td>Category</td>
+    <td>{{ job.category_name }}</td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td>{{ job.description }}</td>
+  </tr>
+  <tr>
+    <td>Company</td>
+    <td><b>{{ job.company_name }}</b> (<i>average_company_salary:</i> <b>{{ job.average_company_salary }}</b>)</td>
+  </tr>
+  <tr>
+    <td>Contract</td>
+    <td><i>contract type:</i> <b>{{ job.contract_type }}</b>, <i>contract time:</i> <b>{{ job.contract_time }}</b></td>
+  </tr>
+</table>
+<form method=post>
+  {% csrf_token %}
+  {{ form }}
+</form>
+{% endblock content %}
