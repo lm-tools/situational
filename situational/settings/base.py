@@ -108,14 +108,10 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
-BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
-BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
-if 'BASICAUTH_DISABLED' not in locals():
-    BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED') == 'True'
-
 
 MIDDLEWARE_CLASSES = (
     'log_request_id.middleware.RequestIDMiddleware',
+    'basicauth.basic_auth_middleware.BasicAuthMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -219,6 +215,16 @@ LOGGING = {
 ADZUNA_APP_ID = os.environ.get('ADZUNA_APP_ID')
 ADZUNA_APP_KEY = os.environ.get('ADZUNA_APP_KEY')
 
+# Bacic auth
+BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED', False)
+if not BASICAUTH_DISABLED:
+    BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
+    BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
+BASICAUTH_EXEMPT = [
+    r"/manifest.json$",
+]
+
+
 # Manifest.json
 DEFAULT_MANIFEST_APP_NAME = environ.get(
     'DEFAULT_MANIFEST_APP_NAME', 'home_page')
@@ -288,15 +294,3 @@ except ImportError:
 if len(sys.argv) > 1 and 'test' in sys.argv[1]:
     from .testing import *
 
-# This check is at the end of this so that it can be overridden by environment
-# specific config
-if BASICAUTH_DISABLED is False \
-        and all((BASICAUTH_USERNAME, BASICAUTH_PASSWORD)) is False:
-    raise ImproperlyConfigured("Please specify a HTTP username and password")
-
-if not BASICAUTH_DISABLED:
-    MIDDLEWARE_CLASSES = tuple(
-        [
-            'basicauth.basic_auth_middleware.BasicAuthMiddleware',
-        ] + list(MIDDLEWARE_CLASSES)
-    )
