@@ -13,7 +13,15 @@ class BasicAuthMiddleware(object):
         response.status_code = 401
         return response
 
+    def _auth_required(self):
+        if settings.BASICAUTH_DISABLED == "True":
+            return False
+        return True
+
     def process_request(self, request):
+        if not self._auth_required():
+            return None
+
         import base64
         if 'HTTP_AUTHORIZATION' not in request.META:
             return self.unauthed()
