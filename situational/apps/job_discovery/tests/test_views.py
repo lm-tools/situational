@@ -99,6 +99,9 @@ class TestReportView(BaseCase):
         self.report = models.JobDiscoveryReport.objects.create(
             location=self.location,
         )
+        self.job_liked = models.Job.objects.create(location=self.location)
+        self.job_liked_2 = models.Job.objects.create(location=self.location)
+        self.job_disliked = models.Job.objects.create(location=self.location)
 
     def _report_url(self):
         return reverse("job_discovery:report",
@@ -113,7 +116,27 @@ class TestReportView(BaseCase):
         self.assertContains(response, "You have not liked any jobs so far.")
 
     def test_get_renders_jobs_liked(self):
-        pass
+        models.Reaction.objects.create(
+            report=self.report,
+            job=self.job_liked,
+            response="yes"
+        )
+        models.Reaction.objects.create(
+            report=self.report,
+            job=self.job_liked_2,
+            response="yes"
+        )
+        models.Reaction.objects.create(
+            report=self.report,
+            job=self.job_disliked,
+            response="no"
+        )
+        response = self.client.get(self._report_url())
 
-    def test_get_does_not_render_jobs_seen_but_not_liked(self):
-        pass
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "job_discovery/report.html")
+        self.assertEqual(
+            list(response.context["jobs"]),
+            [self.job_liked, self.job_liked_2]
+        )
+        self.assertContains(response, "You have not liked any jobs so far.")
