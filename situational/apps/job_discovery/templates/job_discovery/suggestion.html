@@ -37,4 +37,5 @@
   {% csrf_token %}
   {{ form }}
 </form>
+<a href="{% url 'job_discovery:report' guid=guid %}" class="button">I'm done</a>
 {% endblock content %}
