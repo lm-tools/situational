@@ -93,15 +93,18 @@ class TestReportView(BaseCase):
 
     def setUp(self):
         self.location = models.JobLocation.objects.create(
-            postcode="N87RW",
-            adzuna_locations="locationstring"
+            adzuna_locations="Uk,London,Central London"
         )
         self.report = models.JobDiscoveryReport.objects.create(
+            postcode="N87RW",
             location=self.location,
         )
-        self.job_liked = models.Job.objects.create(location=self.location)
-        self.job_liked_2 = models.Job.objects.create(location=self.location)
-        self.job_disliked = models.Job.objects.create(location=self.location)
+        self.job_liked = models.Job.objects.create()
+        self.job_liked_2 = models.Job.objects.create()
+        self.job_disliked = models.Job.objects.create()
+        self.location.jobs.add(self.job_liked)
+        self.location.jobs.add(self.job_liked_2)
+        self.location.jobs.add(self.job_disliked)
 
     def _report_url(self):
         return reverse("job_discovery:report",
