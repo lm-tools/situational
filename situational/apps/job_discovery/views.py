@@ -66,5 +66,5 @@ class ReportView(TemplateView):
     def get_context_data(self, **kwargs):
         context = kwargs
         report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
-        context["jobs"] = report.seen_jobs.all()
+        context["jobs"] = report.liked_jobs
         return context
