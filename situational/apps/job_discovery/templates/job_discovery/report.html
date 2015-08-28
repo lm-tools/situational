@@ -4,8 +4,8 @@
 
 {% block content %}
 {% if jobs %}
-  {% for jobs in seen_jobs %}
-    {{ job }}
+  {% for job in jobs %}
+    {% include "job_discovery/_job_card.html" %}
   {% endfor %}
 {% else %}
   <h2>You have not liked any jobs so far.</h2>

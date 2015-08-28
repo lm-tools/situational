@@ -139,4 +139,3 @@ class TestReportView(BaseCase):
             list(response.context["jobs"]),
             [self.job_liked, self.job_liked_2]
         )
-        self.assertContains(response, "You have not liked any jobs so far.")
