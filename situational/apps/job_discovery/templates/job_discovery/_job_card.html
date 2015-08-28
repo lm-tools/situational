@@ -1,7 +1,10 @@
 <table style="border: 4px; border-style: solid;">
   <tr>
     <td>Title</td>
-    <td><b>{{ job.title }}</b></td>
+    <td>
+      <b>{{ job.title }}</b>
+      {% if show_apply and job.url %}(<a href="{{ job.url }}" target="_blank">apply</a>){% endif %}
+    </td>
   </tr>
   <tr>
     <td>Salary</td>
