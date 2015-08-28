@@ -87,3 +87,33 @@ class TestSuggestionView(BaseCase):
 
         with self.subTest("redirects to new suggestion"):
             self.assertRedirects(response, self._suggestion_url())
+
+
+class TestReportView(BaseCase):
+
+    def setUp(self):
+        self.location = models.JobLocation.objects.create(
+            postcode="N87RW",
+            adzuna_locations="locationstring"
+        )
+        self.report = models.JobDiscoveryReport.objects.create(
+            location=self.location,
+        )
+
+    def _report_url(self):
+        return reverse("job_discovery:report",
+                       kwargs={"guid": self.report.guid})
+
+    def test_get_renders_no_jobs_if_no_jobs_seen(self):
+        response = self.client.get(self._report_url())
+
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "job_discovery/report.html")
+        self.assertEqual(list(response.context["jobs"]), [])
+        self.assertContains(response, "You have not liked any jobs so far.")
+
+    def test_get_renders_jobs_liked(self):
+        pass
+
+    def test_get_does_not_render_jobs_seen_but_not_liked(self):
+        pass

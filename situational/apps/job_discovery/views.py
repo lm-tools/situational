@@ -51,6 +51,7 @@ class SuggestionView(FormView):
     def get_context_data(self, **kwargs):
         context = kwargs
         context["job"] = self.suggested_job
+        context["guid"] = self.report.pk
         return context
 
     def get_initial(self):
@@ -64,6 +65,6 @@ class ReportView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = kwargs
-        # get that report from the guid
-        context["report"] = {}
+        report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
+        context["jobs"] = report.seen_jobs.all()
         return context
