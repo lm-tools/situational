@@ -220,6 +220,9 @@ BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED', False)
 if not BASICAUTH_DISABLED:
     BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
     BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
+BASICAUTH_EXEMPT = [
+    r"/manifest.json$",
+]
 
 
 # Manifest.json

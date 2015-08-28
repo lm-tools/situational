@@ -1,3 +1,5 @@
+import re
+
 from django.http import HttpResponse
 from django.conf import settings
 
@@ -13,13 +15,19 @@ class BasicAuthMiddleware(object):
         response.status_code = 401
         return response
 
-    def _auth_required(self):
-        if settings.BASICAUTH_DISABLED == "True":
+    def _auth_required(self, request):
+        BASICAUTH_DISABLED = settings.BASICAUTH_DISABLED
+        if BASICAUTH_DISABLED == "True" or BASICAUTH_DISABLED is True:
             return False
+
+        for regex in getattr(settings, 'BASICAUTH_EXEMPT', []):
+            if re.match(regex, request.path):
+                return False
+
         return True
 
     def process_request(self, request):
-        if not self._auth_required():
+        if not self._auth_required(request):
             return None
 
         import base64
