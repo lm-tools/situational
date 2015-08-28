@@ -75,12 +75,7 @@ class JobDiscoveryReport(TimeStampedModel):
 
     @property
     def liked_jobs(self):
-        positive_reactions = Reaction.objects.filter(
-            report=self, response="yes"
-        )
-        liked_job_ids = map(lambda x: x.job.pk, positive_reactions)
-        liked_jobs = Job.objects.filter(pk__in=set(liked_job_ids)).all()
-        return liked_jobs
+        return self.seen_jobs.filter(reaction__response="yes")
 
     def add_reaction(self, job, response):
         Reaction.objects.create(report=self, job=job, response=response)

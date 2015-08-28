@@ -119,21 +119,9 @@ class TestReportView(BaseCase):
         self.assertContains(response, "You have not liked any jobs so far.")
 
     def test_get_renders_jobs_liked(self):
-        models.Reaction.objects.create(
-            report=self.report,
-            job=self.job_liked,
-            response="yes"
-        )
-        models.Reaction.objects.create(
-            report=self.report,
-            job=self.job_liked_2,
-            response="yes"
-        )
-        models.Reaction.objects.create(
-            report=self.report,
-            job=self.job_disliked,
-            response="no"
-        )
+        self.report.add_reaction(self.job_liked, "yes")
+        self.report.add_reaction(self.job_liked_2, "yes")
+        self.report.add_reaction(self.job_disliked, "no")
         response = self.client.get(self._report_url())
 
         self.assertEqual(response.status_code, 200)
