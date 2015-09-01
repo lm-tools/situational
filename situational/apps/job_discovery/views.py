@@ -1,8 +1,9 @@
 from django import http
 from django.core.urlresolvers import reverse
-from django.views.generic import FormView, TemplateView
+from django.shortcuts import get_object_or_404
+from django.views.generic import FormView, TemplateView, View
 
-from . import forms, models
+from . import forms, models, pdf
 from .adzuna import Adzuna
 
 
@@ -68,3 +69,27 @@ class ReportView(TemplateView):
         report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
         context["jobs"] = report.liked_jobs
         return context
+
+
+class SendView(TemplateView):
+    template_name = "job_discovery/send.html"
+
+    def post(self, request, *args, **kwargs):
+        email = request.POST['email']
+        report = get_object_or_404(
+            models.JobDiscoveryReport,
+            pk=kwargs['guid']
+        )
+        report.send_to(email)
+        return super().get(self, request, *args, **kwargs)
+
+
+class PDFView(View):
+    def get(self, request, *args, **kwargs):
+        report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
+        data = {}
+        data['jobs'] = report.liked_jobs
+        pdf_contents = pdf.render(data)
+        response = http.HttpResponse(pdf_contents, 'application/pdf')
+        response['Content-Disposition'] = "filename=job-discovery-report.pdf"
+        return response
