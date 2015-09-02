@@ -5,6 +5,8 @@
   <title>Discover jobs to apply for</title>
 </head>
 <body>
-  <h2>Jobs</h2>
+  {% for job in report.liked_jobs %}
+    {% include "job_discovery/_job_card.html" with show_apply=True %}
+  {% endfor %}
 </body>
 </html>
