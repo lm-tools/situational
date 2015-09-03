@@ -7,6 +7,26 @@
   {% for job in jobs %}
     {% include "job_discovery/_job_card.html" with show_apply=True %}
   {% endfor %}
+  <footer>
+    <div class="row">
+      <div class="columns">
+        <div class="panel">
+          <form action="{% url 'job_discovery:send' guid=guid %}" method="post">
+            <label for="email_address">Email yourself a copy of this report</label>
+            {% csrf_token %}
+            <div class="row collapse">
+              <div class="small-9 medium-10 columns">
+                <input type="text" name="email" placeholder="Email address" id="email_address">
+              </div>
+              <div class="small-3 medium-2 columns">
+                <input type="submit" class="button postfix" value="Send">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
 {% else %}
   <h2>You have not liked any jobs so far.</h2>
 {% endif %}

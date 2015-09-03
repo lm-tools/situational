@@ -1,0 +1,12 @@
+{% load embedding %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Discover jobs to apply for</title>
+</head>
+<body>
+  {% for job in report.liked_jobs %}
+    {% include "job_discovery/_job_card.html" with show_apply=True %}
+  {% endfor %}
+</body>
+</html>

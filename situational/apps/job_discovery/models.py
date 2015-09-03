@@ -3,6 +3,7 @@ import uuid
 from model_utils.models import TimeStampedModel
 
 from django.db import models
+from . import tasks
 from .adzuna import Adzuna
 
 
@@ -89,6 +90,9 @@ class JobDiscoveryReport(TimeStampedModel):
         else:
             self.location.import_jobs()
             return unseen_jobs.order_by('?').first()
+
+    def send_to(self, email):
+        tasks.send_job_discovery.delay(self, email)
 
 
 class Reaction(TimeStampedModel):

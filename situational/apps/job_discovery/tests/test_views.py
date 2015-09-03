@@ -1,5 +1,6 @@
 from unittest.mock import patch, MagicMock
 
+from django.core import mail
 from django.core.urlresolvers import reverse
 
 from situational.testing import BaseCase
@@ -130,3 +131,43 @@ class TestReportView(BaseCase):
             list(response.context["jobs"]),
             [self.job_liked, self.job_liked_2]
         )
+
+
+class TestSendView(BaseCase):
+    def setUp(self):
+        self.location = models.JobLocation.objects.create(
+            adzuna_locations="Uk,London,Central London"
+        )
+        self.report = models.JobDiscoveryReport.objects.create(
+            postcode="N87RW",
+            location=self.location,
+        )
+        self.job_liked = models.Job.objects.create()
+        self.location.jobs.add(self.job_liked)
+        with patch("template_to_pdf.convertors.PrinceXML.convert") as convert:
+            convert.return_value = "pdf-file-contents"
+            self.response = self.client.post(
+                reverse(
+                    "job_discovery:send",
+                    kwargs={'guid': self.report.guid}
+                ),
+                data={'email': 'test@example.org'},
+            )
+
+    def test_post_renders_correctly(self):
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, 'job_discovery/send.html')
+
+    def test_post_emails_the_histoy_report(self):
+            self.assertEqual(len(mail.outbox), 1, "Mail should have been sent")
+            message = mail.outbox[0]
+
+            self.assertIn('test@example.org', message.to)
+            self.assertEqual(len(message.attachments), 1)
+            self.assertIn("Your job discovery report", message.body)
+            self.assertIn(
+                "Your job discovery report",
+                message.alternatives[0][0]
+            )
+            self.assertEqual(message.attachments[0][1], "pdf-file-contents")
+            self.assertEqual(message.attachments[0][2], 'application/pdf')
