@@ -32,7 +32,9 @@ def format_timeline_data(session):
             timeline_beginning,
             timeline_end
         )
-        result["items"] += [item]
+        # Prepend to the item list for the first line to be the last year
+        # this gives an "upwards" trend to the timeline
+        result["items"].insert(0, item)
     result["years"] = helpers.year_timeline(
         timeline_beginning,
         timeline_end
