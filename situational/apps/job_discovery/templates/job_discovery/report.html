@@ -1,33 +1,58 @@
 {% extends "base.html" %}
 
+{% block body_class %}class="has-report"{% endblock body_class %}
+
 {% block title %}{% endblock title %}
 
 {% block content %}
-{% if jobs %}
-  {% for job in jobs %}
-    {% include "job_discovery/_job_card.html" with show_apply=True %}
-  {% endfor %}
-  <footer>
-    <div class="row">
-      <div class="columns">
-        <div class="panel">
-          <form action="{% url 'job_discovery:send' guid=guid %}" method="post">
-            <label for="email_address">Email yourself a copy of this report</label>
-            {% csrf_token %}
-            <div class="row collapse">
-              <div class="small-9 medium-10 columns">
-                <input type="text" name="email" placeholder="Email address" id="email_address">
-              </div>
-              <div class="small-3 medium-2 columns">
-                <input type="submit" class="button postfix" value="Send">
-              </div>
+
+<div class="row">
+  <div class="columns">
+    <article class="report clearfix">
+
+      <header>
+        <h1>Understand what sort of jobs you could do</h1>
+        <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
+        <aside>
+          <div class="columns">
+            <a href="{% url 'job_discovery:start' %}">&#8592; start again</a>
+          </div>
+        </aside>
+      </header>
+
+      {% if jobs %}
+        {% for job in jobs %}
+          <section>
+            <div class="columns">
+              {% include "job_discovery/_job_card.html" with show_apply=True %}
             </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </footer>
-{% else %}
-  <h2>You have not liked any jobs so far.</h2>
-{% endif %}
+          </section>
+        {% endfor %}
+
+        <footer>
+          <div class="columns">
+            <div class="panel">
+              <form action="{% url 'job_discovery:send' guid=guid %}" method="post">
+                <label for="email_address">Email yourself a copy of this report</label>
+                {% csrf_token %}
+                <div class="row collapse">
+                  <div class="small-9 medium-10 columns">
+                    <input type="text" name="email" placeholder="Email address" id="email_address">
+                  </div>
+                  <div class="small-3 medium-2 columns">
+                    <input type="submit" class="button postfix" value="Send">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </footer>
+      {% else %}
+        <h2>You have not liked any jobs so far.</h2>
+      {% endif %}
+
+    </article>
+  </div>
+</div>
+
 {% endblock content %}

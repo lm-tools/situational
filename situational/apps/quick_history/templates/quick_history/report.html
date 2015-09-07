@@ -2,62 +2,72 @@
 
 {% block title %}Tell your work coach your history{% endblock title %}
 
-{% block body_class %}class="quick_history"{% endblock body_class %}
+{% block body_class %}class="quick_history has-report"{% endblock body_class %}
 
 {% block content %}
 
 <div class="row">
   <div class="columns">
-    <h2>Timeline</h2>
-    <div class="exp-timeline">
-      <div class="container">
-        <ul class="items">
-          {% for item in timeline.items %}
-            <li>
-              <h5>{{item.description}}</h5>
-              {% for interval in item.intervals %}
-                {% if interval.active %}
-                  <div class="active" style="width: {{interval.width}}%"></div>
-                {% else %}
-                  <div class="inactive" style="width: {{interval.width}}%"></div>
-                {% endif %}
-              {% endfor %}
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <ul class="inline-list dates">
-        {% for year in timeline.years %}
-          <li class="right-border" style="width:{{ year.width }}%">{{ year.label }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="columns">
-      <a href="{% url 'quick_history:clear_session' %}"><< Start again</a>
-    </div>
-  </div>
-  <footer>
-    <div class="row">
-      <div class="columns">
-        <div class="panel">
-          <form action="{% url 'quick_history:send' %}" method="post">
-            <label for="email_address">Email yourself a copy of this report</label>
-            {% csrf_token %}
-            <div class="row collapse">
-              <div class="small-9 medium-10 columns">
-                <input type="text" name="email" placeholder="Email address" id="email_address">
-              </div>
-              <div class="small-3 medium-2 columns">
-                <input type="submit" class="button postfix" value="Send">
-              </div>
+    <article class="report clearfix">
+
+      <header>
+        <h1>Timeline</h1>
+        <aside>
+          <div class="columns">
+            <a href="{% url 'quick_history:clear_session' %}">&#8592; start again</a>
+          </div>
+        </aside>
+      </header>
+
+      <section>
+        <div class="columns">
+          <div class="exp-timeline">
+            <div class="container">
+              <ul class="items">
+                {% for item in timeline.items %}
+                  <li>
+                    <h5>{{item.description}}</h5>
+                    {% for interval in item.intervals %}
+                      {% if interval.active %}
+                        <div class="active" style="width: {{interval.width}}%"></div>
+                      {% else %}
+                        <div class="inactive" style="width: {{interval.width}}%"></div>
+                      {% endif %}
+                    {% endfor %}
+                  </li>
+                {% endfor %}
+              </ul>
             </div>
-          </form>
+            <ul class="inline-list dates">
+              {% for year in timeline.years %}
+                <li class="right-border" style="width:{{ year.width }}%">{{ year.label }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
-      </div>
-    </div>
-  </footer>
+      </section>
+
+      <footer>
+        <div class="columns">
+          <div class="panel">
+            <form action="{% url 'quick_history:send' %}" method="post">
+              <label for="email_address">Email yourself a copy of this report</label>
+              {% csrf_token %}
+              <div class="row collapse">
+                <div class="small-9 medium-10 columns">
+                  <input type="text" name="email" placeholder="Email address" id="email_address">
+                </div>
+                <div class="small-3 medium-2 columns">
+                  <input type="submit" class="button postfix" value="Send">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </footer>
+
+    </article>
+  </div>
 </div>
 
-{% endblock %}
+{% endblock content %}

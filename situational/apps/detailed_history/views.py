@@ -244,3 +244,10 @@ class PDFView(View):
         response = http.HttpResponse(pdf_contents, 'application/pdf')
         response['Content-Disposition'] = "filename=history-summary.pdf"
         return response
+
+
+class ClearSessionView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        self.request.session.delete()
+        url = reverse('detailed_history:start')
+        return http.HttpResponseRedirect(url)
