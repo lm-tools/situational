@@ -23,4 +23,6 @@ urlpatterns = [
         name="send"),
     url(r'summary\.pdf$', views.PDFView.as_view(),
         name="pdf"),
+    url(r'clear_session$', views.ClearSessionView.as_view(),
+        name="clear_session"),
 ]
