@@ -1,3 +1,4 @@
+import uuid
 from unittest.mock import patch, MagicMock
 
 from django.core import mail
@@ -70,7 +71,7 @@ class TestSuggestionView(BaseCase):
             self.assertEqual(response.context["job"], job)
 
     def test_post(self):
-        job = models.Job.objects.create(adzuna_id="foo")
+        job = models.Job.objects.create(adzuna_id=uuid.uuid4())
         job_response = "yes"
 
         response = self.client.post(
@@ -100,9 +101,9 @@ class TestReportView(BaseCase):
             postcode="N87RW",
             location=self.location,
         )
-        self.job_liked = models.Job.objects.create()
-        self.job_liked_2 = models.Job.objects.create()
-        self.job_disliked = models.Job.objects.create()
+        self.job_liked = models.Job.objects.create(adzuna_id=uuid.uuid4())
+        self.job_liked_2 = models.Job.objects.create(adzuna_id=uuid.uuid4())
+        self.job_disliked = models.Job.objects.create(adzuna_id=uuid.uuid4())
         self.location.jobs.add(self.job_liked)
         self.location.jobs.add(self.job_liked_2)
         self.location.jobs.add(self.job_disliked)
@@ -142,7 +143,7 @@ class TestSendView(BaseCase):
             postcode="N87RW",
             location=self.location,
         )
-        self.job_liked = models.Job.objects.create()
+        self.job_liked = models.Job.objects.create(adzuna_id=uuid.uuid4)
         self.location.jobs.add(self.job_liked)
         with patch("template_to_pdf.convertors.PrinceXML.convert") as convert:
             convert.return_value = "pdf-file-contents"

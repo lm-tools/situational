@@ -1,3 +1,5 @@
+import uuid
+
 from situational.testing import BaseCase
 from job_discovery import models
 
@@ -19,10 +21,10 @@ class TestJobDiscoveryModel(BaseCase):
             postcode="N87RQ",
             location=self.other_location
         )
-        self.job = models.Job.objects.create()
-        self.job_2 = models.Job.objects.create()
+        self.job = models.Job.objects.create(adzuna_id=uuid.uuid4())
+        self.job_2 = models.Job.objects.create(adzuna_id=uuid.uuid4())
         self.location.jobs.add(self.job, self.job_2)
-        self.other_job = models.Job.objects.create()
+        self.other_job = models.Job.objects.create(adzuna_id=uuid.uuid4())
         self.other_location.jobs.add(self.other_job)
 
     def test_get_suggestion_returns_job_from_correct_location(self):
