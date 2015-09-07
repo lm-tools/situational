@@ -21,26 +21,37 @@
     <h1>Select jobs you'd like to know more about</h1>
   </div>
 </div>
+
 <form id="results" method=post>
   {{ form.errors }}
   {% csrf_token %}
   {{ wizard.management_form }}
-  {% for field in form %}
-    <div class="row">
-      <div class="columns medium-10 large-9 result-item">
 
-        <label>
-          <h4>{{ field }} {{ field.label }}</h4>
-          <p>{{ field.help_text }}</p>
-        </label>
+  {% for fieldset in form.fieldsets %}
+    <h2>'{{ fieldset.legend|title }}'</h2>
+    {% for field in fieldset %}
+      <div class="row">
+        <div class="columns medium-10 large-9 result-item">
+          <label>
+            <h4>{{ field }} {{ field.label }}</h4>
+            <p>{{ field.help_text }}</p>
+          </label>
+        </div>
+      </div>
+    {% empty %}
+    <div class="row">
+      <div class="columns">
+        <p>Sorry, we couldn't find any results for this job role</p>
       </div>
     </div>
-  {% empty %}
-  <div class="row">
-    <div class="columns">
-      <p>Sorry, we couldn't find any results for those job roles</p>
+    {% endfor %}
+    <div class="row">
+      <div class="columns">
+        <button type=submit class=button>Next</button>
+      </div>
     </div>
-  </div>
+  </form>
+
   {% endfor %}
   <div class="row">
     <div class="columns">

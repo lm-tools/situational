@@ -1,8 +1,27 @@
 from django import forms
+from django.forms.forms import BoundField
 
 from localflavor.gb.forms import GBPostcodeField
 from .helpers import LMIForAllClient
 from .fields import MultiCharField
+
+
+class FieldSet(object):
+    """
+    Taken from stackoverflow.com/questions/10366745/django-form-field-grouping
+
+    Helper class to group BoundField objects together.
+    """
+    def __init__(self, form, fields, legend='', cls=None):
+        self.form = form
+        self.legend = legend
+        self.fields = fields
+        self.cls = cls
+
+    def __iter__(self):
+        for name in self.fields:
+            field = self.form.fields[name]
+            yield BoundField(self.form, field, name)
 
 
 class NoColonForm(forms.Form):
@@ -38,19 +57,26 @@ class JobDescriptionsForm(BaseLMIForm):
         keywords = kwargs['keywords']
         del kwargs['keywords']
         super().__init__(*args, **kwargs)
+        self.fieldsets = []
         self._add_fields_from_keywords(keywords)
 
     def _add_fields_from_keywords(self, keywords):
         for keyword in keywords:
             if keyword:
+                soc_codes = set()
                 lmi_data = self.lmi_client.keyword_search(keyword)
                 for item in lmi_data[:3]:
-                    self.fields[str(item['soc'])] = forms.BooleanField(
+                    soc_code = str(item['soc'])
+                    soc_codes.add(soc_code)
+                    field = forms.BooleanField(
                         widget=forms.CheckboxInput,
                         label=item['title'],
                         help_text=item['description'],
                         required=False,
                     )
+                    self.fields[soc_code] = field
+                self.fieldsets.append(FieldSet(
+                    self, list(soc_codes), keyword))
 
     def clean(self):
         cleaned_data = super().clean()
