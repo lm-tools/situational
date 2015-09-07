@@ -8,7 +8,7 @@ from .adzuna import Adzuna
 
 
 class Job(TimeStampedModel):
-    adzuna_id = models.CharField(max_length=255, db_index=True)
+    adzuna_id = models.CharField(max_length=255, unique=True)
     url = models.CharField(max_length=2000, null=True)
     title = models.CharField(max_length=120, null=True)
     salary_max = models.CharField(max_length=120, null=True)
@@ -26,7 +26,7 @@ class Job(TimeStampedModel):
 
 
 class JobLocation(models.Model):
-    adzuna_locations = models.CharField(max_length=200, db_index=True)
+    adzuna_locations = models.CharField(max_length=200, unique=True)
     jobs = models.ManyToManyField(Job)
 
     def import_jobs(self):
