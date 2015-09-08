@@ -4,7 +4,7 @@
 
 {% block content %}
 {% include "job_discovery/_job_card.html" %}
-<form method=post>
+<form method=post autocomplete="OFF">
   {% csrf_token %}
   {{ form }}
 </form>
