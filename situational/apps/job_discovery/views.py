@@ -86,10 +86,11 @@ class SendView(TemplateView):
 
 class PDFView(View):
     def get(self, request, *args, **kwargs):
-        report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
-        data = {}
-        data['jobs'] = report.liked_jobs
-        pdf_contents = pdf.render(data)
+        report = get_object_or_404(
+            models.JobDiscoveryReport,
+            pk=kwargs['guid']
+        )
+        pdf_contents = pdf.render(report)
         response = http.HttpResponse(pdf_contents, 'application/pdf')
         response['Content-Disposition'] = "filename=job-discovery-report.pdf"
         return response

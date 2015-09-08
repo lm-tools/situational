@@ -3,10 +3,22 @@
 <html>
 <head>
   <title>Discover jobs to apply for</title>
+  {% embed_stylesheet "print/css/job_discovery.scss" %}
 </head>
 <body>
-  {% for job in report.liked_jobs %}
-    {% include "job_discovery/_job_card.html" with show_apply=True %}
-  {% endfor %}
+  <article class="report clearfix">
+    <header>
+      <h1>Understand what sort of jobs you could do</h1>
+      <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
+    </header>
+
+    {% for job in report.liked_jobs %}
+      <section>
+        <div class="columns">
+          {% include "job_discovery/_job_card.html" with show_apply=False %}
+        </div>
+      </section>
+    {% endfor %}
+  </article>
 </body>
 </html>
