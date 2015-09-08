@@ -55,3 +55,8 @@
 #id_date_year, #id_date_month {
   width: 100px;
 }
+
+// Leaflet requires that maps have a defined height
+.map {
+  height: 15rem;
+}
