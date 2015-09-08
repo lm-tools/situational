@@ -96,7 +96,7 @@
       <footer>
         <div class="columns">
           <div class="panel">
-            <form action="{% url 'sectors:send_report' report_id=report.pk %}" method="post">
+            <form action="{% url 'sectors:send_report' report_id=report.pk %}" method="post" autocomplete="OFF">
               <label for="email_address">Email yourself a copy of this report</label>
               {% csrf_token %}
               <div class="row collapse">

@@ -21,7 +21,7 @@
   <div class="columns">
     <h1>Select jobs you'd like to know more about</h1>
 
-    <form id="results" method=post>
+    <form id="results" method=post autocomplete="OFF">
       {{ form.errors }}
       {% csrf_token %}
       {{ wizard.management_form }}

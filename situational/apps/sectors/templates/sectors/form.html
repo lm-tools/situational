@@ -5,7 +5,7 @@
   <div class="row">
     <div class="columns large-8 large-centered">
       <h1>Enter location and job roles</h1>
-      <form method=post id="sector_form">
+      <form method=post id="sector_form" autocomplete="OFF">
         {{ wizard.management_form }}
         {% csrf_token %}
         <div class="row">

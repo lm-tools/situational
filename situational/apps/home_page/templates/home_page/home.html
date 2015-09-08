@@ -70,7 +70,7 @@
         <p>We would love to know about any questions, bug reports, suggestions
           and comments you may have on our prototypes.</p>
 
-        <form action="{% url 'home_page:home' %}" method="post">
+        <form action="{% url 'home_page:home' %}" method="post" autocomplete="OFF">
           {% csrf_token %}
           {{ form }}
           <input type="submit" class="button" value="Send" />
