@@ -1,1 +1,2 @@
 situational/testing/cassettes/**/*.yaml binary
+situational/assets/leaflet/**/* binary
