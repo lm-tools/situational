@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load add_get_parameter %}
 
 {% block title %}Understand what sort of jobs you could do{% endblock title %}
 
@@ -19,28 +20,44 @@
 <div class="row">
   <div class="columns">
     <h1>Select jobs you'd like to know more about</h1>
+
+    <form id="results" method=post>
+      {{ form.errors }}
+      {% csrf_token %}
+      {{ wizard.management_form }}
+
+      {% for fieldset in form.fieldsets %}
+        <h2>'{{ fieldset.legend|title }}'</h2>
+        {% for field in fieldset %}
+          <div class="row">
+            <div class="columns medium-10 large-9 result-item">
+              <label>
+                <h4>{{ field }} {{ field.label }}</h4>
+                <p>{{ field.help_text }}</p>
+              </label>
+            </div>
+          </div>
+        {% empty %}
+        <div class="row">
+          <div class="columns">
+            <p>Sorry, we couldn't find any results for this job role</p>
+          </div>
+        </div>
+        {% endfor %}
+
+        {% if fieldset.fields %}
+        <a href="{% add_get 'show_more[]'=fieldset.legend %}" class="button tiny secondary">More results</a>
+        {% endif %}
+      {% endfor %}
+      <div class="row">
+        <div class="columns">
+          <button type=submit class=button>Next</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
-<form id="results" method=post>
-  {{ form.errors }}
-  {% csrf_token %}
-  {{ wizard.management_form }}
-  {% for field in form %}
-    <div class="row">
-      <div class="columns medium-10 large-9 result-item">
 
-        <label>
-          <h4>{{ field }} {{ field.label }}</h4>
-          <p>{{ field.help_text }}</p>
-        </label>
-      </div>
-    </div>
-  {% empty %}
-  <div class="row">
-    <div class="columns">
-      <p>Sorry, we couldn't find any results for those job roles</p>
-    </div>
-  </div>
   {% endfor %}
   <div class="row">
     <div class="columns">
