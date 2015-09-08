@@ -55,7 +55,10 @@ class SectorForm(NoColonForm):
 class JobDescriptionsForm(BaseLMIForm):
     def __init__(self, *args, **kwargs):
         keywords = kwargs['keywords']
+        self.show_more = kwargs.get('show_more', [])
         del kwargs['keywords']
+        if 'show_more' in kwargs:
+            del kwargs['show_more']
         super().__init__(*args, **kwargs)
         self.fieldsets = []
         self._add_fields_from_keywords(keywords)
@@ -65,7 +68,10 @@ class JobDescriptionsForm(BaseLMIForm):
             if keyword:
                 soc_codes = set()
                 lmi_data = self.lmi_client.keyword_search(keyword)
-                for item in lmi_data[:3]:
+                count = 3
+                if keyword in self.show_more:
+                    count = 6
+                for item in lmi_data[:count]:
                     soc_code = str(item['soc'])
                     soc_codes.add(soc_code)
                     field = forms.BooleanField(
