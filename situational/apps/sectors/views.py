@@ -41,8 +41,13 @@ class SectorWizardView(NamedUrlCookieWizardView):
     def done(self, form_list, form_dict, **kwargs):
         sector_form = form_dict['sector_form']
         postcode = sector_form.cleaned_data['postcode']
-        description_form = form_dict['job_descriptions_form']
-        soc_codes = [k for k, v in description_form.cleaned_data.items() if v]
+        discriptions_key = 'job_descriptions_form'
+        description_form_data = \
+            self.storage.get_step_data(discriptions_key)
+        soc_codes = []
+        for k, v in description_form_data.items():
+            if k.startswith(discriptions_key) and '-' in k:
+                soc_codes.append(k.split('-')[1])
         soc_codes_string = ','.join(soc_codes)
         report, _created = models.SectorsReport.objects.get_or_create(
             postcode=postcode,
