@@ -49,21 +49,10 @@
         <a href="{% add_get 'show_more[]'=fieldset.legend %}" class="button tiny secondary">More results</a>
         {% endif %}
       {% endfor %}
-      <div class="row">
-        <div class="columns">
-          <button type=submit class=button>Next</button>
-        </div>
-      </div>
+
+      <a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Back</a>
+      <button type=submit class=button>Next</button>
     </form>
   </div>
 </div>
-
-  {% endfor %}
-  <div class="row">
-    <div class="columns">
-      <a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Back</a>
-      <button type=submit class=button>Next</button>
-    </div>
-  </div>
-</form>
 {% endblock content %}
