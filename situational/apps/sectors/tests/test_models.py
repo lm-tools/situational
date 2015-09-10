@@ -86,10 +86,8 @@ class TestSectorsReportSendTo(SectorsReportBuilderMixin, BaseCase):
 
         self.assertIn('test-address@example.org', message.to)
         self.assertEqual(len(message.attachments), 1)
-        self.assertIn("Your sectors report", message.body)
-        self.assertIn("Your sectors report", message.alternatives[0][0])
-        for soc_title in self.SOC_TITLES:
-            self.assertIn(soc_title, message.body)
-            self.assertIn(soc_title, message.alternatives[0][0])
+        self.assertIn("Your report is attached to this email.", message.body)
+        self.assertIn("Your report is attached to this email.",
+                      message.alternatives[0][0])
         self.assertEqual(message.attachments[0][1], 'mock pdf content')
         self.assertEqual(message.attachments[0][2], 'application/pdf')

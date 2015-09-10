@@ -78,7 +78,7 @@ def soc_code_data(report):
 
 @shared_task
 def send_report(report, email):
-    subject = "Your sectors report"
+    subject = "What sort of jobs you could do"
     logger.debug("Sending report {} to {}".format(report.id, email))
     send_templated_email(
         template_name="sectors/emails/sectors_report",
