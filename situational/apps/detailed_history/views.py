@@ -236,6 +236,11 @@ class SendView(TemplateView):
         tasks.send_detailed_history.delay(history, email)
         return self.get(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['email_address'] = self.request.POST['email']
+        return context
+
 
 class PDFView(View):
     def get(self, request, *args, **kwargs):

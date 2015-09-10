@@ -41,3 +41,5 @@ class TestSendView(BaseCase):
             self.assertEqual(response.status_code, 200)
             self.assertTemplateUsed(response, 'travel_report/send.html')
             self.assertEqual(response.context['postcode'], 'SW1H0DJ')
+            self.assertEqual(response.context['email_address'],
+                             'test@example.org')

@@ -158,6 +158,8 @@ class TestSendView(BaseCase):
     def test_post_renders_correctly(self):
         self.assertEqual(self.response.status_code, 200)
         self.assertTemplateUsed(self.response, 'job_discovery/send.html')
+        self.assertEqual(self.response.context['email_address'],
+                         'test@example.org')
 
     def test_post_emails_the_histoy_report(self):
             self.assertEqual(len(mail.outbox), 1, "Mail should have been sent")

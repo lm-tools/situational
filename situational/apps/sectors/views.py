@@ -118,3 +118,8 @@ class SendReportView(TemplateView):
         )
         report.send_to(email)
         return super().get(self, request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = kwargs
+        context['email_address'] = self.request.POST['email']
+        return context
