@@ -1,3 +1,5 @@
+{% load humanize %}
+
 <table style="border: 4px; border-style: solid;">
   <tr>
     <td>Title</td>
@@ -8,7 +10,7 @@
   </tr>
   <tr>
     <td>Salary</td>
-    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min }}</b>, <i>is salary predicted?:</i> <b>{{ job.salary_is_predicted }}</b></td>
+    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b>, <i>is salary predicted?:</i> <b>{{ job.salary_is_predicted }}</b></td>
   </tr>
   <tr>
     <td>Location</td>
@@ -31,7 +33,7 @@
     <td>Company</td>
     <td colspan="2">
       <b>{{ job.company_name }}</b>
-      {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary }}</b>){% endif %}
+      {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary | intcomma}}</b>){% endif %}
     </td>
   </tr>
   <tr>
