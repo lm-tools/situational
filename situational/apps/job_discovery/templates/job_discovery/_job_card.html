@@ -8,7 +8,7 @@
   </tr>
   <tr>
     <td>Salary</td>
-    <td colspan="2"><i>max salary:</i> <b>{{ job.salary_max }}</b>, <i>min salary:</i> <b>{{ job.salary_min }}</b>, <i>is salary predicted?:</i> <b>{{ job.salary_is_predicted }}</b></td>
+    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min }}</b>, <i>is salary predicted?:</i> <b>{{ job.salary_is_predicted }}</b></td>
   </tr>
   <tr>
     <td>Location</td>
@@ -29,7 +29,10 @@
   </tr>
   <tr>
     <td>Company</td>
-    <td colspan="2"><b>{{ job.company_name }}</b> (<i>average_company_salary:</i> <b>{{ job.average_company_salary }}</b>)</td>
+    <td colspan="2">
+      <b>{{ job.company_name }}</b>
+      {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary }}</b>){% endif %}
+    </td>
   </tr>
   <tr>
     <td>Contract</td>
