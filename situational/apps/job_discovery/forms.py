@@ -11,10 +11,11 @@ class PostcodeForm(forms.Form):
 
 class SuggestionForm(forms.Form):
     RESPONSE_CHOICES = (
-        ("yes", "Yes"),
-        ("no", "No"),
+        ("no", "No, this isn't for me"),
+        ("yes", "Yes, this sounds interesting"),
     )
 
     job_id = forms.CharField(widget=forms.HiddenInput)
     response = forms.ChoiceField(choices=RESPONSE_CHOICES,
-                                 widget=widgets.MultipleSubmitButton)
+                                 widget=widgets.MultipleSubmitButton,
+                                 label="")
