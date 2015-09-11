@@ -7,7 +7,6 @@ class HistoryDetailsForm(forms.Form):
     CIRCUMSTANCE_CHOICES = [
         ("full_time", "Full time"),
         ("part_time", "Part time"),
-        ("work_programme", "Work programme"),
         ("unemployed", "Unemployed"),
         ("sick", "Off sick"),
         ("training", "In full time training"),
