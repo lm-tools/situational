@@ -46,7 +46,7 @@ class SectorForm(NoColonForm):
     sector = MultiCharField(
         count=SECTOR_INPUT_COUNT,
         label="How would you describe the types of jobs you could do?"
-              " (eg security, data entry, driver)",
+              " (eg customer services, security, data entry, driver)",
         require_all_fields=False,
         error_messages={'required': 'Enter at least one job role', },
     )
