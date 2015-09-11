@@ -1,10 +1,16 @@
 {% extends "job_discovery/base.html" %}
+{% load adzuna %}
 
 {% block content %}
-{% include "job_discovery/_job_card.html" %}
-<form method=post autocomplete="OFF">
-  {% csrf_token %}
-  {{ form }}
-</form>
-<a href="{% url 'job_discovery:report' guid=guid %}" class="button">I'm done</a>
+<div class="row">
+  <div class="columns">
+    <h4>Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h4>
+    {% include "job_discovery/_job_card.html" %}
+    <form method=post autocomplete="OFF">
+      {% csrf_token %}
+      {{ form }}
+    </form>
+    <a href="{% url 'job_discovery:report' guid=guid %}" class="button">I'm done</a>
+  </div>
+</div>
 {% endblock content %}

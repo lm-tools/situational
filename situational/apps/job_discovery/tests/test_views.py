@@ -69,6 +69,8 @@ class TestSuggestionView(BaseCase):
             self.assertEqual(response.status_code, 200)
             self.assertTemplateUsed(response, "job_discovery/suggestion.html")
             self.assertEqual(response.context["job"], job)
+            self.assertEqual(response.context["job_pool_location"],
+                             "Uk,London,Central London")
 
     def test_post(self):
         job = models.Job.objects.create(adzuna_id=uuid.uuid4())
@@ -132,6 +134,8 @@ class TestReportView(BaseCase):
             list(response.context["jobs"]),
             [self.job_liked, self.job_liked_2]
         )
+        self.assertEqual(response.context["job_pool_location"],
+                         "Uk,London,Central London")
 
 
 class TestSendView(BaseCase):
