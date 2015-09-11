@@ -23,7 +23,7 @@
   </tr>
   <tr>
     <td>Category</td>
-    <td colspan="2">{{ job.category_name }}</td>
+    <td colspan="2">{{ job.category_name | default_if_none:"unknown" }}</td>
   </tr>
   <tr>
     <td>Description</td>
@@ -32,12 +32,12 @@
   <tr>
     <td>Company</td>
     <td colspan="2">
-      <b>{{ job.company_name }}</b>
+      <b>{{ job.company_name | default_if_none:"unknown" }}</b>
       {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary | intcomma}}</b>){% endif %}
     </td>
   </tr>
   <tr>
     <td>Contract</td>
-    <td colspan="2"><i>contract type:</i> <b>{{ job.contract_type }}</b>, <i>contract time:</i> <b>{{ job.contract_time }}</b></td>
+    <td colspan="2"><i>Permanent / contract:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b>, <i>Full-time / part-time:</i> <b>{{ job.contract_time | default_if_none:"unknown" }}</b></td>
   </tr>
 </table>
