@@ -9,8 +9,8 @@
     <td>{% if show_apply and job.url %}<a href="{{ job.url }}" class="button right" target="_blank">apply</a>{% endif %}</td>
   </tr>
   <tr>
-    <td>Salary</td>
-    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b>, <i>is salary predicted?:</i> <b>{{ job.salary_is_predicted }}</b></td>
+    <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
+    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b></td>
   </tr>
   <tr>
     <td>Location</td>
