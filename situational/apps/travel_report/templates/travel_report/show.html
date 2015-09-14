@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block body_class %}class="has-report"{% endblock body_class %}
+{% block body_class %}class="has-report single-screen"{% endblock body_class %}
 
 {% block content %}
 
@@ -8,8 +8,8 @@
   <div class="columns">
     <article class="report clearfix">
       <header>
-        <h1>Understand where you could travel for work</h1>
-        <p>This report contains information to help you understand travel time and costs when you are looking for work.</p>
+        <h1>Where you could travel for work</h1>
+        <p>Travel times from {{ report.postcode }} on public transport at 8 am</p>
         <aside>
           <div class="columns">
             <a href="{% url 'travel_report:start' %}">&#8592; start again</a>
@@ -18,12 +18,7 @@
       </header>
 
       <section>
-        <div class="columns small-centered">
-          <header>
-            <h3>Travel times from {{ report.postcode }} on public transport</h3>
-          </header>
-          <p><img src="{{ report.travel_times_map.image.url }}"></p>
-        </div>
+        <img src="{{ report.travel_times_map.image.url }}">
       </section>
 
       <footer>

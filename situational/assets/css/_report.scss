@@ -1,3 +1,6 @@
+// Needed here for print styles
+@import '_foundation_settings';
+
 body.has-report {
   @media #{$large-up} {
     background: #333333;
@@ -12,9 +15,9 @@ body.has-report {
 
   > header {
     text-align: center;
-    margin: 10% 5% 5% 5%;
-    @media #{$medium-up} {
-      margin-top: 5%;
+    margin: 5% 0 0 0;
+    @media #{$large-up} {
+      margin: 5% 5% 5% 5%;
     }
     p {
       color: #6F6F6F;
@@ -55,3 +58,13 @@ body.has-report {
   }
 }
 
+body.single-screen {
+    @media #{$medium-down} {
+        footer {
+            position:fixed;
+            bottom:0;
+            left:0;
+            right:0;
+        }
+    }
+}
