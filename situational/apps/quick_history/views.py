@@ -146,9 +146,9 @@ class ClearSessionView(TemplateView):
 class StartView(TemplateView):
     template_name = "quick_history/start.html"
 
-    def get(self, request, *args, **kwargs):
-        response = super().get(request, *args, **kwargs)
-        return response
+    def post(self, request, *args, **kwargs):
+        self.request.session['quick_history'] = []
+        return http.HttpResponseRedirect(reverse("quick_history:details"))
 
 
 class SendView(TemplateView):

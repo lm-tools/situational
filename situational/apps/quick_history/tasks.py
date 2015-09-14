@@ -16,9 +16,9 @@ def send_quick_history(history, email):
         template_name="quick_history/emails/quick_history_report",
         context={"report": history},
         to=[email],
-        subject="Your detailed history report",
+        subject="Your history snapshot",
         attachments=[
-            ("quick-history-report.pdf",
+            ("history-snapshot.pdf",
              pdf.render(history),
              "application/pdf"),
         ],
