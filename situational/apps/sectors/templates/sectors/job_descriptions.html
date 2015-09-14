@@ -17,42 +17,67 @@
   }
 </style>
 
-<div class="row">
-  <div class="columns">
-    <h1>Select jobs you'd like to know more about</h1>
+<article class="sectors">
+  <div class="row">
+    <div class="columns">
+      <h1>Jobs you'd like to know more about</h1>
+      <p><a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Refine search</a></p>
 
-    <form id="results" method=post autocomplete="OFF">
-      {{ form.errors }}
-      {% csrf_token %}
-      {{ wizard.management_form }}
+      <form id="results" method=post autocomplete="OFF">
+        {{ form.errors }}
+        {% csrf_token %}
+        {{ wizard.management_form }}
 
-      {% for fieldset in form.fieldsets %}
-        <h2>'{{ fieldset.legend|title }}'</h2>
-        {% for field in fieldset %}
-          <div class="row">
-            <div class="columns medium-10 large-9 result-item">
-              <label>
-                <h4>{{ field }} {{ field.label }}</h4>
-                <p>{{ field.help_text }}</p>
-              </label>
-            </div>
-          </div>
-        {% empty %}
-        <div class="row">
-          <div class="columns">
-            <p>Sorry, we couldn't find any results for this job role</p>
-          </div>
-        </div>
+        {% for fieldset in form.fieldsets %}
+          <section>
+            <header>
+              <h2>'{{ fieldset.legend|title }}'</h2>
+            </header>
+
+            {% for field in fieldset %}
+              <div class="row">
+                <div class="columns medium-10 large-9 result-item">
+                  <label>
+                    <h4>{{ field }} {{ field.label }}</h4>
+                    <p>{{ field.help_text }}</p>
+                  </label>
+                </div>
+              </div>
+            {% empty %}
+              <div class="row">
+                <div class="columns">
+                  <p>Sorry, we couldn't find any results for this job role</p>
+                </div>
+              </div>
+            {% endfor %}
+
+            {% if fieldset.fields %}
+              <footer>
+                <div class="row">
+                  <div class="columns">
+                    <a href="{% add_get 'show_more[]'=fieldset.legend %}" class="button tiny secondary">More results</a>
+                  </div>
+                </div>
+              </footer>
+            {% endif %}
+          </section>
         {% endfor %}
 
-        {% if fieldset.fields %}
-        <a href="{% add_get 'show_more[]'=fieldset.legend %}" class="button tiny secondary">More results</a>
-        {% endif %}
-      {% endfor %}
-
-      <a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Back</a>
-      <button type=submit class=button>Next</button>
-    </form>
+        <div class="row">
+          <div class="columns">
+            <button type=submit class=button>Next</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
+</article>
 {% endblock content %}
+{% block javascript %}
+  {{ block.super }}
+  <script>
+    $(".result-item :checkbox").change(function() {
+      $(this).closest(".result-item").toggleClass("selected", this.checked);
+    });
+  </script>
+{% endblock javascript %}

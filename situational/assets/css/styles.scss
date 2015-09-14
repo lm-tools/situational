@@ -56,6 +56,18 @@
   width: 100px;
 }
 
+.sectors {
+  .selected {
+    background: $secondary-color;
+  }
+
+  section {
+    footer {
+      margin-top: 0.5rem;
+    }
+  }
+}
+
 // Leaflet requires that maps have a defined height
 .map {
   height: 15rem;
