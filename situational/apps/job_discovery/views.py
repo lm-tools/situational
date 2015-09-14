@@ -53,6 +53,7 @@ class SuggestionView(FormView):
         context = kwargs
         context["job"] = self.suggested_job
         context["guid"] = self.report.pk
+        context["job_pool_location"] = self.report.location.adzuna_locations
         return context
 
     def get_initial(self):
@@ -68,6 +69,7 @@ class ReportView(TemplateView):
         context = kwargs
         report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
         context["jobs"] = report.liked_jobs
+        context["job_pool_location"] = report.location.adzuna_locations
         return context
 
 

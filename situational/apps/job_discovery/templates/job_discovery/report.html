@@ -1,4 +1,5 @@
 {% extends "job_discovery/base.html" %}
+{% load adzuna %}
 
 {% block body_class %}class="has-report"{% endblock body_class %}
 
@@ -19,36 +20,41 @@
       </header>
 
       {% if jobs %}
-        {% for job in jobs %}
-          <section>
-            <div class="columns">
-              {% include "job_discovery/_job_card.html" with show_apply=True %}
-            </div>
-          </section>
-        {% endfor %}
+        <section>
+          <header>
+            <h4>Jobs in {{ job_pool_location | friendly_adzuna_location }}</h4>
+          </header>
 
-        <footer>
-          <div class="columns">
-            <div class="panel">
-              <form action="{% url 'job_discovery:send' guid=guid %}" method="post" autocomplete="OFF">
-                <label for="email_address">Email yourself a copy of this report</label>
-                {% csrf_token %}
-                <div class="row collapse">
-                  <div class="small-9 medium-10 columns">
-                    <input type="text" name="email" placeholder="Email address" id="email_address">
+          {% for job in jobs %}
+            <section>
+              <div class="columns">
+                {% include "job_discovery/_job_card.html" with show_apply=True %}
+              </div>
+            </section>
+          {% endfor %}
+
+          <footer>
+            <div class="columns">
+              <div class="panel">
+                <form action="{% url 'job_discovery:send' guid=guid %}" method="post" autocomplete="OFF">
+                  <label for="email_address">Email yourself a copy of this report</label>
+                  {% csrf_token %}
+                  <div class="row collapse">
+                    <div class="small-9 medium-10 columns">
+                      <input type="text" name="email" placeholder="Email address" id="email_address">
+                    </div>
+                    <div class="small-3 medium-2 columns">
+                      <input type="submit" class="button postfix" value="Send">
+                    </div>
                   </div>
-                  <div class="small-3 medium-2 columns">
-                    <input type="submit" class="button postfix" value="Send">
-                  </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+        </section>
       {% else %}
         <h2>You have not liked any jobs so far.</h2>
       {% endif %}
-
     </article>
   </div>
 </div>

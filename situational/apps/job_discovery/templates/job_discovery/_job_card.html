@@ -1,14 +1,16 @@
-<table style="border: 4px; border-style: solid;">
+{% load humanize %}
+
+<table style="border: 4px; border-style: solid; width: 100%">
   <tr>
     <td>Title</td>
     <td>
-      <b>{{ job.title }}</b>
+      <h5>{{ job.title }}</h5>
     </td>
     <td>{% if show_apply and job.url %}<a href="{{ job.url }}" class="button right" target="_blank">apply</a>{% endif %}</td>
   </tr>
   <tr>
-    <td>Salary</td>
-    <td colspan="2"><i>max salary:</i> <b>{{ job.salary_max }}</b>, <i>min salary:</i> <b>{{ job.salary_min }}</b>, <i>is salary predicted?:</i> <b>{{ job.salary_is_predicted }}</b></td>
+    <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
+    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b></td>
   </tr>
   <tr>
     <td>Location</td>
@@ -21,7 +23,7 @@
   </tr>
   <tr>
     <td>Category</td>
-    <td colspan="2">{{ job.category_name }}</td>
+    <td colspan="2">{{ job.category_name | default_if_none:"unknown" }}</td>
   </tr>
   <tr>
     <td>Description</td>
@@ -29,10 +31,13 @@
   </tr>
   <tr>
     <td>Company</td>
-    <td colspan="2"><b>{{ job.company_name }}</b> (<i>average_company_salary:</i> <b>{{ job.average_company_salary }}</b>)</td>
+    <td colspan="2">
+      <b>{{ job.company_name | default_if_none:"unknown" }}</b>
+      {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary | intcomma}}</b>){% endif %}
+    </td>
   </tr>
   <tr>
     <td>Contract</td>
-    <td colspan="2"><i>contract type:</i> <b>{{ job.contract_type }}</b>, <i>contract time:</i> <b>{{ job.contract_time }}</b></td>
+    <td colspan="2"><i>Permanent / contract:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b>, <i>Full-time / part-time:</i> <b>{{ job.contract_time | default_if_none:"unknown" }}</b></td>
   </tr>
 </table>

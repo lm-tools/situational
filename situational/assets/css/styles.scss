@@ -72,3 +72,16 @@
 .map {
   height: 15rem;
 }
+
+.job-suggestion-controls {
+  ul {
+    @extend .row;
+    list-style-type: none;
+
+    li {
+      @extend .columns;
+      @extend .small-6;
+      text-align: center;
+    }
+  }
+}

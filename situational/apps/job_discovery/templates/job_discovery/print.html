@@ -1,4 +1,5 @@
 {% load embedding %}
+{% load adzuna %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,13 +13,19 @@
       <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
     </header>
 
-    {% for job in report.liked_jobs %}
-      <section>
-        <div class="columns">
-          {% include "job_discovery/_job_card.html" with show_apply=False %}
-        </div>
-      </section>
-    {% endfor %}
+    <section>
+      <header>
+        <h4>Jobs in {{ report.location.adzuna_locations | friendly_adzuna_location }}</h4>
+      </header>
+
+      {% for job in report.liked_jobs %}
+        <section>
+          <div class="columns">
+            {% include "job_discovery/_job_card.html" with show_apply=False %}
+          </div>
+        </section>
+      {% endfor %}
+    </section>
   </article>
 </body>
 </html>
