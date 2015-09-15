@@ -59,12 +59,16 @@ body.has-report {
 }
 
 body.single-screen {
-    @media #{$medium-down} {
-        footer {
-            position:fixed;
-            bottom:0;
-            left:0;
-            right:0;
-        }
-    }
+  .report {
+    padding-bottom: 150px;
+  }
+
+  @media #{$medium-down} {
+      footer {
+          position:fixed;
+          bottom:0;
+          left:0;
+          right:0;
+      }
+  }
 }
