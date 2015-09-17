@@ -23,9 +23,3 @@ class TestLMIForAllClient(BaseCase):
 
     def test_pay(self):
         self.assertEqual(self.lmi.pay(self.WORKING_SOC_CODE), 550)
-
-    def test_jobs_breakdown(self):
-        self.assertEqual(
-            self.lmi.jobs_breakdown('SW1A 1AA')[0]['description'],
-            "Protective Service Occupations"
-        )

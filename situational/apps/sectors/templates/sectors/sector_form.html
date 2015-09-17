@@ -18,18 +18,6 @@
           {{ form.sector }}
         </div>
 
-        <div class="row">
-          <div class="columns large-12">
-            <label {% if form.postcode.errors %}class="error"{% endif %}>
-              {{ form.postcode.label }}
-              {{ form.postcode }}
-            </label>
-            {% for error in form.postcode.errors %}
-                <small class="error">{{ error }}</small>
-            {% endfor %}
-          </div>
-        </div>
-
         <button type="submit">Next</button>
       </form>
       <hr>

@@ -1,0 +1,181 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimatePay?coarse=true&soc=3114
+  response:
+    body: {string: '{"soc":31,"series":[{"year":2012,"estpay":590},{"year":2013,"estpay":610}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Thu, 17 Sep 2015 15:59:17 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimateHours?coarse=true&soc=3114
+  response:
+    body: {string: '{"soc":31,"series":[{"year":2012,"hours":40},{"year":2013,"hours":40}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Thu, 17 Sep 2015 15:59:17 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/soc/code/3114
+  response:
+    body: {string: '{"soc":3114,"tasks":" sets up apparatus and equipment and undertakes
+        field and laboratory tests of soil and work materials;\n performs calculations
+        and collects, records and interprets data;\n sets out construction site, supervises
+        excavations and marks out position of building work to be undertaken;\n inspects
+        construction materials and supervises work of contractors to ensure compliance
+        with specifications and arranges remedial work as necessary.","description":"Building
+        and civil engineering technicians perform a variety of technical support functions
+        to assist civil and building engineers.","title":"Building and civil engineering
+        technicians","qualifications":"Entrants usually possess a relevant BTEC/SQA
+        award or an Advanced GNVQ/GSVQ Level III. The status of engineering technician
+        is obtained after a period of further training at work and upon gaining the
+        membership of a professional engineering institution.","add_titles":["Analyst,
+        stress (construction, engineering)","Assistant, building","Assistant, engineering,
+        civil","Assistant, technical (civil engineering)","Consultant, building","Consultant,
+        construction","Consultant, services, building","Controller, production (building
+        construction)","Coordinator, project (construction)","Officer, technical (civil
+        engineering)","Technician, building","Technician, engineering, civil","Technician,
+        engineering, structural","Technician, survey","Technician, surveying","Technician
+        (engineering, civil)","Technician (engineering, structural)"]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Thu, 17 Sep 2015 15:59:18 GMT']
+      Expires: ['Thu, 17 Sep 2015 17:59:18 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimatePay?coarse=true&soc=5330
+  response:
+    body: {string: '{"soc":53,"series":[{"year":2012,"estpay":550},{"year":2013,"estpay":550}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Thu, 17 Sep 2015 15:59:18 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/ashe/estimateHours?coarse=true&soc=5330
+  response:
+    body: {string: '{"soc":53,"series":[{"year":2012,"hours":43},{"year":2013,"hours":43}]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Thu, 17 Sep 2015 15:59:18 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/soc/code/5330
+  response:
+    body: {string: '{"soc":5330,"tasks":" directly supervises and coordinates the
+        activities of construction and building workers and/or subcontractors;\n establishes
+        and monitors work schedules to meet productivity requirements;\n liaises with
+        managers and contractors to resolve operational problems;\n determines or
+        recommends staffing and other needs to meet productivity requirements;\n reports
+        as required to managerial staff on work-related matters.","description":"Construction
+        and building trades supervisors oversee operations and directly supervise
+        and coordinate the activities of workers in construction and building trades.","title":"Construction
+        and building trades supervisors","qualifications":"There are no formal academic
+        entry requirements, though GCSEs/S grades are advantageous. Entry is typically
+        through an apprenticeship or traineeship approved by ConstructionSkills leading
+        to an NVQ/SVQ at Level 3, in addition to significant relevant work experience.","add_titles":["Chargeman,
+        track (railway maintenance and repair)","Chargeman, track (railways)","Foreman,
+        bridge","Foreman, builder''s","Foreman, building","Foreman, civilian (government)","Foreman,
+        concrete","Foreman, construction","Foreman, contractor''s","Foreman, demolition","Foreman,
+        distribution (gas supplier)","Foreman, district","Foreman, drainage","Foreman,
+        engineering, civil","Foreman, engineering, constructional","Foreman, estate","Foreman,
+        estates","Foreman, fittings (gas supplier)","Foreman, general (building construction)","Foreman,
+        highways","Foreman, maintenance (gas supplier)","Foreman, maintenance","Foreman,
+        painting","Foreman, pipe, main","Foreman, plumbing","Foreman, road","Foreman,
+        site","Foreman, way, permanent","Foreman, woodwork","Foreman (building construction)","Foreman
+        (civil engineering)","Foreman (construction)","Foreman (constructional engineering:
+        metal)","Foreman (DETR)","Foreman (flooring contracting)","Foreman (gas supplier)","Foreman
+        (heating engineering)","Foreman (joinery mfr)","Foreman (local government:
+        engineer''s dept)","Foreman (local government: highways dept)","Foreman (local
+        government: housing dept)","Foreman (local government: public works)","Foreman
+        (local government: surveyor''s dept)","Foreman (local government)","Foreman
+        (railway maintenance and repair)","Foreman (railways: district engineer''s
+        dept)","Foreman (woodware mfr)","Foreman of works","Foreman-ganger (maintenance)","Foreman-ganger
+        (building construction)","Foreman-ganger (cable laying)","Foreman-ganger (electricity
+        supplier)","Foreman-ganger (gas supplier)","Foreman-ganger (local government)","Foreman-ganger
+        (railway maintenance and repair)","Foreman-ganger (railways)","Foreman-ganger
+        (water works)","Ganger, highways","Ganger, navvy","Ganger (electricity supplier)","Ganger
+        (gas supplier)","Ganger (local government)","Ganger (railway maintenance and
+        repair)","Ganger (railways)","Ganger (water works)","Hand, leading (building
+        construction)","Hand, maintenance (transport: railways)","Inspector, ballast","Inspector,
+        bridge","Inspector, district (building construction)","Inspector, drain","Inspector,
+        drainage","Inspector, excavating (electricity supplier)","Inspector, highways","Inspector,
+        line, pipe","Inspector, line (railway maintenance and repair)","Inspector,
+        mains","Inspector, maintenance (local government: housing dept)","Inspector,
+        paving and extension","Inspector, trench","Inspector, tunnel","Inspector,
+        way, permanent","Inspector, works, district (railway maintenance and repair)","Inspector,
+        works, district (railways)","Inspector, works, new (railway maintenance and
+        repair)","Inspector, works, new (railways)","Inspector, works (railway maintenance
+        and repair)","Inspector, works (railways)","Inspector (local government: highways
+        dept)","Master, gang (drainage board)","Officer, maintenance (local government)","Skipper
+        (building construction)","Superintendent, board, gas","Superintendent, distribution
+        (gas supplier)","Superintendent, district (gas supplier)","Superintendent,
+        mains","Superintendent, maintenance","Superintendent, repairs","Superintendent,
+        works (building construction)","Superintendent, works (local government)","Superintendent
+        (building construction)","Superintendent (engineering: civil)","Superintendent
+        (engineering: structural)","Superintendent (local government: highways dept)","Superintendent
+        of works","Supervisor, area (building construction)","Supervisor, area (gas
+        supplier)","Supervisor, building","Supervisor, construction","Supervisor,
+        contract (building construction)","Supervisor, contracts (building construction)","Supervisor,
+        distribution (water company)","Supervisor, erection (building construction)","Supervisor,
+        maintenance","Supervisor, plumbing","Supervisor, service (gas supplier)","Supervisor
+        (gas supplier)"]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Thu, 17 Sep 2015 15:59:18 GMT']
+      Expires: ['Thu, 17 Sep 2015 17:59:18 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+version: 1

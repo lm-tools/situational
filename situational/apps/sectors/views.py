@@ -39,8 +39,6 @@ class SectorWizardView(NamedUrlCookieWizardView):
         return kwargs
 
     def done(self, form_list, form_dict, **kwargs):
-        sector_form = form_dict['sector_form']
-        postcode = sector_form.cleaned_data['postcode']
         discriptions_key = 'job_descriptions_form'
         description_form_data = \
             self.storage.get_step_data(discriptions_key)
@@ -50,9 +48,7 @@ class SectorWizardView(NamedUrlCookieWizardView):
                 soc_codes.append(k.split('-')[1])
         soc_codes_string = ','.join(soc_codes)
         report, _created = models.SectorsReport.objects.get_or_create(
-            postcode=postcode,
-            soc_codes=soc_codes_string
-        )
+            soc_codes=soc_codes_string)
         url = reverse("sectors:report", kwargs={'report_id': report.pk})
         return HttpResponseRedirect(url)
 

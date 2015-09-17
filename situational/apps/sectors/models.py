@@ -8,18 +8,12 @@ from sectors import tasks
 
 
 class SectorsReport(TimeStampedModel):
-    postcode = models.CharField(
-        blank=False, null=False, max_length=14)
     soc_codes = models.CharField(
         blank=False, null=False, max_length=200)
-    jobs_breakdown = JSONField()
-    resident_occupations = JSONField()
     soc_code_data = JSONField()
 
     RESULT_FIELDS = (
-        'jobs_breakdown',
-        'resident_occupations',
-        'soc_code_data'
+        'soc_code_data',
     )
 
     def to_pdf(self):

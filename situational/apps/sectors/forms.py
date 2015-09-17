@@ -1,7 +1,6 @@
 from django import forms
 from django.forms.forms import BoundField
 
-from localflavor.gb.forms import GBPostcodeField
 from .helpers import LMIForAllClient
 from .fields import MultiCharField
 
@@ -42,7 +41,6 @@ class BaseLMIForm(NoColonForm):
 class SectorForm(NoColonForm):
     SECTOR_INPUT_COUNT = 3
 
-    postcode = GBPostcodeField(required=True, label="Your postcode")
     sector = MultiCharField(
         count=SECTOR_INPUT_COUNT,
         label="How would you describe the types of jobs you could do?"
