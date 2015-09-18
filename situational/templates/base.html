@@ -14,7 +14,7 @@
         {% endblock %}
 
         {% block head %}{% endblock head %}
-        {% include '_analytics.html' %}
+        {% if not debug %}{% include '_analytics.html' %}{% endif %}
     </head>
 
     <body {% block body_class %}{% endblock body_class %}>

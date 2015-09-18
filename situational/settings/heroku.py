@@ -12,6 +12,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 ALLOWED_HOSTS = ['.herokuapp.com']
+INTERNAL_IPS = ()
 
 # Redirect any non-HTTP request to HTTPS
 SECURE_SSL_REDIRECT = True
