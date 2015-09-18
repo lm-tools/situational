@@ -1,0 +1,45 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/soc/code/5323
+  response:
+    body: {string: '{"soc":5323,"tasks":" erects working platform or scaffolding up
+        to five metres in height;\n prepares surfaces by cleaning, sanding and filling
+        cracks and holes with appropriate filler;\n applies primer, undercoat and
+        finishing coat(s) using brush, roller, or spray equipment;\n mixes adhesive
+        or removes self-adhesive backing and positions covering material on wall,
+        matching up patterns where appropriate and removing wrinkles and air bubbles
+        by hand or brush;\n stains, waxes and french polishes wood surfaces by hand.","description":"Those
+        working in this unit group apply paint, varnish, wallpaper and other protective
+        and decorative materials to interior and exterior walls and surfaces, paint
+        designs on wood, glass, metal, plastics and other materials, and stain, wax
+        and french polish wood surfaces by hand.","title":"Painters and decorators","qualifications":"There
+        are no formal academic entry requirements, though GCSEs/S grades are advantageous.
+        Entry is typically through an apprenticeship or traineeship approved by ConstructionSkills
+        leading to an NVQ/SVQ in General Construction at Level 3.","add_titles":["Artexer","Chipper
+        and painter","Coater, prime","Contractor, decorating","Contractor, painting","Contractor
+        (painting, decorating)","Decorator, house","Decorator, interior (building
+        construction)","Decorator","Finisher (briar pipe mfr)","Gilder (painting,
+        decorating)","Grainer (painting, decorating)","Grainer and marbler","Hand,
+        brush","Hanger, paper","Leader, red","Letterer (signwriting)","Painter, bridge","Painter,
+        buildings","Painter, house","Painter, industrial","Painter, marine (boat building
+        and repairing)","Painter, scenic","Painter, ship","Painter, spray (painting,
+        decorating)","Painter","Painter and decorator","Painter and glazier","Painter-decorator","Paperhanger","Polisher,
+        french","Polisher, furniture","Polisher, piano","Polisher, wood","Polisher
+        (furniture mfr)","Specialist, ceiling","Sprayer, bridge","Sprayer, buildings","Sprayer,
+        ship","Stainer, wood","Stainer (furniture mfr)","Stainer (tobacco pipe mfr)","Texturer,
+        ceiling","Worker, artex"]}'}
+    headers:
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Thu, 17 Sep 2015 15:56:15 GMT']
+      Expires: ['Thu, 17 Sep 2015 17:56:15 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+version: 1

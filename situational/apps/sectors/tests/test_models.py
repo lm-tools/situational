@@ -15,10 +15,7 @@ class SectorsReportBuilderMixin():
 
     def _populated_report(self, without=[]):
         populated_fields = {
-            'postcode': 'SW1A 1AA',
             'soc_codes': '3114,5330',
-            'jobs_breakdown': {},
-            'resident_occupations': {},
             'soc_code_data': {
                 '5330': {
                     'info': {
@@ -39,7 +36,7 @@ class SectorsReportBuilderMixin():
 
 class TestSectorsReportModel(BaseCase):
     def test_population(self):
-        r = SectorsReport(postcode='SW1A 1AA', soc_codes='3114,5330')
+        r = SectorsReport(soc_codes='3114,5330')
         r.save()
         r.populate_async()  # celery runs tasks synchronously for tests
         r.refresh_from_db()

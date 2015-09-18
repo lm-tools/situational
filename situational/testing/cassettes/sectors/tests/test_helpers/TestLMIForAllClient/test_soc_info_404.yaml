@@ -1,0 +1,22 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.4.0]
+    method: GET
+    uri: http://api.lmiforall.org.uk/api/v1/soc/code/9999999
+  response:
+    body: {string: ''}
+    headers:
+      Connection: [keep-alive]
+      Content-Length: ['0']
+      Content-Type: [application/json;charset=UTF-8]
+      Date: ['Thu, 17 Sep 2015 15:56:16 GMT']
+      Expires: ['Thu, 17 Sep 2015 17:56:16 GMT']
+      Server: [nginx/1.2.7]
+      X-Auth-Response: ['''NOAUTH']
+    status: {code: 200, message: OK}
+version: 1

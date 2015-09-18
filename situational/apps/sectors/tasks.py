@@ -15,8 +15,8 @@ dlm = Redlock([settings.REDIS_URL])  # Distibuted Lock Manager
 @shared_task
 def populate_report(report):
     lock = dlm.lock("sectors-report-{}".format(report.pk), population_timeout)
-    sector_string = "Sector report for postcode {} and codes {}"
-    sector_report = sector_string.format(report.postcode, report.soc_codes)
+    sector_string = "Sector report for codes {}"
+    sector_report = sector_string.format(report.soc_codes,)
     if not lock:
         logger.debug("{} is already populating".format(sector_report))
         return
@@ -25,9 +25,7 @@ def populate_report(report):
 
     logger.debug("Running all the sub tasks")
     sub_tasks = (
-        jobs_breakdown.si(report),
-        resident_occupations.si(report),
-        soc_code_data.si(report)
+        soc_code_data.si(report),
     )
     callback = release_lock.si(report.pk, lock)
     for task in sub_tasks + (callback,):
@@ -39,24 +37,6 @@ def populate_report(report):
 def release_lock(identifier, lock):
     logger.debug("Releasing lock for report '{}'".format(identifier))
     dlm.unlock(lock)
-
-
-@shared_task
-def jobs_breakdown(report):
-    logger.debug("Getting jobs breakdown")
-    lmi_client = helpers.LMIForAllClient()
-    jobs_breakdown = lmi_client.jobs_breakdown(report.postcode)
-    report.jobs_breakdown = jobs_breakdown
-    report.save(update_fields=['jobs_breakdown'])
-
-
-@shared_task
-def resident_occupations(report):
-    logger.debug("Getting resident occupations")
-    lmi_client = helpers.LMIForAllClient()
-    resident_occupations = lmi_client.resident_occupations(report.postcode)
-    report.resident_occupations = resident_occupations
-    report.save(update_fields=['resident_occupations'])
 
 
 @shared_task

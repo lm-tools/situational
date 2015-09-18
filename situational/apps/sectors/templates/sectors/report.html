@@ -66,33 +66,6 @@
 
       {% endfor %}
 
-      <section>
-        <div class="columns">
-          <div class="panel">
-            <header>
-              <h2>Local area - based on UK Census data</h2>
-            </header>
-            <div class="row">
-              <div class="columns large-6">
-                <h3>Jobs in the area</h3>
-                <ul>
-                {% for job in report.jobs_breakdown %}
-                  <li>{{ job.description }}</l>
-                {% endfor %}
-                </ul>
-              </div>
-              <div class="columns large-6">
-                <h3>Resident professions</h3>
-                <ul>
-                {% for job in report.resident_occupations %}
-                  <li>{{ job.description|title }}</l>
-                {% endfor %}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <footer>
         <div class="columns">
           <div class="panel">
