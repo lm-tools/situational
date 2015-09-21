@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<form method=post autocomplete="OFF">
+<form method=post autocomplete="OFF" action="{{ request.path }}">
   {% csrf_token %}
   <div class="row">
     <div class="medium-12 columns">
