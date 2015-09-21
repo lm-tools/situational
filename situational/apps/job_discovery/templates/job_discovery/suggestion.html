@@ -9,11 +9,11 @@
         <h4>Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h4>
       </div>
       <div class="columns small-2 text-right">
-        <a href="{% url 'job_discovery:report' guid=guid %}" class="button tiny">I'm done</a>
+        <a href="{% url 'job_discovery:report' guid=guid %}" class="button tiny t-done">I'm done</a>
       </div>
     </div>
     {% include "job_discovery/_job_card.html" %}
-    <form method=post autocomplete="OFF" class="job-suggestion-controls">
+    <form method=post autocomplete="OFF" class="job-suggestion-controls" action="{{ request.path }}">
       {% csrf_token %}
       {{ form }}
     </form>

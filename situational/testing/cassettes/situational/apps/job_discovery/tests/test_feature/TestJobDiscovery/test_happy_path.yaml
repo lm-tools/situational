@@ -1,0 +1,810 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/geodata/?where=SW1A1AA
+  response:
+    body: {string: '{"__CLASS__":"Adzuna::API::Response::JobGeoData","locations":[{"count":5,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"display_name":"Shortlands,
+        Bromley","area":["UK","London","South East London","Bromley","Shortlands"],"__CLASS__":"Adzuna::API::Response::Location"}},{"location":{"display_name":"Hampton
+        Wick, Kingston Upon Thames","area":["UK","London","South West London","Kingston
+        Upon Thames","Hampton Wick"],"__CLASS__":"Adzuna::API::Response::Location"},"count":5,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","East
+        Midlands","Derbyshire","Buxton","Sheen"],"display_name":"Sheen, Buxton"}},{"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","Eastern
+        England","Bedfordshire","Dunstable","Harlington"],"display_name":"Harlington,
+        Dunstable"},"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","North
+        East England","Durham","Durham","Belmont"],"display_name":"Belmont, Durham"}},{"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3,"location":{"display_name":"Acton,
+        Nantwich","area":["UK","North West England","Cheshire","Nantwich","Acton"],"__CLASS__":"Adzuna::API::Response::Location"}},{"location":{"area":["UK","North
+        West England","Cheshire","Runcorn","Manor Park"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Manor
+        Park, Runcorn"},"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"location":{"area":["UK","North
+        West England","Cheshire","Warrington","Paddington"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Paddington,
+        Warrington"},"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3},{"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3,"location":{"display_name":"Kensington,
+        Liverpool","__CLASS__":"Adzuna::API::Response::Location","area":["UK","North
+        West England","Merseyside","Liverpool","Kensington"]}},{"location":{"area":["UK","South
+        East England","Buckinghamshire","Amersham","Winchmore Hill"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Winchmore
+        Hill, Amersham"},"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","South
+        East England","Buckinghamshire","Milton Keynes","Stonebridge"],"display_name":"Stonebridge,
+        Milton Keynes"}},{"location":{"display_name":"Bank, Lyndhurst","__CLASS__":"Adzuna::API::Response::Location","area":["UK","South
+        East England","Hampshire","Lyndhurst","Bank"]},"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3},{"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"display_name":"Woolton
+        Hill, Newbury","area":["UK","South East England","West Berkshire","Newbury","Woolton
+        Hill"],"__CLASS__":"Adzuna::API::Response::Location"}},{"location":{"area":["UK","South
+        East England","West Sussex","Chichester","Drayton"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Drayton,
+        Chichester"},"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"location":{"display_name":"Midsomer
+        Norton, Radstock","__CLASS__":"Adzuna::API::Response::Location","area":["UK","South
+        West England","Bath & N E Somerset","Radstock","Midsomer Norton"]},"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3},{"location":{"display_name":"Temple,
+        Bodmin","__CLASS__":"Adzuna::API::Response::Location","area":["UK","South
+        West England","Cornwall","Bodmin","Temple"]},"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3,"location":{"display_name":"Stamford
+        Hill, Bude","__CLASS__":"Adzuna::API::Response::Location","area":["UK","South
+        West England","Cornwall","Bude","Stamford Hill"]}},{"location":{"display_name":"Woodford,
+        Bude","area":["UK","South West England","Cornwall","Bude","Woodford"],"__CLASS__":"Adzuna::API::Response::Location"},"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"display_name":"Haye,
+        Callington","area":["UK","South West England","Cornwall","Callington","Haye"],"__CLASS__":"Adzuna::API::Response::Location"}},{"location":{"display_name":"Newham,
+        Helston","__CLASS__":"Adzuna::API::Response::Location","area":["UK","South
+        West England","Cornwall","Helston","Newham"]},"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"display_name":"Cranford,
+        Bideford","area":["UK","South West England","Devon","Bideford","Cranford"],"__CLASS__":"Adzuna::API::Response::Location"}},{"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","South
+        West England","Devon","Crediton","Downes"],"display_name":"Downes, Crediton"},"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs"},{"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3,"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","South
+        West England","Devon","Exeter","Kenton"],"display_name":"Kenton, Exeter"}},{"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"area":["UK","South
+        West England","Dorset","Weymouth","Ridgeway"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Ridgeway,
+        Weymouth"}},{"location":{"area":["UK","South West England","Somerset","Chard","Combe
+        St. Nicholas"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Combe
+        St. Nicholas, Chard"},"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3},{"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3,"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","Wales","Caerphilly","Blackwood","Grove
+        Park"],"display_name":"Grove Park, Blackwood"}},{"count":3,"__CLASS__":"Adzuna::API::Response::LocationJobs","location":{"display_name":"Crew
+        Green, Shrewsbury","__CLASS__":"Adzuna::API::Response::Location","area":["UK","West
+        Midlands","Shropshire","Shrewsbury","Crew Green"]}},{"__CLASS__":"Adzuna::API::Response::LocationJobs","count":3,"location":{"display_name":"Norwood,
+        Otley","area":["UK","Yorkshire And The Humber","West Yorkshire","Otley","Norwood"],"__CLASS__":"Adzuna::API::Response::Location"}}],"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Westminster"],"display_name":"Westminster, South West London"}}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['6603']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Mon, 21 Sep 2015 13:22:51 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['2005586292']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/1?location0=UK&location1=London&location2=South+West+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"results":[{"__CLASS__":"Adzuna::API::Response::Job","salary_min":15592,"salary_is_predicted":"1","created":"2015-09-21T14:13:35Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiZUdfNldJRzFTbTJNQ1JOeGpUdDgxZyIsImkiOiIzMTQzMzEwMTcifQ.J0j1Ulin6miOldH1DX29l6hHhcni8Bsh5lD69IWBO6I","contract_type":"permanent","location":{"display_name":"Norbury,
+        South West London","area":["UK","London","South West London","Norbury"],"__CLASS__":"Adzuna::API::Response::Location"},"description":"Klearwater
+        Adults Services are recruiting Experienced Support Workers for Residential
+        Care Home For Adults With Autism and mental Health. Our Surrey based service
+        is looking for dynamic and experienced Support Workers to join our expanding
+        organization. Career progression possible as the organization grows. Our homes
+        are specialist and client focused accommodating 3-4 clients ensuring quality
+        of care in a client focused environment Hourly rates of \u00a38.00 per hour
+        / Fully funded training opportun\u2026","id":"314331017","title":"Experienced
+        Support Workers for Learning Disability Residential Care Home","company":{"__CLASS__":"Adzuna::API::Response::Company"},"longitude":-0.123881,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314331017?v=69566A5C36E80F27581D6C0FBC633BCAF6066AC0&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","salary_max":15592,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"social-work-jobs","label":"Social
+        work Jobs"},"latitude":51.4123},{"salary_max":17495.97,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330978?v=2571BC4B05727A0126123290FB750ACCAADA3438&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","longitude":-0.20657,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"healthcare-nursing-jobs","label":"Healthcare
+        & Nursing Jobs"},"latitude":51.42129,"salary_is_predicted":"1","created":"2015-09-21T14:13:14Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzMwOTc4IiwicyI6ImVHXzZXSUcxU20yTUNSTnhqVHQ4MWcifQ.c14GHGAow1rMtmshmcJoY4ZhCpCfhnpofWNPsgKEGko","salary_min":17495.97,"__CLASS__":"Adzuna::API::Response::Job","contract_type":"permanent","description":"STEP
+        UP FOR A BETTER CAREER PROSPECT Join AcePace to become a qualified and registered
+        dental nurse in 12 months AcePace Training & recruitment is looking for number
+        of enthusiastic individuals across London to fill in the trainee dental nurse
+        positions with our various dental clients. 93 % of our students manage to
+        find their placement through us within a months of starting their course.
+        We have 99% approved trainee dental nurse are working with one of client across
+        London and greater London a\u2026","location":{"area":["UK","London","South
+        West London","Wimbledon"],"display_name":"Wimbledon, South West London","__CLASS__":"Adzuna::API::Response::Location"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"314330978","title":"Trainee
+        Dental Nurse- 12 Months - Earn while you learn "},{"salary_max":17730.35,"longitude":-0.192757,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330956?v=B6284040BA462C44C818A714DFD6CC94C76DBE3E&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","latitude":51.451801,"category":{"label":"Healthcare
+        & Nursing Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"healthcare-nursing-jobs"},"contract_type":"permanent","salary_min":17730.35,"__CLASS__":"Adzuna::API::Response::Job","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiZUdfNldJRzFTbTJNQ1JOeGpUdDgxZyIsImkiOiIzMTQzMzA5NTYifQ.St9VKjhz7mLM0-45hWR4ER0wJPpljGvzclhGdnyBeuA","created":"2015-09-21T14:13:11Z","salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"Part
+        time Dental Nurse for Saturdays in Battersea","id":"314330956","description":"A
+        part time qualified Dental Nurse for Saturdays (9am-2pm) required to work
+        in a lovely and modern mixed dental practice in Battersea. The ideal candidate
+        should have: \u2022 at least two years nursing experience \u2022 Experience
+        in reception work and SOE (Exact software) \u2022 Good command of English
+        and communication skills \u2022\u00a39-\u00a311/hour depending on experience","location":{"display_name":"Wandsworth,
+        South West London","area":["UK","London","South West London","Wandsworth"],"__CLASS__":"Adzuna::API::Response::Location"}},{"salary_max":22921.99,"longitude":-0.160417,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330948?v=DDAFDBC2DA3EFFCF06EF9CCB50CE70C986842A3B&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","latitude":51.5019,"category":{"label":"Healthcare
+        & Nursing Jobs","tag":"healthcare-nursing-jobs","__CLASS__":"Adzuna::API::Response::Category"},"contract_type":"permanent","salary_min":22921.99,"__CLASS__":"Adzuna::API::Response::Job","created":"2015-09-21T14:13:09Z","salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiZUdfNldJRzFTbTJNQ1JOeGpUdDgxZyIsImkiOiIzMTQzMzA5NDgifQ.vkPJwPJg6SpRITD_9EK5OOZv4gdUYP2LL-pEznLu5Jg","company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"Dental
+        Manager/ Administrator","id":"314330948","description":"Dental practice manager
+        required for our well established Private practice located in SW1X area in
+        London. We can offer an excellent working environment and a friendly team.
+        We are looking for a highly motivated and experienced practice manager who
+        can combine business experience and management skills to provide strategic
+        guidance and support to our friendly team. The role is to start immediately,
+        working on a part time/full time basis. The ideal candidate will have a minimum
+        of two years of pr\u2026","location":{"area":["UK","London","South West London","Knightsbridge"],"display_name":"Knightsbridge,
+        South West London","__CLASS__":"Adzuna::API::Response::Location"}},{"salary_min":17991.27,"__CLASS__":"Adzuna::API::Response::Job","created":"2015-09-21T13:58:33Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiZUdfNldJRzFTbTJNQ1JOeGpUdDgxZyIsImkiOiIzMTQzMzA0NTAifQ.ksNF3RIKyDBq_kAbnC4MooEAEviAK9AS8RPUmtwBzJc","salary_is_predicted":"1","contract_type":"contract","description":"Benefits:
+        \u2022 Competitive pay (\u00a320,020-\u00a328,600pa) \u2022 Food and board
+        included whilst in placement \u2022 \u00a3100 Immediate Start Bonus when you
+        Join Us Terms & Conditions Apply \u2022 Support and advice 24 hours a day,
+        7 days a week from a company with 20 years experience \u2022 Up to 28 days
+        paid holiday including bank holidays \u2022 Free 5-day training course covering
+        everything needed to be a Carer \u2022 Free accommodation whilst training
+        with breakfast and lunch provided \u2022 Commitment to career development
+        and training A\u2026","location":{"area":["UK","London","South West London","Clapham"],"display_name":"Clapham,
+        South West London","__CLASS__":"Adzuna::API::Response::Location"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"Community
+        Home Care Worker - Live in Position","id":"314330450","salary_max":17991.27,"longitude":-0.168125,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330450?v=EF924F4231F94809269F3999EEA23469F315D200&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","category":{"label":"Healthcare
+        & Nursing Jobs","tag":"healthcare-nursing-jobs","__CLASS__":"Adzuna::API::Response::Category"},"latitude":51.463902},{"contract_type":"permanent","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzMwMzUyIiwicyI6ImVHXzZXSUcxU20yTUNSTnhqVHQ4MWcifQ.UMf0ZbqLPBhRbGEkAq56SivJFW5QTwJgyTixTQ-smnw","created":"2015-09-21T13:58:25Z","salary_is_predicted":"1","__CLASS__":"Adzuna::API::Response::Job","salary_min":20868.35,"id":"314330352","title":"Full
+        Time Restaurant Supervisor for busy Central London Pub","company":{"__CLASS__":"Adzuna::API::Response::Company"},"description":"Your
+        job will be to oversee the smooth running of our busy 50 cover restaurant,
+        your duties will include: - making sure staff product knowledge is good -
+        training to upsell to increase spend per head - building up relationships
+        with locals - keeping restaurant clean and tidy at all times you must speak
+        fluent English and preference will be given to candidates who speak other
+        languages especially Italian, Spanish and French (we serve lots of tourists)
+        You will work normally work 7 shifts per wee\u2026","location":{"area":["UK","London","South
+        West London","Westminster"],"display_name":"Westminster, South West London","__CLASS__":"Adzuna::API::Response::Location"},"longitude":-0.143115,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330352?v=E61FA88F0153AF1F06522984AE7D2303B460973C&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","salary_max":20868.35,"latitude":51.499199,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs"}},{"id":"314330353","title":"Waiting Staff Doubletree by
+        Hilton London Chelsea","company":{"__CLASS__":"Adzuna::API::Response::Company"},"description":"DoubleTree
+        by Hilton London Chelsea now has an excellent opportunity available for WAITING
+        STAFF to join our Food & Beverage team Role overview: This is a multi-skilled
+        position, working across our restaurant and bar ensuring a professional, friendly
+        and courteous service to all guests. Key responsibilities: Main duties would
+        be to serve food and beverages whilst adhering toservice standards and giving
+        excellent customer service. Have a visible presence to ensure that all customer
+        requests and \u2026","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Fulham"],"display_name":"Fulham, South West London"},"contract_type":"permanent","created":"2015-09-21T13:58:25Z","salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiZUdfNldJRzFTbTJNQ1JOeGpUdDgxZyIsImkiOiIzMTQzMzAzNTMifQ.Ib1bQLKhYBvYb-hAlorrBLqrZ265zNeYvrIg-NzTJjU","__CLASS__":"Adzuna::API::Response::Job","salary_min":13514.43,"latitude":51.4799,"category":{"label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"longitude":-0.198613,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330353?v=8AD56860C3C51BD11C2FAFDA4106A53BA694B16B&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","salary_max":13514.43},{"company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"Waiting
+        Staff wanted for Clapham Restaurant","id":"314330356","description":"An opportunity
+        has arisen or a waiter or waitress to join our friendly team full time at
+        our Japanese Concept Restaurant. Don''t worry if you do not have experience
+        working with Japanese cuisine as full training will be given, but a passion
+        for high customer service with previous waitstaff experience is a must. It
+        is important that our staff live locally, so please bear this in mind when
+        applying. It is also important that you speak clear English. This is a full
+        time position.","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Clapham,
+        South West London","area":["UK","London","South West London","Clapham"]},"contract_type":"permanent","salary_min":16459.69,"__CLASS__":"Adzuna::API::Response::Job","created":"2015-09-21T13:58:25Z","salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzMwMzU2IiwicyI6ImVHXzZXSUcxU20yTUNSTnhqVHQ4MWcifQ.kb40pshB2OofXAO-1S8pHZeROPUDSM2g2MCDlxPw2_M","latitude":51.463902,"category":{"label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"salary_max":16459.69,"longitude":-0.168125,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330356?v=5783AAE13831078A0796BFB218610A0C307373F7&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7"},{"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs"},"latitude":51.460899,"salary_max":34566.06,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330348?v=C73D586E4FC85F659DA540443594D6ED04CF38DF&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","longitude":-0.116024,"description":"General
+        Manager- New opening - Brixton Are you a general manager with a background
+        in branded restaurants? Are you a general manager that has experience working
+        in fast paced relaxed dining environments? Are you a general manager that
+        wants to join a fresh new, branded group with great benefits and opportunities?
+        Are you a general manager that has lived and worked in the Brixton are and
+        therefore knows the style and clientele? Are you a general manager that is
+        driven, passionate and energetic? \u2026","location":{"display_name":"Brixton,
+        South West London","area":["UK","London","South West London","Brixton"],"__CLASS__":"Adzuna::API::Response::Location"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"General
+        Manager- New opening - Brixton","id":"314330348","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzMwMzQ4IiwicyI6ImVHXzZXSUcxU20yTUNSTnhqVHQ4MWcifQ.BG7RsStHFjYVgHUjQEW5oRVNW-qqEootvXSBDU3Nk9k","salary_is_predicted":"1","created":"2015-09-21T13:58:24Z","salary_min":34566.06,"__CLASS__":"Adzuna::API::Response::Job","contract_type":"permanent"},{"longitude":-0.177122,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330318?v=162448F4BCE0B69D451396500DF1441BE731C2AF&se=eG_6WIG1Sm2MCRNxjTt81g&utm_medium=api&utm_source=63a598e7","salary_max":16947.1,"category":{"label":"Domestic
+        help & Cleaning Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs"},"latitude":51.4944,"__CLASS__":"Adzuna::API::Response::Job","salary_min":16947.1,"salary_is_predicted":"1","created":"2015-09-21T13:58:17Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiZUdfNldJRzFTbTJNQ1JOeGpUdDgxZyIsImkiOiIzMTQzMzAzMTgifQ.axZ_epYO9SuyPFDKLTr9UAF12GqFXJnLj0_4l1fe28A","contract_type":"permanent","location":{"area":["UK","London","South
+        West London","South Kensington"],"display_name":"South Kensington, South West
+        London","__CLASS__":"Adzuna::API::Response::Location"},"description":"KX the
+        exclusive private members Gym, Spa and Restaurant in Chelsea is currently
+        looking for a Part Time Housekeeper to join the existing team in our busy
+        and successful club The ideal candidate will have: \u2022 Be professional,
+        courteous and discreet. \u2022 Good communication skills and an excellent
+        command of the English language. \u2022 The ability to work well in a team
+        or unsupervised. \u2022 Experience as a housekeeper/ chambermaid in a hotel
+        environment is essential. \u2022 An impeccable presentation. \u2022 Great
+        \u2026","title":"Part Time Housekeeper (cleaner) ASAP","id":"314330318","company":{"__CLASS__":"Adzuna::API::Response::Company"}}],"__CLASS__":"Adzuna::API::Response::JobSearchResults","mean":30083.2,"count":9672}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['14677']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Mon, 21 Sep 2015 13:22:52 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['2005586307']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/2?location0=UK&location1=London&location2=South+West+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"count":9672,"results":[{"company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"314330233","title":"Office
+        cleaner required around Fulham/Scheen in the evenings - Part time","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Barnes"],"display_name":"Barnes, South West London"},"description":"We
+        urgently require a part time cleaner to work in the evenings, cleaning offices
+        for our prestigious clients across south west London. This is a fantastic
+        role, and is ideal for someone looking for part time evening work. This is
+        office cleaning, so you''ll be going into the same office each night and cleaning
+        the desks, hoovering etc. You will be working from 6pm on weekdays. We are
+        looking for someone hard-working, trustworthy and ideally with their own mode
+        of transport (plus a clean drivers\u2026","contract_type":"permanent","created":"2015-09-21T13:57:54Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiT1psTGtQUnZUMHVQc2txTlEzcFNTUSIsImkiOiIzMTQzMzAyMzMifQ.efUymnkfrmdAulcQIFNAbh3SdVJZnzgioTHQENFIEPE","salary_is_predicted":"1","salary_min":15526.33,"__CLASS__":"Adzuna::API::Response::Job","latitude":51.4743,"category":{"tag":"domestic-help-cleaning-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs"},"salary_max":15526.33,"longitude":-0.2424,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330233?v=DCF861D7437FFF32A9E2C50C482AF6146290E8A0&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7"},{"salary_min":16447.52,"__CLASS__":"Adzuna::API::Response::Job","created":"2015-09-21T13:57:41Z","salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiT1psTGtQUnZUMHVQc2txTlEzcFNTUSIsImkiOiIzMTQzMzAxOTcifQ.el99iMLAUe3P2VTVIOsNRkDACEYAf87zLIuDx89m2mA","contract_type":"permanent","description":"Breakfast
+        Waiter/ress We are looking for a dynamic dedicated and enthusiastic individual
+        to join our team as a Breakfast waiter/ress We are a busy 4 star hotel in
+        Paddington. With 70 Bedrooms we offer guests personal caring service that
+        compliments our great value hotel. We offer a Full English and Continental
+        breakfast either buffet of A la Carte depending on volumes. As a Breakfast
+        Waiter/ress, you be responsible for welcoming our guests to the restaurant,
+        seating taking orders, clearing of t\u2026","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Westminster,
+        South West London","area":["UK","London","South West London","Westminster"]},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"314330197","title":"Waiting
+        Staff full and part time","salary_max":16447.52,"longitude":-0.143115,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330197?v=3340C3B6837370B81B1747D35D348BBFACD370FE&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7","category":{"tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs"},"latitude":51.499199},{"longitude":-0.168125,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330196?v=762F837BE307E876FF002D5210FC676D8ECEBF37&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7","salary_max":13057.48,"latitude":51.463902,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs"},"contract_type":"permanent","__CLASS__":"Adzuna::API::Response::Job","salary_min":13057.48,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzMwMTk2IiwicyI6Ik9abExrUFJ2VDB1UHNrcU5RM3BTU1EifQ.aqbPGSWw-fabye8hpTYpjyB4JSu0UKP2yDolYzEU_pM","salary_is_predicted":"1","created":"2015-09-21T13:57:40Z","id":"314330196","title":"Experienced
+        waiting staff for Sushi bar in Clapham","company":{"__CLASS__":"Adzuna::API::Response::Company"},"location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Clapham,
+        South West London","area":["UK","London","South West London","Clapham"]},"description":"Experienced
+        waiting staff wanted for sushi bar full or part time allowed to work in the
+        UK. Friendly, hardworking and able to work as a team. Must have good English."},{"description":"Ciro''s
+        Pizza Pomodoro is looking for charismatic people to join our amazing team.
+        If you have a passion for excellence and are looking for an exciting career
+        challenge, we want to hear from you. Please only apply if you have a genuine
+        enthusiasm for friendly guest care, a big smile and excellent personal presentation.
+        The Essentials: Good Level of spoken English Passion for learning new skills
+        Desire knowledge Team spirit If you feel you have all these qualities then
+        please forward your CV, rec\u2026","location":{"display_name":"Chelsea, South
+        West London","area":["UK","London","South West London","Chelsea"],"__CLASS__":"Adzuna::API::Response::Location"},"id":"314330183","title":"EARN
+        500 PER WEEK - WAITRESS & KITCHEN ASSISTANT REQUIRED FOR BUSY RESTAURANT IN
+        KNIGHTSBRIDGE","company":{"__CLASS__":"Adzuna::API::Response::Company"},"__CLASS__":"Adzuna::API::Response::Job","salary_min":11958.13,"salary_is_predicted":"1","created":"2015-09-21T13:57:24Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiT1psTGtQUnZUMHVQc2txTlEzcFNTUSIsImkiOiIzMTQzMzAxODMifQ.3f99cRJHRj06t0VW9MlF_anqermm6YdRxZzh5nJ7bGc","contract_type":"permanent","category":{"label":"Hospitality
+        & Catering Jobs","tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category"},"latitude":51.4827,"longitude":-0.183435,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314330183?v=2DCB5B5B83F7EF2DBB9907904E544B6C6699B26F&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7","salary_max":11958.13},{"category":{"tag":"logistics-warehouse-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Logistics
+        & Warehouse Jobs"},"latitude":51.499199,"salary_max":22682.12,"longitude":-0.143115,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314328939?v=B23B09C8994EE9E69F05A30AC27778656D71CCC0&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7","location":{"display_name":"Westminster,
+        South West London","area":["UK","London","South West London","Westminster"],"__CLASS__":"Adzuna::API::Response::Location"},"description":"Experienced
+        and well presented Chauffeur required for private client. Candidates must
+        have a clean UK licence, good knowledge of Central London, proven track record
+        of driving luxury vehicles, be flexible and able to provide checkable references
+        and a recent CRB. 6 day week, competitive salary, 25 days annual leave.","company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"314328939","title":"Private
+        Chauffeur","salary_min":22682.12,"__CLASS__":"Adzuna::API::Response::Job","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiT1psTGtQUnZUMHVQc2txTlEzcFNTUSIsImkiOiIzMTQzMjg5MzkifQ.xMzbeEhbilQmzlOuFzJJSxlFa0K3F1sXmhEs-XuEBjY","salary_is_predicted":"1","created":"2015-09-21T13:42:12Z","contract_type":"permanent"},{"created":"2015-09-21T13:39:24Z","salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI4ODU2IiwicyI6Ik9abExrUFJ2VDB1UHNrcU5RM3BTU1EifQ.pkua-KHJsJvuxvE4VGr0h-1vVJhNvH2Nxwj9ggWWwqQ","__CLASS__":"Adzuna::API::Response::Job","salary_min":15698.26,"contract_type":"permanent","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"South
+        Kensington, South West London","area":["UK","London","South West London","South
+        Kensington"]},"description":"Kitchen Porter We are currently recruiting for
+        full time porters for one of our client in South Kensington Busy unit looking
+        for 10 Porters to work Mon to Fri 07.00-17.00 or more. The work is Monday
+        to Friday working in their main kitchen The Kitchen Porter plays an important
+        role with our busy kitchen, key responsibilities are: - - Washing dishes &
+        keeping the kitchen hygiene standards at a high rate - Preparing ingredients
+        for senior chefs - Measuring ingredients & portion sizes - Helping wit\u2026","title":"Kitchen
+        Porter - 40 Hrs a week -Mon to Fri","id":"314328856","company":{"__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314328856?v=FDA1798FD242F3A4541C055B200F744F05E8EE6C&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7","longitude":-0.177122,"salary_max":15698.26,"category":{"tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs"},"latitude":51.4944},{"company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"Kitchen
+        Porter - new restaurant - Clapham High Street","id":"314328847","description":"-Kitchen
+        Porter required for new restaurant on Clapham High Street -\u00a37 per hour
+        -meals provided on duty -uniform provided -no experience required all training
+        given -job involves operating dishwasher and cleaning pans, basic veg prep
+        and general kitchen cleaning","location":{"display_name":"Clapham, South West
+        London","area":["UK","London","South West London","Clapham"],"__CLASS__":"Adzuna::API::Response::Location"},"contract_type":"permanent","salary_min":16494.35,"__CLASS__":"Adzuna::API::Response::Job","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiT1psTGtQUnZUMHVQc2txTlEzcFNTUSIsImkiOiIzMTQzMjg4NDcifQ.ZZYmL3k9AsGRz0CKUZWsDuuAzwzQHrwJ4qWBPE2Yvm4","created":"2015-09-21T13:39:18Z","salary_is_predicted":"1","latitude":51.463902,"category":{"label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"salary_max":16494.35,"longitude":-0.168125,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314328847?v=41152622E2177CECEDE5B2FD16C174914692B781&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7"},{"contract_type":"permanent","__CLASS__":"Adzuna::API::Response::Job","salary_min":17203.47,"salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI4ODQyIiwicyI6Ik9abExrUFJ2VDB1UHNrcU5RM3BTU1EifQ.u2HcYISkj0-8wXkSrIsvawI3yUAAEiRGWfIJtZzRwSU","created":"2015-09-21T13:39:05Z","title":"2
+        Commis Chef de Partie needed for Modern European Restaurant close to Victoria
+        Station","id":"314328842","company":{"__CLASS__":"Adzuna::API::Response::Company"},"location":{"display_name":"Victoria,
+        South West London","area":["UK","London","South West London","Victoria"],"__CLASS__":"Adzuna::API::Response::Location"},"description":"About
+        Thyme Restaurant is located 5 minutes from Victoria Station serving fresh
+        and innovative Modern European cuisine in a bright and relaxed environment.
+        At the moment we have two exciting opportunities for 2 Commis Chef de Partie
+        to work with fresh and seasonal produce alongside our accomplished Head Chef.
+        Salary: \u00a322.000 Gross per annum You will be required to work 7/8 shifts
+        over a 6 day rota. We are open Monday to Saturday for Lunch and Dinner. Closed
+        on Sundays, Bank Holidays, Easter and\u2026","longitude":-0.144582,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314328842?v=6AB4B798BED2AB434B3997085A031CECCFD24823&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7","salary_max":17203.47,"latitude":51.495899,"category":{"label":"Hospitality
+        & Catering Jobs","tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category"}},{"description":"Spirit
+        Pub Company was voted one of the Sunday Times Top 25 big companies to work
+        for 2014. Would you like to be part of an award winning team? Competitive
+        pay, Employee discount, Training, Apprenticeships and Qualifications, Pension,
+        Bonus, Recognition. We have some fantastic opportunities available for Chefs,
+        Cooks and Kitchen Team to join us at the Woodman, London. The Woodman is part
+        of our Flaming Grill Brand. One of the most important aspects of the Flaming
+        Grill brand is that we deliver \u2026","location":{"area":["UK","London","South
+        West London","Wimbledon"],"display_name":"Wimbledon, South West London","__CLASS__":"Adzuna::API::Response::Location"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"314328821","title":"Chef
+        - Team Player - Woodman - Wimbledon","created":"2015-09-21T13:38:54Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiT1psTGtQUnZUMHVQc2txTlEzcFNTUSIsImkiOiIzMTQzMjg4MjEifQ.EwnReNlMlR65t5_whWG9gACXgL4ogos9GJRUs0zm-9w","salary_is_predicted":"1","salary_min":14459.51,"__CLASS__":"Adzuna::API::Response::Job","contract_type":"permanent","category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs"},"latitude":51.42129,"salary_max":14459.51,"longitude":-0.20657,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314328821?v=3746D8484956FCC2140CAAB36B01B0C9FECC53AF&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7"},{"longitude":-0.143115,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314326784?v=C22B59A724DDC69909F519F40DA0BF205264A6B6&se=OZlLkPRvT0uPskqNQ3pSSQ&utm_medium=api&utm_source=63a598e7","salary_max":18362.23,"latitude":51.499199,"category":{"label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"contract_type":"permanent","__CLASS__":"Adzuna::API::Response::Job","salary_min":18362.23,"created":"2015-09-21T13:34:10Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI2Nzg0IiwicyI6Ik9abExrUFJ2VDB1UHNrcU5RM3BTU1EifQ.tGePdAJj1PYwIFMpM1EoUYuLDhgAXbxKxEHtO0ea4o4","salary_is_predicted":"1","id":"314326784","title":"Breakfast
+        Chef","company":{"__CLASS__":"Adzuna::API::Response::Company"},"location":{"area":["UK","London","South
+        West London","Westminster"],"display_name":"Westminster, South West London","__CLASS__":"Adzuna::API::Response::Location"},"description":"Breakfast
+        Chef/Waiter We are looking for a dedicated and enthusiastic individual to
+        join our team as a Breakfast/CommisChef We are a busy 4 star hotel in Paddington.
+        With 70 Bedrooms we offer guests personal caring service that compliments
+        our great value hotel. We offer a Full English and Continental breakfast either
+        buffet of A la Carte depending on volumes. As a Breakfast/CommisChef, you
+        be responsible for preparing Breakfast for our Guests, then lunch for the
+        staff. You will make orders and\u2026"}],"__CLASS__":"Adzuna::API::Response::JobSearchResults","mean":30083.2}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['14043']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Mon, 21 Sep 2015 13:22:53 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['2005586324']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/3?location0=UK&location1=London&location2=South+West+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"count":9672,"__CLASS__":"Adzuna::API::Response::JobSearchResults","results":[{"contract_type":"permanent","description":"The
+        East Hill is a beautiful, homely, local''s Gastro Pub in the heart of Wandsworth.
+        We are located in to Tonsley''s area with regular customers who want the best,
+        British pub food served every day. Quality, fresh, seasonal ingredients and
+        a whole lot of love is the key. We are looking for someone looking for someone
+        who has a strong passion for cooking, with a willingness to go the extra mile
+        to advance to the next level. You will be a team player with the ability to
+        lead. Passion and knowledge\u2026","latitude":51.451801,"longitude":-0.192757,"__CLASS__":"Adzuna::API::Response::Job","category":{"label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"salary_min":23705.55,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiMVhWeWZJUkZUd1cySzBPV3MzbnpwUSIsImkiOiIzMTQzMjY3NzAifQ.yAT36NHi-ab2Wl8y4zjxTAE24GEBGnqVV_yn2Qb9t8U","location":{"display_name":"Wandsworth,
+        South West London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Wandsworth"]},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314326770?v=57640727E4824B3AC39D2BCDC12728D237BEAC77&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","id":"314326770","salary_max":23705.55,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","created":"2015-09-21T13:33:56Z","title":"SOUS
+        CHEF - BRITISH GASTRO PUB"},{"contract_type":"permanent","description":"\u00a37.5-
+        \u00a38 p/h The East Hill is a beautiful, homely, local''s Gastro Pub in the
+        heart of Wandsworth. We are located in to Tonsley''s area with regular customers
+        who want the best, British pub food served every day. Quality, fresh, seasonal
+        ingredients and a whole lot of love is the key. As a Chef De Partie you have
+        the opportunity to influence our menu and specials, which both change daily.
+        We expect enthusiasm for cooking and food in general, and look for people
+        with a fresh attitude. We are looki\u2026","__CLASS__":"Adzuna::API::Response::Job","longitude":-0.192757,"latitude":51.451801,"salary_min":18105.45,"category":{"label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiMVhWeWZJUkZUd1cySzBPV3MzbnpwUSIsImkiOiIzMTQzMjY3NjcifQ.0S2Dq0MW-zzvNyshyAT5uR3uT4VUtnytco07dUo7q1g","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Wandsworth"],"display_name":"Wandsworth, South West London"},"id":"314326767","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314326767?v=934B86FEB243F78BEB9D6E9447D4B6355ACDC53F&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","title":"CDP
+        Chef The East Hill","created":"2015-09-21T13:33:55Z","salary_max":18105.45},{"id":"314326756","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314326756?v=48F0BDD8A0900B5B19E71D843A764A200A89B2E5&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","location":{"display_name":"Clapham,
+        South West London","area":["UK","London","South West London","Clapham"],"__CLASS__":"Adzuna::API::Response::Location"},"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiMVhWeWZJUkZUd1cySzBPV3MzbnpwUSIsImkiOiIzMTQzMjY3NTYifQ.aGbu6J7J9JUU0uXdQztfAQDc19VffZ-kFqI1kEmkA9c","salary_max":28910.52,"title":"Head
+        Chef required (Clapham/Battersea) \u00a328-32k","created":"2015-09-21T13:33:50Z","salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"},"longitude":-0.168125,"latitude":51.463902,"__CLASS__":"Adzuna::API::Response::Job","description":"We
+        are an independent venue with a quirky, original concept looking for a head
+        chef with an immediate start. We are open 7 days per week, operating with
+        a breakfast/brunch offering 9am - 4pm and then we change to an evening menu
+        until 10pm. We are looking for someone who has experience running a kitchen,
+        with a passion for food who is keen to work alongside the owners to develop
+        the menu and always striving to improve. The ability to work at a fast pace
+        is essential. Wage is negotiable dependin\u2026","contract_type":"permanent","category":{"tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs"},"salary_min":28910.52},{"__CLASS__":"Adzuna::API::Response::Job","longitude":-0.20657,"latitude":51.42129,"contract_type":"permanent","description":"We
+        are currently looking for a Packaging Designer to join a leading creative
+        design team based in London, who has a keen interest in food packaging, you
+        don\u2019t need to have experience but a back ground in design or Cad programing
+        will help as for the chosen candidate will be trained up by the company. KEY
+        DUTIES AND RESPONSIBILITIES: Your duties as the Packaging Designer will be
+        varied however the key duties and responsibilities are as following: 1. You
+        will be working closely with members of th\u2026","salary_min":30818.6,"category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Creative
+        & Design Jobs","tag":"creative-design-jobs"},"location":{"area":["UK","London","South
+        West London","Wimbledon"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Wimbledon,
+        South West London"},"id":"314326738","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314326738?v=809F088B7F68DD51094D16C2D4B8F549BC55256A&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiMVhWeWZJUkZUd1cySzBPV3MzbnpwUSIsImkiOiIzMTQzMjY3MzgifQ.sr_JmUv_JMrq0qVK0wX5HP2Eaaidin6H-ZMBx4QH44U","salary_is_predicted":"1","title":"Junior
+        Packaging Designer","created":"2015-09-21T13:33:38Z","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":30818.6},{"created":"2015-09-21T13:20:21Z","title":"Events
+        Manager - Circa \u00a330,000","salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":27173.9,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314326044?v=D0FA4CC762EB494790D47601D8A70F65124A33F4&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","id":"314326044","location":{"display_name":"Westminster,
+        South West London","area":["UK","London","South West London","Westminster"],"__CLASS__":"Adzuna::API::Response::Location"},"adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI2MDQ0IiwicyI6IjFYVnlmSVJGVHdXMkswT1dzM256cFEifQ.KncjFzKkx10b50aecyHIejgL-WrtarZkuu3wlRFZdvI","salary_min":27173.9,"category":{"label":"PR,
+        Advertising & Marketing Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"pr-advertising-marketing-jobs"},"__CLASS__":"Adzuna::API::Response::Job","longitude":-0.143115,"latitude":51.499199,"description":"The
+        Commercial Executive is responsible for the day-to-day management of our client''s
+        events programme of activities. Currently their events cover a broad spectrum
+        which includes high profile networking events, conferences and workshops,
+        exhibitions and international trade visits. Educated to degree level or equivalent,
+        you will have experience of budgeting for events ensuring profitability. Previous
+        experience of negotiating contracts with venues, potential sponsors and general
+        events manageme\u2026","contract_type":"permanent"},{"contract_type":"permanent","description":"Love
+        PR London are looking for a full time permanent Account Manager to join their
+        small but dynamic team based in Parsons Green. The applicant must have at
+        least 3 years experience working in the industry, ideally with health, beauty,
+        lifestyle consumer clients. You will be working with 4 to 5 retained clients
+        and help pitch for new business and write PR proposals. The ideal applicant
+        will be able to demonstrate excellent creative writing skills and communication
+        skills as you will be selling \u2026","latitude":51.4799,"longitude":-0.198613,"__CLASS__":"Adzuna::API::Response::Job","category":{"tag":"pr-advertising-marketing-jobs","label":"PR,
+        Advertising & Marketing Jobs","__CLASS__":"Adzuna::API::Response::Category"},"salary_min":27373.6,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiMVhWeWZJUkZUd1cySzBPV3MzbnpwUSIsImkiOiIzMTQzMjYwNDIifQ.apaNbdh5vChkt95AuSPgwt2Pb3PBSxBe8NmeWcUuhYs","location":{"display_name":"Fulham,
+        South West London","area":["UK","London","South West London","Fulham"],"__CLASS__":"Adzuna::API::Response::Location"},"id":"314326042","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314326042?v=83B51D9F4B98A9026C59A0F8A8A90FDCEAD059A5&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","salary_max":27373.6,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","title":"PR
+        Account Manager - Health, beauty, lifestyle consumer brands","created":"2015-09-21T13:20:20Z"},{"company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"Au
+        pair for October November December","created":"2015-09-21T13:16:39Z","salary_is_predicted":"1","salary_max":22575.64,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1OTE0IiwicyI6IjFYVnlmSVJGVHdXMkswT1dzM256cFEifQ.i136STg0HmUBYX2lGB8We8aUMhB3nB-ThWiWezc0RyQ","id":"314325914","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325914?v=E0CB9AB04E49F913137D785EF122793DCAE6B952&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Putney"],"display_name":"Putney, South West London"},"salary_min":22575.64,"category":{"tag":"domestic-help-cleaning-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs"},"description":"We are looking for a referenced au pair
+        to help looking after our 9 month old twins for three months starting as soon
+        as possible. We live in a beautiful gated community with garden and offer
+        a spacious double room with own bathroom and all living expenses covered.
+        Hours would be 8.30am to 3.30pm Monday to Friday. Please get in touch only
+        if you are able to provide good references. Thank you","contract_type":"permanent","longitude":-0.216308,"latitude":51.462601,"__CLASS__":"Adzuna::API::Response::Job"},{"latitude":51.499199,"longitude":-0.143115,"__CLASS__":"Adzuna::API::Response::Job","contract_type":"permanent","description":"Require
+        a Nanny (Live-In or Live-out) to work 2 hrs in the morning to send the girls
+        to the school and 2 hrs in the evening prior to girls going to bed daily.
+        Full day with girls on Saturday and Sunday from 10 am to 7 PM. Salary: \u00a3150/-
+        a week. Please apply with CV and Photo","salary_min":18760.11,"category":{"__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs","tag":"domestic-help-cleaning-jobs"},"location":{"display_name":"Westminster,
+        South West London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Westminster"]},"id":"314325907","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325907?v=EB5BC59988D17DE85956EB83BFD65DBDBE391DD1&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiMVhWeWZJUkZUd1cySzBPV3MzbnpwUSIsImkiOiIzMTQzMjU5MDcifQ.xe8QArffHMW92IQfjman9N7yXX-83Ab2u4KbP7UiEtc","salary_is_predicted":"1","created":"2015-09-21T13:16:36Z","title":"Nanny
+        for Girl age 2 and 4 years of Age","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":18760.11},{"salary_min":19783.62,"category":{"label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"latitude":51.499199,"longitude":-0.143115,"__CLASS__":"Adzuna::API::Response::Job","description":"We
+        run a busy pub located in Victoria with two bars and a restaurant. Our clientele
+        is comprised of locals, tourists and suits in almost equal measures, which
+        makes for a laidback & enjoyable atmosphere. We are looking for a head waiter/waitress
+        with experience working in a busy pub who can bring their own personality
+        and flair to supervise the restaurant. We need someone who can work quickly
+        and efficiently while maintaining a relaxed and friendly demeanour. They must
+        have an attention to deta\u2026","contract_type":"permanent","created":"2015-09-21T13:16:26Z","title":"Experienced
+        & efficient, full-time head waiter/waitress needed who brings a bit of personality","salary_is_predicted":"1","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_max":19783.62,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325891?v=4FE004980BBDADAA811579620473060A4D239AA4&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","id":"314325891","location":{"display_name":"Westminster,
+        South West London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Westminster"]},"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiMVhWeWZJUkZUd1cySzBPV3MzbnpwUSIsImkiOiIzMTQzMjU4OTEifQ.IVZL5Nv2VXSnKVOnUtNeAVymT90uQya1IUsganY3RnU"},{"description":"We
+        are Le Pain Quotidien This means \"the daily bread\". We are a Belgian bakery
+        chain which prides itself on selling the most delicious organic food and drinks.
+        We have grown rapidly over the last few years across the world and have enjoyed
+        success in London since 2005. We believe that we provide the most genuine
+        and friendly experience to our customers; all of this within our lovely restaurants.
+        If you feel that you, or someone you know, would enjoy looking after our customers
+        by serving or mak\u2026","contract_type":"permanent","latitude":51.42129,"longitude":-0.20657,"__CLASS__":"Adzuna::API::Response::Job","salary_min":15376.8,"category":{"tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs"},"adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1ODg0IiwicyI6IjFYVnlmSVJGVHdXMkswT1dzM256cFEifQ.NNpxW2C6lyShJEn-qYY3G4r8V4VcndTxMQHPQtEGWYE","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325884?v=E6DA9A6673B670FBBEB092F2CF790588DD7D8BE7&se=1XVyfIRFTwW2K0OWs3nzpQ&utm_medium=api&utm_source=63a598e7","id":"314325884","location":{"display_name":"Wimbledon,
+        South West London","area":["UK","London","South West London","Wimbledon"],"__CLASS__":"Adzuna::API::Response::Location"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"WAITING
+        STAFF Le Pain Quotidien, Wimbledon No split shift","created":"2015-09-21T13:16:23Z","salary_is_predicted":"1","salary_max":15376.8}],"mean":30083.2}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['14440']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Mon, 21 Sep 2015 13:22:54 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['2005586335']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/4?location0=UK&location1=London&location2=South+West+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"mean":30083.2,"__CLASS__":"Adzuna::API::Response::JobSearchResults","results":[{"salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NzA5IiwicyI6ImwxWUlZNmxvUjJhSmhjOFNGaFhJM0EifQ.3tUxeXpeL4LpIomEaopUABbhGxw26gzWE84zgZ3XSJQ","created":"2015-09-21T13:14:17Z","__CLASS__":"Adzuna::API::Response::Job","salary_min":16173.29,"contract_type":"permanent","description":"We
+        are looking for an after school nanny (roughly 18 hours per week). We have
+        3 children aged 3 (boy), 6 (girl) and 10 (boy). You will pick up the children
+        from school, supervise homework, help with showering, take them to their weekly
+        activities etc. The hours are as follows: - Monday, Tuesday, Thursday: morning
+        school drop off (1 hour from 8.15am)  3.15pm until 6.30pm - Wednesday: same
+        morning school drop off  1pm until 6.30pm - Friday: 3.15pm until 6pm. You
+        must be fun, energetic but also st\u2026","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Earls Court"],"display_name":"Earls Court, South West London"},"title":"After
+        school nanny wanted in Earl''s Court","id":"314325709","company":{"__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325709?v=C0EAA6AB5090D6F1C9121A5F57F297BF83BF40F8&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.19222,"salary_max":16173.29,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs","label":"Domestic
+        help & Cleaning Jobs"},"latitude":51.491001},{"latitude":51.4799,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs","label":"Hospitality
+        & Catering Jobs"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325682?v=29153390F38A732AAD57FCB1BF867410B71455A0&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.198613,"salary_max":19353.96,"title":"Full
+        time floor staff needed for The Butcher''s Hook pub in Fulham","id":"314325682","company":{"__CLASS__":"Adzuna::API::Response::Company"},"description":"Busy
+        pub/restaurant in Fulham is looking for experienced full time bar & waiting
+        staff to join an established team. You will need to be well presented, energetic
+        and enthusiastic. We look for people who thrive in a fast paced environment
+        and have a real passion for food/wine and customer service. The most important
+        thing is that you can work as part of a high performing team and have great
+        communication skills to quickly build rapport with your colleagues and customers.
+        You will have worked in \u2026","location":{"display_name":"Fulham, South
+        West London","area":["UK","London","South West London","Fulham"],"__CLASS__":"Adzuna::API::Response::Location"},"contract_type":"permanent","__CLASS__":"Adzuna::API::Response::Job","salary_min":19353.96,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoibDFZSVk2bG9SMmFKaGM4U0ZoWEkzQSIsImkiOiIzMTQzMjU2ODIifQ.VP2qYzaBSEwt_Xe7tdmdduLgLnsuqdZdVsn5luWK8DM","created":"2015-09-21T13:14:07Z","salary_is_predicted":"1"},{"latitude":51.463902,"category":{"tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs"},"salary_max":16015.02,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325671?v=DE24560219678A99FA655897072E98ED50743EB8&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.168125,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"314325671","title":"Part
+        - Time Wait Staff","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Clapham"],"display_name":"Clapham, South West London"},"description":"Raise
+        the bar on serving the best cocktails and service in town. Dirty Martini is
+        a sparkling, fun, sophisticated slice of London life located at some of the
+        capital\u2019s premier addresses. We mix sophisticated surroundings, fantastic
+        cocktails and a range of quality champagnes, wines, beers and spirits. It\u2019s
+        a place where you\u2019ll find bright young professionals going the same place
+        we are. We\u2019re looking for skilled and experienced Wait Staff who can
+        serve up a Dirty Martini, whilst dispensing a we\u2026","contract_type":"permanent","created":"2015-09-21T13:14:03Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NjcxIiwicyI6ImwxWUlZNmxvUjJhSmhjOFNGaFhJM0EifQ.RoCYlpOmVDoaDoYhVtnWoWvcVaO6IWgZZKtCuxOEMLE","salary_is_predicted":"1","salary_min":16015.02,"__CLASS__":"Adzuna::API::Response::Job"},{"company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"314325668","title":"Fun
+        and hard working bar staff needed for busy pub on the North Bank of the Thames","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Millbank,
+        South West London","area":["UK","London","South West London","Millbank"]},"description":"A
+        busy pub, on the north bank of the River Thames, steeped in history, The Morpeth
+        Arms is the perfect place to eat, drink and relax. Whether a hard day at the
+        office, or you have been on your feet all day taking in the sights, you can
+        come to the Morpeth rest assured we will look after you. And in our amazing
+        Spying Room, we can cater for all of your party needs. The pub is fast paced
+        at lunch times and evenings in the week, and a little more laid back at the
+        weekend, a time where we can excel\u2026","contract_type":"permanent","salary_min":15025.59,"__CLASS__":"Adzuna::API::Response::Job","salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NjY4IiwicyI6ImwxWUlZNmxvUjJhSmhjOFNGaFhJM0EifQ.CUTXVgBQu36We0kVzaqG_8ROrI1owfLa1VBI9dXP0sk","created":"2015-09-21T13:14:01Z","latitude":51.4949,"category":{"tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs"},"salary_max":15025.59,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325668?v=83FE0298C4DBCF1659B4D24DEF4D80151C2AE5ED&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.125259},{"salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NjY5IiwicyI6ImwxWUlZNmxvUjJhSmhjOFNGaFhJM0EifQ.aA30AH6dtboCRCP0UtfKke6-0hgdFATPSxyhbG0VNY0","created":"2015-09-21T13:14:01Z","__CLASS__":"Adzuna::API::Response::Job","salary_min":21069.76,"contract_type":"permanent","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Tooting,
+        South West London","area":["UK","London","South West London","Tooting"]},"description":"A
+        rather friendly bunch are looking for some rather fun and friendly people
+        to join their team We a local pub, situated off the main road, have a smashing
+        garden, the best BBQ in South London. We serve top class beers and ales, smashing
+        wine and some cracking food. We''re looking for fun, friendly and warm people
+        to join our close knit team We''ve got both full and part time positions available
+        and an immediate start for the right person(s) So, if you''re looking for
+        a new challenge and a great pl\u2026","id":"314325669","title":"Fun & Friendly
+        Staff for a rather lovely local (Live in for the right candidate)","company":{"__CLASS__":"Adzuna::API::Response::Company"},"longitude":-0.161972,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325669?v=C7C82139C8CE4FAF6F7B7701EF590BC5D040AF14&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","salary_max":21069.76,"category":{"tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs"},"latitude":51.429901},{"description":"We are looking for
+        a live out nanny for our daughter. Work commencing early in January 2016.
+        Working hours: 40  hours a week during nursery/school term Monday - Thursday
+        11-630pm Friday 830-630pm 50 hours a week during school break Monday to Friday
+        - 830-630pm Our daughter just turned 2 and a really easy going happy little
+        girl. We are looking for someone who is passionate about their job and will
+        genuinely enjoy nurturing our child''s development. Duties Look after our
+        little girl Light house k\u2026","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Chelsea,
+        South West London","area":["UK","London","South West London","Chelsea"]},"id":"314325640","title":"Nanny
+        wanted for our little girl in SW10 00F","company":{"__CLASS__":"Adzuna::API::Response::Company"},"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoibDFZSVk2bG9SMmFKaGM4U0ZoWEkzQSIsImkiOiIzMTQzMjU2NDAifQ.eZ95rxNAx8-DQLRBKDcLvfxtcmK0COPOSWo9eQifGNY","salary_is_predicted":"1","created":"2015-09-21T13:13:43Z","__CLASS__":"Adzuna::API::Response::Job","salary_min":15559.93,"contract_type":"contract","category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs","label":"Domestic
+        help & Cleaning Jobs"},"latitude":51.4827,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325640?v=5612E8D6E11F6281B2C3B4DB90ECABCF00438A1F&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.183435,"salary_max":15559.93},{"salary_max":15954.42,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325633?v=147228C4B038457F42E716C505E22F74E2ACBAD9&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.131106,"category":{"label":"Domestic
+        help & Cleaning Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs"},"latitude":51.429298,"created":"2015-09-21T13:13:41Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoibDFZSVk2bG9SMmFKaGM4U0ZoWEkzQSIsImkiOiIzMTQzMjU2MzMifQ.AcIQF99EVwxSZw38QrgoWQDhT1Eqd4-B6DmGaJ3skWY","salary_is_predicted":"1","salary_min":15954.42,"__CLASS__":"Adzuna::API::Response::Job","contract_type":"contract","description":"We
+        live in a lovely house near the common, close to good transport and shops,
+        cafes and leisure centre. You will have your own double bedroom with bathroom,
+        TV,DVD and Wifi Children are at school from 7.30 - 5.30 so there is plenty
+        of time for you. Duties Occasionally take them to school. Clean up breakfast
+        and kitchen, make beds, clean rooms and bathrooms do laundry. Walk the little
+        dog in the common. After school to help with dinner, homework, bath and bed
+        ( I work some evenings) I may need s\u2026","location":{"display_name":"Streatham,
+        South West London","area":["UK","London","South West London","Streatham"],"__CLASS__":"Adzuna::API::Response::Location"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"title":"Urgently
+        needed an au pair to help with 10 yr old girl and 8 yr old boy","id":"314325633"},{"category":{"label":"Domestic
+        help & Cleaning Jobs","tag":"domestic-help-cleaning-jobs","__CLASS__":"Adzuna::API::Response::Category"},"latitude":51.463902,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325631?v=FF8698CFC05DD1A11457838FA5C163B25527AC11&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.168125,"salary_max":16954.11,"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Clapham"],"display_name":"Clapham, South West London"},"description":"We
+        are a kind and friendly Spanish family looking for a trustworthy and loving
+        full-time nanny who lives in/around Clapham South or Balham area to look after
+        our 2 year-old son. The hours will be approximately 7;30am -5;30pm Monday
+        to Friday with around 6 hours housekeeping every week. The housekeeping hours
+        are flexible so you can fit them around other things. This will include some
+        general cleaning, keeping the house tidy, cooking as needed, taking responsibility
+        for laundry and ironing as ne\u2026","id":"314325631","title":"Live Out Nanny/
+        Housekeeper - Clapham South/ Balham Area","company":{"__CLASS__":"Adzuna::API::Response::Company"},"salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NjMxIiwicyI6ImwxWUlZNmxvUjJhSmhjOFNGaFhJM0EifQ.rdwnqElBcd98skiXNpGBsK1re7sEeVdcfeqOixdtR1Q","created":"2015-09-21T13:13:40Z","__CLASS__":"Adzuna::API::Response::Job","salary_min":16954.11,"contract_type":"permanent"},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325628?v=826B9EF3812B35818604600532B2AE026B585A35&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.143115,"salary_max":22349.36,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs","label":"Domestic
+        help & Cleaning Jobs"},"latitude":51.499199,"__CLASS__":"Adzuna::API::Response::Job","salary_min":22349.36,"salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NjI4IiwicyI6ImwxWUlZNmxvUjJhSmhjOFNGaFhJM0EifQ.MEM0Jwvff2eLK7JEY6Pao-SfYKJ8R8vVKXhp-za7uPI","created":"2015-09-21T13:13:38Z","contract_type":"contract","description":"Lovely
+        family with two boys 9 and 11 is looking for experienced governess. Spanish
+        or French is a bonus. You must be a driver. Accommodation provided, large
+        separate room with the bathroom. Knowledge of British and American curriculum
+        is required. You must be active, energetic and positive. Please send your
+        CV, two references, recent photo and Skype ID. Start Oct 13th.","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Westminster"],"display_name":"Westminster, South West London"},"title":"Governess
+        - Dubai","id":"314325628","company":{"__CLASS__":"Adzuna::API::Response::Company"}},{"__CLASS__":"Adzuna::API::Response::Job","salary_min":19980.85,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoibDFZSVk2bG9SMmFKaGM4U0ZoWEkzQSIsImkiOiIzMTQzMjU2MjkifQ.enQ2zdm6XEfGp-zU3buAoCTX_f-Qq9lOdn1MaJaFWhg","salary_is_predicted":"1","created":"2015-09-21T13:13:38Z","contract_type":"contract","location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Westminster"],"display_name":"Westminster, South West London"},"description":"VIP
+        family currently in London. Baby is one month old. Nanny needed, full time,
+        live in (separate bedroom and bathroom, top notch). Experience with new born
+        is a must. One year contract, fully staffed household. Family travels a lot,
+        this job involves plenty of international travel. Salary \u00a31,000/week.
+        Start ASAP. Please send your CV, recent photo, Skype ID, two references.","id":"314325629","title":"Live
+        in nanny","company":{"__CLASS__":"Adzuna::API::Response::Company"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325629?v=0B83FA7399186CC7FBD76D2D83AECF6CFD7CB907&se=l1YIY6loR2aJhc8SFhXI3A&utm_medium=api&utm_source=63a598e7","longitude":-0.143115,"salary_max":19980.85,"category":{"label":"Domestic
+        help & Cleaning Jobs","tag":"domestic-help-cleaning-jobs","__CLASS__":"Adzuna::API::Response::Category"},"latitude":51.499199}],"count":9672}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['14559']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Mon, 21 Sep 2015 13:22:55 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['2005586344']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/5?location0=UK&location1=London&location2=South+West+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"mean":30083.2,"results":[{"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs","label":"Domestic
+        help & Cleaning Jobs"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"created":"2015-09-21T13:13:08Z","latitude":51.472198,"contract_type":"permanent","salary_max":18247.43,"location":{"display_name":"Battersea,
+        South West London","area":["UK","London","South West London","Battersea"],"__CLASS__":"Adzuna::API::Response::Location"},"description":"We
+        are looking for a part-time nanny for our 18-month-old son, starting as soon
+        as possible after October 5th, for a period of at least six months and probably
+        longer. We need help for two days a week, for 14 hours in total (further hours
+        may sometimes be available). Ideally this would be on Mondays and Thursdays
+        from 9am-4pm, with the possibility of occasionally swapping daytime hours
+        for evening babysitting. We can be flexible regarding times for the right
+        candidate, but please note that we s\u2026","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325463?v=3E3D0F55BEEF53975BB87E0AB6102FF1048E3C57&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","longitude":-0.16541,"__CLASS__":"Adzuna::API::Response::Job","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiQm42Nk5uSlZTZml1amlmQm1pemg3ZyIsImkiOiIzMTQzMjU0NjMifQ.w1JRwqyBqfrWGV9kHt3dRatrcPoUIVo_EnOfmWDjFtQ","salary_min":18247.43,"id":"314325463","salary_is_predicted":"1","title":"Part-time
+        nanny required from early October in Battersea"},{"salary_max":16047.21,"description":"We
+        are a friendly family of four, with two children, boy aged 7 and girl aged
+        4.5 living in Putney. We are looking for a part time nanny willing to work
+        from Monday to Thursday during the afternoons (3pm-7pm with flexibility to
+        stay later if required ) and two mornings Tuesday and Wednesday (7.30am to
+        9.30am). Additional requirement to be discussed to work full days during school
+        holidays. You will be required to undertake housework including, cooking,
+        tidying up after the children, tidying chi\u2026","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325445?v=708D39E97AF0A36DD537C7E1152B2B1BF1A70FF5&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","longitude":-0.216308,"location":{"area":["UK","London","South
+        West London","Putney"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Putney,
+        South West London"},"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs","label":"Domestic
+        help & Cleaning Jobs"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"contract_type":"permanent","latitude":51.462601,"created":"2015-09-21T13:13:02Z","id":"314325445","title":"Part
+        time nanny required in Putney for before and after school care - Start 28
+        Sep","salary_is_predicted":"1","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NDQ1IiwicyI6IkJuNjZObkpWU2ZpdWppZkJtaXpoN2cifQ.5_8D2EmofwMMUVTcGVIUjU3_U3hGlPWtaXzEdGHhgl8","__CLASS__":"Adzuna::API::Response::Job","salary_min":16047.21},{"salary_max":22113.55,"location":{"display_name":"Earls
+        Court, South West London","area":["UK","London","South West London","Earls
+        Court"],"__CLASS__":"Adzuna::API::Response::Location"},"longitude":-0.19222,"description":"Lovely
+        family is looking for a French speaking nanny to care for their newborn baby
+        due in October. The nanny will work full time for the family Monday to Friday
+        with some babysitting when needed. The nanny will look after the child and
+        stimulate her in French. The position is based in central London, SW10 - Chelsea.
+        The ideal person will be mature, experienced, sporty, energetic, tuna and
+        outgoing. Salary offered: competitive. Start date: End of October 2015. If
+        you are interested in this posi\u2026","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325443?v=94C08C5ACE52D3F72D4D4FE9DA80C8D4CF78278C&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","category":{"label":"Domestic
+        help & Cleaning Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"created":"2015-09-21T13:13:01Z","latitude":51.491001,"contract_type":"permanent","id":"314325443","salary_is_predicted":"1","title":"French
+        speaking part time nanny needed in Chelsea \u2013 competitive salary","__CLASS__":"Adzuna::API::Response::Job","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiQm42Nk5uSlZTZml1amlmQm1pemg3ZyIsImkiOiIzMTQzMjU0NDMifQ.dlwBb6sAVtqNDxLr6cJqJ64v3ID1pK6E1RA-NxhZ28o","salary_min":22113.55},{"latitude":51.463902,"contract_type":"permanent","created":"2015-09-21T13:13:00Z","company":{"__CLASS__":"Adzuna::API::Response::Company"},"category":{"tag":"domestic-help-cleaning-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs"},"description":"Hi I have more than 6 years as nanny
+        and I am avaiable to do babysitting every evening From 5.30 pm. I have DBS
+        check, first aid and references on request. I am avaiable on Clapham common,
+        clapham south, Balham, wandsworth area, Clapham junction, Batersea, Putney,
+        South kensington, Earls court, Barons court, Fulham, Parsons Green and NW1.","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325441?v=4CD8801B90096872C4AB6014FC30F644F0AAF2BB&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","longitude":-0.168125,"location":{"display_name":"Clapham,
+        South West London","area":["UK","London","South West London","Clapham"],"__CLASS__":"Adzuna::API::Response::Location"},"salary_max":25412.84,"salary_min":25412.84,"__CLASS__":"Adzuna::API::Response::Job","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NDQxIiwicyI6IkJuNjZObkpWU2ZpdWppZkJtaXpoN2cifQ.2QuTaHKgzhmFWId4WtCNdlD3O5vKz5L0GkNla5AtIi4","title":"Babysitter","salary_is_predicted":"1","id":"314325441"},{"salary_min":17401.17,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiQm42Nk5uSlZTZml1amlmQm1pemg3ZyIsImkiOiIzMTQzMjU0MzkifQ.6zY4pXKRwGjBWIFj-oWr44OkAvUHAl0PhDWJ4mV3bl8","__CLASS__":"Adzuna::API::Response::Job","salary_is_predicted":"1","title":"Looking
+        for Happy Fun Responsible and Committed Live In Nanny","id":"314325439","created":"2015-09-21T13:12:58Z","contract_type":"permanent","latitude":51.451801,"category":{"tag":"domestic-help-cleaning-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"location":{"display_name":"Wandsworth,
+        South West London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Wandsworth"]},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325439?v=B3BED5F3CD77965FAC7983788C9754A07CFBF03D&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","description":"I
+        am looking for a live-in nanny to start at the beginning of October to help
+        look after my 3 kids (b12, b11, g9), I am a single mum and I work full time
+        so the job is sole charge, but of course with my help when I am around. The
+        kids are happy, fun, and well behaved, and I am looking for someone who will
+        love them and look after them like I would if I were at home. The job is a
+        busy one, on account of the fact that there are 3 children, they need their
+        laundry done, their meals cooked for them\u2026","longitude":-0.192757,"salary_max":17401.17},{"title":"Putney-
+        Part time Bartender required - immediate start","salary_is_predicted":"1","id":"314325437","salary_min":16462.78,"__CLASS__":"Adzuna::API::Response::Job","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NDM3IiwicyI6IkJuNjZObkpWU2ZpdWppZkJtaXpoN2cifQ.iVZcTu_nJynQhvPdH-p1AqWCheRS_l27XWZE5nL2-qw","longitude":-0.216308,"description":"The
+        Toy Shop bar / restaurant is looking a part-time bartender. The right candidate
+        will work approximately 20 hours a week part time with the focus being on
+        weekends. We specialise in making unique cocktails in a fun, fast paced environment
+        - previous cocktail experience preferred - however, on the job training is
+        available to those who demonstrate the right attitude. The right candidate
+        will receive good rates of pay / service charge and incentives schemes Please
+        email your CV with a recent p\u2026","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325437?v=CA7CE401FBD74C79EF0859DB5BE3A147BF0F45ED&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","location":{"display_name":"Putney,
+        South West London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Putney"]},"salary_max":16462.78,"latitude":51.462601,"contract_type":"permanent","created":"2015-09-21T13:12:56Z","category":{"label":"Hospitality
+        & Catering Jobs","tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category"},"company":{"__CLASS__":"Adzuna::API::Response::Company"}},{"created":"2015-09-21T13:12:51Z","contract_type":"permanent","latitude":51.499199,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"category":{"label":"Hospitality
+        & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"location":{"display_name":"Westminster,
+        South West London","__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Westminster"]},"description":"We are a busy little pub in central
+        london currently recruting for Team Players and Team Leaders. We are very
+        focused on friendly effieciant service and keeping our customers happy. Sounds
+        easy? If customer service is at your heart then we would love to hear from
+        you.","longitude":-0.143115,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325425?v=7386D3C9F75048265BF323DCB58F2EBEDB790DFD&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","salary_max":20349.3,"salary_min":20349.3,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiQm42Nk5uSlZTZml1amlmQm1pemg3ZyIsImkiOiIzMTQzMjU0MjUifQ.mpGxL_8bN_ZZ3NtKmK4UVRz4awSFeZ1-v5U8NjqZAc4","__CLASS__":"Adzuna::API::Response::Job","salary_is_predicted":"1","title":"Bar
+        Team Leader and Team Players Wanted","id":"314325425"},{"salary_max":15788.6,"location":{"area":["UK","London","South
+        West London","Earls Court"],"__CLASS__":"Adzuna::API::Response::Location","display_name":"Earls
+        Court, South West London"},"description":"Outstanding waiters and waitresses
+        to join our new opening team. A modern French restaurant wine bar, stylish
+        urban design and buzzy atmosphere in the heart of Chelsea, offering Southern-French
+        dishes accompanied with carefully selected old and new world wines. Is this
+        you? - Keen eye for detail, natural hospitality skills, delivering and exceeding
+        high standards of service and guest experience. - Energetic, enthusiastic
+        and heaps of personality. - A first class work ethic to grow within our te\u2026","redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325420?v=9B61551A8A7A6615ACC28BBD20CA96C9A0EF6104&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","longitude":-0.19222,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"category":{"tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Hospitality
+        & Catering Jobs"},"created":"2015-09-21T13:12:49Z","latitude":51.491001,"contract_type":"permanent","id":"314325420","salary_is_predicted":"1","title":"Experienced
+        Waiters and Waitresses","__CLASS__":"Adzuna::API::Response::Job","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1NDIwIiwicyI6IkJuNjZObkpWU2ZpdWppZkJtaXpoN2cifQ.xGqTsxfEl5-5sSGD7L2XfnaXJV70qNZcrK_s9Qi0-Ww","salary_min":15788.6},{"created":"2015-09-21T13:06:37Z","contract_type":"permanent","latitude":51.462601,"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"other-general-jobs","label":"Other/General
+        Jobs"},"company":{"__CLASS__":"Adzuna::API::Response::Company"},"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Putney"],"display_name":"Putney, South West London"},"description":"Silent
+        Social was formed in 2010 offering the perfect blend of silent disco and creative
+        event management. Fast forward to 2015 and we\u2019re proudly playing at some
+        of the UK\u2019s biggest Festivals, representing leading brands and performing
+        at events across Europe, Asia and America. After successfully dipping our
+        toe into the club night world we are looking to make a Silent Disco a weekly
+        fixture in the capital. We are looking for an enthusiastic and well connected
+        individual to be solely focussed o\u2026","longitude":-0.216308,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325284?v=1F35C4EE80D80D961FE401F7D3CCD5804879F0D7&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","salary_max":24741.29,"salary_min":24741.29,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI1Mjg0IiwicyI6IkJuNjZObkpWU2ZpdWppZkJtaXpoN2cifQ.myQzaQwKUCzMRLW2t07sc5ZmanCiSzOBhzCq-EEwOSc","__CLASS__":"Adzuna::API::Response::Job","salary_is_predicted":"1","title":"Promotions
+        Manager (freelance) - Silent Disco Events Company","id":"314325284"},{"location":{"display_name":"Wimbledon,
+        South West London","area":["UK","London","South West London","Wimbledon"],"__CLASS__":"Adzuna::API::Response::Location"},"description":"DS
+        Systems are a London based company which installs and repairs electronic security
+        systems. We are looking for skilled Service and Installation Engineers who
+        can repair and maintain CCTV, ACCESS CONTROL and DOOR ENTRY systems. HOURS
+        08.00 to 17.00 with 1 hour for lunch. 40 hour week, overtime expected. KEY
+        DUTIES  Repair and maintain CCTV, access control and door entry systems to
+        specified standards.  Read job specification sheets and prepare all necessary
+        equipment to complete jobs.  Solve p\u2026","longitude":-0.20657,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325093?v=0A5520B38FD93DF3619952DA9E5C10D3C7A2D70D&se=Bn66NnJVSfiujifBmizh7g&utm_medium=api&utm_source=63a598e7","salary_max":26591.14,"created":"2015-09-21T12:59:11Z","contract_type":"contract","latitude":51.42129,"company":{"__CLASS__":"Adzuna::API::Response::Company"},"category":{"tag":"engineering-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Engineering
+        Jobs"},"salary_is_predicted":"1","title":"CCTV/ACCESS CONTROL ENGINEERS","id":"314325093","salary_min":26591.14,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiQm42Nk5uSlZTZml1amlmQm1pemg3ZyIsImkiOiIzMTQzMjUwOTMifQ.Tj4xPMgz-fELrEFAJzSrCW0qvV4_wZ6lNxKjG4KieCg","__CLASS__":"Adzuna::API::Response::Job"}],"__CLASS__":"Adzuna::API::Response::JobSearchResults","count":9672}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['14379']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Mon, 21 Sep 2015 13:22:56 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['2005586360']
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.7.0 CPython/3.4.3 Darwin/14.5.0]
+    method: GET
+    uri: http://api.adzuna.com/v1/api/jobs/gb/search/6?location0=UK&location1=London&location2=South+West+London&sort_by=date&sort_direction=down
+  response:
+    body: {string: '{"mean":30083.2,"results":[{"latitude":51.463902,"category":{"label":"Sales
+        Jobs","tag":"sales-jobs","__CLASS__":"Adzuna::API::Response::Category"},"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325089?v=B27095855D724387D7AC9ABE5F391873C932A561&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","longitude":-0.168125,"salary_max":17613.81,"id":"314325089","title":"Sales
+        executive needed for busy lively bar","company":{"__CLASS__":"Adzuna::API::Response::Company"},"location":{"area":["UK","London","South
+        West London","Clapham"],"display_name":"Clapham, South West London","__CLASS__":"Adzuna::API::Response::Location"},"description":"Revolution
+        Clapham Junction are looking for a sales executive to join the team and help
+        us drive the business forward. The venue is a lively and well established
+        business who requires someone to help secure pre booked party packages and
+        Christmas corporate events. Your main responsibilities will include:- Answering
+        the phone Contacting customers who have made an enquiry Networking with people
+        within the business Visiting local retailers with special offers Converting
+        Christmas enquiries into bo\u2026","contract_type":"permanent","__CLASS__":"Adzuna::API::Response::Job","salary_min":17613.81,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiaWd4RGV3VjBSakNRUmhJdFZMSVRzUSIsImkiOiIzMTQzMjUwODkifQ.IRksTweE5xN9OCcaAyN3QKVwsEPvh6rd6plVUuRyBjg","salary_is_predicted":"1","created":"2015-09-21T12:57:34Z"},{"latitude":51.362301,"category":{"label":"Sales
+        Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"sales-jobs"},"salary_max":28429.32,"longitude":-0.304279,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314325078?v=D2C0DD773AC54498E09B8B957DF0BA08B3997868&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","company":{"__CLASS__":"Adzuna::API::Response::Company"},"id":"314325078","title":"Business
+        Development Executive","description":"Aspect is London\u2019s leading property
+        maintenance service provider. We cover all trades including roofing, Electrical,
+        plumbing and heating, carpentry, HVAC just to name a few. All our engineers
+        are fully qualified and highly experience in their specialist field. We always
+        aim delivery the highest standard of work and professionalism and are London\u2019s
+        number one for all domestic and commercial property maintenance needs. We
+        currently have an exciting opportunity for a Sales Executive to join our f\u2026","location":{"area":["UK","London","South
+        West London","Chessington"],"display_name":"Chessington, South West London","__CLASS__":"Adzuna::API::Response::Location"},"contract_type":"permanent","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiaWd4RGV3VjBSakNRUmhJdFZMSVRzUSIsImkiOiIzMTQzMjUwNzgifQ.WPNI3XtR9NdI9GIfRdIxn0AbIHfk3WI414uEon7W6yo","salary_is_predicted":"1","created":"2015-09-21T12:57:29Z","salary_min":28429.32,"__CLASS__":"Adzuna::API::Response::Job"},{"longitude":-0.300443,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314324975?v=D5B4641ABCD12CABB9B5DC4F2BCF50DBE8AE7199&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","salary_max":24001.67,"category":{"label":"Teaching
+        Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"teaching-jobs"},"latitude":51.4123,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzI0OTc1IiwicyI6ImlneERld1YwUmpDUVJoSXRWTElUc1EifQ.gl_IFvcWDG17n-FiWwQnKKBcOI7C0ew4xywqax4qkP8","created":"2015-09-21T12:56:32Z","salary_is_predicted":"1","__CLASS__":"Adzuna::API::Response::Job","salary_min":24001.67,"contract_type":"contract","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Kingston
+        Upon Thames, South West London","area":["UK","London","South West London","Kingston
+        Upon Thames"]},"description":"GAP Student Role Description Applications are
+        invited for the post of GAP Student at Marymount International School, a leading
+        independent, international, Catholic day and boarding school for girls aged
+        11-18. Marymount is situated on a beautiful 7 acre estate in a residential
+        area of north-east Surrey in close proximity to central London. The role will
+        involve a variety of responsibilities and tasks which will require the post
+        holder to be flexible and willing to be called upon according to th\u2026","id":"314324975","title":"Gap
+        Student","company":{"__CLASS__":"Adzuna::API::Response::Company"}},{"category":{"__CLASS__":"Adzuna::API::Response::Category","tag":"sales-jobs","label":"Sales
+        Jobs"},"latitude":51.42129,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314324923?v=936B88EF4BE7986385F1392514CEF752C03A9068&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","longitude":-0.20657,"salary_max":24666.72,"description":"Put
+        your customer service and sales skills to good use within our fun, lively
+        sales and marketing company. Join a friendly and fast growing team; be rewarded
+        with uncapped earnings and fantastic incentives including national and international
+        travel and financial rewards. Since expanding down from Manchester and opening
+        an office on the outskirts of London, our client has become one of the countries
+        top Sales, Customer Service and Marketing companies with associated sales
+        offices both nationall\u2026","location":{"display_name":"Wimbledon, South
+        West London","area":["UK","London","South West London","Wimbledon"],"__CLASS__":"Adzuna::API::Response::Location"},"title":"No
+        experience required, Start in Sales and Customer Service (REF:JP-87088)","id":"314324923","company":{"__CLASS__":"Adzuna::API::Response::Company"},"__CLASS__":"Adzuna::API::Response::Job","salary_min":24666.72,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiaWd4RGV3VjBSakNRUmhJdFZMSVRzUSIsImkiOiIzMTQzMjQ5MjMifQ.11U1wwsUBk30PLuFtC7m_8d0mDTAY61I-MTPxbB_WO4","salary_is_predicted":"1","created":"2015-09-21T12:56:18Z","contract_type":"permanent"},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314323177?v=DB6E4118397AC2B80CA4291136D45214BC321BD4&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","longitude":-0.207992,"salary_max":19,"latitude":51.425499,"category":{"label":"Unknown","tag":"unknown","__CLASS__":"Adzuna::API::Response::Category"},"contract_type":"contract","__CLASS__":"Adzuna::API::Response::Job","salary_min":19,"created":"2015-09-21T12:23:59Z","salary_is_predicted":"0","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiaWd4RGV3VjBSakNRUmhJdFZMSVRzUSIsImkiOiIzMTQzMjMxNzcifQ.DAJ1RY1UqgxWqGeG5E2HBodZM5E81mtqtQp7klMZQiw","title":"IT
+        Engineer","id":"314323177","company":{"__CLASS__":"Adzuna::API::Response::Company"},"location":{"area":["UK","London","South
+        West London","Merton"],"display_name":"Merton, South West London","__CLASS__":"Adzuna::API::Response::Location"},"description":"IT
+        Engineer - London - Contract - \u00a319ph (limited/umbrella) We have an exciting
+        opportunity for an experienced IT professional to join a busy team within
+        a local authority to provide IT support. To be suitable for this role, you
+        will need: - Strong knowledge of PABX, VoIP, Windows Servers and Unix Servers
+        - Experience with desktop devices, including Citrix - Extensive knowledge
+        of Active Directory and network switches - ITIL experience - Experience with
+        VMware - A CCNA and/or MSCA qualification \u2026"},{"created":"2015-09-21T12:18:37Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzE5NjI4IiwicyI6ImlneERld1YwUmpDUVJoSXRWTElUc1EifQ.R-oI7b26nguMhLoEZutTqnhCI8BiyhghQQI6n6vZaos","salary_is_predicted":"0","__CLASS__":"Adzuna::API::Response::Job","salary_min":11,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314319628?v=85B48F612B1A02555BC898E03B022EA1CC6E0C84&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","longitude":-0.20657,"salary_max":11,"category":{"label":"Domestic
+        help & Cleaning Jobs","tag":"domestic-help-cleaning-jobs","__CLASS__":"Adzuna::API::Response::Category"},"description":"Wimbledon
+        family with a newborn are looking for a full time live out Italian speaking
+        housekeeper nanny to assist them with a smooth run of a big family home. The
+        responsibilities for this Italian speaking candidate will be full housekeeping
+        duties, laundry, ironing and cooking for the whole family. This Wimbledon
+        family are hoping to find an organised, warm and caring person who will also
+        support them with childcare duties. The salary for this nanny position is
+        \u00a311 net per hour. If you are int\u2026","location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Wimbledon,
+        South West London","area":["UK","London","South West London","Wimbledon"]},"latitude":51.42129,"id":"314319628","title":"Italian
+        speaking Housekeeper Nanny for a Full time live out position in Wimbledon
+        London","company":{"__CLASS__":"Adzuna::API::Response::Company"}},{"company":{"display_name":"Strada
+        Trading Limited","__CLASS__":"Adzuna::API::Response::Company"},"title":"Waiter/Waitress
+        - Kingston - Strada","id":"314318513","category":{"label":"Hospitality & Catering
+        Jobs","tag":"hospitality-catering-jobs","__CLASS__":"Adzuna::API::Response::Category"},"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Kingston Upon Thames"],"display_name":"Kingston Upon Thames,
+        South West London"},"description":"When you work at Strada, you are family.You
+        are at the heart of everything that we do.Its more than a phrase, it\u2019s
+        an expression of the spirit at Strada as we say Benvenuto \u2013 and share
+        our appetite for 100% guest satisfaction. We are looking for people who are
+        enthusiastic, positive and dependable to join our team.People who have a genuine
+        desire to give a personalised Italian dining experience.You are crucial to
+        the restaurants success by being knowledgeable and passionate when serving
+        our hig\u2026","salary_max":19312.7,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314318513?v=1573A4CE7696F9109A6502737CA25538812F0D4B&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiaWd4RGV3VjBSakNRUmhJdFZMSVRzUSIsImkiOiIzMTQzMTg1MTMifQ.iLHdDWZqcKpZu3t9l57ybRTIx7o5uG_83xRue1OCBI8","created":"2015-09-21T11:52:51Z","salary_is_predicted":"1","salary_min":19312.7,"__CLASS__":"Adzuna::API::Response::Job"},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314318433?v=197A0A27824C3B49FB5CE350D57B047886F5F17D&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","salary_max":15928.28,"adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzE4NDMzIiwicyI6ImlneERld1YwUmpDUVJoSXRWTElUc1EifQ.i6aHCoLOnrVpvI3E2pOpfk8Bq_95jvtWD2OEfR2DvVE","created":"2015-09-21T11:52:49Z","salary_is_predicted":"1","__CLASS__":"Adzuna::API::Response::Job","salary_min":15928.28,"title":"Chef
+        de Partie - Kingston - Strada","id":"314318433","company":{"__CLASS__":"Adzuna::API::Response::Company","display_name":"Strada
+        Trading Limited"},"category":{"label":"Hospitality & Catering Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"hospitality-catering-jobs"},"location":{"__CLASS__":"Adzuna::API::Response::Location","display_name":"Kingston
+        Upon Thames, South West London","area":["UK","London","South West London","Kingston
+        Upon Thames"]},"description":"Strada is a stylish contemporary Italian restaurant
+        serving great quality, simple, freshly prepared authentic dishes. We are looking
+        for dynamic and personable chef de partie to join our vibrant restaurant team.
+        Ideal applicants will be keen, well presented team players and should have
+        a good knowledge of food preparation and customer service, but above all be
+        passionate about food and drink. Experience in Italian cooking is preferred
+        but not essential. We offer competitive rates of pay, excell\u2026"},{"created":"2015-09-21T11:39:28Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJzIjoiaWd4RGV3VjBSakNRUmhJdFZMSVRzUSIsImkiOiIzMTQzMTczMjAifQ.ujEg_SL5vOrjGMynoHc8ZEcEeQ3RmhTX2s67A6BLvyk","salary_is_predicted":"0","__CLASS__":"Adzuna::API::Response::Job","salary_min":13440,"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314317320?v=25A41BC3B79FE023E6067778EEF1ED21DCA96C57&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","longitude":-0.162643,"salary_max":13440,"category":{"label":"Domestic
+        help & Cleaning Jobs","__CLASS__":"Adzuna::API::Response::Category","tag":"domestic-help-cleaning-jobs"},"location":{"display_name":"Clapham
+        Common, South West London","area":["UK","London","South West London","Clapham
+        Common"],"__CLASS__":"Adzuna::API::Response::Location"},"description":"Looking
+        for a babysitter for evenings and weekends. Experience: 5 Years Experience.
+        Requirements: Looking for:Babysitter ;Desired languages:English ;Preferred
+        skills / other requirements:Childcare Qualifications First Aid Certificate
+        DBS Check References Background Check ;Age groups:6 Months - 2 Years","title":"Babysitter
+        in Clapham","id":"314317320","latitude":51.449994,"company":{"__CLASS__":"Adzuna::API::Response::Company"}},{"redirect_url":"http://www.adzuna.co.uk/jobs/land/ad/314317325?v=5BB6E4C0D1A1455CF6F47DE38E4355FC111F4E0B&se=igxDewV0RjCQRhItVLITsQ&utm_medium=api&utm_source=63a598e7","longitude":-0.148508,"salary_max":16270.58,"salary_is_predicted":"1","created":"2015-09-21T11:39:28Z","adref":"eyJhbGciOiJIUzI1NiJ9.eyJpIjoiMzE0MzE3MzI1IiwicyI6ImlneERld1YwUmpDUVJoSXRWTElUc1EifQ.m5jJiMDzysi_tieY0OQjZEdQlhPIUa7vbDVd_nyOtaQ","__CLASS__":"Adzuna::API::Response::Job","salary_min":16270.58,"id":"314317325","latitude":51.467478,"title":"After
+        school nanny battersea","company":{"__CLASS__":"Adzuna::API::Response::Company"},"category":{"tag":"domestic-help-cleaning-jobs","__CLASS__":"Adzuna::API::Response::Category","label":"Domestic
+        help & Cleaning Jobs"},"location":{"__CLASS__":"Adzuna::API::Response::Location","area":["UK","London","South
+        West London","Clapham Common"],"display_name":"Clapham Common, South West
+        London"},"description":"9 years old child after school pick up at 3:50 from
+        battersea plus homework. Work pattern from 3:30 to the latest 7:00. Requirements:
+        Looking for:After School Nanny ;Desired languages:English French ;Preferred
+        skills / other requirements:DBS Check References OFSTED Registered ;Age groups:5
+        Years "}],"__CLASS__":"Adzuna::API::Response::JobSearchResults","count":9672}'}
+    headers:
+      Accept-Ranges: [bytes]
+      Access-Control-Allow-Headers: ['Origin, X-Requested-With, Content-Type, Accept']
+      Access-Control-Allow-Origin: ['*']
+      Age: ['0']
+      Connection: [keep-alive]
+      Content-Length: ['14044']
+      Content-Type: [application/json; charset=utf8]
+      Date: ['Mon, 21 Sep 2015 13:22:57 GMT']
+      Server: [Apache]
+      Vary: [Content-Type]
+      Via: [1.1 varnish]
+      X-Catalyst: ['5.90053']
+      X-Varnish: ['2005586367']
+    status: {code: 200, message: OK}
+version: 1
