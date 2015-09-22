@@ -6,7 +6,9 @@ python:
 before_install:
   - '[ -d .downloads ] || mkdir .downloads'
   - (cd .downloads; [ -d prince-10r3-linux-generic-x86_64 ] || curl -s http://www.princexml.com/download/prince-10r3-linux-generic-x86_64.tar.gz | tar xzf -)
-  - echo $PWD | ./.downloads/prince-10r3-linux-generic-x86_64/install.sh
+  - echo $PWD/.prince | ./.downloads/prince-10r3-linux-generic-x86_64/install.sh
+  - export PATH=$PWD/.prince/bin:$PATH
+  - prince --version
   - bundle install
   - npm install
   - pip install --upgrade pip
