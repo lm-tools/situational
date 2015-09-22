@@ -9,7 +9,7 @@ before_install:
   - echo $PWD | ./.downloads/prince-10r3-linux-generic-x86_64/install.sh
   - bundle install
   - npm install
-install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache
+install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache --upgrade
 script:
   - ./build.sh
 cache:
