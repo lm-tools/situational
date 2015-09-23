@@ -1,5 +1,9 @@
 -r base.txt
 
+git+git://github.com/gjvis/splinter.git@djangoclient-button-support
+
+cssselect
+lxml
 mock
 model-mommy
 vcrpy
