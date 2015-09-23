@@ -74,6 +74,24 @@
   height: 15rem;
 }
 
+.map-legend-box {
+  width: 90px;
+  height: 30px;
+  text-align: center;
+  font-weight: bold;
+  margin: 5px 5px 5px 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0,0,0,.2);
+}
+
+.map-legend-text {
+  margin: 5px 15px 5px 15px;
+  height: 30px;
+  text-align: left;
+  font-weight: bold;
+}
+
 .job-suggestion-controls {
   ul {
     @extend .row;
