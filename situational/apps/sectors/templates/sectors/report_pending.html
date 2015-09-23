@@ -8,7 +8,8 @@
 
 {% block content %}
 <div class="row">
-  <div class="columns large-11 small-9">
+  <div class="columns">
+    {% include 'sectors/_progress.html' with step_number=3 %}
     <h1>Please wait while we generate your report...</h1>
     <ul>
       <li>{% include "sectors/_result_field_pending.html" with field="soc_code_data" message="Generating SOC code report..." %}</li>

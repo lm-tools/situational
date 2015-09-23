@@ -4,6 +4,7 @@
 {% block content %}
   <div class="row">
     <div class="columns large-8 large-centered">
+      {% include 'sectors/_progress.html' with step_number=1 %}
       <h1>About you</h1>
       <form method=post id="sector_form" autocomplete="OFF">
         {% csrf_token %}
