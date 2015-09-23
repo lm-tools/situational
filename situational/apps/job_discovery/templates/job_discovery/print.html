@@ -21,7 +21,7 @@
       {% for job in report.liked_jobs %}
         <section>
           <div class="columns">
-            {% include "job_discovery/_job_card.html" with show_apply=False %}
+            {% include "job_discovery/_job_card.html" with show_apply=True %}
           </div>
         </section>
       {% endfor %}
