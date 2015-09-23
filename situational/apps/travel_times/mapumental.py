@@ -17,10 +17,13 @@ class Client(object):
             "direction": "depart_after",
             "time": depart_at,
             "max_travel_time": max_travel_time,
+            "colour_scheme": "08519c,3182bd,6baed6,9ecae1,c6dbef",
             "width": width,
             "height": height,
             "print_styles": "yes",
-            "band_minutes": round(max_travel_time / 5),
+            "band_minutes": round(max_travel_time / 3),
+            "show_legend": "no",
+            "show_title": "no"
         })
         response = requests.get(url, params=params)
         image_data_io = BytesIO(response.content)
