@@ -2,6 +2,7 @@
 @import '../foundation/scss/normalize';
 @import '../foundation/scss/foundation';
 @import '_report';
+@import 'timeline';
 
 .start-panel {
   @media #{$medium-up} {

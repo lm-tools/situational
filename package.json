@@ -1,8 +1,0 @@
-{
-  "name": "situational",
-  "dependencies": {
-    "yuglify": "*"
-  },
-  "devDependencies": {},
-  "scripts": {}
-}
