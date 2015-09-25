@@ -10,15 +10,15 @@ before_install:
   - export PATH=$PWD/.prince/bin:$PATH
   - prince --version
   - bundle install
-  - npm install
   - pip install --upgrade pip
+  - psql -c 'create database situational;' -U postgres
 install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache --upgrade
 script:
   - ./build.sh
+  - ./test.sh
 cache:
   directories:
     - /home/travis/virtualenv
     - $HOME/.pip-cache/
-    - node_modules
 services:
   - redis-server

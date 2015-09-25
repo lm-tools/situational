@@ -96,10 +96,8 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
+    'static_precompiler.finders.StaticPrecompilerFinder',
 )
-
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = environ.get('DJANGO_SECRET_KEY')
@@ -154,7 +152,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'storages',
     'djcelery',
-    'pipeline',
+    'static_precompiler',
 )
 
 PROJECT_APPS = (
@@ -263,27 +261,10 @@ LMI_FOR_ALL_API_URL = environ.get(
     'http://api.lmiforall.org.uk/api/v1/'
 )
 
-PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.yuglify.YuglifyCompressor'
-PIPELINE_COMPILERS = (
-    'pipeline.compilers.sass.SASSCompiler',
+STATIC_PRECOMPILER_COMPILERS = (
+    ('static_precompiler.compilers.SCSS',
+     {"executable": root('..', 'bin', 'sass')}),
 )
-PIPELINE_CSS = {
-    'main': {
-        'source_filenames': (
-            'css/normalize.css',
-            'css/foundation.css',
-            'css/styles.scss',
-            'css/timeline.scss'
-        ),
-        'output_filename': 'css/main.min.css',
-        'extra_context': {
-            'media': 'screen,projection',
-        },
-    },
-}
-PIPELINE_YUGLIFY_BINARY = root('..', 'node_modules', '.bin', 'yuglify')
-PIPELINE_SASS_BINARY = root('..', 'bin', 'sass')
 
 # .local.py overrides all the common settings.
 try:
