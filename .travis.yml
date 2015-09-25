@@ -15,6 +15,7 @@ before_install:
 install: pip install -r requirements/local.txt --download-cache $HOME/.pip-cache --upgrade
 script:
   - ./build.sh
+  - ./test.sh
 cache:
   directories:
     - /home/travis/virtualenv

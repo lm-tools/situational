@@ -5,5 +5,4 @@ set -eo pipefail
 export PATH=/app/.heroku/node/bin:$PATH
 export GEM_PATH=/app/vendor/bundle/ruby/$(ls /app/vendor/bundle/ruby | head -1)
 
-./manage.py migrate --noinput
-./manage.py collectstatic --noinput
+./build.sh
