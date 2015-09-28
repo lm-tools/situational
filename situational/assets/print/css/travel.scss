@@ -2,16 +2,18 @@
 
 .travel-map-legend {
   h5 {
-    font-weight: bold;
+    line-height: 30px;
   }
 }
 
 .travel-map-legend-box {
   width: 90px;
   height: 30px;
+  line-height: 30px;
   float: left;
   text-align: center;
   font-weight: bold;
+  font-family: $font-family-sans-serif-bold;
   margin: 5px;
   border-width: 1px solid rgba(0,0,0,.2);
 }
