@@ -1,5 +1,8 @@
 @import '../foundation-print/scss/normalize';
+
+$base-font-size: 90%;
 @import '../foundation-print/scss/foundation';
+
 @import '_print-grid';
 
 @import '../../css/_report';
