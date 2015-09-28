@@ -2,7 +2,6 @@
 @import '../foundation/scss/normalize';
 @import '../foundation/scss/foundation';
 @import '_report';
-@import 'timeline';
 
 .start-panel {
   @media #{$medium-up} {
@@ -74,6 +73,22 @@
   height: 15rem;
 }
 
+.travel-map-legend {
+  h5 {
+    margin: 5px;
+  }
+}
+
+.travel-map-legend-box {
+  width: 90px;
+  height: 30px;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  margin: 5px;
+  border-width: 1px solid rgba(0,0,0,.2);
+}
+
 .job-suggestion-controls {
   ul {
     @extend .row;
@@ -85,11 +100,4 @@
       text-align: center;
     }
   }
-}
-
-
-.sector-progress {
-  padding-top: 0.5em;
-  font-size: 0.8em;
-  color: $jumbo;
 }
