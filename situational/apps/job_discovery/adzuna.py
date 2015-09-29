@@ -51,12 +51,19 @@ class Adzuna(object):
             page += 1
 
     def locations_for_postcode(self, postcode):
-        endpoint = "jobs/gb/geodata/"
-        params = {
-            "where": postcode,
-        }
-        results = self._base_request(endpoint, params)
-        area = results.json()['location']['area']
+        def _get_area(postcode):
+            endpoint = "jobs/gb/geodata/"
+            params = {
+                "where": postcode,
+            }
+            results = self._base_request(endpoint, params)
+            return results.json()['location']['area']
+        area = _get_area(postcode)
+        # If the postcode isn't found, try a shorter version of it.
+        # this is a work around for problems with the Adzuna API.
+        while len(area) < 3 and len(postcode) > 0:
+            postcode = postcode[:-1]
+            area = _get_area(postcode)
         assert (len(area) >= 3)
         locations = area[:3]
         return locations
