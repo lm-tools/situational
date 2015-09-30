@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
 
 {% block head %}
 <noscript>
@@ -7,14 +7,12 @@
 {% endblock head %}
 
 {% block content %}
-<div class="row">
-  <div class="columns large-11 small-9">
-    <h1>Please wait while we generate your report...</h1>
-    <ul>
-      <li>{% include "travel_report/_result_field_pending.html" with field="travel_times_map" message="Generating travel times map..." %}</li>
-    </ul>
-  </div>
-</div>
+<main id="content">
+  <h1 class="heading-xlarge">Please wait while we generate your report...</h1>
+  <ul class="list-bullet">
+    <li>{% include "travel_report/_result_field_pending.html" with field="travel_times_map" message="Generating travel times map..." %}</li>
+  </ul>
+</main>
 {% endblock content %}
 
 {% load staticfiles %}

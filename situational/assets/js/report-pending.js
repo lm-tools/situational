@@ -18,6 +18,7 @@
       var $this = $(this),
         isPopulated = (populatedFields.indexOf($this.data("resultFieldName")) != -1);
       $(this).toggleClass("result-field--populated", isPopulated);
+      $(this).toggleClass("populated", isPopulated);
       allFieldsPopulated = allFieldsPopulated && isPopulated;
     });
     if (allFieldsPopulated) {
