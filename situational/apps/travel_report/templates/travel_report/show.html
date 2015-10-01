@@ -1,58 +1,49 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
 
-{% block body_class %}class="has-report single-screen"{% endblock body_class %}
+{% block title %}Understand where you could travel for work{% endblock title %}
 
 {% block content %}
 
-<div class="row">
-  <div class="columns">
-    <article class="report clearfix">
-      <header>
-        <h1>Where you could travel for work</h1>
-        <p>Travel times from {{ report.postcode }} on public transport at 8 am</p>
-        <aside>
-          <div class="columns">
-            <a href="{% url 'travel_report:start' %}">&#8592; start again</a>
-          </div>
-        </aside>
-      </header>
+<main id="content">
+  <header>
+    <aside>
+      <a href="{% url 'travel_report:start' %}" class="link-back">start again</a>
+    </aside>
+    <h1 class="heading-xlarge">Where you could travel for work</h1>
+    <p class="lede">Travel times from {{ report.postcode }} on public transport at 8 am</p>
+  </header>
 
-      <section>
-        <div class="row travel-map-legend">
-          <div class="columns medium-5"><h5>Travel time in minutes</h5></div>
-          <div class="columns medium-7">
-            <div class="travel-map-legend-box" style="background-color:#08519c; color:#f5f5f5">0-30</div>
-            <div class="travel-map-legend-box" style="background-color:#3182bd; color:#f5f5f5">30-60</div>
-            <div class="travel-map-legend-box" style="background-color:#6baed6; color:#191919">60-90</div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="columns">
-            <img src="{{ report.travel_times_map.image.url }}" class="t-travel-time-map">
-          </div>
-        </div>
-      </section>
+  <section>
+    <div class="grid-row travel-map-legend">
+      <div class="column-third">
+        <h5>Travel time in minutes</h5>
+      </div>
+      <div class="column-two-thirds">
+        <div class="travel-map-legend-box" style="background-color:#08519c; color:#f5f5f5">0-30</div>
+        <div class="travel-map-legend-box" style="background-color:#3182bd; color:#f5f5f5">30-60</div>
+        <div class="travel-map-legend-box" style="background-color:#6baed6; color:#191919">60-90</div>
+      </div>
+    </div>
+    <img src="{{ report.travel_times_map.image.url }}" class="travel-map">
+  </section>
 
-      <footer>
-        <div class="columns">
-          <div class="panel">
-            <form action="{% url 'travel_report:send' report.postcode %}" method="post" autocomplete="OFF">
-              <label for="email_address">Email yourself a copy of this report</label>
-              {% csrf_token %}
-              <div class="row collapse">
-                <div class="small-9 medium-10 columns">
-                  <input type="text" name="email" placeholder="Email address" id="email_address">
-                </div>
-                <div class="small-3 medium-2 columns">
-                  <input type="submit" class="button postfix" value="Send">
-                </div>
-              </div>
-            </form>
-          </div>
+  <footer class="panel-indent">
+    <form action="{% url 'travel_report:send' report.postcode %}" method="post" autocomplete="OFF">
+      {% csrf_token %}
+      <fieldset class="form-fieldset">
+        <div class="form-group">
+          <label for="email_address">
+            <span class="form-label">Email yourself a copy of this report</span>
+          </label>
+          <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
         </div>
-      </footer>
-    </article>
-  </div>
-</div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Send">
+        </div>
+      </fieldset>
+    </form>
+  </footer>
+</main>
 
 {% endblock content %}
