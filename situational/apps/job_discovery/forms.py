@@ -6,7 +6,9 @@ from . import widgets
 
 
 class PostcodeForm(forms.Form):
-    postcode = GBPostcodeField()
+    postcode = GBPostcodeField(
+        widget=forms.TextInput(attrs={"class": "form-control"})
+    )
 
 
 class SuggestionForm(forms.Form):

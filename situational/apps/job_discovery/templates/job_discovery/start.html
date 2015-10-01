@@ -1,31 +1,24 @@
 {% extends "job_discovery/base.html" %}
 
 {% block content %}
-<div id="start" class="row">
-    <div class="large-10 small-centered columns start_page">
-        <div class="start-panel">
-            <h1>Discover jobs to apply for</h1>
-            <form method=post autocomplete="OFF">
-                {% csrf_token %}
-                <div class="row">
-                    <div class="columns small-8 medium-6 large-4 {% if form.postcode.errors %}error{% endif %}">
-                        <label>
-                            Postcode
-                            {{ form.postcode }}
-                        </label>
-                        {% for error in form.postcode.errors %}
-                            <small class="error">{{ error|escape }}</small>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="columns">
-                        <button type="submit">Start</button>
-                    </div>
-                </div>
-            </form>
-            <p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
+<main id="content">
+    <h1 class="heading-xlarge">Discover jobs to apply for</h1>
+    <p class="lede">Go through selections of job offers in your area and record which ones you are interested in.</p>
+    <form method=post autocomplete="OFF">
+        {% csrf_token %}
+        <div class="form-group {% if form.postcode.errors %}error{% endif %}">
+            <label for="{{ form.postcode.id_for_label }}">
+                <span class="form-label{% if form.postcode.errors %}-bold{% endif %}">Postcode</span>
+                {% for error in form.postcode.errors %}
+                    <span class="error-message">{{ error|escape }}</span>
+                {% endfor %}
+            </label>
+            {{ form.postcode }}
         </div>
-    </div>
-</div>
+        <div class="form-group">
+            <button type="submit" class="button button-start">Start</button>
+        </div>
+    </form>
+    <p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
+</main>
 {% endblock content %}
