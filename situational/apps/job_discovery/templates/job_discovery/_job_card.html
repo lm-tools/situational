@@ -1,10 +1,10 @@
 {% load humanize %}
 
-<table style="border: 4px; border-style: solid; width: 100%">
+<table class="job-card">
   <tr>
     <td>Title</td>
     <td>
-      <h5 class="t-job-title">{{ job.title }}</h5>
+      <span class="heading-small t-job-title">{{ job.title }}</span>
     </td>
     <td>{% if show_apply and job.url %}<a href="{{ job.url }}" class="button right" target="_blank">apply</a>{% endif %}</td>
   </tr>
@@ -17,7 +17,7 @@
     <td colspan="2">
       <b>{{ job.location_name }}</b>
       {% if job.latitude and job.longitude %}
-        <div class="map" data-latitude="{{ job.latitude }}" data-longitude="{{ job.longitude }}"></div>
+        <div class="leaflet-map" data-latitude="{{ job.latitude }}" data-longitude="{{ job.longitude }}"></div>
       {% endif %}
     </td>
   </tr>

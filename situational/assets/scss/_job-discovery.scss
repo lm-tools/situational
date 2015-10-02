@@ -1,0 +1,25 @@
+.job-card {
+  margin-top: 1em;
+  border: 4px solid black;
+  width: 100%;
+
+  td {
+    padding-left: 10px;
+  }
+}
+
+.job-suggestion-controls {
+  ul {
+    @extend .grid-row;
+    list-style-type: none;
+
+    li {
+      @extend .column-half;
+      text-align: center;
+    }
+  }
+
+  button {
+    @extend .button;
+  }
+}

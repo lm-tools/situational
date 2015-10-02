@@ -2,21 +2,31 @@
 {% load adzuna %}
 
 {% block content %}
-<div class="row" style="margin-top: 0.5rem">
-  <div class="columns">
-    <div class="row">
-      <div class="columns small-10">
-        <h4>Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h4>
+<main id="content">
+  <aside>
+    <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
+  </aside>
+
+  <header>
+    <h1 class="heading-xlarge">Discover jobs to apply for</h1>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <p class="lede">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</p>
       </div>
-      <div class="columns small-2 text-right">
-        <a href="{% url 'job_discovery:report' guid=guid %}" class="button tiny t-done">I'm done</a>
+      <div class="column-third" style="text-align: right">
+        <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-start collapse t-done">I'm done</a>
       </div>
     </div>
-    {% include "job_discovery/_job_card.html" %}
+  </header>
+
+  {% include "job_discovery/_job_card.html" %}
+
+  <footer class="panel">
     <form method=post autocomplete="OFF" class="job-suggestion-controls" action="{{ request.path }}">
       {% csrf_token %}
       {{ form }}
     </form>
-  </div>
-</div>
+  </footer>
+</main>
 {% endblock content %}

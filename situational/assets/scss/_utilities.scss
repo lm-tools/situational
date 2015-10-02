@@ -1,0 +1,8 @@
+.collapse {
+  margin: 0;
+}
+
+.panel {
+  @extend .panel-indent;
+  border: 0;
+}
