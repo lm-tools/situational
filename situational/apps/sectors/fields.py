@@ -6,7 +6,10 @@ from django import forms
 class MultiCharFieldWidget(forms.widgets.MultiWidget):
     def __init__(self, count, attrs=None):
         self.count = count
-        widgets = [forms.TextInput() for i in range(self.count)]
+        widgets = [
+            forms.TextInput(attrs={"class": "form-control"})
+            for i in range(self.count)
+        ]
         super().__init__(widgets, attrs)
 
     def decompress(self, value):
@@ -14,6 +17,11 @@ class MultiCharFieldWidget(forms.widgets.MultiWidget):
             return json.loads(value)
         else:
             return ['' for i in range(self.count)]
+
+    def format_output(self, rendered_widgets):
+        return "<ul class='multi-char-field-widget'>" + "".join(
+            ["<li>%s</li>" % w for w in rendered_widgets]
+        ) + "</ul>"
 
 
 class MultiCharField(forms.MultiValueField):

@@ -1,13 +1,15 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
+
+{% block page_title %}Understand what sort of jobs you could do{% endblock %}
 
 {% block content %}
 
-<div class="row">
-  <div class="columns">
-    <div class="start-panel">
-      <h1>Your report has been sent to {{ email_address }}</h1>
-      <p><a href="{% url 'sectors:report' report_id=report_id %}">Return to your report</a></p>
-    </div>
-  </div>
-</div>
-{% endblock content %}
+<main id="content">
+  <a href="{% url 'sectors:start' %}" class="link-back">start again</a>
+  <h1 class="heading-xlarge">Report sent</h1>
+  <p class="lede">Your report has been sent to <strong>{{ email_address }}</strong>.</p>
+  <p><a href="{% url 'sectors:report' report_id=report_id %}">Return to your report</a></p>
+</main>
+
+
+{% endblock %}

@@ -1,93 +1,87 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
 {% load humanize %}
 
-{% block body_class %}class="has-report"{% endblock body_class %}
+{% block body_classes %}sectors{% endblock %}
 
-{% block title %}Understand what sort of jobs you could do{% endblock title %}
+{% block page_title %}Understand what sort of jobs you could do{% endblock %}
 
 {% block content %}
 
-<div class="row">
-  <div class="columns">
-    <article class="report clearfix">
+<main id="content">
+  <aside>
+    <a href="{% url 'sectors:wizard' %}?restart" class="link-back">start again</a>
+  </aside>
 
-      <header>
-        <h1>Understand what sort of jobs you could do</h1>
-        <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
-        <aside>
-          <div class="columns">
-            <a href="{% url 'sectors:wizard' %}?restart">&#8592; start again</a>
+  <header>
+    <h1 class="heading-xlarge">Understand what sort of jobs you could do</h1>
+    <p class="lede">This report contains information about the jobs you selected.
+      It helps you understand what is required of each job, approximate hours and
+      pay, and terms to use when searching for them online.</p>
+  </header>
+
+  {% for soc_code,soc_data in report.soc_code_data.items %}
+
+    <section>
+      <div class="job_item">
+        <header>
+          <h2 class="heading-large">{{ soc_data.info.title }}</h2>
+        </header>
+
+        <p>{{ soc_data.info.description }}</p>
+
+        <div class="grid-row">
+          <div class="column-half">
+            <h3 class="heading-small">Typical pay and hours</h3 class="heading-small">
+            <ul>
+              <li>Normal hours worked per week: {{ soc_data.hours_worked }}</li>
+              <li>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</li>
+            </ul>
           </div>
-        </aside>
-      </header>
 
-      {% for soc_code,soc_data in report.soc_code_data.items %}
-
-        <section>
-          <div class="columns job_item">
-            <header>
-              <h2>{{ soc_data.info.title }}</h2>
-            </header>
-
-            <p>{{ soc_data.info.description }}</p>
-
-            <div class="row">
-              <div class="large-6 columns">
-                <h4>Typical pay and hours</h4>
-                <ul>
-                  <li>Normal hours worked per week: {{ soc_data.hours_worked }}</li>
-                  <li>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</li>
-                </ul>
-              </div>
-
-              <div class="large-6 columns">
-                <h4>Typical qualifications required</h4>
-                <p>{{ soc_data.info.qualifications }}</p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="large-6 columns">
-                <h4>Typical tasks</h4>
-                <ul>
-                  {% for task in soc_data.info.tasks %}
-                    <li>{{ task|capfirst }}</li>
-                  {% endfor %}
-                </ul>
-              </div>
-
-              <div class="large-6 columns">
-                <h4>Useful search terms</h4>
-                  <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      {% endfor %}
-
-      <footer>
-        <div class="columns">
-          <div class="panel">
-            <form action="{% url 'sectors:send_report' report_id=report.pk %}" method="post" autocomplete="OFF">
-              <label for="email_address">Email yourself a copy of this report</label>
-              {% csrf_token %}
-              <div class="row collapse">
-                <div class="small-9 medium-10 columns">
-                  <input type="text" name="email" placeholder="Email address" id="email_address">
-                </div>
-                <div class="small-3 medium-2 columns">
-                  <input type="submit" class="button postfix" value="Send">
-                </div>
-              </div>
-            </form>
+          <div class="column-half">
+            <h3 class="heading-small">Typical qualifications required</h3 class="heading-small">
+            <p>{{ soc_data.info.qualifications }}</p>
           </div>
         </div>
-      </footer>
 
-    </article>
-  </div>
-</div>
+        <div class="grid-row">
+          <div class="column-half">
+            <h3 class="heading-small">Typical tasks</h3 class="heading-small">
+            <ul>
+              {% for task in soc_data.info.tasks %}
+                <li>{{ task|capfirst }}</li>
+              {% endfor %}
+            </ul>
+          </div>
 
+          <div class="column-half">
+            <h3 class="heading-small">Useful search terms</h3 class="heading-small">
+              <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
+          </div>
+        </div>
+      </div>
+    </section>
 
-{% endblock content %}
+  {% endfor %}
+
+  <footer class="panel-indent">
+    <form action="{% url 'sectors:send_report' report_id=report.pk %}" method="post" autocomplete="OFF">
+      {% csrf_token %}
+      <fieldset class="form-fieldset">
+        <div class="form-group">
+          <label for="email_address">
+            <span class="form-label">Email yourself a copy of this report</span>
+          </label>
+          <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Send">
+        </div>
+      </fieldset>
+    </form>
+  </footer>
+
+</main>
+
+{% endblock %}

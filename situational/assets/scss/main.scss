@@ -15,8 +15,10 @@ $path:'/static/';
 @import "govuk_elements/elements/panels";
 @import "govuk_elements/elements/icons";
 
+@import "forms";
 @import "job-discovery";
 @import "leaflet-maps";
 @import "pending-report";
+@import "sectors";
 @import "travel-report";
 @import "utilities";
