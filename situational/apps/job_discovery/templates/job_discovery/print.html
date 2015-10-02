@@ -1,31 +1,46 @@
-{% load embedding %}
+{% extends "job_discovery/base.html" %}
 {% load adzuna %}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Discover jobs to apply for</title>
-  {% embed_stylesheet "print/css/job_discovery.scss" %}
-</head>
-<body>
-  <article class="report clearfix">
-    <header>
-      <h1>Understand what sort of jobs you could do</h1>
-      <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
-    </header>
+{% load embedding %}
+
+{% block logo %}
+  <img src="{% dataurl 'images/govuk_template/gov.uk_logotype_crown_invert_trans.png' %}" alt="">
+{% endblock %}
+
+{% block css %}
+  {% embed_stylesheet "scss/govuk_template/govuk-template-print.css" %}
+  {% embed_stylesheet "scss/govuk_template/fonts.css" %}
+  {% embed_stylesheet "scss/job-discovery-print.scss" %}
+{% endblock %}
+
+{% block content %}
+
+<main id="content">
+  <header>
+    <h1 class="heading-xlarge">Understand what sort of jobs you could do</h1>
+  </header>
+
+  {% if jobs %}
+    <p class="lede">This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
 
     <section>
       <header>
-        <h4>Jobs in {{ report.location.adzuna_locations | friendly_adzuna_location }}</h4>
+        <h2 class="heading-large">Jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
       </header>
 
-      {% for job in report.liked_jobs %}
+      {% for job in jobs %}
         <section>
-          <div class="columns">
-            {% include "job_discovery/_job_card.html" with show_apply=True %}
-          </div>
+            {% include "job_discovery/_job_card.html" with show_apply=True show_map=False %}
         </section>
       {% endfor %}
+
     </section>
-  </article>
-</body>
-</html>
+
+  {% else %}
+
+    <p class="lede">You have not liked any jobs so far.</p>
+
+  {% endif %}
+
+</main>
+
+{% endblock %}
