@@ -1,93 +1,80 @@
+{% extends "base_govuk.html" %}
 {% load embedding %}
 {% load humanize %}
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Understand what sort of jobs you could do</title>
-  {% embed_stylesheet "print/css/sectors.scss" %}
-</head>
-<body>
-  <article class="report clearfix">
-    <header>
-      <h1>Understand what sort of jobs you could do</h1>
-      <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
-    </header>
+{% block title %}Understand where you could travel for work{% endblock title %}
 
-    {% for soc_code,soc_data in report.soc_code_data.items %}
+{% block logo %}
+  <img src="{% dataurl 'images/govuk_template/gov.uk_logotype_crown_invert_trans.png' %}" alt="">
+{% endblock %}
 
-      <section>
-          <header>
-            <h2>{{ soc_data.info.title }}</h2>
-          </header>
+{% block css %}
+  {% embed_stylesheet "scss/govuk_template/govuk-template-print.css" %}
+  {% embed_stylesheet "scss/govuk_template/fonts.css" %}
+  {% embed_stylesheet "scss/sectors-print.scss" %}
+{% endblock %}
 
-          <p>{{ soc_data.info.description }}</p>
+{% block body_classes %}sectors{% endblock %}
 
-          <div class="row">
-            <div class="print-6 columns">
-              <h4>Typical pay and hours</h4>
-              <ul>
-                <li>Normal hours worked per week: {{ soc_data.hours_worked }}</li>
-                <li>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</li>
-              </ul>
-            </div>
+{% block content %}
 
-            <div class="print-6 columns">
-              <h4>Typical qualifications required</h4>
-              <p>{{ soc_data.info.qualifications }}</p>
-            </div>
-          </div>
+<main id="content">
+  <header>
+    <h1 class="heading-xlarge">Understand what sort of jobs you could do</h1>
+    <p class="lede">This report contains information about the jobs you selected.
+      It helps you understand what is required of each job, approximate hours and
+      pay, and terms to use when searching for them online.</p>
+  </header>
 
-          <div class="row">
-            <div class="print-6 columns">
-              <h4>Typical tasks</h4>
-              <ul>
-                {% for task in soc_data.info.tasks %}
-                  <li>{{ task|capfirst }}</li>
-                {% endfor %}
-              </ul>
-            </div>
-
-            <div class="print-6 columns">
-              <h4>Useful search terms</h4>
-                <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
-            </div>
-          </div>
-      </section>
-
-    {% endfor %}
+  {% for soc_code,soc_data in report.soc_code_data.items %}
 
     <section>
-      <div class="panel">
+      <div class="job_item">
         <header>
-          <h2>Local area - based on UK Census data</h2>
+          <h2 class="heading-large">{{ soc_data.info.title }}</h2>
         </header>
-        <div class="row">
-          <div class="columns print-6">
-            <h3>Jobs in the area</h3>
+
+        <p>{{ soc_data.info.description }}</p>
+
+        <div class="grid-row">
+          <div class="column-half">
+            <h3 class="heading-small">Typical pay and hours</h3 class="heading-small">
             <ul>
-            {% for job in report.jobs_breakdown %}
-              <li>{{ job.description }}</li>
-            {% endfor %}
+              <li>Normal hours worked per week: {{ soc_data.hours_worked }}</li>
+              <li>Estimated weekly pay: &pound;{{ soc_data.pay|intcomma }}</li>
             </ul>
           </div>
 
-          <div class="columns print-6">
-            <h3>Resident professions</h3>
+          <div class="column-half">
+            <h3 class="heading-small">Typical qualifications required</h3 class="heading-small">
+            <p>{{ soc_data.info.qualifications }}</p>
+          </div>
+        </div>
+
+        <div class="grid-row">
+          <div class="column-half">
+            <h3 class="heading-small">Typical tasks</h3 class="heading-small">
             <ul>
-            {% for job in report.resident_occupations %}
-              <li>{{ job.description|title }}</li>
-            {% endfor %}
+              {% for task in soc_data.info.tasks %}
+                <li>{{ task|capfirst }}</li>
+              {% endfor %}
             </ul>
+          </div>
+
+          <div class="column-half">
+            <h3 class="heading-small">Useful search terms</h3 class="heading-small">
+              <em>{{ soc_data.info.add_titles|slice:":20"|join:", " }}</em>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>
-      <p>Let us know if this is useful at <strong>feedback@lm-tools.com</strong></p>
-    </footer>
-  </article>
+  {% endfor %}
 
-</body>
-</html>
+  <footer class="feedback">
+    <p>Let us know if this is useful at <strong>feedback@lm-tools.com</strong></p>
+  </footer>
+
+</main>
+
+{% endblock %}
