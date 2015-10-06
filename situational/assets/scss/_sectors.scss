@@ -1,0 +1,13 @@
+.sectors {
+  .selected {
+    background: $highlight-colour !important;
+  }
+
+  section {
+    clear: both;
+
+    footer {
+      margin-top: 0.5rem;
+    }
+  }
+}

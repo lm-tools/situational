@@ -1,7 +1,7 @@
 (function (window, $, L) {
   'use strict';
 
-  $('.map').each(function () {
+  $('.leaflet-map').each(function () {
     var $this = $(this),
       latitude = $this.data('latitude'),
       longitude = $this.data('longitude'),

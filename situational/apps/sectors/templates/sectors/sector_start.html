@@ -1,26 +1,20 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
 
-{% block title %}Understand what sort of jobs you could do{% endblock title %}
+{% block page_title %}Understand what sort of jobs you could do{% endblock page_title %}
 
-{% block body_class %}class="sectors"{% endblock body_class %}
+{% block body_classes %}sectors{% endblock body_classes %}
 
 {% block content %}
+<main id="content">
+  <h1 class="heading-xlarge">Understand what sort of jobs you could do</h1>
 
-<div class="row">
-  <div class="large-10 small-centered columns start_page">
-    <div class="start-panel">
-      <h1>Understand what sort of jobs you could do</h1>
+  <p class="lede">Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online.</p>
 
-      <p>Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online.</p>
+  <p>Generate a report to share with your work coach so they know how to help you.</p>
 
-      <p>Generate a report to share with your work coach so they know how to help you.</p>
+  <p><a href="{% url "sectors:wizard" %}" class="button button-start">Start</a></p>
 
-      <a href="{% url "sectors:wizard" %}" class="button large">Start</a>
-      <p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
-
-    </div>
-  </div>
-
-</div>
+  <p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
+</main>
 
 {% endblock content %}

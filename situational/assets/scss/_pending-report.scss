@@ -1,0 +1,13 @@
+.result-field {
+  color: gray;
+  .done-marker {
+    display: none;
+  }
+
+  &.populated {
+    color: green;
+    .done-marker {
+      display: inline;
+    }
+  }
+}

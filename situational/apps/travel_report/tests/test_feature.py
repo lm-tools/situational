@@ -22,7 +22,7 @@ class TestTravelReport(BaseCase):
                     "Travel times from SW1A1AA on public transport")
             )
             self.assertTrue(
-                b.find_by_css('.t-travel-time-map')
+                b.find_by_css('.travel-map')
             )
 
             b.fill("email", "test@example.org")

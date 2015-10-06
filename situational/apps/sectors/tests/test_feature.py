@@ -17,7 +17,7 @@ class TestSectors(BaseCase):
             b.fill("sector_form-sector_2", "data entry")
             b.find_by_text("Next").first.click()
 
-            checkboxes = b.find_by_css('.result-item input[type=checkbox]')
+            checkboxes = b.find_by_css('fieldset input[type=checkbox]')
             self.assertTrue(checkboxes)
             for cb in checkboxes:
                 cb._control.value = ['checked']

@@ -1,13 +1,14 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
+
+{% block title %}Understand where you could travel for work{% endblock title %}
 
 {% block content %}
 
-<div class="row">
-  <div class="columns">
-    <div class="start-panel">
-      <h1>Your report has been sent to {{ email_address }}</h1>
-      <p><a href="{% url 'travel_report:show' postcode=postcode %}">Return to your report</a></p>
-    </div>
-  </div>
-</div>
+<main id="content">
+  <a href="{% url 'travel_report:start' %}" class="link-back">start again</a>
+  <h1 class="heading-xlarge">Report sent</h1>
+  <p class="lede">Your report has been sent to <strong>{{ email_address }}</strong>.</p>
+  <p><a href="{% url 'travel_report:show' postcode=postcode %}">Return to your report</a></p>
+</main>
+
 {% endblock content %}

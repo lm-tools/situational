@@ -1,62 +1,57 @@
 {% extends "job_discovery/base.html" %}
 {% load adzuna %}
 
-{% block body_class %}class="has-report"{% endblock body_class %}
-
 {% block content %}
 
-<div class="row">
-  <div class="columns">
-    <article class="report clearfix">
+<main id="content">
+  <aside>
+    <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
+  </aside>
+  <header>
+    <h1 class="heading-xlarge">Understand what sort of jobs you could do</h1>
+  </header>
 
+  {% if jobs %}
+    <p class="lede">This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
+
+    <section>
       <header>
-        <h1>Understand what sort of jobs you could do</h1>
-        <p>This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
-        <aside>
-          <div class="columns">
-            <a href="{% url 'job_discovery:start' %}">&#8592; start again</a>
-          </div>
-        </aside>
+        <h2 class="heading-large">Jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
       </header>
-
-      {% if jobs %}
+      {% for job in jobs %}
         <section>
-          <header>
-            <h4>Jobs in {{ job_pool_location | friendly_adzuna_location }}</h4>
-          </header>
-
-          {% for job in jobs %}
-            <section>
-              <div class="columns">
-                {% include "job_discovery/_job_card.html" with show_apply=True %}
-              </div>
-            </section>
-          {% endfor %}
-
-          <footer>
-            <div class="columns">
-              <div class="panel">
-                <form action="{% url 'job_discovery:send' guid=guid %}" method="post" autocomplete="OFF">
-                  <label for="email_address">Email yourself a copy of this report</label>
-                  {% csrf_token %}
-                  <div class="row collapse">
-                    <div class="small-9 medium-10 columns">
-                      <input type="text" name="email" placeholder="Email address" id="email_address">
-                    </div>
-                    <div class="small-3 medium-2 columns">
-                      <input type="submit" class="button postfix" value="Send">
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </footer>
+            {% include "job_discovery/_job_card.html" with show_apply=True %}
         </section>
-      {% else %}
-        <h2>You have not liked any jobs so far.</h2>
-      {% endif %}
-    </article>
-  </div>
-</div>
+      {% endfor %}
 
-{% endblock content %}
+      <footer class="panel-indent">
+        <form action="{% url 'job_discovery:send' guid=guid %}" method="post" autocomplete="OFF">
+          {% csrf_token %}
+          <fieldset class="form-fieldset">
+            <div class="form-group">
+              <label for="email_address">
+                <span class="form-label">Email yourself a copy of this report</span>
+              </label>
+              <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <input type="submit" class="button" value="Send">
+            </div>
+          </fieldset>
+        </form>
+      </footer>
+    </section>
+
+  {% else %}
+
+    <p class="lede">You have not liked any jobs so far.</p>
+
+  {% endif %}
+
+  <footer>
+    <a href="{% url 'job_discovery:suggestion' guid=guid %}">back to jobs</a>
+  </footer>
+</main>
+
+{% endblock %}

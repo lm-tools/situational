@@ -1,0 +1,10 @@
+@import "govuk_frontend_toolkit/_grid_layout";
+
+// override grid definitions for print
+@mixin grid-column($width, $full-width: tablet, $float: left) {
+  float: $float;
+  width: percentage($width);
+
+  padding: 0 $gutter-half;
+  @include box-sizing(border-box);
+}

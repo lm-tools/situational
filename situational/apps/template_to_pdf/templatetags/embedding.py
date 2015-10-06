@@ -4,23 +4,43 @@ import subprocess
 
 from django import template
 from django.contrib.staticfiles.finders import find
+from django.db import models
 
 register = template.Library()
 
 
-@register.simple_tag
-def dataurl(image_field, mimetype=None):
+def _dataurl(f, mimetype):
+    return "data:{};base64,{}".format(
+        mimetype,
+        str(base64.b64encode(f.read()), 'utf-8')
+    )
+
+
+def _dataurl_from_field_file(image_field_file, mimetype):
     if not mimetype:
-        mimetype, _ = mimetypes.guess_type(image_field.name)
-    f = image_field.file
+        mimetype, _ = mimetypes.guess_type(image_field_file.name)
+    f = image_field_file.file
     try:
         f.open()
-        return "data:{};base64,{}".format(
-            mimetype,
-            str(base64.b64encode(f.read()), 'utf-8')
-        )
+        return _dataurl(f.file, mimetype)
     finally:
-        f.close()
+        f.file.close()
+
+
+def _dataurl_from_path(image_path, mimetype):
+    image_full_path = find(image_path)
+    if not mimetype:
+        mimetype, _ = mimetypes.guess_type(image_full_path)
+    with open(image_full_path, 'rb') as f:
+        return _dataurl(f, mimetype)
+
+
+@register.simple_tag
+def dataurl(image_path_or_field, mimetype=None):
+    if isinstance(image_path_or_field, models.fields.files.ImageFieldFile):
+        return _dataurl_from_field_file(image_path_or_field, mimetype)
+    else:
+        return _dataurl_from_path(image_path_or_field, mimetype)
 
 
 class StylesheetNotFoundException(Exception):

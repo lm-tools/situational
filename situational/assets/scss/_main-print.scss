@@ -1,0 +1,23 @@
+@import "govuk_elements/elements/helpers";
+// @import "govuk_elements/elements/reset";
+@import "govuk_elements/elements/elements-typography";
+@import "print-layout";
+@import "govuk_elements/elements/breadcrumb";
+@import "govuk_elements/elements/forms";
+@import "govuk_elements/elements/tables";
+@import "govuk_elements/elements/buttons";
+@import "govuk_elements/elements/details";
+@import "govuk_elements/elements/lists";
+@import "govuk_elements/elements/panels";
+@import "govuk_elements/elements/icons";
+
+@import "utilities";
+
+footer.feedback {
+  display: block !important;
+  text-align: center;
+}
+
+a:after {
+  content: "" !important;
+}
