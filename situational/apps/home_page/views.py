@@ -2,6 +2,8 @@ from django import http
 from django.apps import apps
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.templatetags.static import static
 from django.views.generic import FormView, TemplateView
 
@@ -56,3 +58,17 @@ class ManifestView(TemplateView):
         context['title'] = app_config.verbose_name
         context['start_url'] = url_from_app_config(namespace, app_config)
         return kwargs
+
+
+def server_error(request, template_name='500.html'):
+    initial_namespace = request.resolver_match.namespace
+    namespace, app_config = app_config_from_namespace(initial_namespace)
+    start_url = url_from_app_config(namespace, app_config)
+
+    context_instance = RequestContext(request)
+    context_instance['start_url'] = start_url
+
+    return render_to_response(
+        template_name,
+        context_instance=context_instance
+    )

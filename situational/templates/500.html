@@ -1,7 +1,11 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
 
 {% block title %}Server Error{% endblock %}
 
 {% block content %}
-	<h1>Whoops!</h1>
+<main id="content">
+  <h1 class="heading-xlarge">Sorry, we are experiencing technical problems.</h1>
+  Please try again in a few moments or <a href="{{ start_url }}">start again</a>
+
+</main>
 {% endblock content %}
