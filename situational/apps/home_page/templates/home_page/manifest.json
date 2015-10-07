@@ -1,13 +1,7 @@
 {
   "name": "{{title}}",
-  "icons": [
-    {
-      "src": "{{icon_url}}",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ],
   "start_url": "{{start_url}}",
   "display": "standalone",
   "orientation": "portrait"
 }
+
