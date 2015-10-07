@@ -11,8 +11,11 @@
     </td>
   </tr>
   <tr>
-    <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
-    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b></td>
+    <td>Company</td>
+    <td colspan="2">
+      <b>{{ job.company_name | default_if_none:"unknown" }}</b>
+      {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary | intcomma}}</b>){% endif %}
+    </td>
   </tr>
   <tr>
     <td>Location</td>
@@ -24,18 +27,15 @@
     </td>
   </tr>
   <tr>
-    <td>Description</td>
-    <td colspan="2">{{ job.description }}</td>
-  </tr>
-  <tr>
-    <td>Company</td>
-    <td colspan="2">
-      <b>{{ job.company_name | default_if_none:"unknown" }}</b>
-      {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary | intcomma}}</b>){% endif %}
-    </td>
+    <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
+    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b></td>
   </tr>
   <tr>
     <td>Contract</td>
     <td colspan="2"><i>Permanent / contract:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b>, <i>Full-time / part-time:</i> <b>{{ job.contract_time | default_if_none:"unknown" }}</b></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td colspan="2">{{ job.description }}</td>
   </tr>
 </table>
