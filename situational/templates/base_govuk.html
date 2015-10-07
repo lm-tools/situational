@@ -41,6 +41,7 @@
     <![endif]-->
 
     <link rel="shortcut icon" href="{% static 'images/govuk_template/favicon.ico' %}" type="image/x-icon" />
+    <link rel="manifest" href="{% url "home_page:manifest" %}?app={{request.resolver_match.namespace}}">
 
     <!-- Size for iPad and iPad mini (high resolution) -->
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'images/govuk_template/apple-touch-icon-152x152.png' %}">
