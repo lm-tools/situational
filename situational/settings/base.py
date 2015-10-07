@@ -225,8 +225,8 @@ BASICAUTH_EXEMPT = [
 
 
 # Manifest.json
-DEFAULT_MANIFEST_APP_NAME = environ.get(
-    'DEFAULT_MANIFEST_APP_NAME', 'home_page')
+DEFAULT_APP_NAMESPACE = environ.get(
+    'DEFAULT_APP_NAMESPACE', 'home_page')
 
 # EMAILS
 DEFAULT_FROM_EMAIL = environ.get('DEFAULT_FROM_EMAIL', 'webmaster@localhost')

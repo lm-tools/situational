@@ -8,6 +8,22 @@ from django.views.generic import FormView, TemplateView
 from . import forms, tasks
 
 
+def app_config_from_namespace(namespace):
+    defaut_namespace = settings.DEFAULT_APP_NAMESPACE
+    app_config = apps.get_app_config(namespace)
+    if not hasattr(app_config, 'manifest') or not app_config.manifest:
+        namespace = defaut_namespace
+        app_config = apps.get_app_config('home_page')
+    return namespace, app_config
+
+
+def url_from_app_config(namespace, app_config):
+    return reverse("{0}:{1}".format(
+        namespace,
+        app_config.start_url_name
+    ))
+
+
 class HomePageView(FormView):
     template_name = "home_page/home.html"
     form_class = forms.FeedbackForm
@@ -32,18 +48,11 @@ class ManifestView(TemplateView):
     content_type = "application/json"
 
     def get_context_data(self, **kwargs):
-        default_app_name = settings.DEFAULT_MANIFEST_APP_NAME
-        app_name = self.request.GET.get('app', default_app_name)
-        app_config = apps.get_app_config(app_name)
-        if not hasattr(app_config, 'manifest') or not app_config.manifest:
-            app_name = default_app_name
-            app_config = app_config = apps.get_app_config('home_page')
+        initial_namespace = self.request.GET.get('app')
+        namespace, app_config = app_config_from_namespace(initial_namespace)
 
         context = kwargs
         context['icon_url'] = static(app_config.icon_url)
         context['title'] = app_config.verbose_name
-        context['start_url'] = reverse("{0}:{1}".format(
-            app_name,
-            app_config.start_url_name
-        ))
+        context['start_url'] = url_from_app_config(namespace, app_config)
         return kwargs
