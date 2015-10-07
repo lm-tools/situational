@@ -11,7 +11,13 @@
       map = L.map(this, {
         center: [latitude, longitude],
         zoom: 12,
-        dragging: false
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        tap: false,
+        zoomControl: false
       });
 
       L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
