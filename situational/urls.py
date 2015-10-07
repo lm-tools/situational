@@ -5,9 +5,7 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
+handler500 = 'situational.apps.home_page.views.server_error'
 
 urlpatterns = [
     url(
