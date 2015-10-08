@@ -9,7 +9,7 @@
 
 <main id="content">
   <aside>
-    <a href="{% url 'sectors:wizard' %}?restart" class="link-back">start again</a>
+    <a href="{% url 'sectors:start' %}?restart" class="link-back">start again</a>
   </aside>
 
   <header>
@@ -18,6 +18,24 @@
       It helps you understand what is required of each job, approximate hours and
       pay, and terms to use when searching for them online.</p>
   </header>
+
+  <section class="panel-indent">
+    <form action="{% url 'sectors:send_report' report_id=report.pk %}" method="post" autocomplete="OFF">
+      {% csrf_token %}
+      <fieldset class="form-fieldset">
+        <div class="form-group">
+          <label for="email_address">
+            <span class="form-label">Email yourself a copy of this report</span>
+          </label>
+          <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <input type="submit" class="button" value="Send">
+        </div>
+      </fieldset>
+    </form>
+  </section>
 
   {% for soc_code,soc_data in report.soc_code_data.items %}
 
@@ -63,24 +81,6 @@
     </section>
 
   {% endfor %}
-
-  <footer class="panel-indent">
-    <form action="{% url 'sectors:send_report' report_id=report.pk %}" method="post" autocomplete="OFF">
-      {% csrf_token %}
-      <fieldset class="form-fieldset">
-        <div class="form-group">
-          <label for="email_address">
-            <span class="form-label">Email yourself a copy of this report</span>
-          </label>
-          <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
-        </div>
-
-        <div class="form-group">
-          <input type="submit" class="button" value="Send">
-        </div>
-      </fieldset>
-    </form>
-  </footer>
 
 </main>
 

@@ -10,12 +10,10 @@ class TestSectors(BaseCase):
     def test_happy_path(self):
         with Browser("django") as b:
             b.visit(reverse("sectors:start"))
-            b.click_link_by_text("Start")
-
             b.fill("sector_form-sector_0", "customer services")
             b.fill("sector_form-sector_1", "security")
             b.fill("sector_form-sector_2", "data entry")
-            b.find_by_text("Next").first.click()
+            b.find_by_text("Start").first.click()
 
             checkboxes = b.find_by_css('fieldset input[type=checkbox]')
             self.assertTrue(checkboxes)

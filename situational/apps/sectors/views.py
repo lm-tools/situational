@@ -10,10 +10,6 @@ from formtools.wizard.views import NamedUrlCookieWizardView
 from . import models
 
 
-class SectorStartView(TemplateView):
-    template_name = 'sectors/sector_start.html'
-
-
 class SectorWizardView(NamedUrlCookieWizardView):
     TEMPLATES = {
         'sector_form': 'sectors/sector_form.html',

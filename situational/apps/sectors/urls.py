@@ -16,10 +16,8 @@ sector_wizard = views.SectorWizardView.as_view(
 report_id = "(?P<report_id>\d+)"
 
 urlpatterns = [
-    url(r'^$',
-        views.SectorStartView.as_view(), name="start"),
-    url(r'wizard/(?P<step>.+)/$', sector_wizard, name='wizard_step'),
-    url(r'wizard/$', sector_wizard, name='wizard'),
+    url(r'^$', sector_wizard, name='start'),
+    url(r'(?P<step>.+)/$', sector_wizard, name='wizard_step'),
     url(r'soc_codes/' + report_id + '$',
         views.ReportView.as_view(),
         name="report"),
