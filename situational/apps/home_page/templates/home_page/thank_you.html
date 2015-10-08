@@ -1,27 +1,16 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
 
-{% block title %}Labour market tools{% endblock title %}
+{% block page_title %}Labour market tools{% endblock page_title %}
 
-{% block body_class %}class="home"{% endblock body_class %}
+{% block body_classes %}home{% endblock body_classes %}
 
 {% block content %}
 
-<div class="row">
-  <div class="medium-9 columns">
-    <h1>Labour market tools</h1>
-    <hr/>
-
-    <p>Thank you for your feedback.</p>
-    <hr/>
-    <a class="button" href="{% url 'home_page:home' %}">Go back to the list of tools</a>
-
+<main id="content">
+  <h1>Thank you for your feedback.</h1>
+  <div>
+    <a class="button button-start" href="{% url 'home_page:home' %}">Go back to the list of tools</a>
   </div>
-</div>
-
-<footer class="row">
-  <div class="columns">
-    <p>Contact: <a href="mailto:feedback@lm-tools.com">feedback@lm-tools.com</a></p>
-  </div>
-</footer>
+</main>
 
 {% endblock content %}
