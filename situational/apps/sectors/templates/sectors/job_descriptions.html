@@ -13,7 +13,13 @@
   <p><a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Refine search</a></p>
 
   <form id="results" method=post autocomplete="OFF">
-    {{ form.errors }}
+    {% if form.errors %}
+    <div class="form-group error">
+    {% for field, error in form.errors.items %}
+      <span class="error-message">{{ error|escape }}</span>
+    {% endfor %}
+    </div>
+    {% endif %}
     {% csrf_token %}
     {{ wizard.management_form }}
 
