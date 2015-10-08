@@ -21,7 +21,7 @@
     <td>Location</td>
     <td colspan="2">
       <b>{{ job.location_name }}</b>
-      {% if job.latitude and job.longitude %}
+      {% if job.has_precise_location and job.latitude and job.longitude %}
         <div class="leaflet-map" data-latitude="{{ job.latitude }}" data-longitude="{{ job.longitude }}"></div>
       {% endif %}
     </td>
