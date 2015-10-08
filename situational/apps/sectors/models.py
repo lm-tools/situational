@@ -9,7 +9,7 @@ from sectors import tasks
 
 class SectorsReport(TimeStampedModel):
     soc_codes = models.CharField(
-        blank=False, null=False, max_length=200)
+        blank=False, null=False, unique=True, max_length=200)
     soc_code_data = JSONField()
 
     RESULT_FIELDS = (
