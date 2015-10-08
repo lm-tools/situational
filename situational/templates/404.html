@@ -1,7 +1,10 @@
-{% extends "base.html" %}
+{% extends "base_govuk.html" %}
 
-{% block title %}Page Not found{% endblock %}
+{% block page_title %}Page Not found{% page_title %}
 
 {% block content %}
-<p>This is not the page you were looking for.</p>
+<main id="content">
+  <h1 class="heading-xlarge">This is not the page you were looking for.</h1>
+  <p>Please go <a href="{{ start_url }}">back to the main page</a></p>
+</main>
 {% endblock content %}
