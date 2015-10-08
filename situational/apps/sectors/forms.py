@@ -64,21 +64,22 @@ class JobDescriptionsForm(BaseLMIForm):
     def _add_fields_from_keywords(self, keywords):
         for keyword in keywords:
             if keyword:
-                soc_codes = set()
+                soc_codes = []
                 lmi_data = self.lmi_client.keyword_search(keyword)
                 count = 3
                 if keyword in self.show_more:
                     count = 6
                 for item in lmi_data[:count]:
                     soc_code = str(item['soc'])
-                    soc_codes.add(soc_code)
-                    field = forms.BooleanField(
-                        widget=forms.CheckboxInput,
-                        label=item['title'],
-                        help_text=item['description'],
-                        required=False,
-                    )
-                    self.fields[soc_code] = field
+                    if soc_code not in soc_codes:
+                        soc_codes.append(soc_code)
+                        field = forms.BooleanField(
+                            widget=forms.CheckboxInput,
+                            label=item['title'],
+                            help_text=item['description'],
+                            required=False,
+                        )
+                        self.fields[soc_code] = field
                 self.fieldsets.append(FieldSet(
                     self, list(soc_codes), keyword))
 
