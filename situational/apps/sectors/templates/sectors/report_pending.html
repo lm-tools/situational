@@ -1,6 +1,4 @@
-{% extends "base_govuk.html" %}
-
-{% block page_title %}Understand what sort of jobs you could do{% endblock page_title %}
+{% extends "sectors/base.html" %}
 
 {% block head %}
 <noscript>
@@ -11,7 +9,7 @@
 {% block content %}
 <main id="content">
   {% include 'sectors/_progress.html' with step_number=3 %}
-  <h1 class="heading-xlarge">Please wait while we generate your report...</h1>
+  <h2 class="heading-xlarge">Please wait while we generate your report...</h2>
   <ul class="list-bullet">
     <li>{% include "sectors/_result_field_pending.html" with field="soc_code_data" message="Generating SOC code report..." %}</li>
   </ul>

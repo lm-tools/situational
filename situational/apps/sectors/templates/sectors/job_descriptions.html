@@ -1,15 +1,11 @@
-{% extends "base_govuk.html" %}
+{% extends "sectors/base.html" %}
 {% load add_get_parameter %}
-
-{% block title %}Understand what sort of jobs you could do{% endblock title %}
-
-{% block body_classes %}sectors{% endblock body_classes %}
 
 {% block content %}
 
 <main id="content" class="sectors">
   {% include 'sectors/_progress.html' with step_number=2 %}
-  <h1 class="heading-xlarge">Jobs you'd like to know more about</h1>
+  <h2 class="heading-xlarge">Jobs you'd like to know more about</h2>
   <p><a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Refine search</a></p>
 
   <form id="results" method=post autocomplete="OFF">
@@ -58,6 +54,7 @@
   </form>
 </main>
 {% endblock content %}
+
 {% block javascript %}
   {{ block.super }}
   <script>
