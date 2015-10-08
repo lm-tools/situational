@@ -1,13 +1,9 @@
-{% extends "base_govuk.html" %}
-
-{% block page_title %}Understand what sort of jobs you could do{% endblock page_title %}
-
-{% block body_classes %}sectors{% endblock body_classes %}
+{% extends "sectors/base.html" %}
 
 {% block content %}
 <main id="content">
   {% include 'sectors/_progress.html' with step_number=1 %}
-  <h1 class="heading-xlarge">Understand what sort of jobs you could do</h1>
+  <h2 class="heading-xlarge">Understand what sort of jobs you could do</h2>
 
   <p class="lede">Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online.</p>
 
