@@ -25,12 +25,6 @@
         maxZoom: 18
       }).addTo(map);
 
-      var circle = L.circle([latitude, longitude], 750, {
-        color: '#007095',
-        fillColor: '#008CBA',
-        fillOpacity: 0.5
-      }).addTo(map);
-
     } else {
       $this.data("mapError", "Couldn't parse lat/long as a number");
     }
