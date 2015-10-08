@@ -50,18 +50,6 @@ class TestJobDiscoveryModel(BaseCase):
             self.job_2
         )
 
-    def test_get_suggestion_returns_random_job(self):
-        job_1_returned = 0
-        job_2_returned = 0
-        for x in range(500):
-            suggestion = self.report.get_suggestion()
-            if suggestion == self.job:
-                job_1_returned += 1
-            else:
-                job_2_returned += 1
-        self.assertTrue(225 <= job_1_returned <= 275)
-        self.assertTrue(225 <= job_2_returned <= 275)
-
     def test_get_suggestion_imports_jobs_if_needed(self):
         no_jobs_location = models.JobLocation.objects.create(
             adzuna_locations="UK,London,Central London"
