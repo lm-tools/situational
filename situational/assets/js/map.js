@@ -11,18 +11,18 @@
       map = L.map(this, {
         center: [latitude, longitude],
         zoom: 12,
-        dragging: false
+        dragging: false,
+        touchZoom: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        boxZoom: false,
+        tap: false,
+        zoomControl: false
       });
 
-      L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      L.tileLayer('//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
         maxZoom: 18
-      }).addTo(map);
-
-      var circle = L.circle([latitude, longitude], 750, {
-        color: '#007095',
-        fillColor: '#008CBA',
-        fillOpacity: 0.5
       }).addTo(map);
 
     } else {

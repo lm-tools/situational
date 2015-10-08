@@ -16,31 +16,24 @@
 
 <main id="content">
   <header>
-    <h1 class="heading-xlarge">Understand what sort of jobs you could do</h1>
+    <h1 class="heading-xlarge">You saved {{ jobs|length }} jobs in {{ job_pool_location | friendly_adzuna_location }}</h1>
   </header>
 
   {% if jobs %}
-    <p class="lede">This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p>
-
-    <section>
-      <header>
-        <h2 class="heading-large">Jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
-      </header>
-
-      {% for job in jobs %}
-        <section>
-            {% include "job_discovery/_job_card.html" with show_apply=True show_map=False %}
-        </section>
-      {% endfor %}
-
-    </section>
-
+    {% for job in jobs %}
+      <section>
+          {% include "job_discovery/_job_card.html" with show_apply=True show_map=False %}
+      </section>
+    {% endfor %}
   {% else %}
 
     <p class="lede">You have not liked any jobs so far.</p>
 
   {% endif %}
 
+  <footer class="feedback">
+    <p>Let us know if this report is useful at <strong>feedback@lm-tools.com</strong></p>
+  </footer>
 </main>
 
 {% endblock %}

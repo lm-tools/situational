@@ -2,7 +2,9 @@ import uuid
 
 from model_utils.models import TimeStampedModel
 
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
+
 from . import tasks
 from .adzuna import Adzuna
 
@@ -14,6 +16,8 @@ class Job(TimeStampedModel):
     salary_max = models.CharField(max_length=120, null=True)
     salary_min = models.CharField(max_length=120, null=True)
     salary_is_predicted = models.CharField(max_length=120, null=True)
+    adzuna_locations = ArrayField(models.CharField(max_length=200),
+                                  default=list)
     location_name = models.CharField(max_length=120, null=True)
     latitude = models.CharField(max_length=120, null=True)
     longitude = models.CharField(max_length=120, null=True)
@@ -23,6 +27,10 @@ class Job(TimeStampedModel):
     average_company_salary = models.CharField(max_length=120, null=True)
     contract_type = models.CharField(max_length=120, null=True)
     contract_time = models.CharField(max_length=120, null=True)
+
+    @property
+    def has_precise_location(self):
+        return self.adzuna_locations and len(self.adzuna_locations) > 3
 
 
 class JobLocation(models.Model):
@@ -49,6 +57,8 @@ class JobLocation(models.Model):
                     "salary_max": az_job.get('salary_max'),
                     "salary_min": az_job.get('salary_min'),
                     "salary_is_predicted": az_job.get('salary_is_predicted'),
+                    "adzuna_locations": az_job.get('location', {})
+                                              .get('area', []),
                     "location_name": az_job.get('location', {})
                                            .get('display_name'),
                     "latitude": az_job.get('latitude'),

@@ -54,6 +54,7 @@ class SuggestionView(FormView):
         context["job"] = self.suggested_job
         context["guid"] = self.report.pk
         context["job_pool_location"] = self.report.location.adzuna_locations
+        context["report"] = self.report
         return context
 
     def get_initial(self):

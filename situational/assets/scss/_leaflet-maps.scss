@@ -1,5 +1,10 @@
 .js-enabled {
   .leaflet-map {
     height: 20em;
+    cursor: default;
+
+    .leaflet-clickable {
+      cursor: default;
+    }
   }
 }

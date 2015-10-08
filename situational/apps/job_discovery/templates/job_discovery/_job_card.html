@@ -11,27 +11,6 @@
     </td>
   </tr>
   <tr>
-    <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
-    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b></td>
-  </tr>
-  <tr>
-    <td>Location</td>
-    <td colspan="2">
-      <b>{{ job.location_name }}</b>
-      {% if job.latitude and job.longitude %}
-        <div class="leaflet-map" data-latitude="{{ job.latitude }}" data-longitude="{{ job.longitude }}"></div>
-      {% endif %}
-    </td>
-  </tr>
-  <tr>
-    <td>Category</td>
-    <td colspan="2">{{ job.category_name | default_if_none:"unknown" }}</td>
-  </tr>
-  <tr>
-    <td>Description</td>
-    <td colspan="2">{{ job.description }}</td>
-  </tr>
-  <tr>
     <td>Company</td>
     <td colspan="2">
       <b>{{ job.company_name | default_if_none:"unknown" }}</b>
@@ -39,7 +18,24 @@
     </td>
   </tr>
   <tr>
+    <td>Location</td>
+    <td colspan="2">
+      <b>{{ job.location_name }}</b>
+      {% if job.has_precise_location and job.latitude and job.longitude %}
+        <div class="leaflet-map" data-latitude="{{ job.latitude }}" data-longitude="{{ job.longitude }}"></div>
+      {% endif %}
+    </td>
+  </tr>
+  <tr>
+    <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
+    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b></td>
+  </tr>
+  <tr>
     <td>Contract</td>
     <td colspan="2"><i>Permanent / contract:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b>, <i>Full-time / part-time:</i> <b>{{ job.contract_time | default_if_none:"unknown" }}</b></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td colspan="2">{{ job.description }}</td>
   </tr>
 </table>

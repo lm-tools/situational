@@ -8,25 +8,27 @@
   </aside>
 
   <header>
-    <h1 class="heading-xlarge">Discover jobs to apply for</h1>
-
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <p class="lede">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</p>
-      </div>
-      <div class="column-third" style="text-align: right">
-        <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-start collapse t-done">I'm done</a>
-      </div>
-    </div>
+    <h2 class="heading-medium">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
   </header>
 
   {% include "job_discovery/_job_card.html" %}
 
-  <footer class="panel">
-    <form method=post autocomplete="OFF" class="job-suggestion-controls" action="{{ request.path }}">
-      {% csrf_token %}
-      {{ form }}
-    </form>
-  </footer>
+  <form method=post autocomplete="OFF" class="job-suggestion-controls panel" action="{{ request.path }}">
+    {% csrf_token %}
+    <input type="hidden" name="job_id" value="{{ job.id }}">
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <button type="submit" name="response" value="no" class="button">No, this isn't for me</button>
+        <button type="submit" name="response" value="yes" class="button">Yes, this sounds interesting</button>
+      </div>
+      <div class="column-third">
+        <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-done t-done">I'm done</a>
+        {% if report.liked_jobs %}
+          <span class="liked-jobs-count">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</span>
+        {% endif %}
+      </div>
+    </div>
+  </form>
+
 </main>
 {% endblock content %}

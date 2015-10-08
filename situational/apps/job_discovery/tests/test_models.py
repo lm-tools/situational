@@ -61,3 +61,36 @@ class TestJobDiscoveryModel(BaseCase):
         report.get_suggestion()
         number_jobs = no_jobs_location.jobs.count()
         self.assertTrue(number_jobs, 50)
+
+
+class TestJobModel(BaseCase):
+    def test_has_precise_location(self):
+        with self.subTest("Job with zero levels of location information"):
+            job = models.Job.objects.create(
+                adzuna_id=uuid.uuid4(),
+                adzuna_locations=[],
+            )
+            self.assertFalse(job.has_precise_location)
+
+        with self.subTest("Job with three levels of location information"):
+            job = models.Job.objects.create(
+                adzuna_id=uuid.uuid4(),
+                adzuna_locations=("UK", "London", "Central London"),
+            )
+            self.assertFalse(job.has_precise_location)
+
+        with self.subTest("Job with four levels of location information"):
+            job = models.Job.objects.create(
+                adzuna_id=uuid.uuid4(),
+                adzuna_locations=("UK", "London", "Central London",
+                                  "Westminster"),
+            )
+            self.assertTrue(job.has_precise_location)
+
+        with self.subTest("Job with > four levels of location information"):
+            job = models.Job.objects.create(
+                adzuna_id=uuid.uuid4(),
+                adzuna_locations=("UK", "London", "Central London",
+                                  "Westminster", "St James Park"),
+            )
+            self.assertTrue(job.has_precise_location)
