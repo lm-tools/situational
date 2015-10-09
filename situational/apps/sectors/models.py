@@ -32,11 +32,5 @@ class SectorsReport(TimeStampedModel):
             self._is_result_field_populated(f) for f in self.RESULT_FIELDS
         )
 
-    @property
-    def populated_result_fields(self):
-        return list(
-            f for f in self.RESULT_FIELDS if self._is_result_field_populated(f)
-        )
-
     def _is_result_field_populated(self, field):
         return getattr(self, field) != ''

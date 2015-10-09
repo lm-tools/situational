@@ -76,14 +76,14 @@ class ReportView(TemplateView):
         return context
 
 
-class PopulatedResultFieldsView(View):
+class IsPopulatedView(View):
     def get(self, request, *args, **kwargs):
         report = get_object_or_404(
             models.SectorsReport,
             pk=int(kwargs['report_id'])
         )
         return http.JsonResponse(
-            report.populated_result_fields,
+            report.is_populated,
             safe=False
         )
 

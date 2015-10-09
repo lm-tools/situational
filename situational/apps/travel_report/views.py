@@ -74,14 +74,14 @@ class SendView(TemplateView):
         return context
 
 
-class PopulatedResultFieldsView(View):
+class IsPopulatedView(View):
     def get(self, request, *args, **kwargs):
         try:
             report = models.TravelReport.objects.get(
                 postcode=kwargs['postcode']
             )
             return http.JsonResponse(
-                report.populated_result_fields,
+                report.is_populated,
                 safe=False
             )
         except models.TravelReport.DoesNotExist:
