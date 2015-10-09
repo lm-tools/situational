@@ -64,21 +64,6 @@ class TestTravelReportIsPopulated(TravelReportBuilderMixin, BaseCase):
         self.assertFalse(report.is_populated)
 
 
-class TestTravelReportPopulatedResultFields(TravelReportBuilderMixin,
-                                            BaseCase):
-    def test_all_result_fields_populated(self):
-        report = self._populated_report()
-        self.assertCountEqual(
-            report.populated_result_fields, TravelReport.RESULT_FIELDS
-        )
-
-    def test_each_result_field_not_populated(self):
-        for field in TravelReport.RESULT_FIELDS:
-            with self.subTest(field=field):
-                report = self._populated_report(without=[field])
-                self.assertNotIn(field, report.populated_result_fields)
-
-
 class TestTravelReportSendTo(TravelReportBuilderMixin, BaseCase):
     def test_send_pdf_to_eprovided_mail_address(self):
         report = self._populated_report()

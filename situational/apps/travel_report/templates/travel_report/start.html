@@ -5,9 +5,6 @@
 {% block content %}
 <main id="content">
     <h1 class="heading-xlarge">Understand where you could travel for work</h1>
-    <p class="lede">
-        Enter a postcode to view a map of where you can travel to in 90 minutes on public transport. Generate a report to share with your work coach to help agree your commitments.
-    </p>
     <form method=post autocomplete="OFF">
         {% csrf_token %}
         <div class="form-group {% if form.postcode.errors %}error{% endif %}">

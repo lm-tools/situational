@@ -3,9 +3,9 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'(?P<postcode>[a-zA-Z0-9\s]+)/populated_result_fields.json$',
-        views.PopulatedResultFieldsView.as_view(),
-        name="populated_result_fields"),
+    url(r'(?P<postcode>[a-zA-Z0-9\s]+)/is_populated.json$',
+        views.IsPopulatedView.as_view(),
+        name="is_populated"),
 
     url(r'(?P<postcode>[a-zA-Z0-9\s]+)/send$',
         views.SendView.as_view(),

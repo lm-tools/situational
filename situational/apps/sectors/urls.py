@@ -25,9 +25,9 @@ urlpatterns = [
         views.PDFView.as_view(),
         name="pdf"),
     url(r'soc_codes/' + report_id +
-        '/populated_result_fields.json$',
-        views.PopulatedResultFieldsView.as_view(),
-        name="populated_result_fields"),
+        '/is_populated.json$',
+        views.IsPopulatedView.as_view(),
+        name="is_populated"),
     url(r'soc_codes/' + report_id + '/send$',
         views.SendReportView.as_view(),
         name="send_report"),

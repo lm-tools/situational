@@ -57,20 +57,6 @@ class TestSectorsReportIsPopulated(SectorsReportBuilderMixin, BaseCase):
                 self.assertFalse(report.is_populated)
 
 
-class TestSectorsReportPopulatedFields(SectorsReportBuilderMixin, BaseCase):
-    def test_all_result_fields_populated(self):
-        report = self._populated_report()
-        self.assertCountEqual(
-            report.populated_result_fields, SectorsReport.RESULT_FIELDS
-        )
-
-    def test_each_result_field_not_populated(self):
-        for field in SectorsReport.RESULT_FIELDS:
-            with self.subTest(field=field):
-                report = self._populated_report(without=[field])
-                self.assertNotIn(field, report.populated_result_fields)
-
-
 class TestSectorsReportSendTo(SectorsReportBuilderMixin, BaseCase):
     def test_send_pdf_to_eprovided_mail_address(self):
         report = self._populated_report()
