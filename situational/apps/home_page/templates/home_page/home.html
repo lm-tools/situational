@@ -49,7 +49,7 @@
     <h2 class="headling-large">Send us feedback</h2>
     <p>We would love to know about any questions, bug reports, suggestions
       and comments you may have on our prototypes.</p>
-    <form action="{% url 'home_page:home' %}" method="post" autocomplete="OFF">
+    <form action="{% url 'home_page:home' %}#feedback" method="post" autocomplete="OFF">
       {% csrf_token %}
       <div class="form-group {% if form.name.errors %}error{% endif %}">
         <label class="form-label" for="name">
