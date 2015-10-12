@@ -129,7 +129,8 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.template.context_processors.media",
     "django.template.context_processors.static",
     "django.template.context_processors.tz",
-    "django.contrib.messages.context_processors.messages"
+    "django.contrib.messages.context_processors.messages",
+    "home_page.context_processors.govuk_frontend_settings"
 ]
 
 ROOT_URLCONF = 'situational.urls'
@@ -254,6 +255,11 @@ REDIS_URL = environ.get('REDIS_URL', 'redis://')
 REPORT_POPULATION_TIMEOUT = int(
     environ.get('REPORT_POPULATION_TIMEOUT', 90000)
 )
+
+# GOVUK Frontend toolkit settings
+GOVUK_HOMEPAGE_URL = environ.get('GOVUK_HOMEPAGE_URL', '/')
+GOVUK_LOGO_LINK_TITLE = environ.get(
+    'GOVUK_LOGO_LINK_TITLE', 'Go to the homepage')
 
 LMI_FOR_ALL_API_URL = environ.get(
     'LMI_FOR_ALL_API_URL',
