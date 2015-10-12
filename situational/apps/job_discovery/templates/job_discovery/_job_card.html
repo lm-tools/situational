@@ -33,7 +33,12 @@
   </tr>
   <tr>
     <td>Contract</td>
-    <td colspan="2"><i>Permanent / contract:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b>, <i>Full-time / part-time:</i> <b>{{ job.contract_time | replace_underscores:"-" | default_if_none:"unknown" }}</b></td>
+    <td colspan="2">
+      <div class="grid-row">
+        <div class="column-half"><i>Type:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b></div>
+        <div class="column-half"><i>Hours:</i> <b>{{ job.contract_time | replace_underscores:"-" | default_if_none:"unknown" }}</b></div>
+      </div>
+    </td>
   </tr>
   <tr>
     <td>Description</td>
