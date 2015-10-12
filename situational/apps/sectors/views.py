@@ -1,13 +1,14 @@
 from django import http
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView
-from django.views.generic import View
+from django.views.generic import FormView, View
 
 from formtools.wizard.views import NamedUrlCookieWizardView
 
 from . import models
+from home_page import forms as shared_forms
 
 
 class SectorWizardView(NamedUrlCookieWizardView):
@@ -49,7 +50,10 @@ class SectorWizardView(NamedUrlCookieWizardView):
         return HttpResponseRedirect(url)
 
 
-class ReportView(TemplateView):
+class ReportView(FormView):
+    template_name = "sectors/report.html"
+    form_class = shared_forms.EmailForm
+    success_url = "#success"
 
     def get(self, request, *args, **kwargs):
         self.report = get_object_or_404(
@@ -72,8 +76,21 @@ class ReportView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = kwargs
-        context['report'] = self.report
+        report = models.SectorsReport.objects.get(pk=self.kwargs['report_id'])
+        context['report'] = report
+        context['report_id'] = report.pk
         return context
+
+    def post(self, request, *args, **kwargs):
+        return super().post(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        email = form.cleaned_data["email"]
+        report = models.SectorsReport.objects.get(pk=self.kwargs['report_id'])
+        report.send_to(email)
+        notice = "Your report has been sent to " + email
+        messages.success(self.request, notice)
+        return super(ReportView, self).form_valid(form)
 
 
 class IsPopulatedView(View):
@@ -97,21 +114,3 @@ class PDFView(View):
         response = http.HttpResponse(report.to_pdf(), 'application/pdf')
         response['Content-Disposition'] = "filename=sectors-report.pdf"
         return response
-
-
-class SendReportView(TemplateView):
-    template_name = 'sectors/send_report.html'
-
-    def post(self, request, *args, **kwargs):
-        email = request.POST['email']
-        report = get_object_or_404(
-            models.SectorsReport,
-            pk=int(kwargs['report_id'])
-        )
-        report.send_to(email)
-        return super().get(self, request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = kwargs
-        context['email_address'] = self.request.POST['email']
-        return context

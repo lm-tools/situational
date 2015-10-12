@@ -12,12 +12,10 @@
     <p class="lede">Travel times from {{ report.postcode }} on public transport at 8 am</p>
   </header>
 
-  <footer class="panel-indent">
-    <form action="{% url 'travel_report:send' report.postcode %}" method="post" autocomplete="OFF">
-      {% csrf_token %}
-      {% include '_email_form.html' %}
-    </form>
-  </footer>
+  <form action="{% url 'travel_report:report' report.postcode %}" method="post" autocomplete="OFF">
+    {% csrf_token %}
+    {% include '_email_form.html' %}
+  </form>
 
   <section>
     <div class="grid-row travel-map-legend">

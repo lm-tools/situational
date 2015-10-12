@@ -1,9 +1,23 @@
-<fieldset class="form-fieldset">
-  <div class="form-group">
-    <label for="email_address">
-      <span class="form-label">Email yourself a copy of this report</span>
-    </label>
-    <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
-    <input type="submit" class="button" value="Send">
+{% if messages %}
+  <div id="success" class="error-summary information-box" role="group">
+    {% for message in messages %}
+      <p class="heading-medium error-summary-heading">
+        {{ message }}
+      </p>
+    {% endfor %}
   </div>
-</fieldset>
+{% endif %}
+<footer class="panel-indent">
+  <fieldset class="form-fieldset">
+    <div class="form-group {% if form.email.errors %}error{% endif %}">
+      <label class="form-label" for="email">
+        <span class="form-label{% if form.email.errors %}-bold{% endif %}">Email yourself a copy of this report</span>
+        {% for error in form.email.errors %}
+            <span class="error-message">{{ error|escape }}</small>
+        {% endfor %}
+      </label>
+      {{ form.email }}
+      <input type="submit" class="button" value="Send">
+    </div>
+  </fieldset>
+</footer>

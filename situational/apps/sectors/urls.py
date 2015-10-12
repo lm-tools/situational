@@ -28,7 +28,4 @@ urlpatterns = [
         '/is_populated.json$',
         views.IsPopulatedView.as_view(),
         name="is_populated"),
-    url(r'soc_codes/' + report_id + '/send$',
-        views.SendReportView.as_view(),
-        name="send_report"),
 ]

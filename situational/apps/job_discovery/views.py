@@ -1,9 +1,11 @@
 from django import http
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
-from django.views.generic import FormView, TemplateView, View
+from django.views.generic import FormView, View
 
 from . import forms, models, pdf
+from home_page import forms as shared_forms
 from .adzuna import Adzuna
 
 
@@ -63,33 +65,32 @@ class SuggestionView(FormView):
         return initial
 
 
-class ReportView(TemplateView):
+class ReportView(FormView):
     template_name = "job_discovery/report.html"
+    form_class = shared_forms.EmailForm
+    success_url = "#success"
+
+    def get(self, request, *args, **kwargs):
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = kwargs
         report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
         context["jobs"] = report.liked_jobs
         context["job_pool_location"] = report.location.adzuna_locations
+        context["guid"] = report.guid
         return context
-
-
-class SendView(TemplateView):
-    template_name = "job_discovery/send.html"
 
     def post(self, request, *args, **kwargs):
-        email = request.POST['email']
-        report = get_object_or_404(
-            models.JobDiscoveryReport,
-            pk=kwargs['guid']
-        )
-        report.send_to(email)
-        return super().get(self, request, *args, **kwargs)
+        return super().post(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = kwargs
-        context['email_address'] = self.request.POST['email']
-        return context
+    def form_valid(self, form):
+        email = form.cleaned_data["email"]
+        report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
+        report.send_to(email)
+        notice = "Your report has been sent to " + email
+        messages.success(self.request, notice)
+        return super(ReportView, self).form_valid(form)
 
 
 class PDFView(View):

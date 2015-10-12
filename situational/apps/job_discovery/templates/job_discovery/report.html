@@ -14,12 +14,10 @@
   {% if jobs %}
     {# <p class="lede">This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p> #}
 
-    <footer class="panel-indent">
-      <form action="{% url 'job_discovery:send' guid=guid %}" method="post" autocomplete="OFF">
+      <form id="email_form" action="{% url 'job_discovery:report' guid=guid %}#email_form" method="post" autocomplete="OFF">
         {% csrf_token %}
         {% include '_email_form.html' %}
       </form>
-    </footer>
 
       {% for job in jobs %}
         <section>
