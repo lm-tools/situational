@@ -253,7 +253,7 @@ REDIS_URL = environ.get('REDIS_URL', 'redis://')
 
 # REPORT POPULATION
 REPORT_POPULATION_TIMEOUT = int(
-    environ.get('REPORT_POPULATION_TIMEOUT', 90000)
+    environ.get('REPORT_POPULATION_TIMEOUT', 300000)
 )
 
 # GOVUK Frontend toolkit settings
