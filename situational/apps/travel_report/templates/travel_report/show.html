@@ -15,18 +15,7 @@
   <footer class="panel-indent">
     <form action="{% url 'travel_report:send' report.postcode %}" method="post" autocomplete="OFF">
       {% csrf_token %}
-      <fieldset class="form-fieldset">
-        <div class="form-group">
-          <label for="email_address">
-            <span class="form-label">Email yourself a copy of this report</span>
-          </label>
-          <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
-        </div>
-
-        <div class="form-group">
-          <input type="submit" class="button" value="Send">
-        </div>
-      </fieldset>
+      {% include '_email_form.html' %}
     </form>
   </footer>
 

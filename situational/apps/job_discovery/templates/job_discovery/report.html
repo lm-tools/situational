@@ -17,15 +17,7 @@
     <footer class="panel-indent">
       <form action="{% url 'job_discovery:send' guid=guid %}" method="post" autocomplete="OFF">
         {% csrf_token %}
-        <fieldset class="form-fieldset">
-          <div class="form-group">
-            <label for="email_address">
-              <span class="form-label">Email yourself a copy of this report</span>
-            </label>
-            <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
-            <input type="submit" class="button" value="Send">
-          </div>
-        </fieldset>
+        {% include '_email_form.html' %}
       </form>
     </footer>
 
