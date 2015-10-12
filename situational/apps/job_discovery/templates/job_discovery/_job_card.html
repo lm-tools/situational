@@ -29,7 +29,12 @@
   </tr>
   <tr>
     <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
-    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b></td>
+    <td colspan="2">
+      <div class="grid-row">
+        <div class="column-half"><i>Min:</i> <b>£ {{ job.salary_min | default_if_none:"unknown" | intcomma }}</b></div>
+        <div class="column-half"><i>Max:</i> <b>£ {{ job.salary_max | default_if_none:"unknown" | intcomma }}</b></div>
+      </div>
+    </td>
   </tr>
   <tr>
     <td>Contract</td>
