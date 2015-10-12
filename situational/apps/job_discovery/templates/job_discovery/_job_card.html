@@ -1,4 +1,5 @@
 {% load humanize %}
+{% load pretty_words %}
 
 <table class="job-card">
   <tr>
@@ -32,7 +33,7 @@
   </tr>
   <tr>
     <td>Contract</td>
-    <td colspan="2"><i>Permanent / contract:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b>, <i>Full-time / part-time:</i> <b>{{ job.contract_time | default_if_none:"unknown" }}</b></td>
+    <td colspan="2"><i>Permanent / contract:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b>, <i>Full-time / part-time:</i> <b>{{ job.contract_time | replace_underscores:"-" | default_if_none:"unknown" }}</b></td>
   </tr>
   <tr>
     <td>Description</td>
