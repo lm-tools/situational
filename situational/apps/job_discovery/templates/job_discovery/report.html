@@ -3,7 +3,6 @@
 
 {% block content %}
 
-<main id="content">
   <aside>
     <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
   </aside>
@@ -32,6 +31,5 @@
   <footer>
     <a href="{% url 'job_discovery:suggestion' guid=guid %}">back to jobs</a>
   </footer>
-</main>
 
 {% endblock %}

@@ -7,12 +7,10 @@
 {% endblock head %}
 
 {% block content %}
-<main id="content">
   {% include 'sectors/_progress.html' with step_number=3 %}
   <h1 class="heading-xlarge">Please wait while we generate your report...</h1>
   <p class="lede">This could take between 10 and 20 seconds.</p>
   <div class="loader">Loading...</div>
-</main>
 {% endblock content %}
 
 {% load staticfiles %}

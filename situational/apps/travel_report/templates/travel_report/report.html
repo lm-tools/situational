@@ -2,7 +2,6 @@
 
 {% block content %}
 
-<main id="content">
   <header>
     <aside>
       <a href="{% url 'travel_report:start' %}" class="link-back">start again</a>
@@ -28,7 +27,5 @@
     </div>
     <img src="{{ report.travel_times_map.image.url }}" class="travel-map">
   </section>
-
-</main>
 
 {% endblock content %}
