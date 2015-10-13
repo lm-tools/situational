@@ -2,8 +2,17 @@
 {% load adzuna %}
 
 {% block content %}
-  <header>
-    <h2 class="heading-medium">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
+  <header class="grid-row">
+    <div class="column-two-thirds">
+      <h2 class="heading-medium">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
+    </div>
+    <div class="column-third">
+      {% if report.liked_jobs %}
+        <div class="liked-jobs-count-wrapper">
+          <div class="liked-jobs-count">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</div>
+        </div>
+      {% endif %}
+    </div>
   </header>
 
   {% include "job_discovery/_job_card.html" %}
@@ -18,9 +27,6 @@
       </div>
       <div class="column-third">
         <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-done t-done">I'm done</a>
-        {% if report.liked_jobs %}
-          <span class="liked-jobs-count">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</span>
-        {% endif %}
       </div>
     </div>
   </form>
