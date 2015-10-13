@@ -81,9 +81,6 @@ class ReportView(FormView):
         context['report_id'] = report.pk
         return context
 
-    def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
-
     def form_valid(self, form):
         email = form.cleaned_data["email"]
         report = models.SectorsReport.objects.get(pk=self.kwargs['report_id'])

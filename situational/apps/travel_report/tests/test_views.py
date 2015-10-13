@@ -48,9 +48,7 @@ class TestReportView(BaseCase):
                 follow=True
             )
             send_to.assert_called_with('test@example.org')
-            self.assertEqual(response.status_code, 202)
-            # 200
-            # self.assertTemplateUsed(response, 'travel_report/report.html')
-            # self.assertEqual(response.context['postcode'], 'SW1H0DJ')
-            # self.assertEqual(response.context['email_address'],
-            #                     'test@example.org')
+            self.assertEqual(response.status_code, 200)
+            self.assertTemplateUsed(response, 'travel_report/report.html')
+            self.assertEqual(response.context['postcode'], 'SW1H0DJ')
+            self.assertContains(self.response, 'test@example.org')

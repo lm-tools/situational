@@ -163,7 +163,7 @@ class TestSendReport(BaseCase):
     def test_post_renders_correctly(self):
         self.assertEqual(self.response.status_code, 200)
         self.assertTemplateUsed(self.response, 'job_discovery/report.html')
-        # self.assertContains(self.response, 'test@example.org')
+        self.assertContains(self.response, 'test@example.org')
 
     def test_post_emails_the_histoy_report(self):
             self.assertEqual(len(mail.outbox), 1, "Mail should have been sent")

@@ -70,9 +70,6 @@ class ReportView(FormView):
     form_class = shared_forms.EmailForm
     success_url = "#success"
 
-    def get(self, request, *args, **kwargs):
-        return super().get(request, *args, **kwargs)
-
     def get_context_data(self, **kwargs):
         context = kwargs
         report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
@@ -80,9 +77,6 @@ class ReportView(FormView):
         context["job_pool_location"] = report.location.adzuna_locations
         context["guid"] = report.guid
         return context
-
-    def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
 
     def form_valid(self, form):
         email = form.cleaned_data["email"]

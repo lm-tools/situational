@@ -58,8 +58,7 @@ class TestSendReport(BaseCase):
                 follow=True
             )
             send_to.assert_called_with('test@example.org')
-            # 200
-            self.assertEqual(response.status_code, 202)
-            # self.assertTemplateUsed(response, 'sectors/report.html')
-            # self.assertEqual(int(response.context['report_id']), report.pk)
-            # self.assertContains(response, 'test@example.org')
+            self.assertEqual(response.status_code, 200)
+            self.assertTemplateUsed(response, 'sectors/report.html')
+            self.assertEqual(int(response.context['report_id']), report.pk)
+            self.assertContains(response, 'test@example.org')

@@ -56,9 +56,6 @@ class ReportView(FormView):
         context['postcode'] = report.postcode
         return context
 
-    def post(self, request, *args, **kwargs):
-        return super().post(request, *args, **kwargs)
-
     def form_valid(self, form):
         email = form.cleaned_data["email"]
         report = models.TravelReport.objects.get(
