@@ -138,7 +138,7 @@ class TestReportView(BaseCase):
                          "Uk,London,Central London")
 
 
-class TestSendView(BaseCase):
+class TestSendReport(BaseCase):
     def setUp(self):
         self.location = models.JobLocation.objects.create(
             adzuna_locations="Uk,London,Central London"
@@ -149,21 +149,22 @@ class TestSendView(BaseCase):
         )
         self.job_liked = models.Job.objects.create(adzuna_id=uuid.uuid4)
         self.location.jobs.add(self.job_liked)
+        self.report.add_reaction(self.job_liked, "yes")
         with patch("template_to_pdf.convertors.PrinceXML.convert") as convert:
             convert.return_value = "pdf-file-contents"
             self.response = self.client.post(
                 reverse(
-                    "job_discovery:send",
+                    "job_discovery:report",
                     kwargs={'guid': self.report.guid}
                 ),
                 data={'email': 'test@example.org'},
+                follow=True
             )
 
     def test_post_renders_correctly(self):
         self.assertEqual(self.response.status_code, 200)
-        self.assertTemplateUsed(self.response, 'job_discovery/send.html')
-        self.assertEqual(self.response.context['email_address'],
-                         'test@example.org')
+        self.assertTemplateUsed(self.response, 'job_discovery/report.html')
+        self.assertContains(self.response, 'test@example.org')
 
     def test_post_emails_the_histoy_report(self):
             self.assertEqual(len(mail.outbox), 1, "Mail should have been sent")

@@ -14,20 +14,8 @@
   {% if jobs %}
     {# <p class="lede">This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p> #}
 
-    <footer class="panel-indent">
-      <form action="{% url 'job_discovery:send' guid=guid %}" method="post" autocomplete="OFF">
-        {% csrf_token %}
-        <fieldset class="form-fieldset">
-          <div class="form-group">
-            <label for="email_address">
-              <span class="form-label">Email yourself a copy of this report</span>
-            </label>
-            <input type="email" name="email" placeholder="Email address" id="email_address" class="form-control">
-            <input type="submit" class="button" value="Send">
-          </div>
-        </fieldset>
-      </form>
-    </footer>
+      {% url 'job_discovery:report' guid=guid as form_action %}
+      {% include '_email_form.html' with form_action=form_action %}
 
       {% for job in jobs %}
         <section>

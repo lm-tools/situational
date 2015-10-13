@@ -1,12 +1,13 @@
 from django import http
+from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView
 from django.views.generic import FormView
 from django.views.generic import View
 
 from . import forms
 from . import models
+from home_page import forms as shared_forms
 
 
 class StartView(FormView):
@@ -19,11 +20,15 @@ class StartView(FormView):
 
     def form_valid(self, form):
         postcode = form.cleaned_data['postcode'].upper().replace(' ', '')
-        url = reverse('travel_report:show', kwargs={'postcode': postcode})
+        url = reverse('travel_report:report', kwargs={'postcode': postcode})
         return http.HttpResponseRedirect(url)
 
 
-class ShowView(TemplateView):
+class ReportView(FormView):
+    template_name = "travel_report/report.html"
+    form_class = shared_forms.EmailForm
+    success_url = "#success"
+
     def get(self, request, *args, **kwargs):
         self.report, _created = models.TravelReport.objects.get_or_create(
             postcode=kwargs['postcode']
@@ -31,7 +36,7 @@ class ShowView(TemplateView):
 
         if self.report.is_populated:
             status_code = 200
-            self.template_name = "travel_report/show.html"
+            self.template_name = "travel_report/report.html"
         else:
             self.report.populate_async()
             status_code = 202
@@ -44,8 +49,22 @@ class ShowView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = kwargs
-        context['report'] = self.report
+        report = models.TravelReport.objects.get(
+            postcode=self.kwargs['postcode']
+        )
+        context['report'] = report
+        context['postcode'] = report.postcode
         return context
+
+    def form_valid(self, form):
+        email = form.cleaned_data["email"]
+        report = models.TravelReport.objects.get(
+            postcode=self.kwargs['postcode']
+        )
+        report.send_to(email)
+        notice = "Your report has been sent to " + email
+        messages.success(self.request, notice)
+        return super(ReportView, self).form_valid(form)
 
 
 class PDFView(View):
@@ -56,22 +75,6 @@ class PDFView(View):
         response['Content-Disposition'] = \
             "filename={}-report.pdf".format(postcode)
         return response
-
-
-class SendView(TemplateView):
-    template_name = 'travel_report/send.html'
-
-    def post(self, request, *args, **kwargs):
-        email = request.POST['email']
-        postcode = kwargs['postcode']
-        report = get_object_or_404(models.TravelReport, postcode=postcode)
-        report.send_to(email)
-        return super().get(self, request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = kwargs
-        context['email_address'] = self.request.POST['email']
-        return context
 
 
 class IsPopulatedView(View):

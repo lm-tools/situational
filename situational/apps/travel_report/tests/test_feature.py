@@ -19,7 +19,7 @@ class TestTravelReport(BaseCase):
             b.reload()
             self.assertTrue(
                 b.is_text_present(
-                    "Travel times from SW1A1AA on public transport at 8 am")
+                    "This map shows where you can get to from SW1A1AA")
             )
             self.assertTrue(
                 b.find_by_css('.travel-map')

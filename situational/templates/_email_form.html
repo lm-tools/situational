@@ -1,0 +1,24 @@
+{% if messages %}
+  <div id="success" class="error-summary information-box" role="group">
+    {% for message in messages %}
+      <p class="heading-medium error-summary-heading">
+        {{ message }}
+      </p>
+    {% endfor %}
+  </div>
+{% endif %}
+<form action="{{form_action}}#email_form" method="post" autocomplete="OFF">
+  {% csrf_token %}
+  <fieldset class="form-fieldset">
+    <div class="form-group {% if form.email.errors %}error{% endif %}">
+      <label class="form-label" for="email">
+        <span class="form-label{% if form.email.errors %}-bold{% endif %}">Email address</span>
+        {% for error in form.email.errors %}
+            <span class="error-message">{{ error|escape }}</small>
+        {% endfor %}
+      </label>
+      {{ form.email }}
+      <input type="submit" class="button" value="Send">
+    </div>
+  </fieldset>
+</form>
