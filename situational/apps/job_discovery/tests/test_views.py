@@ -149,6 +149,7 @@ class TestSendReport(BaseCase):
         )
         self.job_liked = models.Job.objects.create(adzuna_id=uuid.uuid4)
         self.location.jobs.add(self.job_liked)
+        self.report.add_reaction(self.job_liked, "yes")
         with patch("template_to_pdf.convertors.PrinceXML.convert") as convert:
             convert.return_value = "pdf-file-contents"
             self.response = self.client.post(

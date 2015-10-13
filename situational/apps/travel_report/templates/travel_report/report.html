@@ -8,10 +8,11 @@
       <a href="{% url 'travel_report:start' %}" class="link-back">start again</a>
     </aside>
     <h1 class="heading-xlarge">Where you could travel for work</h1>
-    <p>Start searching for jobs in these places. Save and share this with your work coach to help you plan your work search. </p>
-    <p class="lede">Travel times from {{ report.postcode }} on public transport at 8 am</p>
+    <p class="lede">Places you can get to from {{ report.postcode }} on public transport - in 90 minutes or less.</p>
+    <p class="lede">This map helps you discover places where you could work. </p>
   </header>
 
+  <p>Send this map to your email to help you plan your work search.</p>
   <form action="{% url 'travel_report:report' report.postcode %}" method="post" autocomplete="OFF">
     {% csrf_token %}
     {% include '_email_form.html' %}
@@ -20,7 +21,7 @@
   <section>
     <div class="grid-row travel-map-legend">
       <div class="column-third">
-        <span class="heading-small">Travel time in minutes</span>
+        <span class="heading-small">Travel time at 8 am</span>
       </div>
       <div class="column-two-thirds">
         <div class="travel-map-legend-box" style="background-color:#08519c; color:#f5f5f5">up to 30 minutes</div>
