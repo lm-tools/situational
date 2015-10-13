@@ -8,11 +8,10 @@
       <a href="{% url 'travel_report:start' %}" class="link-back">start again</a>
     </aside>
     <h1 class="heading-xlarge">Where you could travel for work</h1>
-    <p class="lede">Places you can get to from {{ report.postcode }} on public transport - in 90 minutes or less.</p>
-    <p class="lede">This map helps you discover places where you could work. </p>
+    <p class="lede">This map shows where you can get to from <strong>{{ report.postcode }}</strong> by public transport - in 90 minutes or less.</p>
+    <p class="lede">Email yourself this map to help plan your work search.</p>
   </header>
 
-  <p>Send this map to your email to help you plan your work search.</p>
   {% url 'travel_report:report' report.postcode as form_action %}
   {% include '_email_form.html' with form_action=form_action %}
 
