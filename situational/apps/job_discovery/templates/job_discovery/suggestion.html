@@ -2,10 +2,6 @@
 {% load adzuna %}
 
 {% block content %}
-  <aside>
-    <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
-  </aside>
-
   <header>
     <h2 class="heading-medium">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
   </header>
@@ -28,4 +24,8 @@
       </div>
     </div>
   </form>
+
+  <footer>
+    <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
+  </footer>
 {% endblock content %}
