@@ -14,12 +14,12 @@ class TestTravelReport(BaseCase):
             b.find_by_text("Start").first.click()
             self.assertTrue(
                 b.is_text_present(
-                    "Please wait while we generate your report...")
+                    "Your map is loading")
             )
             b.reload()
             self.assertTrue(
                 b.is_text_present(
-                    "Travel times from SW1A1AA on public transport")
+                    "Travel times from SW1A1AA on public transport at 8 am")
             )
             self.assertTrue(
                 b.find_by_css('.travel-map')
