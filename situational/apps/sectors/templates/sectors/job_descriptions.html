@@ -3,7 +3,8 @@
 
 {% block content %}
 
-  {% include 'sectors/_progress.html' with step_number=2 %}
+  {% include 'sectors/_progress.html' with step_number=1 %}
+
   <h2 class="heading-xlarge">Jobs you'd like to know more about</h2>
   <p><a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Refine search</a></p>
 
