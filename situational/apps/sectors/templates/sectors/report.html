@@ -15,10 +15,8 @@
       pay, and terms to use when searching for them online.</p>
   </header>
 
-  <form action="{% url 'sectors:report' report_id=report.pk %}" method="post" autocomplete="OFF">
-    {% csrf_token %}
-    {% include '_email_form.html' %}
-  </form>
+  {% url 'sectors:report' report_id=report.pk as form_action %}
+  {% include '_email_form.html' with form_action=form_action %}
 
   {% for soc_code,soc_data in report.soc_code_data.items %}
 
