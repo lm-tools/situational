@@ -4,6 +4,7 @@ from model_utils.models import TimeStampedModel
 
 from django.contrib.postgres.fields import ArrayField
 from django.db import models
+from django.utils import timezone
 
 from . import tasks
 from .adzuna import Adzuna
@@ -94,7 +95,9 @@ class JobDiscoveryReport(TimeStampedModel):
     def get_suggestion(self):
         job_ids = self.seen_jobs.values_list('id', flat=True)
         unseen_jobs = self.location.jobs.exclude(id__in=job_ids)
-        job = unseen_jobs.order_by('?').first()
+        job = unseen_jobs\
+            .filter(created__gt=timezone.now() - timezone.timedelta(days=1))\
+            .order_by('?').first()
         if job:
             return job
         else:
