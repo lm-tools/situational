@@ -11,7 +11,8 @@
   <fieldset class="form-fieldset">
     <div class="form-group {% if form.email.errors %}error{% endif %}">
       <label class="form-label" for="email">
-        <span class="form-label{% if form.email.errors %}-bold{% endif %}">Email yourself a copy of this report</span>
+        <span class="form-label{% if form.email.errors %}-bold{% endif %}">Email address</span>
+        <span class="form-hint">Send this map to your email.</span>
         {% for error in form.email.errors %}
             <span class="error-message">{{ error|escape }}</small>
         {% endfor %}
