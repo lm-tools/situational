@@ -3,7 +3,6 @@
 
 {% block content %}
 
-<main id="content" class="sectors">
   {% include 'sectors/_progress.html' with step_number=2 %}
   <h2 class="heading-xlarge">Jobs you'd like to know more about</h2>
   <p><a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Refine search</a></p>
@@ -52,7 +51,6 @@
       <button type=submit class=button>Next</button>
     </div>
   </form>
-</main>
 {% endblock content %}
 
 {% block javascript %}

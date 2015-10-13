@@ -1,35 +1,33 @@
 {% extends "sectors/base.html" %}
 
 {% block content %}
-<main id="content">
-  {% include 'sectors/_progress.html' with step_number=1 %}
-  <h2 class="heading-xlarge">Understand what sort of jobs you could do</h2>
+{% include 'sectors/_progress.html' with step_number=1 %}
+<h2 class="heading-xlarge">Understand what sort of jobs you could do</h2>
 
-  <p class="lede">Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online.</p>
+<p class="lede">Enter the titles of some jobs you think you could do, or some of your skills, to see information about related jobs – such as average working hours, qualifications needed and what to search for online.</p>
 
-  <p>Generate a report to share with your work coach so they know how to help you.</p>
+<p>Generate a report to share with your work coach so they know how to help you.</p>
 
-  <p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
+<p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
 
-  <form method=post id="sector_form" autocomplete="OFF">
-    {% csrf_token %}
-    {{ wizard.management_form }}
-    <div class="form-group {% if form.sector.errors %}error{% endif %}">
-      <label for="{{ form.sector.id_for_label }}">
-        {{ form.sector.label }}
-        <span class="form-label{% if form.sector.errors %}-bold{% endif %}">
-          {% for error in form.sector.errors %}
-            <span class="error-message">{{ error|escape }}</small>
-          {% endfor %}
-        </span>
-        <span class="form-hint">{{ form.sector.help_text }}</span>
-      </label>
-      {{ form.sector }}
-    </div>
+<form method=post id="sector_form" autocomplete="OFF">
+  {% csrf_token %}
+  {{ wizard.management_form }}
+  <div class="form-group {% if form.sector.errors %}error{% endif %}">
+    <label for="{{ form.sector.id_for_label }}">
+      {{ form.sector.label }}
+      <span class="form-label{% if form.sector.errors %}-bold{% endif %}">
+        {% for error in form.sector.errors %}
+          <span class="error-message">{{ error|escape }}</small>
+        {% endfor %}
+      </span>
+      <span class="form-hint">{{ form.sector.help_text }}</span>
+    </label>
+    {{ form.sector }}
+  </div>
 
-    <div class="form-group">
-      <button type="submit" class="button button-start">Start</button>
-    </div>
-  </form>
-</main>
+  <div class="form-group">
+    <button type="submit" class="button button-start">Start</button>
+  </div>
+</form>
 {% endblock content %}

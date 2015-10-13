@@ -1,24 +1,22 @@
 {% extends "travel_report/base.html" %}
 
 {% block content %}
-<main id="content">
-    <h1 class="heading-xlarge">Where you could travel for work</h1>
-    <p class="lede">View a map of places you can get to by public transport - in 90 minutes or less.</p>
-    <form method=post autocomplete="OFF">
-        {% csrf_token %}
-        <div class="form-group {% if form.postcode.errors %}error{% endif %}">
-            <label for="{{ form.postcode.id_for_label }}">
-                <span class="form-label{% if form.postcode.errors %}-bold{% endif %}">From this postcode</span>
-                {% for error in form.postcode.errors %}
-                    <span class="error-message">{{ error|escape }}</small>
-                {% endfor %}
-            </label>
-            {{ form.postcode }}
-        </div>
-        <div class="form-group">
-            <button type="submit" class="button button-start">Start</button>
-        </div>
-    </form>
-    <p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
-</main>
+  <h1 class="heading-xlarge">Where you could travel for work</h1>
+  <p class="lede">View a map of places you can get to by public transport - in 90 minutes or less.</p>
+  <form method=post autocomplete="OFF">
+      {% csrf_token %}
+      <div class="form-group {% if form.postcode.errors %}error{% endif %}">
+          <label for="{{ form.postcode.id_for_label }}">
+              <span class="form-label{% if form.postcode.errors %}-bold{% endif %}">From this postcode</span>
+              {% for error in form.postcode.errors %}
+                  <span class="error-message">{{ error|escape }}</small>
+              {% endfor %}
+          </label>
+          {{ form.postcode }}
+      </div>
+      <div class="form-group">
+          <button type="submit" class="button button-start">Start</button>
+      </div>
+  </form>
+  <p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
 {% endblock content %}
