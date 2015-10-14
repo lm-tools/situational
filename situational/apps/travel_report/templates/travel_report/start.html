@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1 class="heading-xlarge">Where you could travel for work</h1>
-  <p class="lede">View a map of places you can get to by public transport - in 90 minutes or less.</p>
+  <p class="lede text">View a map of places you can get to by public transport - in 90 minutes or less.</p>
   <form method=post autocomplete="OFF">
       {% csrf_token %}
       <div class="form-group {% if form.postcode.errors %}error{% endif %}">
