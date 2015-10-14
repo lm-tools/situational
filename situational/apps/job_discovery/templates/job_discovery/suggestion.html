@@ -1,5 +1,11 @@
 {% extends "job_discovery/base.html" %}
 {% load adzuna %}
+{% load staticfiles %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'fixed-sticky/fixedsticky.css' %}">
+{% endblock %}
 
 {% block content %}
   <header class="grid-row">
@@ -17,21 +23,31 @@
 
   {% include "job_discovery/_job_card.html" %}
 
-  <form method=post autocomplete="OFF" class="job-suggestion-controls panel" action="{{ request.path }}">
-    {% csrf_token %}
-    <input type="hidden" name="job_id" value="{{ job.id }}">
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <button type="submit" name="response" value="no" class="button">No, this isn't for me</button>
-        <button type="submit" name="response" value="yes" class="button">Yes, this sounds interesting</button>
+  <div class="job-suggestion-controls fixedsticky">
+    <form method=post autocomplete="OFF" action="{{ request.path }}">
+      {% csrf_token %}
+      <input type="hidden" name="job_id" value="{{ job.id }}">
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <button type="submit" name="response" value="no" class="button">No, this isn't for me</button>
+          <button type="submit" name="response" value="yes" class="button">Save this job</button>
+        </div>
+        <div class="column-third">
+          <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-done t-done">I'm done</a>
+        </div>
       </div>
-      <div class="column-third">
-        <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-done t-done">I'm done</a>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 
   <footer>
     <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
   </footer>
 {% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'fixed-sticky/fixedsticky.js' %}"></script>
+  <script type="text/javascript">
+    $('.fixedsticky').fixedsticky();
+  </script>
+{% endblock %}
