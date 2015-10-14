@@ -15,7 +15,7 @@
     <div class="column-third">
       {% if report.liked_jobs %}
         <div class="liked-jobs-count-wrapper">
-          <div class="liked-jobs-count">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</div>
+          <div class="liked-jobs-count"><a href="{% url 'job_discovery:report' guid=guid %}" class="link">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</a></div>
         </div>
       {% endif %}
     </div>
