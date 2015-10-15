@@ -1,31 +1,53 @@
 {% extends "job_discovery/base.html" %}
 {% load adzuna %}
+{% load staticfiles %}
+
+{% block css %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'fixed-sticky/fixedsticky.css' %}">
+{% endblock %}
 
 {% block content %}
-  <aside>
-    <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
-  </aside>
-
-  <header>
-    <h2 class="heading-medium">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
+  <header class="grid-row">
+    <div class="column-two-thirds">
+      <h2 class="heading-medium">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
+    </div>
+    <div class="column-third">
+      {% if report.liked_jobs %}
+        <div class="liked-jobs-count-wrapper">
+          <div class="liked-jobs-count"><a href="{% url 'job_discovery:report' guid=guid %}" class="link">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</a></div>
+        </div>
+      {% endif %}
+    </div>
   </header>
 
   {% include "job_discovery/_job_card.html" %}
 
-  <form method=post autocomplete="OFF" class="job-suggestion-controls panel" action="{{ request.path }}">
-    {% csrf_token %}
-    <input type="hidden" name="job_id" value="{{ job.id }}">
-    <div class="grid-row">
-      <div class="column-two-thirds">
-        <button type="submit" name="response" value="no" class="button">No, this isn't for me</button>
-        <button type="submit" name="response" value="yes" class="button">Yes, this sounds interesting</button>
+  <div class="job-suggestion-controls fixedsticky">
+    <form method=post autocomplete="OFF" action="{{ request.path }}">
+      {% csrf_token %}
+      <input type="hidden" name="job_id" value="{{ job.id }}">
+      <div class="grid-row">
+        <div class="column-two-thirds">
+          <button type="submit" name="response" value="no" class="button">No, this isn't for me</button>
+          <button type="submit" name="response" value="yes" class="button">Save this job</button>
+        </div>
+        <div class="column-third">
+          <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-done t-done">I'm done</a>
+        </div>
       </div>
-      <div class="column-third">
-        <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-done t-done">I'm done</a>
-        {% if report.liked_jobs %}
-          <span class="liked-jobs-count">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</span>
-        {% endif %}
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
+
+  <footer>
+    <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
+  </footer>
 {% endblock content %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'fixed-sticky/fixedsticky.js' %}"></script>
+  <script type="text/javascript">
+    $('.fixedsticky').fixedsticky();
+  </script>
+{% endblock %}

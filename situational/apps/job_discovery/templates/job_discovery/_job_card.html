@@ -1,4 +1,5 @@
 {% load humanize %}
+{% load pretty_words %}
 
 <table class="job-card">
   <tr>
@@ -7,7 +8,7 @@
       <span class="heading-small t-job-title">{{ job.title }}</span>
     </td>
     <td class="apply-cell">
-      {% if show_apply and job.url %}<a href="{{ job.url }}" rel="external" target="_blank">apply for this job</a>{% endif %}
+      {% if show_apply and job.url %}<a href="{{ job.url }}" rel="external" target="_blank">More details</a>{% endif %}
     </td>
   </tr>
   <tr>
@@ -28,11 +29,21 @@
   </tr>
   <tr>
     <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
-    <td colspan="2"><i>max salary:</i> <b>£ {{ job.salary_max | intcomma }}</b>, <i>min salary:</i> <b>£ {{ job.salary_min | intcomma}}</b></td>
+    <td colspan="2">
+      <div class="grid-row">
+        <div class="column-half"><i>Min:</i> <b>£ {{ job.salary_min | default_if_none:"unknown" | intcomma }}</b></div>
+        <div class="column-half"><i>Max:</i> <b>£ {{ job.salary_max | default_if_none:"unknown" | intcomma }}</b></div>
+      </div>
+    </td>
   </tr>
   <tr>
     <td>Contract</td>
-    <td colspan="2"><i>Permanent / contract:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b>, <i>Full-time / part-time:</i> <b>{{ job.contract_time | default_if_none:"unknown" }}</b></td>
+    <td colspan="2">
+      <div class="grid-row">
+        <div class="column-half"><i>Type:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b></div>
+        <div class="column-half"><i>Hours:</i> <b>{{ job.contract_time | replace_underscores:"-" | default_if_none:"unknown" }}</b></div>
+      </div>
+    </td>
   </tr>
   <tr>
     <td>Description</td>

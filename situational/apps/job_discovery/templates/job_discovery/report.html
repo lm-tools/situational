@@ -3,9 +3,6 @@
 
 {% block content %}
 
-  <aside>
-    <a href="{% url 'job_discovery:start' %}" class="link-back">start again</a>
-  </aside>
   <header>
     <h1 class="heading-xlarge">You saved {{ jobs|length }} jobs in {{ job_pool_location | friendly_adzuna_location }}</h1>
   </header>
@@ -29,7 +26,8 @@
   {% endif %}
 
   <footer>
-    <a href="{% url 'job_discovery:suggestion' guid=guid %}">back to jobs</a>
+    <p><a href="{% url 'job_discovery:suggestion' guid=guid %}"class="link-back">see more jobs</a></p>
+    <p><a href="{% url 'job_discovery:start' %}" class="link-back">start again</a></p>
   </footer>
 
 {% endblock %}

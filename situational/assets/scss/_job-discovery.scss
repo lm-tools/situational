@@ -1,4 +1,10 @@
-@import "govuk_frontend_toolkit/shims";
+@import "govuk_elements/elements/elements-typography";
+@import "govuk_frontend_toolkit/measurements";
+@import "govuk_frontend_toolkit/conditionals";
+@import "govuk_frontend_toolkit/css3";
+@import "govuk_frontend_toolkit/grid_layout";
+@import "govuk_frontend_toolkit/typography";
+@import "govuk_frontend_toolkit/url-helpers";
 
 .job-card {
   margin-top: 1em;
@@ -15,18 +21,39 @@
   }
 }
 
-.job-suggestion-controls {
+.liked-jobs-count-wrapper {
+  @extend .heading-medium;
 
   .liked-jobs-count {
-    position: relative;
-    @include inline-block;
-    padding: 0.3em 0.6em 0.2em 0.6em;
-    border: none;
-    -webkit-appearance: none;
+    @include core-19;
+    @include media(tablet) {
+      text-align: right;
+    }
+  }
+}
+
+.job-suggestion-controls {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  form {
+    background: rgba(222, 224, 226, 0.8);
+    padding: $gutter-half $gutter-half 2px $gutter-half;
+  }
+}
+.job-suggestion-controls.fixedsticky-on {
+  form {
+    @extend %site-width-container;
+    box-sizing: border-box;
   }
 }
 
 .button-done {
+  float: right;
+  margin-right: 0;
+  text-align: center;
   background-image: file-url("images/govuk_frontend_toolkit/icon-pointer.png");
   background-repeat: no-repeat;
   background-position: 100% 50%;
