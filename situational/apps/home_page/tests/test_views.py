@@ -11,8 +11,9 @@ class TestHomePageView(BaseCase):
             data={
                 'name': 'Harry Potter',
                 'email': 'test@example.org',
-                'subject': 'Home page design',
                 'message': 'Your home page needs more animated gifs',
+                'tool': 'all',
+                'feedback_type': 'not_working',
             }
         )
 
@@ -23,7 +24,8 @@ class TestHomePageView(BaseCase):
             self.assertEqual(len(mail.outbox), 1, 'Mail should have been sent')
             message = mail.outbox[0]
             self.assertIn('feedback@lm-tools.com', message.to)
-            self.assertIn('Home page design', message.subject)
+            self.assertIn('Something isn\'t working', message.subject)
+            self.assertIn('All the tools', message.subject)
             self.assertIn('Harry Potter', message.body)
             self.assertIn('test@example.org', message.body)
             self.assertIn('Your home page needs more animated gifs',

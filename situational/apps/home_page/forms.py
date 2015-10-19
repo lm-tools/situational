@@ -1,13 +1,17 @@
 from django import forms
 
-TOOLS = [('all','All the tools'),
-         ('travel','Where you could travel for work'),
-         ('sectors','Understand what sort of jobs you could do'),
-         ('discovery', 'Discover jobs to apply for')]
-FEEDBACK_TYPES = [('not_working','Something isn\'t working'),
-                 ('new_idea','I would like to suggest a new idea'),
-                 ('confusing_coach','I found something confusing'),
-                 ('confusing_claimant', 'A claimant found something confusing')]
+TOOLS = [
+    ('all', 'All the tools'),
+    ('travel', 'Where you could travel for work'),
+    ('sectors', 'Understand what sort of jobs you could do'),
+    ('discovery', 'Discover jobs to apply for')
+]
+FEEDBACK_TYPES = [
+    ('not_working', 'Something isn\'t working'),
+    ('new_idea', 'I would like to suggest a new idea'),
+    ('confusing_coach', 'I found something confusing'),
+    ('confusing_claimant', 'A claimant found something confusing')
+]
 
 
 class FeedbackForm(forms.Form):

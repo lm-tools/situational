@@ -35,8 +35,8 @@ class HomePageView(FormView):
             form.data['name'],
             form.data['email'],
             form.data['message'],
-            form.data['tool'],
-            form.data['feedback_type']
+            dict(forms.TOOLS)[form.data['tool']],
+            dict(forms.FEEDBACK_TYPES)[form.data['feedback_type']]
         )
         url = reverse('home_page:thank_you')
         return http.HttpResponseRedirect(url)
