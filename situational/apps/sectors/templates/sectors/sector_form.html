@@ -15,12 +15,10 @@
   {{ wizard.management_form }}
   <div class="form-group {% if form.sector.errors %}error{% endif %}">
     <label for="{{ form.sector.id_for_label }}">
-      {{ form.sector.label }}
-      <span class="form-label{% if form.sector.errors %}-bold{% endif %}">
-        {% for error in form.sector.errors %}
-          <span class="error-message">{{ error|escape }}</small>
-        {% endfor %}
-      </span>
+      <span class="form-label{% if form.sector.errors %}-bold{% endif %}">{{ form.sector.label }}</span>
+      {% for error in form.sector.errors %}
+        <span class="error-message">{{ error|escape }}</span>
+      {% endfor %}
       <span class="form-hint">{{ form.sector.help_text }}</span>
     </label>
     {{ form.sector }}
