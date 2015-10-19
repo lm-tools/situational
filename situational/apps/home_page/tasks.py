@@ -13,8 +13,8 @@ dlm = Redlock([settings.REDIS_URL])  # Distibuted Lock Manager
 
 
 @shared_task
-def send_feedback(name, email, subject, content):
-    subject = "Feedback: {}".format(subject)
+def send_feedback(name, email, content, tool, feedback_type):
+    subject = "Feedback: {} - {}".format(tool, feedback_type)
     send_templated_email(
         template_name="home_page/emails/feedback",
         context={
