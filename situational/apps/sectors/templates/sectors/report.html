@@ -3,9 +3,6 @@
 
 {% block content %}
 
-  <aside>
-    <a href="{% url 'sectors:start' %}?restart" class="link-back">start again</a>
-  </aside>
 
   <header>
     <h2 class="heading-xlarge">Understand what sort of jobs you could do</h2>
@@ -63,4 +60,7 @@
 
   {% endfor %}
 
+  <footer>
+    <a href="{% url 'sectors:start' %}?restart" class="link-back">start again</a>
+  </footer>
 {% endblock %}

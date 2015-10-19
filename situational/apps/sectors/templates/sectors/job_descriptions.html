@@ -46,6 +46,10 @@
       <button type=submit class=button>Next</button>
     </div>
   </form>
+
+  <footer>
+    <a href="{% url 'sectors:start' %}?restart" class="link-back">start again</a>
+  </footer>
 {% endblock content %}
 
 {% block javascript %}
