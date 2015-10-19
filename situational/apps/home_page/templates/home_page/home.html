@@ -40,11 +40,50 @@
 
   <hr>
   <div id="feedback">
-    <h2 class="headline-large">Send us feedback</h2>
-    <p class="text">We would love to know about any questions, bug reports, suggestions
-      and comments you may have on our prototypes.</p>
+    <h2 class="headline-large">Tell us how you are using the tools</h2>
     <form action="{% url 'home_page:home' %}#feedback" method="post" autocomplete="OFF">
       {% csrf_token %}
+      <div class="form-group {% if form.tool.errors %}error{% endif %}">
+        <label class="form-label" for="tool">
+          <span class="form-label{% if form.tool.errors %}-bold{% endif %}">
+            Which tool are you giving feedback for?
+          </span>
+          {% for error in form.tool.errors %}
+              <span class="error-message">{{ error|escape }}</span>
+          {% endfor %}
+        </label>
+        {% for radio in form.tool %}
+          <label class="block-label" for="id_tool_{{ forloop.counter0 }}">
+            {{ radio.tag }}
+            {{ radio.choice_label }}
+          </label>
+        {% endfor %}
+      </div>
+      <div class="form-group {% if form.feedback_type.errors %}error{% endif %}">
+        <label class="form-label" for="feedback_type">
+          <span class="form-label{% if form.feedback_type.errors %}-bold{% endif %}">
+            What kind of feedback do you have?
+          </span>
+          {% for error in form.feedback_type.errors %}
+              <span class="error-message">{{ error|escape }}</span>
+          {% endfor %}
+        </label>
+        {% for radio in form.feedback_type %}
+          <label class="block-label" for="id_feedback_type_{{ forloop.counter0 }}">
+            {{ radio.tag }}
+            {{ radio.choice_label }}
+          </label>
+        {% endfor %}
+      </div>
+      <div class="form-group {% if form.message.errors %}error{% endif %}">
+        <label class="form-label" for="message">
+          <span class="form-label{% if form.message.errors %}-bold{% endif %}">Can you provide more detail?</span>
+          {% for error in form.message.errors %}
+              <span class="error-message">{{ error|escape }}</span>
+          {% endfor %}
+        </label>
+        {{ form.message }}
+      </div>
       <div class="form-group {% if form.name.errors %}error{% endif %}">
         <label class="form-label" for="name">
           <span class="form-label{% if form.name.errors %}-bold{% endif %}">Name</span>
@@ -62,24 +101,6 @@
           {% endfor %}
         </label>
         {{ form.email }}
-      </div>
-      <div class="form-group {% if form.subject.errors %}error{% endif %}">
-        <label class="form-label" for="subject">
-          <span class="form-label{% if form.subject.errors %}-bold{% endif %}">Subject</span>
-          {% for error in form.subject.errors %}
-              <span class="error-message">{{ error|escape }}</span>
-          {% endfor %}
-        </label>
-        {{ form.subject }}
-      </div>
-      <div class="form-group {% if form.message.errors %}error{% endif %}">
-        <label class="form-label" for="message">
-          <span class="form-label{% if form.message.errors %}-bold{% endif %}">Message</span>
-          {% for error in form.message.errors %}
-              <span class="error-message">{{ error|escape }}</span>
-          {% endfor %}
-        </label>
-        {{ form.message }}
       </div>
       <div class="form-group">
         <input type="submit" class="button" value="Send">
