@@ -8,8 +8,6 @@
 
 <p>Generate a report to share with your work coach so they know how to help you.</p>
 
-<p>This tool is a prototype - your <a href="{% url 'home_page:home' %}#feedback">feedback</a> will help us to improve it.</p>
-
 <form method=post id="sector_form" autocomplete="OFF">
   {% csrf_token %}
   {{ wizard.management_form }}
