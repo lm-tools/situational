@@ -43,6 +43,7 @@
     <h2 class="headline-large">Tell us how you are using the tools</h2>
     <form action="{% url 'home_page:home' %}#feedback" method="post" autocomplete="OFF">
       {% csrf_token %}
+      {{ form.referring_url }}
       <div class="form-group {% if form.tool.errors %}error{% endif %}">
         <label class="form-label" for="tool">
           <span class="form-label{% if form.tool.errors %}-bold{% endif %}">

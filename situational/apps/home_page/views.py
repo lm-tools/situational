@@ -41,6 +41,22 @@ class HomePageView(FormView):
         url = reverse('home_page:thank_you')
         return http.HttpResponseRedirect(url)
 
+    def get_form_kwargs(self):
+        kwargs = super(HomePageView, self).get_form_kwargs()
+        print(self.request.GET)
+        referring_url = self.request.GET.get('referring_url')
+        kwargs['initial']['referring_url'] = referring_url
+        tool = 'all'
+        if referring_url:
+            if referring_url.find("travel") != -1:
+                tool = 'travel'
+            elif referring_url.find("sectors") != -1:
+                tool = 'sectors'
+            elif referring_url.find("discovery") != -1:
+                tool = 'discovery'
+        kwargs['initial']['tool'] = tool
+        return kwargs
+
 
 class ThankYouView(TemplateView):
     template_name = "home_page/thank_you.html"

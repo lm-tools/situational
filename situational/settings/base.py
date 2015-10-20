@@ -130,7 +130,8 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.template.context_processors.static",
     "django.template.context_processors.tz",
     "django.contrib.messages.context_processors.messages",
-    "home_page.context_processors.govuk_frontend_settings"
+    "home_page.context_processors.govuk_frontend_settings",
+    "home_page.context_processors.get_current_path",
 ]
 
 ROOT_URLCONF = 'situational.urls'

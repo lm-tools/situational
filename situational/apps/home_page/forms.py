@@ -49,6 +49,9 @@ class FeedbackForm(forms.Form):
         choices=FEEDBACK_TYPES,
         widget=forms.RadioSelect
     )
+    referring_url = forms.CharField(
+        widget=forms.HiddenInput
+    )
 
 
 class EmailForm(forms.Form):
