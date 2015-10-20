@@ -32,18 +32,18 @@ class HomePageView(FormView):
 
     def form_valid(self, form):
         tasks.send_feedback.delay(
-            form.data['name'],
-            form.data['email'],
-            form.data['message'],
-            dict(forms.TOOLS)[form.data['tool']],
-            dict(forms.FEEDBACK_TYPES)[form.data['feedback_type']]
+            form.cleaned_data['name'],
+            form.cleaned_data['email'],
+            form.cleaned_data['message'],
+            dict(forms.TOOLS)[form.cleaned_data['tool']],
+            dict(forms.FEEDBACK_TYPES)[form.cleaned_data['feedback_type']],
+            form.cleaned_data.get('referring_url')
         )
         url = reverse('home_page:thank_you')
         return http.HttpResponseRedirect(url)
 
     def get_form_kwargs(self):
         kwargs = super(HomePageView, self).get_form_kwargs()
-        print(self.request.GET)
         referring_url = self.request.GET.get('referring_url')
         kwargs['initial']['referring_url'] = referring_url
         tool = 'all'

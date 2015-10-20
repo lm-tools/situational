@@ -54,7 +54,7 @@
           {% endfor %}
         </label>
         {% for radio in form.tool %}
-          <label class="block-label" for="id_tool_{{ forloop.counter0 }}">
+          <label class="block-label" for="{{ radio.id_for_label }}">
             {{ radio.tag }}
             {{ radio.choice_label }}
           </label>
@@ -70,7 +70,7 @@
           {% endfor %}
         </label>
         {% for radio in form.feedback_type %}
-          <label class="block-label" for="id_feedback_type_{{ forloop.counter0 }}">
+          <label class="block-label" for="{{ radio.id_for_label }}">
             {{ radio.tag }}
             {{ radio.choice_label }}
           </label>

@@ -50,6 +50,7 @@ class FeedbackForm(forms.Form):
         widget=forms.RadioSelect
     )
     referring_url = forms.CharField(
+        required=False,
         widget=forms.HiddenInput
     )
 

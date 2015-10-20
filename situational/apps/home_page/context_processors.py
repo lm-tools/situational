@@ -7,7 +7,8 @@ def govuk_frontend_settings(request):
         'logo_link_title': getattr(settings, 'GOVUK_LOGO_LINK_TITLE'),
     }
 
+
 def get_current_path(request):
     return {
-       'current_path': request.get_full_path()
-     }
+        'current_path': request.get_full_path(),
+    }
