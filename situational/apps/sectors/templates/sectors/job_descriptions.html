@@ -3,9 +3,10 @@
 
 {% block content %}
 
-  {% include 'sectors/_progress.html' with step_number=2 %}
-  <h2 class="heading-xlarge">Jobs you'd like to know more about</h2>
-  <p><a href="{% url 'sectors:wizard_step' step='sector_form' %}" class="button">Refine search</a></p>
+  <h2 class="heading-large">
+    Select jobs you'd like to know more about or
+    <a href="{% url 'sectors:wizard_step' step='sector_form' %}">refine your search</a></p>
+  </h2>
 
   <form id="results" method=post autocomplete="OFF">
     {% if form.errors %}
@@ -21,9 +22,8 @@
     {% for fieldset in form.fieldsets %}
       <section>
 
-        <fieldset>
-          <legend class="form-label-bold">‘{{ fieldset.legend|title }}’</legend>
-          <p>Select all that apply</p>
+        <fieldset class="form-group">
+          <h3 class="heading-medium">Jobs related to ‘{{ fieldset.legend|title }}’</h3>
           {% for field in fieldset %}
             <label class="block-label">
               {{ field }}
@@ -39,11 +39,6 @@
           {% endfor %}
         </fieldset>
 
-        {% if fieldset.fields %}
-          <footer>
-            <a href="{% add_get 'show_more[]'=fieldset.legend %}" class="button secondary">More results</a>
-          </footer>
-        {% endif %}
       </section>
     {% endfor %}
 
@@ -51,6 +46,10 @@
       <button type=submit class=button>Next</button>
     </div>
   </form>
+
+  <footer>
+    <a href="{% url 'sectors:start' %}?restart" class="link-back">start again</a>
+  </footer>
 {% endblock content %}
 
 {% block javascript %}

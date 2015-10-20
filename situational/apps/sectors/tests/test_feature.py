@@ -27,7 +27,9 @@ class TestSectors(BaseCase):
             )
             b.reload()
 
-            self.assertEqual(len(checkboxes), len(b.find_by_css(".job_item")))
+            self.assertEqual(
+                len(set([cb.name for cb in checkboxes])),
+                len(b.find_by_css(".job_item")))
 
             b.fill("email", "test@example.org")
             b.find_by_value("Send").first.click()

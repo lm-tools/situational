@@ -3,9 +3,6 @@
 
 {% block content %}
 
-  <aside>
-    <a href="{% url 'sectors:start' %}?restart" class="link-back">start again</a>
-  </aside>
 
   <header>
     <h2 class="heading-xlarge">Understand what sort of jobs you could do</h2>
@@ -45,7 +42,7 @@
         <div class="grid-row">
           <div class="column-half">
             <h3 class="heading-small">Typical tasks</h3 class="heading-small">
-            <ul>
+            <ul class="list-bullet">
               {% for task in soc_data.info.tasks %}
                 <li>{{ task|capfirst }}</li>
               {% endfor %}
@@ -58,8 +55,12 @@
           </div>
         </div>
       </div>
+      <hr>
     </section>
 
   {% endfor %}
 
+  <footer>
+    <a href="{% url 'sectors:start' %}?restart" class="link-back">start again</a>
+  </footer>
 {% endblock %}
