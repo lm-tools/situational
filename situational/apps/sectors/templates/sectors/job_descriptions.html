@@ -1,5 +1,6 @@
 {% extends "sectors/base.html" %}
 {% load add_get_parameter %}
+{% load friendly_socs %}
 
 {% block content %}
 
@@ -31,8 +32,8 @@
           {% for field in fieldset %}
             <label class="block-label">
               {{ field }}
-              <h4>{{ field.label }}</h4>
-              <p>{{ field.help_text }}</p>
+              <h4>{{ field.label|friendly_soc_title }}</h4>
+              <p>{{ field.help_text|friendly_soc_description }}</p>
             </label>
           {% empty %}
             <div class="row">
