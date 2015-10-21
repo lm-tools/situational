@@ -89,6 +89,10 @@ class JobDiscoveryReport(TimeStampedModel):
     def liked_jobs(self):
         return self.seen_jobs.filter(reaction__response="yes")
 
+    @property
+    def disliked_jobs(self):
+        return self.seen_jobs.filter(reaction__response="no")
+
     def add_reaction(self, job, response):
         Reaction.objects.create(report=self, job=job, response=response)
 
