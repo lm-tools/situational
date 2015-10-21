@@ -1,6 +1,7 @@
 {% extends "sectors/base.html" %}
 {% load humanize %}
 {% load friendly_socs %}
+{% load staticfiles %}
 
 {% block content %}
 
@@ -69,7 +70,7 @@
 {% block javascript %}
   {{ block.super }}
   {% if not debug %}
-    <script src="js/analytics/jquery.scrolldepth.min.js"></script>
+    <script src="{% static 'js/analytics/jquery.scrolldepth.min.js' %}"></script>
     <script>
       jQuery(function() {
         jQuery.scrollDepth();
