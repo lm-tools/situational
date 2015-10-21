@@ -7,7 +7,7 @@
       {% csrf_token %}
       <div class="form-group {% if form.postcode.errors %}error{% endif %}">
           <label for="{{ form.postcode.id_for_label }}">
-              <span class="form-label{% if form.postcode.errors %}-bold{% endif %}">From this postcode</span>
+              <span class="form-label{% if form.postcode.errors %}-bold{% endif %}">Postcode</span>
               {% for error in form.postcode.errors %}
                   <span class="error-message">{{ error|escape }}</span>
               {% endfor %}

@@ -83,7 +83,7 @@ class ReportView(FormView):
         email = form.cleaned_data["email"]
         report = models.SectorsReport.objects.get(pk=self.kwargs['report_id'])
         report.send_to(email)
-        notice = "Your report has been sent to " + email
+        notice = "Sent to " + email
         messages.success(self.request, notice)
         return super(ReportView, self).form_valid(form)
 

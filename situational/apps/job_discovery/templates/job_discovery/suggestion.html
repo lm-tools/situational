@@ -10,12 +10,12 @@
 {% block content %}
   <header class="grid-row">
     <div class="column-two-thirds">
-      <h2 class="heading-medium">Displaying jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
+      <h2 class="heading-large">Jobs in {{ job_pool_location | friendly_adzuna_location }}</h2>
     </div>
     <div class="column-third">
       {% if report.liked_jobs %}
         <div class="liked-jobs-count-wrapper">
-          <div class="liked-jobs-count"><a href="{% url 'job_discovery:report' guid=guid %}" class="link">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</a></div>
+          <div class="liked-jobs-count"><a href="{% url 'job_discovery:report' guid=guid %}" class="button button-done t-done">{{ report.liked_jobs|length }} saved job{{ report.liked_jobs|pluralize }}</a></div>
         </div>
       {% endif %}
     </div>
@@ -28,12 +28,11 @@
       {% csrf_token %}
       <input type="hidden" name="job_id" value="{{ job.id }}">
       <div class="grid-row">
-        <div class="column-two-thirds">
-          <button type="submit" name="response" value="no" class="button">No, this isn't for me</button>
-          <button type="submit" name="response" value="yes" class="button">Save this job</button>
+        <div class="column-half">
+          <button type="submit" name="response" value="no" class="button">This isn't for me</button>
         </div>
-        <div class="column-third">
-          <a href="{% url 'job_discovery:report' guid=guid %}" class="button button-done t-done">I'm done</a>
+        <div class="column-half">
+          <button type="submit" name="response" value="yes" class="button">Save this job</button>
         </div>
       </div>
     </form>

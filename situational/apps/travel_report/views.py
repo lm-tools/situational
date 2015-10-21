@@ -62,7 +62,7 @@ class ReportView(FormView):
             postcode=self.kwargs['postcode']
         )
         report.send_to(email)
-        notice = "Your report has been sent to " + email
+        notice = "Sent to " + email
         messages.success(self.request, notice)
         return super(ReportView, self).form_valid(form)
 

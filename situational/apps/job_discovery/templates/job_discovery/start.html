@@ -1,8 +1,8 @@
 {% extends "job_discovery/base.html" %}
 
 {% block content %}
-  <h1 class="heading-xlarge">Discover jobs to apply for</h1>
-  <p class="lede">Go through selections of job offers in your area and record which ones you are interested in.</p>
+  <h1 class="heading-xlarge">Find jobs to apply for</h1>
+  <p class="lede">View job offers in your area. You can save the ones you're interested in.</p>
   <form method=post autocomplete="OFF">
       {% csrf_token %}
       <div class="form-group {% if form.postcode.errors %}error{% endif %}">

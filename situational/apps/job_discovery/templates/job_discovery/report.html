@@ -4,11 +4,11 @@
 {% block content %}
 
   <header>
-    <h1 class="heading-xlarge">You saved {{ jobs|length }} jobs in {{ job_pool_location | friendly_adzuna_location }}</h1>
+    <h1 class="heading-xlarge">Saved jobs in {{ job_pool_location | friendly_adzuna_location }} ({{ jobs|length }})</h1>
   </header>
 
   {% if jobs %}
-    {# <p class="lede">This report contains information about the jobs you selected. It helps you understand what is required of each job, approximate hours and pay, and terms to use when searching for them online.</p> #}
+      <p class="lede text">Email yourself these jobs so that you can apply for them.</p>
 
       {% url 'job_discovery:report' guid=guid as form_action %}
       {% include '_email_form.html' with form_action=form_action %}
