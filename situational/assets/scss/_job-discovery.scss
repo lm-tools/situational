@@ -42,6 +42,9 @@
     background: rgba(222, 224, 226, 0.8);
     padding: $gutter-half $gutter-half 2px $gutter-half;
   }
+  .column-half {
+    text-align: center;
+  }
 }
 .job-suggestion-controls.fixedsticky-on {
   form {

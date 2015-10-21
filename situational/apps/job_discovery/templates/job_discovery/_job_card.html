@@ -3,7 +3,7 @@
 
 <table class="job-card">
   <tr>
-    <td>Title</td>
+    <td>Job title</td>
     <td>
       <span class="heading-small t-job-title">{{ job.title }}</span>
     </td>
@@ -14,8 +14,8 @@
   <tr>
     <td>Company</td>
     <td colspan="2">
-      <b>{{ job.company_name | default_if_none:"unknown" }}</b>
-      {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary | intcomma}}</b>){% endif %}
+      <b>{{ job.company_name | default_if_none:"Not specified" }}</b>
+      {% if job.average_company_salary %} (<i>average_company_salary:</i> <b>£ {{ job.average_company_salary | floatformat:0 | intcomma}}</b>){% endif %}
     </td>
   </tr>
   <tr>
@@ -28,20 +28,16 @@
     </td>
   </tr>
   <tr>
-    <td>Salary {% if job.salary_is_predicted %}(predicted){% endif %}</td>
+    <td>Salary</td>
     <td colspan="2">
-      <div class="grid-row">
-        <div class="column-half"><i>Min:</i> <b>£ {{ job.salary_min | default_if_none:"unknown" | intcomma }}</b></div>
-        <div class="column-half"><i>Max:</i> <b>£ {{ job.salary_max | default_if_none:"unknown" | intcomma }}</b></div>
-      </div>
+      <b>£ {{ job.salary_min | default_if_none:"Not specified" | floatformat:0 | intcomma }}</b>{% if job.salary_max and job.salary_max != job.salary_min %} to <b>£ {{ job.salary_max | floatformat:0 | default_if_none:"Not specified" | intcomma }}</b>{% endif %}
     </td>
   </tr>
   <tr>
-    <td>Contract</td>
+    <td>Hours</td>
     <td colspan="2">
-      <div class="grid-row">
-        <div class="column-half"><i>Type:</i> <b>{{ job.contract_type | default_if_none:"unknown" }}</b></div>
-        <div class="column-half"><i>Hours:</i> <b>{{ job.contract_time | replace_underscores:"-" | default_if_none:"unknown" }}</b></div>
+        <b>{{ job.contract_time | replace_underscores:"-" | default_if_none:"Not specified" | capfirst }}</b>
+        {% if job.contract_type %}(<b>{{ job.contract_type | capfirst }}</b>) {% endif %}
       </div>
     </td>
   </tr>

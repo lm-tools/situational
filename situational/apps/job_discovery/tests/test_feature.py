@@ -39,6 +39,6 @@ class TestJobDiscovery(BaseCase):
             b.find_by_value("Send").first.click()
             self.assertTrue(
                 b.is_text_present(
-                    "Your report has been sent to test@example.org")
+                    "Sent to test@example.org")
             )
             self.assertEqual(len(mail.outbox), 1)

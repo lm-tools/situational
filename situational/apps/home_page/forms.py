@@ -4,7 +4,7 @@ TOOLS = [
     ('all', 'All the tools'),
     ('travel', 'Where you could travel for work'),
     ('sectors', 'Understand what sort of jobs you could do'),
-    ('discovery', 'Discover jobs to apply for')
+    ('discovery', 'Find jobs to apply for'),
 ]
 FEEDBACK_TYPES = [
     ('not_working', 'Something isn\'t working'),

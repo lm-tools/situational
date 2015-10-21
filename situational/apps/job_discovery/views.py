@@ -82,7 +82,7 @@ class ReportView(FormView):
         email = form.cleaned_data["email"]
         report = models.JobDiscoveryReport.objects.get(pk=self.kwargs['guid'])
         report.send_to(email)
-        notice = "Your report has been sent to " + email
+        notice = "Sent to " + email
         messages.success(self.request, notice)
         return super(ReportView, self).form_valid(form)
 
