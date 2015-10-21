@@ -60,6 +60,10 @@
 {% block javascript %}
   {{ block.super }}
   <script>
+    trackKeywordCount({{form.fieldsets | length }})
+    {% for fieldset in form.fieldsets %}
+      trackKeyword('{{fieldset.legend}}')
+    {% endfor %}
     $(".result-item :checkbox").change(function() {
       $(this).closest(".result-item").toggleClass("selected", this.checked);
     });
