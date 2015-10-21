@@ -12,3 +12,10 @@ def get_current_path(request):
     return {
         'current_path': request.get_full_path(),
     }
+
+
+def get_current_tool_name(request):
+    full_path = request.get_full_path()
+    return {
+        'current_tool': full_path.split('/')[1]
+    }

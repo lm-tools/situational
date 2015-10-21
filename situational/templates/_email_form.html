@@ -7,7 +7,7 @@
     {% endfor %}
   </div>
 {% endif %}
-<form action="{{form_action}}#email_form" method="post" autocomplete="OFF">
+<form action="{{form_action}}#email_form" onsubmit="sendReportEmail('{{ current_tool }}')" method="post" autocomplete="OFF">
   {% csrf_token %}
   <fieldset class="form-fieldset">
     <div class="form-group {% if form.email.errors %}error{% endif %}">
