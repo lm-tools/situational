@@ -4,9 +4,13 @@
 {% block content %}
 
   <h2 class="heading-large">
+    Discover jobs you could do
+  </h2>
+
+  <p class="lede">
     Select jobs you'd like to know more about or
     <a href="{% url 'sectors:wizard_step' step='sector_form' %}">refine your search</a></p>
-  </h2>
+  </p>
 
   <form id="results" method=post autocomplete="OFF">
     {% if form.errors %}

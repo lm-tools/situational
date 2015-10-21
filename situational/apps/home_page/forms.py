@@ -3,7 +3,7 @@ from django import forms
 TOOLS = [
     ('all', 'All the tools'),
     ('travel', 'Where you could travel for work'),
-    ('sectors', 'Understand what sort of jobs you could do'),
+    ('sectors', 'Discover jobs you could do'),
     ('discovery', 'Find jobs to apply for'),
 ]
 FEEDBACK_TYPES = [
