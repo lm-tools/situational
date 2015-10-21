@@ -31,8 +31,6 @@ class SectorWizardView(NamedUrlCookieWizardView):
         if step == 'job_descriptions_form':
             sectors = self.get_cleaned_data_for_step('sector_form')['sector']
             kwargs['keywords'] = sectors
-            if 'show_more[]' in self.request.GET:
-                kwargs['show_more'] = self.request.GET['show_more[]']
         return kwargs
 
     def done(self, form_list, form_dict, **kwargs):
