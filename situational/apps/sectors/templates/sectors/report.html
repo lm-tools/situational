@@ -1,5 +1,6 @@
 {% extends "sectors/base.html" %}
 {% load humanize %}
+{% load friendly_socs %}
 
 {% block content %}
 
@@ -19,10 +20,10 @@
     <section>
       <div class="job_item">
         <header>
-          <h2 class="heading-large">{{ soc_data.info.title }}</h2>
+          <h2 class="heading-large">{{ soc_data.info.title|friendly_soc_title }}</h2>
         </header>
 
-        <p>{{ soc_data.info.description }}</p>
+        <p>{{ soc_data.info.description|friendly_soc_description }}</p>
 
         <div class="grid-row">
           <div class="column-half">
