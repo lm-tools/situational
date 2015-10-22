@@ -1,4 +1,5 @@
 {% extends "base_govuk.html" %}
+{% load staticfiles %}
 
 {% block page_title %}Discover jobs you could do{% endblock page_title %}
 
@@ -14,4 +15,10 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+
+{% block javascript %}
+  {{ block.super }}
+  <script src="{% static 'js/analytics/sectors.js' %}"></script>
 {% endblock %}

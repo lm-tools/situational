@@ -56,6 +56,11 @@
     <meta property="og:image" content="{% static 'images/govuk_template/opengraph-image.png' %}">
 
     {% block head %}{% endblock %}
+    {% if debug %}
+      {% include '_analytics_debug.html' %}
+    {% else %}
+      {% include '_analytics.html' %}
+    {% endif %}
   </head>
 
   <body class="{% block body_classes %}{% endblock %}">
@@ -143,6 +148,7 @@
     <script src="{% static 'js/govuk_template/govuk-template.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/govuk_frontend_toolkit/selection-buttons.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/govuk_elements/elements.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/analytics/all.js' %}"></script>
     {% endblock %}
     {% block body_end %}{% endblock %}
   </body>

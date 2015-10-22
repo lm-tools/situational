@@ -1,6 +1,7 @@
 {% extends "sectors/base.html" %}
 {% load humanize %}
 {% load friendly_socs %}
+{% load staticfiles %}
 
 {% block content %}
 
@@ -64,4 +65,16 @@
   <footer>
     <a href="{% url 'sectors:start' %}?restart" class="link-back">start again</a>
   </footer>
+{% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  {% if not debug %}
+    <script src="{% static 'js/analytics/jquery.scrolldepth.min.js' %}"></script>
+    <script>
+      jQuery(function() {
+        jQuery.scrollDepth();
+      });
+    </script>
+  {% endif %}
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.core.urlresolvers import resolve
 
 
 def govuk_frontend_settings(request):
@@ -11,4 +12,11 @@ def govuk_frontend_settings(request):
 def get_current_path(request):
     return {
         'current_path': request.get_full_path(),
+    }
+
+
+def get_current_namespace(request):
+    r = resolve(request.path)
+    return {
+        'namespace': r.namespace,
     }

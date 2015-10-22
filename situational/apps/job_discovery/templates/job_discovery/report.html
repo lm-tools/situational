@@ -31,3 +31,10 @@
   </footer>
 
 {% endblock %}
+
+{% block javascript %}
+  {{ block.super }}
+  <script>
+    trackViewDiscoveryReport({{ report.liked_jobs|length }},{{ report.disliked_jobs|length }})
+  </script>
+{% endblock javascript %}
