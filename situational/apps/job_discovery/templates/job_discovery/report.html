@@ -35,6 +35,6 @@
 {% block javascript %}
   {{ block.super }}
   <script>
-    viewDiscoveryReport({{ report.liked_jobs|length }},{{ report.disliked_jobs|length }})
+    trackViewDiscoveryReport({{ report.liked_jobs|length }},{{ report.disliked_jobs|length }})
   </script>
 {% endblock javascript %}

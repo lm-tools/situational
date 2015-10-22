@@ -30,7 +30,7 @@
         <fieldset class="form-group">
           <h3 class="heading-medium">Jobs related to ‘{{ fieldset.legend|title }}’</h3>
           {% for field in fieldset %}
-            <label class="block-label">
+            <label class="block-label" data-keyword="{{ fieldset.legend}}">
               {{ field }}
               <h4>{{ field.label|friendly_soc_title }}</h4>
               <p>{{ field.help_text|friendly_soc_description }}</p>
@@ -64,8 +64,9 @@
     {% for fieldset in form.fieldsets %}
       trackKeyword('{{fieldset.legend}}')
     {% endfor %}
-    $(".result-item :checkbox").change(function() {
-      $(this).closest(".result-item").toggleClass("selected", this.checked);
+    $("input[type=checkbox]").click(function() {
+      keyword = $(this).parent().data("keyword")
+      trackSocCodeClicked(keyword, this.id.split("-")[1])
     });
   </script>
 {% endblock javascript %}
