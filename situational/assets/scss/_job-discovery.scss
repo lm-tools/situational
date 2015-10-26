@@ -18,6 +18,15 @@
     &.apply-cell {
       text-align: right;
     }
+
+    &.adzuna-attribution {
+      font-size: 0.8em;
+      text-align: right;
+      img {
+        height: 1em;
+        margin-bottom: -0.1em;
+      }
+    }
   }
 }
 
