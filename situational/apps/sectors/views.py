@@ -18,9 +18,8 @@ class SectorWizardView(NamedUrlCookieWizardView):
     }
 
     def get(self, *args, **kwargs):
-        if 'restart' in self.request.GET:
+        if self.request.path == reverse('sectors:start'):
             self.storage.reset()
-            return HttpResponseRedirect(reverse('sectors:start'))
         return super().get(*args, **kwargs)
 
     def get_template_names(self):
