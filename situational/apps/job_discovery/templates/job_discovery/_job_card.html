@@ -1,5 +1,6 @@
 {% load humanize %}
 {% load pretty_words %}
+{% load staticfiles %}
 
 <table class="job-card">
   <tr>
@@ -44,5 +45,10 @@
   <tr>
     <td>Description</td>
     <td colspan="2">{{ job.description }}</td>
+  </tr>
+  <tr>
+    <td colspan="3" class="adzuna-attribution">
+      <a href="http://www.adzuna.co.uk/" target="_blank">Jobs</a> by <img src="{% static 'images/adzuna_logo.jpg' %}" alt="Adzuna">
+    </td>
   </tr>
 </table>
