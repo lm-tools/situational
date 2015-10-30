@@ -218,10 +218,10 @@ ADZUNA_APP_ID = os.environ.get('ADZUNA_APP_ID')
 ADZUNA_APP_KEY = os.environ.get('ADZUNA_APP_KEY')
 
 # Bacic auth
-BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED', False)
+BASICAUTH_DISABLED = os.environ.get('BASICAUTH_DISABLED', False)
 if not BASICAUTH_DISABLED:
-    BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
-    BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
+    BASICAUTH_USERNAME = os.environ.get('HTTP_USERNAME')
+    BASICAUTH_PASSWORD = os.environ.get('HTTP_PASSWORD')
 BASICAUTH_EXEMPT = [
     r"/manifest.json$",
 ]
