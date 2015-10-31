@@ -2,6 +2,8 @@
 
 ## Deploying
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lm-tools/situational)
+
 ### Environment variables
 
 #### All tools
@@ -10,6 +12,7 @@
 * DJANGO_SECRET_KEY
 * HTTP_PASSWORD
 * HTTP_USERNAME
+* GOOGLE_ANALYTICS_ID
 
 #### Travel tool
 
@@ -21,6 +24,8 @@
 * ENABLE_MAPUMENTAL
 
 #### Discovery tool
+
+To signup for Adzuna, go to: https://developer.adzuna.com/signup.
 
 * ADZUNA_APP_ID
 * ADZUNA_APP_KEY
