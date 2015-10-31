@@ -14,6 +14,7 @@
     "DJANGO_SECRET_KEY"      :{"required":true},
     "DJANGO_SETTINGS_MODULE" :"situational.settings.heroku",
     "ENABLE_MAPUMENTAL"      :{"required":true},
+    "GOOGLE_ANALYTICS_ID"    :{"required": true},
     "HTTP_PASSWORD"          :{"required":false},
     "HTTP_USERNAME"          :{"required":false},
     "HTTPS"                  :"on",

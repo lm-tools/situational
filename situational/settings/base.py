@@ -133,6 +133,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "home_page.context_processors.govuk_frontend_settings",
     "home_page.context_processors.get_current_path",
     "home_page.context_processors.get_current_namespace",
+    "home_page.context_processors.google_analytics"
 ]
 
 ROOT_URLCONF = 'situational.urls'
@@ -240,6 +241,9 @@ JOBS_API_BASE_URL = environ.get('JOBS_API_BASE_URL',
 
 # MAPUMENTAL
 MAPUMENTAL_API_KEY = environ.get('MAPUMENTAL_API_KEY')
+
+# GOOGLE ANALYTICS
+GOOGLE_ANALYTICS_ID = environ.get('GOOGLE_ANALYTICS_ID')
 
 BROKER_URL = environ.get('REDISTOGO_URL',
                          'redis://localhost:6379/0')
