@@ -133,6 +133,7 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "home_page.context_processors.govuk_frontend_settings",
     "home_page.context_processors.get_current_path",
     "home_page.context_processors.get_current_namespace",
+    "home_page.context_processors.google_analytics"
 ]
 
 ROOT_URLCONF = 'situational.urls'
@@ -153,7 +154,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'storages',
-    'djcelery',
     'static_precompiler',
 )
 
@@ -218,10 +218,10 @@ ADZUNA_APP_ID = os.environ.get('ADZUNA_APP_ID')
 ADZUNA_APP_KEY = os.environ.get('ADZUNA_APP_KEY')
 
 # Bacic auth
-BASICAUTH_DISABLED = environ.get('BASICAUTH_DISABLED', False)
+BASICAUTH_DISABLED = os.environ.get('BASICAUTH_DISABLED', False)
 if not BASICAUTH_DISABLED:
-    BASICAUTH_USERNAME = environ.get('HTTP_USERNAME')
-    BASICAUTH_PASSWORD = environ.get('HTTP_PASSWORD')
+    BASICAUTH_USERNAME = os.environ.get('HTTP_USERNAME')
+    BASICAUTH_PASSWORD = os.environ.get('HTTP_PASSWORD')
 BASICAUTH_EXEMPT = [
     r"/manifest.json$",
 ]
@@ -240,6 +240,9 @@ JOBS_API_BASE_URL = environ.get('JOBS_API_BASE_URL',
 
 # MAPUMENTAL
 MAPUMENTAL_API_KEY = environ.get('MAPUMENTAL_API_KEY')
+
+# GOOGLE ANALYTICS
+GOOGLE_ANALYTICS_ID = environ.get('GOOGLE_ANALYTICS_ID')
 
 BROKER_URL = environ.get('REDISTOGO_URL',
                          'redis://localhost:6379/0')
