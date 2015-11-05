@@ -154,7 +154,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'storages',
-    'djcelery',
     'static_precompiler',
 )
 

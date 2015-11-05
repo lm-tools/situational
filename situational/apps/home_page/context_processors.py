@@ -21,6 +21,7 @@ def get_current_namespace(request):
         'namespace': r.namespace,
     }
 
+
 def google_analytics(request):
     return {
         'google_analytics_id': getattr(settings, 'GOOGLE_ANALYTICS_ID'),
