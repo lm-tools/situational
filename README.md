@@ -4,6 +4,8 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lm-tools/situational)
 
+You will need to scale the celery process to at least one dyno for the travel and sectors tools to work. 
+
 ### Environment variables
 
 #### All tools
