@@ -1,6 +1,6 @@
 from django.conf import settings
 
-from celery import chord, shared_task
+from celery import shared_task
 from celery.utils.log import get_task_logger
 from redlock import Redlock
 
@@ -24,22 +24,15 @@ def populate_report(report):
     logger.debug("Populating {}".format(sector_report))
 
     logger.debug("Running all the sub tasks")
-    sub_tasks = (
-        soc_code_data.si(report),
-    )
-    callback = release_lock.si(report.pk, lock)
-    for task in sub_tasks + (callback,):
-        task.set(expires=population_timeout)
-    chord(sub_tasks, callback).delay()
+    soc_code_data(report)
+    release_lock(report.pk, lock)
 
 
-@shared_task
 def release_lock(identifier, lock):
     logger.debug("Releasing lock for report '{}'".format(identifier))
     dlm.unlock(lock)
 
 
-@shared_task
 def soc_code_data(report):
     soc_codes_list = report.soc_codes.split(",")
     logger.debug("Getting soc_code_data for {}".format(soc_codes_list))
