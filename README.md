@@ -1,4 +1,6 @@
-# Situational
+# Situational - deprecated
+
+*This project is no longer maintained*
 
 ## Deploying
 
